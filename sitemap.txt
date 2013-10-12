@@ -1,0 +1,14 @@
+
+http://huayi.github.io/sitemap.txt
+http://huayi.github.io/tags.html
+http://huayi.github.io/categories.html
+http://huayi.github.io/about.html
+http://huayi.github.io/archive.html
+http://huayi.github.io/index.html
+http://huayi.github.io/footmark/index.html
+http://huayi.github.io/pages.html
+
+http://huayi.github.io/cgal/kernel.html
+http://huayi.github.io/cgal/CGAL-introduction-1.html
+http://huayi.github.io/develop/Git-introduction.html
+http://huayi.github.io/misc/hello-world.html

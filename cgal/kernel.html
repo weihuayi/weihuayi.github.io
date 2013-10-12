@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGAL学习-几何核心类(2)</title>
+    <meta name="description" content="几何核心类中包含了基本的几何对象以及对这些对象的操作。">
+    <meta name="author" content="Huayi Wei">
+    <meta name="keywords" content="Huayi's Blog,Huayi Wei,CGAL学习-几何核心类(2),kernel">
+    <meta property="wb:webmaster" content="45f4c044418008e7" />
+    <meta name="chinaz-site-verification" content="1a7852f9-b42f-481f-bd38-1b9e92a55496" />
+    <link href="/assets/themes/twitter2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter2/css/custom.css?v=0.3" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter2/css/syntax.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+	<script src="/assets/function.js"></script>
+
+  </head>
+
+  <body>
+    <div id="navbar" class="navbar navbar-fixed-top" style="padding-left: 0; padding-right: 0;">
+      <div class="navbar-inner" style="background:#2c2c2c">
+        <div class="container-fluid" style="margin-left:8%; margin-right:5%; overflow:hidden; padding-left: 0; padding-right: 0;">
+          <a class="brand" href="/">Huayi's Blog</a>
+          <ul id="left-nav" class="nav" style="font-weight: 250;">
+            <li class="divider-vertical" id="left-divider"></li>
+            
+            
+
+
+  
+    
+      
+      <li><a href="/archive.html">Archive</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/categories.html">Caterories</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/tags.html">Tags</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/about.html">About</a></li>
+      
+    
+  
+
+
+
+          </ul>
+          
+          <ul class="nav pull-right nav-right">
+            <li class="sharing"></li>
+            <li class="divider-vertical" id="right-divider"></li>
+            <li><a><span id=localtime class="label" style="background:#FCF8E3; font-size: 11px; font-weight: normal;"></span><script type="text/javascript">tick();</script></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="main" class="container-fluid" style="position: relative; padding-left: 8%; padding-right: 8%;">
+      
+<div class="row-fluid">
+  <div id="post-span" class="span10" style="margin-left: 10%;">
+    <div class="content post">
+      <h1 class="title">CGAL学习-几何核心类(2)</h1>
+      几何核心类中包含了基本的几何对象以及对这些对象的操作。
+      <h2 id="几何核心geometry-kernel类">几何核心（Geometry Kernel）类</h2>
+<p>几何核心类中主要包含了大多数计算几何算法用到的几何对象及对这些对象的操作。</p>
+<h2 id="例子">例子</h2>
+<p>下面给出一个练习的例子。把下面的内容复制到名为main.cpp的文件中， 编写注释中说明的代码。</p>
+<div class="highlight"><pre><code class="cpp"><span class="cp">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span>
+<span class="c1">//做下面练习时， 这里还需要加入适当的头文件</span>
+<span class="cp">#include &lt;CGAL/intersections.h&gt; </span><span class="c1">//计算两个几何对象是否相交</span>
+<span class="k">typedef</span> <span class="n">CGAL</span><span class="o">::</span><span class="n">Exact_predicates_inexact_constructions_kernel</span> <span class="n">K</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">FT</span> <span class="n">FT</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Point_2</span> <span class="n">Point_2</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Segment_2</span> <span class="n">Segment_2</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Line_2</span> <span class="n">Line_2</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Vector_2</span> <span class="n">Vector_2</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Triangle_2</span> <span class="n">Triangle_2</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Circle_2</span> <span class="n">Circle_2</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Point_3</span> <span class="n">Point_3</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Segment_3</span> <span class="n">Segment_3</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Line_3</span> <span class="n">Line_3</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Vector_3</span> <span class="n">Vector_3</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Triangle_3</span> <span class="n">Triangle_3</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Sphere_3</span> <span class="n">Sphere_3</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">Point_2</span> <span class="n">p1</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span><span class="err">，</span><span class="n">p2</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">);</span> <span class="c1">//定义两个二维点</span>
+  <span class="n">Vector_2</span> <span class="n">v1</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">v2</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">);</span> <span class="c1">//定义两个二维向量</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p1</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p2</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">v1</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">v2</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="n">Point_2</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">p1</span> <span class="o">+</span> <span class="n">v1</span><span class="p">;</span>
+  <span class="n">Vector_2</span> <span class="n">v3</span> <span class="o">=</span> <span class="n">p2</span> <span class="o">-</span> <span class="n">p1</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p3</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">v3</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="c1">//给定一个二维或三维向量，计算向量的长度</span>
+
+  <span class="c1">//给定两个二维或三维向量，计算向量的点乘、叉乘及夹角</span>
+
+  <span class="c1">//给定两个二维点或三维点，计算两点的距离，中点</span>
+
+  <span class="c1">//给定一组二维点或三维点，每一个点给一个权重， 然后计算它们的重心</span>
+
+  <span class="c1">//给定一个二维三角形或三维三角形， 计算其三边边长， 面积， 外接圆圆心</span>
+
+  <span class="c1">//给定一个圆和一个点， 判断点相对于圆的位置关系：圆内，圆外还是圆上</span>
+
+  <span class="c1">//给定一个球和一个点， 判断点相对于球的位置关系：球内，球外还是球上</span>
+
+  <span class="c1">//给定一两条线段， 判断两条线段是否相交， 如果相交算出交点</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>把下面的内容复制到名为CMakeLists.txt的文件中。</p>
+<div class="highlight"><pre><code class="bash">project<span class="o">(</span> Kernel_test<span class="o">)</span>
+cmake_minimum_required<span class="o">(</span>VERSION 2.6.2<span class="o">)</span> 
+<span class="nb">set</span><span class="o">(</span>SRC main.cpp<span class="o">)</span>
+find_package<span class="o">(</span>CGAL QUIET COMPONENTS Core <span class="o">)</span> 
+<span class="k">if</span> <span class="o">(</span> CGAL_FOUND <span class="o">)</span> <span class="c">#如果找到CGAL</span>
+  include<span class="o">(</span> <span class="k">${</span><span class="nv">CGAL_USE_FILE</span><span class="k">}</span> <span class="o">)</span> 
+  include<span class="o">(</span> CGAL_CreateSingleSourceCGALProgram <span class="o">)</span>
+  create_single_source_cgal_program<span class="o">(</span><span class="k">${</span><span class="nv">SRC</span><span class="k">}</span><span class="o">)</span>
+<span class="k">else</span><span class="o">()</span> <span class="c"># 找不到时输出错误信息</span>
+    message<span class="o">(</span>STATUS <span class="s2">&quot;This program requires the CGAL library, and will not be compiled.&quot;</span><span class="o">)</span>
+endif<span class="o">()</span>
+</code></pre></div>
+
+
+<p>把上面两个文件放入同一个目录下， 在终端中运行如下命令：</p>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cmake .
+<span class="nv">$ </span>make
+<span class="nv">$ </span>./main
+</code></pre></div>
+
+<p>就可以输出下相应的结果。</p>
+
+    
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'huayi'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+      <hr>
+      
+    </div> <!-- /container -->
+
+    <footer class="footer">
+      <p id="footer-first-child">Lovingly authored by Huayi Wei in 2013 with help 
+          <br>from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>,<a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>, and countless humans.
+        </p>
+        <p>&copy; 2013 Huayi Wei, Powered by Github</p>
+        <!--<p><a href="https://mixpanel.com/f/partner"><img src="https://mixpanel.com/site_media/images/partner/badge_light.png" alt="Real Time Web Analytics" /></a></p>-->
+    </footer>
+    
+    
+    <!-- <a id="forkme" style="display:none" href="http://github.com/mceiba/mceiba.github.com"><img style="position: absolute; top: 40px; right: 0; border: 0;" src="/assets/images/forkme.png" alt="Fork me on GitHub"></a> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/twitter2/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/app.js?v=0.1"></script>
+    <script>
+      $(function(){
+        //forkme.init(); 
+        var delta = $(window).height() - $(document.body).height() -50;
+        if (delta>0) {
+          $(".footer").css("margin-top", delta);
+          // $(".footer").animate({
+          //   "margin-top": delta+"px"
+          // }, "fast");
+        }
+      
+		  var i=1;
+  		$("h2").each(function(){$(this).attr("id",(i++)+"_"+$(this).text());});
+  		//$("h2").attr("id", function(){ return "h2_"(i++)+"_"+this.title });
+          Toc.init('#sidebar', '#main');
+        
+  	  })
+    </script>
+    
+    <!---->
+  </body>
+</html>
+

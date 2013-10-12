@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pages</title>
+    
+    <meta name="author" content="Huayi Wei">
+    <meta name="keywords" content="Huayi's Blog,Huayi Wei,Pages">
+    <meta property="wb:webmaster" content="45f4c044418008e7" />
+    <meta name="chinaz-site-verification" content="1a7852f9-b42f-481f-bd38-1b9e92a55496" />
+    <link href="/assets/themes/twitter2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter2/css/custom.css?v=0.3" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter2/css/syntax.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+	<script src="/assets/function.js"></script>
+
+  </head>
+
+  <body>
+    <div id="navbar" class="navbar navbar-fixed-top" style="padding-left: 0; padding-right: 0;">
+      <div class="navbar-inner" style="background:#2c2c2c">
+        <div class="container-fluid" style="margin-left:8%; margin-right:5%; overflow:hidden; padding-left: 0; padding-right: 0;">
+          <a class="brand" href="/">Huayi's Blog</a>
+          <ul id="left-nav" class="nav" style="font-weight: 250;">
+            <li class="divider-vertical" id="left-divider"></li>
+            
+            
+
+
+  
+    
+      
+      <li><a href="/archive.html">Archive</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/categories.html">Caterories</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/tags.html">Tags</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/about.html">About</a></li>
+      
+    
+  
+
+
+
+          </ul>
+          
+          <ul class="nav pull-right nav-right">
+            <li class="sharing"></li>
+            <li class="divider-vertical" id="right-divider"></li>
+            <li><a><span id=localtime class="label" style="background:#FCF8E3; font-size: 11px; font-weight: normal;"></span><script type="text/javascript">tick();</script></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="main" class="container-fluid" style="position: relative; padding-left: 8%; padding-right: 8%;">
+      
+<div class="row-fluid">
+  <div class="span8 offset2">
+    <div class="content page">
+      <h1 class="title">Pages</h1>
+      
+      <h2>所有页面</h2>
+
+
+
+
+  
+    
+      
+      <li><a href="/sitemap.txt"></a></li>
+      
+    
+  
+    
+      
+      <li><a href="/tags.html">Tags</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/categories.html">Categories</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/about.html">About</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/archive.html">Archive</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/index.html">华祎的个人博客</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/footmark/index.html">Start Blogging</a></li>
+      
+    
+  
+    
+      
+      <li class="active"><a href="/pages.html" class="active">Pages</a></li>
+      
+    
+  
+
+
+
+
+<h2>默认group(example-page)中的页面</h2>
+
+
+
+
+
+  
+    
+  
+    
+      
+      <li><a href="/tags.html">Tags</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/categories.html">Categories</a></li>
+      
+    
+  
+    
+  
+    
+      
+      <li><a href="/archive.html">Archive</a></li>
+      
+    
+  
+    
+  
+    
+  
+    
+      
+      <li class="active"><a href="/pages.html" class="active">Pages</a></li>
+      
+    
+  
+
+
+
+
+<br/>
+    </div>  
+  </div>
+</div>
+
+
+      <hr>
+      
+    </div> <!-- /container -->
+
+    <footer class="footer">
+      <p id="footer-first-child">Lovingly authored by Huayi Wei in 2013 with help 
+          <br>from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>,<a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>, and countless humans.
+        </p>
+        <p>&copy; 2013 Huayi Wei, Powered by Github</p>
+        <!--<p><a href="https://mixpanel.com/f/partner"><img src="https://mixpanel.com/site_media/images/partner/badge_light.png" alt="Real Time Web Analytics" /></a></p>-->
+    </footer>
+    
+    
+    <!-- <a id="forkme" style="display:none" href="http://github.com/mceiba/mceiba.github.com"><img style="position: absolute; top: 40px; right: 0; border: 0;" src="/assets/images/forkme.png" alt="Fork me on GitHub"></a> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/twitter2/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/app.js?v=0.1"></script>
+    <script>
+      $(function(){
+        //forkme.init(); 
+        var delta = $(window).height() - $(document.body).height() -50;
+        if (delta>0) {
+          $(".footer").css("margin-top", delta);
+          // $(".footer").animate({
+          //   "margin-top": delta+"px"
+          // }, "fast");
+        }
+      
+		  var i=1;
+  		$("h2").each(function(){$(this).attr("id",(i++)+"_"+$(this).text());});
+  		//$("h2").attr("id", function(){ return "h2_"(i++)+"_"+this.title });
+          Toc.init('#sidebar', '#main');
+        
+  	  })
+    </script>
+    
+    <!---->
+  </body>
+</html>
+
