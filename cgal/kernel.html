@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CGAL学习-几何核心类(2)</title>
-    <meta name="description" content="几何核心类中包含了基本的几何对象以及对这些对象的操作。">
+    <meta name="description" content="几何核心（Geometry Kernel）类中包含了基本的几何对象以及对这些对象的操作。在CGAL中几何核心往往以Traits class的方式通过模板参数传递给更具体的计算几何数据结构和算法使用。
+">
     <meta name="author" content="Huayi Wei">
     <meta name="keywords" content="Huayi's Blog,Huayi Wei,CGAL学习-几何核心类(2),kernel">
     <meta property="wb:webmaster" content="45f4c044418008e7" />
@@ -74,9 +75,10 @@
   <div id="post-span" class="span10" style="margin-left: 10%;">
     <div class="content post">
       <h1 class="title">CGAL学习-几何核心类(2)</h1>
-      几何核心类中包含了基本的几何对象以及对这些对象的操作。
-      <h2 id="几何核心geometry-kernel类">几何核心（Geometry Kernel）类</h2>
-<p>几何核心类中主要包含了大多数计算几何算法用到的几何对象及对这些对象的操作。</p>
+      几何核心（Geometry Kernel）类中包含了基本的几何对象以及对这些对象的操作。在CGAL中几何核心往往以Traits class的方式通过模板参数传递给更具体的计算几何数据结构和算法使用。
+
+      <h2 id="几何核心类">几何核心类</h2>
+<p>几何核心（Geometry Kernel）类中主要包含了大多数计算几何算法用到的几何对象及对这些对象的操作。</p>
 <h2 id="例子">例子</h2>
 <p>下面给出一个练习的例子。把下面的内容复制到名为main.cpp的文件中， 编写注释中说明的代码。</p>
 <div class="highlight"><pre><code class="cpp"><span class="cp">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span>
@@ -196,6 +198,36 @@ endif<span class="o">()</span>
     </footer>
     
     
+
+<div id="sidebar" class="sidebar">
+  <h4>CGAL学习笔记</h4>
+  <ul>
+    
+    
+
+
+  
+    
+      
+      <li><a href="/cgal/CGAL-introduction-1.html">CGAL学习-安装 (1)</a></li>
+      
+    
+  
+    
+      
+      <li class="active"><a href="/cgal/kernel.html" class="active">CGAL学习-几何核心类(2)</a></li>
+      
+    
+  
+
+
+
+  </ul>
+
+</div>
+
+
+
     <!-- <a id="forkme" style="display:none" href="http://github.com/mceiba/mceiba.github.com"><img style="position: absolute; top: 40px; right: 0; border: 0;" src="/assets/images/forkme.png" alt="Fork me on GitHub"></a> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/assets/themes/twitter2/js/jquery.min.js"><\/script>')</script>
