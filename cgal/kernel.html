@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CGAL学习-几何核心类(2)</title>
-    <meta name="description" content="几何核心（Geometry Kernel）类中包含了基本的几何对象以及对这些对象的操作。在CGAL中几何核心往往以Traits class的方式通过模板参数传递给更具体的计算几何数据结构和算法使用。
+    <title>CGAL学习-几何核心类型(2)</title>
+    <meta name="description" content="几何核心（Geometry Kernel）类型中包含了基本的几何对象以及对这些对象的操作。在CGAL中几何核心往往以Traits class的方式通过模板参数传递给更具体的计算几何数据结构和算法使用。
 ">
     <meta name="author" content="Huayi Wei">
-    <meta name="keywords" content="Huayi's Blog,Huayi Wei,CGAL学习-几何核心类(2),kernel">
+    <meta name="keywords" content="Huayi's Blog,Huayi Wei,CGAL学习-几何核心类型(2),kernel">
     <meta property="wb:webmaster" content="45f4c044418008e7" />
     <meta name="chinaz-site-verification" content="1a7852f9-b42f-481f-bd38-1b9e92a55496" />
     <link href="/assets/themes/twitter2/css/bootstrap.min.css" rel="stylesheet">
@@ -74,11 +74,25 @@
 <div class="row-fluid">
   <div id="post-span" class="span10" style="margin-left: 10%;">
     <div class="content post">
-      <h1 class="title">CGAL学习-几何核心类(2)</h1>
-      几何核心（Geometry Kernel）类中包含了基本的几何对象以及对这些对象的操作。在CGAL中几何核心往往以Traits class的方式通过模板参数传递给更具体的计算几何数据结构和算法使用。
+      <h1 class="title">CGAL学习-几何核心类型(2)</h1>
+      几何核心（Geometry Kernel）类型中包含了基本的几何对象以及对这些对象的操作。在CGAL中几何核心往往以Traits class的方式通过模板参数传递给更具体的计算几何数据结构和算法使用。
 
       <h2 id="几何核心类">几何核心类</h2>
-<p>几何核心（Geometry Kernel）类中主要包含了大多数计算几何算法用到的几何对象及对这些对象的操作。</p>
+<p>几何核心（Geometry Kernel）类型中主要定义了大多数计算几何算法用到的那些几何对象及对这些对象的操作。在CGAL中几何核心往往以Traits class的方式通过模板参数传递给更具体的计算几何数据结构和算法使用。</p>
+<p>关于 Traits class 的介绍， <a href="http://www.cnblogs.com/youthlion/archive/2011/12/01/2255618.htm">见文章</a> 。</p>
+<p>基于CGAL开发网格生成与优化的代码， 常用的几何核心类型是 <a href="http://www.cgal.org/Manual/latest/doc_html/cgal_manual/Kernel_23_ref/Class_Exact_predicates_inexact_constructions_kernel.html">CGAL::Exact_predicates_inexact_constructions_kernel.h</a>。它有如下的性质：</p>
+<ul>
+<li>笛卡尔坐标表示</li>
+<li>空间点的坐标分量是double类型</li>
+<li>它支持精确的几何断言(predicate)和不精确的几何构造(construction)</li>
+</ul>
+<p>这里几何断言是指判断几何对象的方向或者相对空间位置关系；几何构造是指构造新的几何对像， 如计算线段的中点、三角形外接圆圆心等，由于计算机的舍入误差， 所以是不精确的， 但已经能满足网格生成和优化算法的基本需要，且计算速度也较快。</p>
+<p>CGAL中还有一个比较简单的几何核心类型 <a href="http://www.cgal.org/Manual/latest/doc_html/cgal_manual/Kernel_23_ref/Class_Cartesian.html#Cross_link_anchor_317">CGAL::Cartesian</a>, 另外还一些比较复杂的, 如：</p>
+<ul>
+<li><a href="http://www.cgal.org/Manual/latest/doc_html/cgal_manual/Kernel_23_ref/Class_Exact_predicates_exact_constructions_kernel.html#Cross_link_anchor_331">CGAL::Exact_predicates_exact_constructions_kernel</a></li>
+<li><a href="http://www.cgal.org/Manual/latest/doc_html/cgal_manual/Kernel_23_ref/Class_Exact_predicates_exact_constructions_kernel_with_sqrt.html#Cross_link_anchor_332">CGAL::Exact_predicates_exact_constructions_kernel_with_sqrt</a></li>
+</ul>
+<p>如果大家感兴趣，可以自己进行了解。</p>
 <h2 id="例子">例子</h2>
 <p>下面给出一个练习的例子。把下面的内容复制到名为main.cpp的文件中， 编写注释中说明的代码。</p>
 <div class="highlight"><pre><code class="cpp"><span class="cp">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span>
@@ -215,7 +229,7 @@ endif<span class="o">()</span>
   
     
       
-      <li class="active"><a href="/cgal/kernel.html" class="active">CGAL学习-几何核心类(2)</a></li>
+      <li class="active"><a href="/cgal/kernel.html" class="active">CGAL学习-几何核心类型(2)</a></li>
       
     
   
