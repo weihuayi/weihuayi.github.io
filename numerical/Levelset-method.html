@@ -94,11 +94,13 @@ MathJax.Hub.Config({
 \phi_t + {\bf V}\cdot\nabla\phi=0 \label{eq:lve0}
 \end{equation}
 \]</p>
+<p>下面在二维情形下推导方程\(\eqref{eq:lve0}\)。我们用零水平集\(\phi(x,y,t)=0\)来表示 移动界面，而且希望界面上的点在移动过程中，始终在这个\(\phi(x,y,t)\)的零水平集上，则有</p>
 <p>\[
 \begin{equation}\label{eq:lve1}
 \frac{d}{dt}\phi(x(t),y(t),t)=0
 \end{equation}
 \]</p>
+<p>由链式法则，可得：</p>
 <p>\[
 \begin{eqnarray}
 \phi_t + \phi_x x_t + \phi_y y_t &amp;=&amp; 0 \label{eq:lva}\\
@@ -106,19 +108,20 @@ MathJax.Hub.Config({
 \phi_t + {\bf V}\cdot\nabla\phi &amp;=&amp; 0 \label{eq:lvc}
 \end{eqnarray}
 \]</p>
-<p>其中\({\bf V}= (x_t, y_t)\).</p>
-<p>因为水平集\(\phi(x,y,t)=c\)的单位法向：</p>
+<p>其中\({\bf V}= (x_t, y_t)\)。方程\(\eqref{eq:lvc}\)就是所谓的水平集方程，描述了水平集在外部速度场中的 移动过程。</p>
+<p>因为水平集\(\phi(x,y,t)=c\)的单位法向为：</p>
 <p>\[
 \begin{equation}\label{eq:un}
 {\bf n}(x,y,t)=\frac{\nabla\phi(x,y,t)}{\nabla\phi(x,y,t)}.
 \end{equation}
 \]</p>
-<p>我们可以重写法向速度场为</p>
+<p>方程\(\eqref{eq:lvc}\)中的\({\bf V}\cdot\nabla\phi\)项, 可以理解为只有速度场\({\bf V}(x,y,t)\) 在水平集的法向方向分量才会影响水平集的移动，因此可以引入下面的法向速度场：</p>
 <p>\[
 \begin{equation}\label{eq:nvf}
 V_{\bf n}={\bf\rm V}(x,y,t)\cdot\frac{\nabla\phi(x,y,t)}{\nabla\phi(x,y,t)}.
 \end{equation}
 \]</p>
+<p>水平集方程的形式也可改写为：</p>
 <p>\[
 \begin{equation}\label{eq:lvf}
 \phi_t + {\bf V}_{\bf\rm n}|\nabla\phi(x,y,t)|=0

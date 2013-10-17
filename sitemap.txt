@@ -8,6 +8,7 @@ http://huayi.github.io/index.html
 http://huayi.github.io/footmark/index.html
 http://huayi.github.io/pages.html
 
+http://huayi.github.io/cgal/triangulation.html
 http://huayi.github.io/numerical/Levelset-method.html
 http://huayi.github.io/cgal/kernel.html
 http://huayi.github.io/cgal/CGAL-introduction-1.html
