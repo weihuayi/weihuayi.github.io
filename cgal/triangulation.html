@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CGAL学习-三角化(3)</title>
-    <meta name="description" content="Triangulation_2 是CGAL中描述二维三角形网格的一个类。基于CGAL进行二维三角形网格生成和优化算法开发，必须要掌握好这个类。
+    <title>CGAL学习-三角剖分(3)</title>
+    <meta name="description" content="Triangulation_2$<$Traits,TDS$>$ 是CGAL中描述二维三角形剖分的一个模板类。实例化时, 它的第一个模板参数要传入一个几何核心类, 第二个模板参数是一个三角剖分的数据结构类（这个参数有一个默认的值）。这个模板类定义了三角剖分的基本用户接口， 它也是其它三角剖分类（如Delaunay_triangulation_2、Regular_triangulation_2）的基类。 因此它是基于CGAL进行二维三角形网格生成和优化算法开发，必须要掌握好这个类。
 ">
     <meta name="author" content="Huayi Wei">
-    <meta name="keywords" content="Huayi's Blog,Huayi Wei,CGAL学习-三角化(3),triangulationc++">
+    <meta name="keywords" content="Huayi's Blog,Huayi Wei,CGAL学习-三角剖分(3),triangulationc++">
     <meta property="wb:webmaster" content="45f4c044418008e7" />
     <meta name="chinaz-site-verification" content="1a7852f9-b42f-481f-bd38-1b9e92a55496" />
     <link href="/assets/themes/twitter2/css/bootstrap.min.css" rel="stylesheet">
@@ -16,6 +16,16 @@
     <link href="/assets/themes/twitter2/css/syntax.css?body=1" rel="stylesheet" type="text/css" media="all">
     <link rel="shortcut icon" href="/assets/images/favicon.ico" />
 	<script src="/assets/function.js"></script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } },
+  "HTML-CSS": { linebreaks: { automatic: true, width: "75% container" } },
+         SVG: { linebreaks: { automatic: true, width: "75% container" } },
+         tex2jax: {inlineMath: [['$','$'], ["\\(","\\)"]]}
+});
+</script>
 
   </head>
 
@@ -74,19 +84,63 @@
 <div class="row-fluid">
   <div id="post-span" class="span10" style="margin-left: 10%;">
     <div class="content post">
-      <h1 class="title">CGAL学习-三角化(3)</h1>
-      Triangulation_2 是CGAL中描述二维三角形网格的一个类。基于CGAL进行二维三角形网格生成和优化算法开发，必须要掌握好这个类。
+      <h1 class="title">CGAL学习-三角剖分(3)</h1>
+      Triangulation_2$<$Traits,TDS$>$ 是CGAL中描述二维三角形剖分的一个模板类。实例化时, 它的第一个模板参数要传入一个几何核心类, 第二个模板参数是一个三角剖分的数据结构类（这个参数有一个默认的值）。这个模板类定义了三角剖分的基本用户接口， 它也是其它三角剖分类（如Delaunay_triangulation_2、Regular_triangulation_2）的基类。 因此它是基于CGAL进行二维三角形网格生成和优化算法开发，必须要掌握好这个类。
 
       <h2 id="介绍">介绍</h2>
-<p>Triangulation_2 是以“面-节点”的方式来表示一个三角形网格.</p>
+<p>Triangulation_2&lt;Traits,TDS&gt; 中存储了一个二维三角形网格的所有节点(vertex)和所有三角形面(face)。为了算法处理上的便利 ，这个类引入了一个“无限”节点， 它不含坐标信息。这个无限点和三角形网格边界上的节点又构成了无限边和无限面，这样三角形 网格中的所有边都被两个面共有（每条边界边被一个有限面和一个无限面共有）, 见下图。</p>
 <figure>
-<img src="/res/images/triangulation/cgal/rep_bis.png " alt="
-Vertices and neighbors
-"><figcaption> Vertices and neighbors </figcaption>
+<img src="/res/images/cgal/infinite.png " alt="
+Infinite vertex and infinite faces.
+"><figcaption> Infinite vertex and infinite faces. </figcaption>
 </figure>
 
+<p>Triangulation_2&lt;Traits,TDS&gt; 中，除了无限节点外，所有的节点都包含坐标信息、所属的某个三角形面信息。每个三角形面都包 含了三个顶点的信息和三个邻居三角形面信息。在一个三角形面中， 三个顶点的局部编号为0、1和2，方向为逆时针方向。三个邻居 三角形面的编号规则是：\(i\)号顶点对应\(i\)号邻居，见下图。</p>
+<figure>
+<img src="/res/images/cgal/rep_bis.png " alt="
+Vertices and neighbors.
+"><figcaption> Vertices and neighbors. </figcaption>
+</figure>
+
+<p>Triangulation_2&lt;Traits,TDS&gt;　中对节点和三角形面的访问是通过 handle、iterator 和 circulator, 它们的用法和指针类似， 通过“-&gt;”来访问其成员函数，但比单纯的指针用起来更安全（单纯的指针如果忘记初始化就使用，后果就很严重）。下面给出一个 Vertex_handle 类型的变量的基本用法：</p>
+<div class="highlight"><pre><code class="cpp"><span class="n">Vertex_handle</span> <span class="n">vh</span> <span class="p">...;</span>
+<span class="n">Point_2</span> <span class="n">p</span> <span class="o">=</span> <span class="n">vh</span><span class="o">-&gt;</span><span class="n">point</span><span class="p">();</span> <span class="c1">//访问其坐标信息，返回一个 Poing_2 类。</span>
+<span class="n">vh</span><span class="o">-&gt;</span><span class="n">set_point</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="c1">//设定其坐标信息。</span>
+</code></pre></div>
+
+
+<p>下面是　Face_handle 类型的变量的基本用法：</p>
+<div class="highlight"><pre><code class="cpp"><span class="n">Face_handle</span> <span class="n">fh</span> <span class="p">...;</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">Vertex_handle</span> <span class="n">vh</span> <span class="o">=</span> <span class="n">fh</span><span class="o">-&gt;</span><span class="n">vertex</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="n">Face_handle</span> <span class="n">fhi</span> <span class="o">=</span> <span class="n">fh</span><span class="o">-&gt;</span><span class="n">neighbor</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="n">Face_handle</span> <span class="n">fhj</span> <span class="o">=</span> <span class="n">fh</span><span class="o">-&gt;</span><span class="n">neighbor</span><span class="p">(</span><span class="n">fh</span><span class="o">-&gt;</span><span class="n">ccw</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="n">Face_hanele</span> <span class="n">fhk</span> <span class="o">=</span> <span class="n">fh</span><span class="o">-&gt;</span><span class="n">neighbor</span><span class="p">(</span><span class="n">fh</span><span class="o">-&gt;</span><span class="n">cw</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+</code></pre></div>
+
+
+<p>Triangulation_2&lt;Traits,TDS&gt;中，边是这样定义如下：</p>
+<div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Face_handle</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">Edge</span><span class="p">;</span>
+<span class="n">Edge</span> <span class="n">e</span><span class="err">；</span><span class="c1">// e.first 的类型是 Face_handle, 存储边 e 所属的一个三角形面；</span>
+       <span class="c1">// e.second 的类型是 int， 存储边 e 在 e.first　中的局部编号。</span>
+       <span class="c1">// 三角形面中边的局部编号规则是：$i$号顶点对应$i$号边。</span>
+</code></pre></div>
+
+
+<p>在Triangulation_2&lt;Traits,TDS&gt; 中，要遍历所有的节点、边或三角形面，要用到相应的 iterator，　如：</p>
+<ul>
+<li>Finite_faces_iterator</li>
+<li>Finite_edges_iterator</li>
+<li>Finite_vertices_iterator</li>
+</ul>
+<p>要遍历一个节点周围的节点、边或单元，要用到 circulator，　如：</p>
+<ul>
+<li>Face_circulator</li>
+<li>Edge_circulator</li>
+<li>Vertex_circulator</li>
+</ul>
 <h2 id="例子">例子</h2>
-<p>做下面的练习.</p>
+<p>完善下面的代码，练习使用　Triangulation_2&lt;Traits,TDS&gt;　的接口。</p>
 <div class="highlight"><pre><code class="cpp"><span class="cp">#include &lt;fstream&gt;</span>
 <span class="cp">#include &lt;unistd.h&gt; </span><span class="c1">// for sleep()</span>
 
@@ -170,6 +224,11 @@ Vertices and neighbors
 
 
     
+      <hr>
+      <div style="text-align:center">
+        <a href="/cgal/triangulation-optimization.html" class="btn btn-success btn-large">下一篇: CGAL学习-二维三角形网格优化(4) &rarr;</a>
+      </div>
+    
     </div>
     <hr>
     
@@ -231,7 +290,13 @@ Vertices and neighbors
   
     
       
-      <li class="active"><a href="/cgal/triangulation.html" class="active">CGAL学习-三角化(3)</a></li>
+      <li class="active"><a href="/cgal/triangulation.html" class="active">CGAL学习-三角剖分(3)</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/cgal/triangulation-optimization.html">CGAL学习-二维三角形网格优化(4)</a></li>
       
     
   

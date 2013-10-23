@@ -4,10 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive</title>
-    
+    <title>CGAL学习-二维三角形网格优化(4)</title>
+    <meta name="description" content="借助前面介绍的　Triangulation_2 模板类，来实现一些标准的三角形网格优化方法：点光滑化和拓扑优化方法（换边）。
+">
     <meta name="author" content="Huayi Wei">
-    <meta name="keywords" content="Huayi's Blog,Huayi Wei,Archive">
+    <meta name="keywords" content="Huayi's Blog,Huayi Wei,CGAL学习-二维三角形网格优化(4),triangulationoptimizationc++">
     <meta property="wb:webmaster" content="45f4c044418008e7" />
     <meta name="chinaz-site-verification" content="1a7852f9-b42f-481f-bd38-1b9e92a55496" />
     <link href="/assets/themes/twitter2/css/bootstrap.min.css" rel="stylesheet">
@@ -15,6 +16,16 @@
     <link href="/assets/themes/twitter2/css/syntax.css?body=1" rel="stylesheet" type="text/css" media="all">
     <link rel="shortcut icon" href="/assets/images/favicon.ico" />
 	<script src="/assets/function.js"></script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } },
+  "HTML-CSS": { linebreaks: { automatic: true, width: "75% container" } },
+         SVG: { linebreaks: { automatic: true, width: "75% container" } },
+         tex2jax: {inlineMath: [['$','$'], ["\\(","\\)"]]}
+});
+</script>
 
   </head>
 
@@ -32,7 +43,7 @@
   
     
       
-      <li class="active"><a href="/archive.html" class="active">Archive</a></li>
+      <li><a href="/archive.html">Archive</a></li>
       
     
   
@@ -71,132 +82,38 @@
     <div id="main" class="container-fluid" style="position: relative; padding-left: 8%; padding-right: 8%;">
       
 <div class="row-fluid">
-  <div class="span8 offset2">
-    <div class="content page">
-      <h1 class="title">Post Archive</h1>
+  <div id="post-span" class="span10" style="margin-left: 10%;">
+    <div class="content post">
+      <h1 class="title">CGAL学习-二维三角形网格优化(4)</h1>
+      借助前面介绍的　Triangulation_2 模板类，来实现一些标准的三角形网格优化方法：点光滑化和拓扑优化方法（换边）。
+
       
-      
+
+    
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'huayi'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
 
-  
-    
-    
-    
-    
-  
-    
-      <h2>2013</h2>
-      <h3>October</h3>
-      <ul>
-    
-  
-    <li><span>October 23, 2013</span> &raquo; <a href="/cgal/triangulation-optimization.html">CGAL学习-二维三角形网格优化(4)</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>October 17, 2013</span> &raquo; <a href="/cgal/triangulation.html">CGAL学习-三角剖分(3)</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>October 11, 2013</span> &raquo; <a href="/numerical/Levelset-method.html">水平集方法</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>October  9, 2013</span> &raquo; <a href="/cgal/kernel.html">CGAL学习-几何核心类型(2)</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>October  9, 2013</span> &raquo; <a href="/cgal/CGAL-introduction-1.html">CGAL学习-安装 (1)</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>September</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>September 29, 2013</span> &raquo; <a href="/develop/Git-introduction.html">Git常用命令总结</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>September 28, 2013</span> &raquo; <a href="/misc/hello-world.html">Hello, world!</a></li>
-  
-    
-      </ul>
-    
-  
 
-
-    </div>  
   </div>
 </div>
-
 
       <hr>
       
@@ -211,6 +128,47 @@
     </footer>
     
     
+
+<div id="sidebar" class="sidebar">
+  <h4>CGAL学习笔记</h4>
+  <ul>
+    
+    
+
+
+  
+    
+      
+      <li><a href="/cgal/CGAL-introduction-1.html">CGAL学习-安装 (1)</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/cgal/kernel.html">CGAL学习-几何核心类型(2)</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/cgal/triangulation.html">CGAL学习-三角剖分(3)</a></li>
+      
+    
+  
+    
+      
+      <li class="active"><a href="/cgal/triangulation-optimization.html" class="active">CGAL学习-二维三角形网格优化(4)</a></li>
+      
+    
+  
+
+
+
+  </ul>
+
+</div>
+
+
 
     <!-- <a id="forkme" style="display:none" href="http://github.com/mceiba/mceiba.github.com"><img style="position: absolute; top: 40px; right: 0; border: 0;" src="/assets/images/forkme.png" alt="Fork me on GitHub"></a> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>

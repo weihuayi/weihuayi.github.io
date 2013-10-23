@@ -95,12 +95,33 @@
 
 <dt>
 <h4 style="margin-top:0px;margin-bottom:4px; color:#333333; font-weight: 250;">
-CGAL学习-三角化(3)
+CGAL学习-二维三角形网格优化(4)
+</h4>
+<span class="label" style="float:right; margin-left:10px; margin-right:5px; background-color:#5bc0de; font-weight: 180;">October 23, 2013</span>
+<div class="thumbnail" style="background-color: #FFFFFF;">
+<p style="color:#333333; font-weight: normal;">
+借助前面介绍的　Triangulation_2 模板类，来实现一些标准的三角形网格优化方法：点光滑化和拓扑优化方法（换边）。
+</p>
+<div align="right" style="margin-right:10px; color:#0088CC; font-weight: 200;">
+<a href="/cgal/triangulation-optimization.html">阅读全文 » </a>
+</div>
+</div>
+<hr/ style="margin-top:10px; margin-bottom:4px; style="padding-top:8px; padding-bottom:8px;">
+</dt> 
+
+
+
+
+
+
+<dt>
+<h4 style="margin-top:0px;margin-bottom:4px; color:#333333; font-weight: 250;">
+CGAL学习-三角剖分(3)
 </h4>
 <span class="label" style="float:right; margin-left:10px; margin-right:5px; background-color:#5bc0de; font-weight: 180;">October 17, 2013</span>
 <div class="thumbnail" style="background-color: #FFFFFF;">
 <p style="color:#333333; font-weight: normal;">
-Triangulation_2 是CGAL中描述二维三角形网格的一个类。基于CGAL进行二维三角形网格生成和优化算法开发，必须要掌握好这个类。
+Triangulation_2\(&lt;\)Traits,TDS\(&gt;\) 是CGAL中描述二维三角形剖分的一个模板类。实例化时, 它的第一个模板参数要传入一个几何核心类, 第二个模板参数是一个三角剖分的数据结构类（这个参数有一个默认的值）。这个模板类定义了三角剖分的基本用户接口， 它也是其它三角剖分类（如Delaunay_triangulation_2、Regular_triangulation_2）的基类。 因此它是基于CGAL进行二维三角形网格生成和优化算法开发，必须要掌握好这个类。
 </p>
 <div align="right" style="margin-right:10px; color:#0088CC; font-weight: 200;">
 <a href="/cgal/triangulation.html">阅读全文 » </a>
@@ -282,9 +303,11 @@ Hello, world!
      
       <li><a href="/tags.html#interface-ref">interface <span>1</span></a></li>
      
-      <li><a href="/tags.html#triangulation-ref">triangulation <span>1</span></a></li>
+      <li><a href="/tags.html#triangulation-ref">triangulation <span>2</span></a></li>
      
-      <li><a href="/tags.html#c++-ref">c++ <span>1</span></a></li>
+      <li><a href="/tags.html#c++-ref">c++ <span>2</span></a></li>
+     
+      <li><a href="/tags.html#optimization-ref">optimization <span>1</span></a></li>
     
   
 
@@ -309,7 +332,23 @@ Hello, world!
       <ul>
     
   
-    <li><span style="color:#333">2013-10-17 &raquo; </span><a href="/cgal/triangulation.html">CGAL学习-三角化(3)</a></li>
+    <li><span style="color:#333">2013-10-23 &raquo; </span><a href="/cgal/triangulation-optimization.html">CGAL学习-二维三角形网格优化(4)</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+    
+  
+    
+  
+    <li><span style="color:#333">2013-10-17 &raquo; </span><a href="/cgal/triangulation.html">CGAL学习-三角剖分(3)</a></li>
   
     
           
@@ -421,7 +460,7 @@ Hello, world!
       </a></li>
      
       <li><a href="/categories.html#cgal-ref">
-        cgal <span>3</span>
+        cgal <span>4</span>
       </a></li>
      
       <li><a href="/categories.html#numerical-ref">
@@ -479,7 +518,13 @@ Hello, world!
   
     
       
-      <li><a href="/cgal/triangulation.html">CGAL学习-三角化(3)</a></li>
+      <li><a href="/cgal/triangulation-optimization.html">CGAL学习-二维三角形网格优化(4)</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/cgal/triangulation.html">CGAL学习-三角剖分(3)</a></li>
       
     
   

@@ -8,6 +8,7 @@ http://weihuayi.github.io/index.html
 http://weihuayi.github.io/footmark/index.html
 http://weihuayi.github.io/pages.html
 
+http://weihuayi.github.io/cgal/triangulation-optimization.html
 http://weihuayi.github.io/cgal/triangulation.html
 http://weihuayi.github.io/numerical/Levelset-method.html
 http://weihuayi.github.io/cgal/kernel.html
