@@ -106,6 +106,18 @@
 <span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Vector_2</span> <span class="n">Vector_2</span><span class="p">;</span>
 <span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Triangle_2</span> <span class="n">Triangle_2</span><span class="p">;</span>
 <span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Circle_2</span> <span class="n">Circle_2</span><span class="p">;</span>
+<span class="err">```</span>
+<span class="cp">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span>
+<span class="c1">//做下面练习时， 这里还需要加入适当的头文件</span>
+<span class="cp">#include &lt;CGAL/intersections.h&gt; </span><span class="c1">//计算两个几何对象是否相交 </span>
+<span class="k">typedef</span> <span class="n">CGAL</span><span class="o">::</span><span class="n">Exact_predicates_inexact_constructions_kernel</span> <span class="n">K</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">FT</span> <span class="n">FT</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Point_2</span> <span class="n">Point_2</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Segment_2</span> <span class="n">Segment_2</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Line_2</span> <span class="n">Line_2</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Vector_2</span> <span class="n">Vector_2</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Triangle_2</span> <span class="n">Triangle_2</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Circle_2</span> <span class="n">Circle_2</span><span class="p">;</span>
 
 <span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Point_3</span> <span class="n">Point_3</span><span class="p">;</span>
 <span class="k">typedef</span> <span class="n">K</span><span class="o">::</span><span class="n">Segment_3</span> <span class="n">Segment_3</span><span class="p">;</span>
@@ -116,7 +128,7 @@
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="n">Point_2</span> <span class="n">p1</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span><span class="err">，</span><span class="n">p2</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">);</span> <span class="c1">//定义两个二维点</span>
+  <span class="n">Point_2</span> <span class="n">p1</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">),</span> <span class="n">p2</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">);</span> <span class="c1">//定义两个二维点</span>
   <span class="n">Vector_2</span> <span class="n">v1</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">v2</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">);</span> <span class="c1">//定义两个二维向量</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p1</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p2</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
