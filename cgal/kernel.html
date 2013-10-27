@@ -163,27 +163,19 @@
 
 
 <p>把下面的内容复制到名为CMakeLists.txt的文件中。</p>
-<div class="highlight"><pre><code class="bash">project<span class="o">(</span> Kernel_test<span class="o">)</span>
-cmake_minimum_required<span class="o">(</span>VERSION 2.6.2<span class="o">)</span> 
-<span class="nb">set</span><span class="o">(</span>SRC main.cpp<span class="o">)</span>
-find_package<span class="o">(</span>CGAL QUIET COMPONENTS Core <span class="o">)</span> 
-<span class="k">if</span> <span class="o">(</span> CGAL_FOUND <span class="o">)</span> <span class="c">#如果找到CGAL</span>
-  include<span class="o">(</span> <span class="k">${</span><span class="nv">CGAL_USE_FILE</span><span class="k">}</span> <span class="o">)</span> 
-  include<span class="o">(</span> CGAL_CreateSingleSourceCGALProgram <span class="o">)</span>
-  create_single_source_cgal_program<span class="o">(</span><span class="k">${</span><span class="nv">SRC</span><span class="k">}</span><span class="o">)</span>
-<span class="k">else</span><span class="o">()</span> <span class="c"># 找不到时输出错误信息</span>
-    message<span class="o">(</span>STATUS <span class="s2">&quot;This program requires the CGAL library, and will not be compiled.&quot;</span><span class="o">)</span>
-endif<span class="o">()</span>
-</code></pre></div>
-
-
+<pre class="sourceCode bash"><code class="sourceCode bash">project<span class="kw">(</span> Kernel_test<span class="kw">)</span>
+cmake_minimum_required<span class="kw">(</span>VERSION 2.6.2<span class="kw">)</span> 
+<span class="kw">set(</span>SRC main.cpp<span class="kw">)</span>
+find_package<span class="kw">(</span>CGAL QUIET COMPONENTS Core <span class="kw">)</span> 
+<span class="kw">if (</span> CGAL_FOUND <span class="kw">)</span> <span class="co">#如果找到CGAL</span>
+  include<span class="kw">(</span> <span class="ot">${CGAL_USE_FILE}</span> <span class="kw">)</span> 
+  include<span class="kw">(</span> CGAL_CreateSingleSourceCGALProgram <span class="kw">)</span>
+  create_single_source_cgal_program<span class="kw">(</span><span class="ot">${SRC}</span><span class="kw">)</span>
+<span class="kw">else()</span> <span class="co"># 找不到时输出错误信息</span>
+    message<span class="kw">(</span>STATUS <span class="st">&quot;This program requires the CGAL library, and will not be compiled.&quot;</span><span class="kw">)</span>
+<span class="fu">endif()</span></code></pre>
 <p>把上面两个文件放入同一个目录下， 在终端中运行如下命令：</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cmake .
-<span class="nv">$ </span>make
-<span class="nv">$ </span>./main
-</code></pre></div>
-
-<p>就可以输出下相应的结果。</p>
+<p><code>bash $ cmake . $ make $ ./main</code> 就可以输出下相应的结果。</p>
 
     
     </div>

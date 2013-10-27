@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>水平集方法</title>
-    <meta name="description" content="水平集方法是一种隐式描述移动界面的欧拉方法， 最早由 Osher 和 Sethian 在1988年引入。
+    <title>Ubuntu下博客写作环境搭建</title>
+    <meta name="description" content="这里记录下自己在Ubuntu下博客写作环境的搭建过程.
 ">
     <meta name="author" content="Huayi Wei">
-    <meta name="keywords" content="Huayi's Blog,Huayi Wei,水平集方法,Level setinterface">
+    <meta name="keywords" content="Huayi's Blog,Huayi Wei,Ubuntu下博客写作环境搭建,Jekyllgithubemacshg">
     <meta property="wb:webmaster" content="45f4c044418008e7" />
     <meta name="chinaz-site-verification" content="1a7852f9-b42f-481f-bd38-1b9e92a55496" />
     <link href="/assets/themes/twitter2/css/bootstrap.min.css" rel="stylesheet">
@@ -16,16 +16,6 @@
     <link href="/assets/themes/twitter2/css/syntax.css?body=1" rel="stylesheet" type="text/css" media="all">
     <link rel="shortcut icon" href="/assets/images/favicon.ico" />
 	<script src="/assets/function.js"></script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } },
-  "HTML-CSS": { linebreaks: { automatic: true, width: "75% container" } },
-         SVG: { linebreaks: { automatic: true, width: "75% container" } },
-         tex2jax: {inlineMath: [['$','$'], ["\\(","\\)"]]}
-});
-</script>
 
   </head>
 
@@ -84,56 +74,35 @@ MathJax.Hub.Config({
 <div class="row-fluid">
   <div id="post-span" class="span10" style="margin-left: 10%;">
     <div class="content post">
-      <h1 class="title">水平集方法</h1>
-      水平集方法是一种隐式描述移动界面的欧拉方法， 最早由 Osher 和 Sethian 在1988年引入。
+      <h1 class="title">Ubuntu下博客写作环境搭建</h1>
+      这里记录下自己在Ubuntu下博客写作环境的搭建过程.
 
-      <h2 id="水平集方程的推导">水平集方程的推导</h2>
-<p>在区域\(\Omega\)内，考虑随时间\(t\)演化的界面 \(\Gamma = \Gamma({\bf x},t)\), 其中\(\bf x\)表示\(\Gamma\)上的一点。 移动界面可以用一个函数\(\phi({\bf x},t)\) 的零水平集表示, 即 \(\Gamma = \{ {\bf x} | \phi({\bf x},t)=0 \}\)。给定\(\Omega\) 上的速度向量场\({\bf V}({\bf x},t)\), 则方程\(\eqref{eq:lve0}\)描述了\(\phi\) 的水平集以速度\({\bf V}({\bf x},t)\)在区域\(\Omega\)中传播的过程，该方程就称为<strong>水平集方程</strong>。</p>
-<p>\[
-\begin{equation}
-\phi_t + {\bf V}\cdot\nabla\phi=0 \label{eq:lve0}
-\end{equation}
-\]</p>
-<p>下面在二维情形下推导方程\(\eqref{eq:lve0}\)。我们用零水平集\(\phi(x,y,t)=0\)来表示 移动界面，而且希望界面上的点在移动过程中，始终在这个\(\phi(x,y,t)\)的零水平集上，则有</p>
-<p>\[
-\begin{equation}\label{eq:lve1}
-\frac{d}{dt}\phi(x(t),y(t),t)=0
-\end{equation}
-\]</p>
-<p>由链式法则，可得：</p>
-<p>\[
-\begin{eqnarray}
-\phi_t + \phi_x x_t + \phi_y y_t &amp;=&amp; 0 \label{eq:lva}\\
-\phi_t + (x_t, y_t)\cdot(\phi_x,\phi_y) &amp;=&amp;0 \label{eq:lvb}\\
-\phi_t + {\bf V}\cdot\nabla\phi &amp;=&amp; 0 \label{eq:lvc}
-\end{eqnarray}
-\]</p>
-<p>其中\({\bf V}= (x_t, y_t)\)。方程\(\eqref{eq:lvc}\)就是所谓的水平集方程，描述了水平集在外部速度场中的 移动过程。</p>
-<p>因为水平集\(\phi(x,y,t)=c\)的单位法向为：</p>
-<p>\[
-\begin{equation}\label{eq:un}
-{\bf n}(x,y,t)=\frac{\nabla\phi(x,y,t)}{|\nabla\phi(x,y,t)|}.
-\end{equation}
-\]</p>
-<p>方程\(\eqref{eq:lvc}\)中的\({\bf V}\cdot\nabla\phi\)项, 可以理解为只有速度场\({\bf V}(x,y,t)\) 在水平集的法向方向分量才会影响水平集的移动，因此可以引入下面的法向速度场：</p>
-<p>\[
-\begin{equation}\label{eq:nvf}
-V_{\bf n}={\bf\rm V}(x,y,t)\cdot\frac{\nabla\phi(x,y,t)}{|\nabla\phi(x,y,t)|}.
-\end{equation}
-\]</p>
-<p>水平集方程的形式也可改写为：</p>
-<p>\[
-\begin{equation}\label{eq:lvf}
-\phi_t + {\bf V}_{\bf\rm n}|\nabla\phi(x,y,t)|=0
-\end{equation}
-\]</p>
-<strong>参考文献</strong>
-<ol class="bibliography"><li>
-<span id="osher1988fronts">Osher, Stanley, and James A Sethian. “Fronts Propagating With Curvature-Dependent Speed: Algorithms Based On Hamilton-Jacobi Formulations”. <i>Journal of Computational Physics</i> 79, no. 1: 12–49.</span>
-</li></ol>
-
-
-
+      <h2 id="安装jekyll">安装Jekyll</h2>
+<p><a href="http://jekyllrb.com/">Jekyll</a>是一个简单免费的静态网站和博客生成工具,　生成的博客可以免费托管的<a href="https://github.com">Github</a>. 这样你可使用一种轻量级标记语言<a href="http://zh.wikipedia.org/wiki/Markdown">Markdwon</a>以纯文本的方式写博客,　然后再转换成有效的网页文档.　</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">sudo</span> apt-get <span class="kw">install</span> rubygems rake pandoc ruby-switch
+$ <span class="kw">sudo</span> apt-get <span class="kw">install</span> python-pygments
+$ <span class="kw">sudo</span> apt-get <span class="kw">install</span> ruby1.9.1-dev
+$ <span class="kw">sudo</span> gem <span class="kw">install</span> jekyll
+$ <span class="kw">sudo</span> gem <span class="kw">install</span> jekyll-scholar
+$ <span class="kw">sudo</span> gem <span class="kw">install</span> pandoc-ruby therubyracer <span class="kw">less</span> yuicssmin safe_yaml</code></pre>
+<h2 id="安装emacs">安装emacs</h2>
+<p>我emacs写博客文章 添加emacs的PPA:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">sudo</span> add-apt-repository ppa:cassou/emacs
+$ <span class="kw">sudo</span> apt-get update</code></pre>
+<p>安装最新版本的emacs:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">sudo</span> apt-get <span class="kw">install</span> emacs-snapshot-el emacs-snapshot-gtk emacs-snapshot</code></pre>
+<p>安装ibus-el,　使得emacs可以使用ibus的中文输入法:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">sudo</span> apt-get <span class="kw">install</span> ibus-el</code></pre>
+<p>在home目录下,　用hg命令clone自己的emacs配置文件到目录“.emacs.d”:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ hg clone https://huayiwei@bitbucket.org/huayiwei/emacs.d .emacs.d</code></pre>
+<p>这样在第一次启动emacs时,　emacs会读取.emacs.d下的init.el,　安装需要的emacs包.</p>
+<p>关于hg的介绍,　见<a href="http://www.xwuxin.com/">xwuxin</a>的<a href="http://www.xwuxin.com/?p=1179">hg(Mercurial)使用参考</a>.</p>
+<h2 id="clone自己的博客仓库到本地">Clone自己的博客仓库到本地</h2>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ git clone https://github.com/weihuayi/blog.git blog
+$ <span class="kw">cd</span> blog/
+$ git clone https://github.com/weihuayi/posts.git _posts
+$ <span class="kw">cd</span> ../
+$ git clone https://github.com/weihuayi/weihuayi.github.io.git _site</code></pre>
 
     
     </div>
