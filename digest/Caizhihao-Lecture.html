@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>水平集方法</title>
-    <meta name="description" content="水平集方法是一种隐式描述移动界面的欧拉方法， 最早由 Osher 和 Sethian 在1988年引入。
+    <title>蔡志浩：记住自己现在的样子</title>
+    <meta name="description" content="这是胡适先生1932年对毕业生的讲话, 对现在的大学毕业生仍然是一剂良方.
 ">
     <meta name="author" content="Huayi Wei">
-    <meta name="keywords" content="Huayi's Blog,Huayi Wei,水平集方法,Level setinterface">
+    <meta name="keywords" content="Huayi's Blog,Huayi Wei,蔡志浩：记住自己现在的样子,蔡志浩毕业生">
     <meta property="wb:webmaster" content="45f4c044418008e7" />
     <meta name="chinaz-site-verification" content="1a7852f9-b42f-481f-bd38-1b9e92a55496" />
     <link href="/assets/themes/twitter2/css/bootstrap.min.css" rel="stylesheet">
@@ -16,16 +16,6 @@
     <link href="/assets/themes/twitter2/css/syntax.css?body=1" rel="stylesheet" type="text/css" media="all">
     <link rel="shortcut icon" href="/assets/images/favicon.ico" />
 	<script src="/assets/function.js"></script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } },
-  "HTML-CSS": { linebreaks: { automatic: true, width: "75% container" } },
-         SVG: { linebreaks: { automatic: true, width: "75% container" } },
-         tex2jax: {inlineMath: [['$','$'], ["\\(","\\)"]]}
-});
-</script>
 
   </head>
 
@@ -84,57 +74,25 @@ MathJax.Hub.Config({
 <div class="row-fluid">
   <div id="post-span" class="span10" style="margin-left: 10%;">
     <div class="content post">
-      <h1 class="title">水平集方法</h1>
-      水平集方法是一种隐式描述移动界面的欧拉方法， 最早由 Osher 和 Sethian 在1988年引入。
+      <h1 class="title">蔡志浩：记住自己现在的样子</h1>
+      这是胡适先生1932年对毕业生的讲话, 对现在的大学毕业生仍然是一剂良方.
 
-      <h2 id="水平集方程的推导">水平集方程的推导</h2>
-<p>在区域\(\Omega\)内，考虑随时间\(t\)演化的界面 \(\Gamma = \Gamma({\bf x},t)\), 其中\(\bf x\)表示\(\Gamma\)上的一点。 移动界面可以用一个函数\(\phi({\bf x},t)\) 的零水平集表示, 即 \(\Gamma = \{ {\bf x} | \phi({\bf x},t)=0 \}\)。给定\(\Omega\) 上的速度向量场\({\bf V}({\bf x},t)\), 则方程\(\eqref{eq:lve0}\)描述了\(\phi\) 的水平集以速度\({\bf V}({\bf x},t)\)在区域\(\Omega\)中传播的过程，该方程就称为<strong>水平集方程</strong>。</p>
-<p>\[
-\begin{equation}
-\phi_t + {\bf V}\cdot\nabla\phi=0 \label{eq:lve0}
-\end{equation}
-\]</p>
-<p>下面在二维情形下推导方程\(\eqref{eq:lve0}\)。我们用零水平集\(\phi(x,y,t)=0\)来表示 移动界面，而且希望界面上的点在移动过程中，始终在这个\(\phi(x,y,t)\)的零水平集上，则有</p>
-<p>\[
-\begin{equation}\label{eq:lve1}
-\frac{d}{dt}\phi(x(t),y(t),t)=0
-\end{equation}
-\]</p>
-<p>由链式法则，可得：</p>
-<p>\[
-\begin{eqnarray}
-\phi_t + \phi_x x_t + \phi_y y_t &amp;=&amp; 0 \label{eq:lva}\\
-\phi_t + (x_t, y_t)\cdot(\phi_x,\phi_y) &amp;=&amp;0 \label{eq:lvb}\\
-\phi_t + {\bf V}\cdot\nabla\phi &amp;=&amp; 0 \label{eq:lvc}
-\end{eqnarray}
-\]</p>
-<p>其中\({\bf V}= (x_t, y_t)\)。方程\(\eqref{eq:lvc}\)就是所谓的水平集方程，描述了水平集在外部速度场中的 移动过程。</p>
-<p>因为水平集\(\phi(x,y,t)=c\)的单位法向为：</p>
-<p>\[
-\begin{equation}\label{eq:un}
-{\bf n}(x,y,t)=\frac{\nabla\phi(x,y,t)}{|\nabla\phi(x,y,t)|}.
-\end{equation}
-\]</p>
-<p>方程\(\eqref{eq:lvc}\)中的\({\bf V}\cdot\nabla\phi\)项, 可以理解为只有速度场\({\bf V}(x,y,t)\) 在水平集的法向方向分量才会影响水平集的移动，因此可以引入下面的法向速度场：</p>
-<p>\[
-\begin{equation}\label{eq:nvf}
-V_{\bf n}={\bf\rm V}(x,y,t)\cdot\frac{\nabla\phi(x,y,t)}{|\nabla\phi(x,y,t)|}.
-\end{equation}
-\]</p>
-<p>水平集方程的形式也可改写为：</p>
-<p>\[
-\begin{equation}\label{eq:lvf}
-\phi_t + {\bf V}_{\bf\rm n}|\nabla\phi(x,y,t)|=0
-\end{equation}
-\]</p>
-<strong>参考文献</strong>
-<ol class="bibliography"><li>
-<span id="osher1988fronts">Osher, Stanley, and James A Sethian. “Fronts Propagating With Curvature-Dependent Speed: Algorithms Based On Hamilton-Jacobi Formulations”. <i>Journal of Computational Physics</i> 79, no. 1: 12–49.</span>
-</li></ol>
+      <p>转自<a href="http://www.lztopic.com/archives/5001/">励志人生</a>.</p>
+<p>每年都有学生毕业，但是今年我的感觉特别不一样。在两天前的谢师宴上，多半的时间我都坐在最后面的角落，静静地看着你们，试着弄清楚自己的感觉。我发现，我还没有准备好要跟你们道别。</p>
+<p>在你们入学之前，我连续带了四年的大一普心。当年我从学生入学的第一天就认识他们，之后一直看着他们直到毕业。从你们这一届开始，我不再带大一普心。开始有机会在课堂上认识你们的时候，你们已经大三了。</p>
+<p>在大三上学期的「心理学与电影」，我们从一开始的陌生逐渐互相了解，到后来终于建立了默契。在大三下学期的「认知心理学」，大家给我很多的信任，让我觉得很温暖。最后是大四下学期的「阅读心理学」，今年调整为「简报技巧训练」以后，多了许多分享与互动的机会。大家带着自己最感兴趣的内容来到教室，一整个学期都热血沸腾。</p>
+<p>然后，我突然发现你们就要毕业了。这种感觉就很像原本谈恋爱谈得好好的，突然间对方就要离开了。我有一点不知所措，也有一点感伤。但是，时间总会继续。所以我能做的就是多看你们一眼，好好记住你们现在的样子。</p>
+<p>我也想请你们在今天一整天的繁忙行程结束后，在晚上睡觉以前，留一点独处的时间给自己。这段时间，什么事也不要做，只要做一件事：真诚的面对自己，好好记住自己现在的样子。你要跟我、也跟自己保证，不管过了多少年，你都要能在回忆中找到大学刚毕业时的自己。</p>
+<p>我看到太多成年人在离开单纯的大学、进入复杂的社会后，过没几年就变得干涩、麻木、冷漠、封闭、短视。我不希望看到你们也变成那个样子。我希望你们不论到了人生的哪一个阶段，都仍然能拥有感动人与被感动的能力，爱人与被爱的能力，为他人付出关怀的能力，以及对陌生的事物感到好奇的能力。最重要的是，你还要有能力保有一点理想主义的性格，永远不要轻易跟现实妥协。</p>
+<p>我知道，现在的你们当然都还拥有这些能力。但是，进入社会后你一定会持续被各种挫折与冲击磨损。如果你只顾着适应社会而忘了自己现在的样子，几年以后你就会变得跟大部分的人一样，变成一个自己也认不得的人。你的记忆中当年大学刚毕业时的样子，是一种最强的提醒。提醒自己不要忘了自己是谁，更不要失去那些人之所以为人最重要的特质。所以，请务必记住自己现在的样子。</p>
+<p>还有，这个社会注定要带给我们很多的不快乐。跟它对抗最好的方式，就是想办法让自己快乐。只要你还记得自己现在的样子，你就有办法在最需要的时候找到让自己快乐的方法。因为，真正能感受快乐​​的，是真正的你，是那颗单纯的心。</p>
+<p>终于要道别了。我想跟你们说：我会想念你们，而且从两天前就开始想念了。我爱你们，也祝福你们！</p>
 
-
-
-
+    
+      <hr>
+      <div style="text-align:center">
+        <a href="/digest/Hushi-Lecture.html" class="btn btn-success btn-large">下一篇: 胡适致毕业生：在不健全的中国，如何不堕落 &rarr;</a>
+      </div>
     
     </div>
     <hr>

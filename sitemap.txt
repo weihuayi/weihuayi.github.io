@@ -8,6 +8,8 @@ http://weihuayi.github.io/index.html
 http://weihuayi.github.io/footmark/index.html
 http://weihuayi.github.io/pages.html
 
+http://weihuayi.github.io/digest/Hushi-Lecture.html
+http://weihuayi.github.io/digest/Caizhihao-Lecture.html
 http://weihuayi.github.io/computer/blog.html
 http://weihuayi.github.io/cgal/triangulation-optimization.html
 http://weihuayi.github.io/cgal/triangulation.html
