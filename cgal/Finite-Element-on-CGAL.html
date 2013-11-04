@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CGAL学习-二维三角形网格优化(4)</title>
-    <meta name="description" content="借助前面介绍的`Triangulation_2<lt Traits,TDS>` 模板类，来实现一些标准的三角形网格优化方法：点光滑化和拓扑优化方法（换边）。
+    <title>CGAL学习-二维有限元(5)</title>
+    <meta name="description" content="基于CGAL的三角形数据结构, 实现线性有限元求解 Possion 方程的程序.
 ">
     <meta name="author" content="Huayi Wei">
-    <meta name="keywords" content="Huayi's Blog,Huayi Wei,CGAL学习-二维三角形网格优化(4),triangulationoptimizationc++">
+    <meta name="keywords" content="Huayi's Blog,Huayi Wei,CGAL学习-二维有限元(5),FEMEigenCGAL">
     <meta property="wb:webmaster" content="45f4c044418008e7" />
     <meta name="chinaz-site-verification" content="1a7852f9-b42f-481f-bd38-1b9e92a55496" />
     <link href="/assets/themes/twitter2/css/bootstrap.min.css" rel="stylesheet">
@@ -84,82 +84,85 @@ MathJax.Hub.Config({
 <div class="row-fluid">
   <div id="post-span" class="span10" style="margin-left: 10%;">
     <div class="content post">
-      <h1 class="title">CGAL学习-二维三角形网格优化(4)</h1>
-      借助前面介绍的`Triangulation_2<lt Traits,TDS>` 模板类，来实现一些标准的三角形网格优化方法：点光滑化和拓扑优化方法（换边）。
+      <h1 class="title">CGAL学习-二维有限元(5)</h1>
+      基于CGAL的三角形数据结构, 实现线性有限元求解 Possion 方程的程序.
 
-      <h2 id="三角形网格优化方法简介">三角形网格优化方法简介</h2>
-<p>三角形优化方法通常分为两类：光滑化方法和拓扑优化方法。前一种方法优化网格节点的坐标位置；后一种方法优化网格节点的连接关系。</p>
-<h3 id="光滑化方法">光滑化方法</h3>
-<p>给定一个网格节点\(x_i\), 设\(\{ x_j\}_{j=1}^{N_i}\)为与节点\(x_i\) 相邻的节点集合, \(\{\tau_j\}_{j=1}^{N}\) 为以\(x_i\)为顶点的三角形集合。下面给出不同光滑方法，新坐标\(x_i^{New}\)的计算公式。</p>
-<h4 id="laplace-光滑">Laplace 光滑</h4>
+      <h2 id="问题模型">问题模型</h2>
+<p>考虑如下D氏边界条件的Poisson方程:</p>
 <p>\[
-\begin{equation}\label{eq:L}
-x_i^{New} = \frac{1}{Ｎ_i}\sum\limits_{j=1}^{N_i}　x_j.
+\begin{eqnarray}\label{eq:P}
+\Delta u(x) &amp;=&amp; f(x),\text{ on } \Omega.\\
+u|_{\partial\Omega} &amp;=&amp; 0.
+\end{eqnarray}
+\]</p>
+<h2 id="有限元">有限元</h2>
+<p>有限元方法是一种基于PDE(partial differential equations)的变分形式(variational formulation)求解PDE近似解的方法.</p>
+<p>任找一个边界为零且<strong>足够光滑</strong>的函数\(v\). 这里的<strong>足够光滑</strong>是指函数和它的 一阶导数在\(\Omega\)上都是\(L^2\)可积的, 所有这些函数实际组成一个函数空间, 记为 \(H_0^1(\Omega)\). 用这样的函数\(v\)同乘以方程\(\eqref{eq:P}\)的两端, 然后做分部积分可得:</p>
+<p>\[
+\int_{\Omega}\nabla u\cdot\nabla v\mathrm{d}x = \int_{\Omega}fv\mathrm{d}x.
+\]</p>
+<p>原问题就转化为: 求解 \(u\in H_0^1(\Omega)\), 满足</p>
+<p>\[
+\begin{equation}\label{eq:W}
+a(u,v) = &lt;f,v&gt; \text{ for all }v\in H_0^1(\Omega).
 \end{equation}
 \]</p>
-<h4 id="centroidal-patch-triangulationcpt-光滑">Centroidal Patch Triangulation(CPT) 光滑</h4>
+<p>其中</p>
 <p>\[
-\begin{equation}\label{eq:CPT}
-x_i^{New} = \frac{1}{Ｎ_i}\sum\limits_{j=1}^{N_i}　b_j.
-\end{equation}
+a(u,v) = \int_{\Omega}\nabla u\cdot\nabla v\mathrm{d}x, &lt;f,v&gt; =  \int_{\Omega}fv\mathrm{d}x.
 \]</p>
-<p>其中\(b_j\)为\(\tau_j\)的质心。</p>
-<h4 id="optimal-delaunay-triangulationodt-光滑">Optimal Delaunay Triangulation(ODT) 光滑</h4>
+<p>下面我们考虑所谓Galerkin方法来求\(\eqref{eq:W}\)的逼近解. 上面\(H_0^1(\Omega)\)是一个无限维的空间, 为了把无限维的问题转化为有限维的问题, 引入\(H_0^1(\Omega)\)的一个有限维的子空间\(V_h\), 比如 \(V_h=\mathrm{span}\{\phi_1,\phi_2,\ldots,\phi_N\}\). 对任何\(v\in V_h\), 它都有唯一的表示</p>
 <p>\[
-\begin{equation}\label{eq:ODT}
-x_i^{New} = \frac{1}{Ｎ_i}\sum\limits_{j=1}^{N_i}　c_j.
-\end{equation}
+v = \sum\limits_{i=1}^N v_i\phi_i.
 \]</p>
-<p>其中\(c_j\)为\(\tau_j\)的外接圆圆心。</p>
-<h4 id="lloyd-光滑">Lloyd 光滑</h4>
-<p>Lloyd光滑是基于 Centroidal Voronoi tessellation （CVT）导出的光滑方法。给定区域\(\Omega\subset R^n\),对于点集 \({\bf z}=\{ z_i\}_{i=1}^N\subset\Omega\)中的每个点\(z_i\)， 可定义它的 Voronoi 区域（Voronoi Region）如下</p>
+<p>可以看出空间\(V_h\)和\(N\)维向量空间\(\mathbb{R}^N\)是同构的, 即</p>
 <p>\[
-\begin{equation}\label{eq:VR}
-V_i:=\{ x\, |\, |x - z_i| &lt; |x - z_j| \text{ for } j\neq i \}
-\end{equation}
+v = \sum\limits_{i=1}^N v_i\phi_i\leftrightarrow\mathbf{v} =(v_1,v_2,\ldots,v_N)^t
 \]</p>
-<p>\({\bf V} = \{V_i\}_{i=1}^{N}\)称为 Voronoi Tesselation (VT), 点集\(\bf z\)称为该VT的生成子(generators)。如果VT中 每个Voronoi区域的生成子恰好是它的质心，则称该VT为CVT。基于生成子\(\bf z\)和\(\bf V\)可以定义如下的能量泛函</p>
+<p>其中列向量\(\mathbf{v}\)是\(v\)在基\(\{\phi_i\}_{i=1}^N\)的坐标. 引入<strong>刚度矩阵</strong>(stiff matrix)</p>
 <p>\[
-\begin{equation}\label{eq:CVTE}
-\mathcal{E}({\bf z},{\bf V}({\bf z})) = \sum\limits_{i=1}^N\int_{V_i}\rho(x)\|{x-z_i}\| {\rm d}x
-\end{equation}
+\mathbf{A}=(a_{ij})_{N\times N} \text{ with } a_{ij}=a(\phi_i,\phi_j).
 \]</p>
-<p>其中\(\rho(x)\)是一个给定的密度函数。一个CVT是能量泛函\(\mathcal{E}\)的一个<strong>临界点</strong>(Critical Point)， 而一个<strong>稳定</strong>的CVT是\(\mathcal{E}\)的一个局部极小值。\(\mathcal{E}\)对\(z_i\)求导数，可得：</p>
+<p>和<strong>载荷矢量</strong>(load vector) \(\mathbf{f} = (f_1, f_2,\ldots,f_N), f_i=&lt;f,\phi_i&gt;\). 则通过求解如下的 线性代数系统</p>
 <p>\[
-\mathcal{F}_i:=\frac{\partial}{\partial z_i}\mathcal{E}({\bf z},{\bf V}({\bf z})) = 2\int_{V_i}\rho(x)(z_i-x)
-{\rm d}x
+\mathbf{Au} = \mathbf{f}.
 \]</p>
-<p>取\(\mathcal{F}_i=0\), 可得：</p>
+<p>获得解向量\(\mathbf{u}=(u_1,u_2,\ldots,u_N)^t\), 对应的有限元解为</p>
 <p>\[
-z_i= \frac{\int_{V_i}\rho(x)x{\rm d}x}{\int_{V_i}\rho(x){\rm d}x}.
+u_h = \sum\limits_{i=1}^N u_i\phi_i.
 \]</p>
-<p>引入<strong>Lloyd map</strong>\({\bf T}:=(T_1,T_2,\ldots,T_N)\), 其中\(T_i\)定义如下：</p>
-<p>\[
-T_i(z_i)= \frac{\int_{V_i}\rho(x)x{\rm d}x}{\int_{V_i}\rho(x){\rm d}x}.
-\]</p>
-<p>给定一组初始的生成子\({\bf z}_0\), Llyod光滑方法定义如下：</p>
-<ol type="1">
-<li>构造\({\bf V}_k({\bf z}_k)\).</li>
-<li>更新\({\bf z}_{k+1}={\bf T}({\bf z}_k)\).</li>
-</ol>
-<h3 id="拓扑优化方法">拓扑优化方法</h3>
-<p>三角形网格的拓扑优化是通过<strong>换边</strong>实现的. 当两信相邻三角形组成一个凸四边形，就可以进行换边，见下图：</p>
-<figure>
-<img src="/res/images/cgal/edgeflip.png " alt="
-[Edge flip](http://dit-archives.epfl.ch/SCR96/scr8-page4.html).
-"><figcaption> <a href="http://dit-archives.epfl.ch/SCR96/scr8-page4.html">Edge flip</a>. </figcaption>
-</figure>
-
-<p>为了优化拓扑，可以依据不同的准则来换边，如</p>
-<ol type="1">
-<li>Delaunay准则：两个相邻三角形对角之和小于180.</li>
-<li>使得每个内部节点周围的度尽量接近6.</li>
-</ol>
-<p><code>Triangulation_2&lt;Traits,TDS&gt;</code> 中成员函数<code>flip(Face_handle,int)</code>实现换边操作.</p>
-<h2 id="练习">练习</h2>
-<p>请基于<code>Triangulation_2&lt;Traits,TDS&gt;</code>模板类实现上述优化方法, 每个方法要对应一个模块。</p>
-<p><a href="/res/data/mesh.off">这里</a>是一个off格式网格文件, 使用<code>Triangulation_2&lt;Traits,TDS&gt;</code> 的成员函数<code>Vertex_handle file_input(std::istream&amp; is)</code>可以读取这个文件.</p>
-<p><strong>注:上面给出的网格文件中包含了一个0号点(没有坐标信息), 及所有边界边和这个0号点组成的无限三角形面.</strong></p>
+<h2 id="准备">准备</h2>
+<ul>
+<li>用 <code>Triangulation_2&lt;GT,TDS&gt;</code> 存储计算区域上的网格, 负责网格中单元和节点的访问.</li>
+<li>用 Eigen 软件包中的稀疏矩阵和向量存储有限元离散的系数矩阵和右端向量, 并调用Eigen 中的解法器求解离散的代数系统.</li>
+</ul>
+<h2 id="稀疏矩阵和向量">稀疏矩阵和向量</h2>
+<p>在CGAL中, 已经定义两个wrapper类, 把Eigen中的稀疏矩阵和向量的接口封装起来, 见头文件:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;CGAL/Eigen_matrix.h&gt;</span>
+<span class="ot">#include &lt;CGAL/Eigen_vector.h&gt;</span></code></pre>
+<p>下面的代码为CGAL中的这两个wrapper类, 创建一个新的简短的名字:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">typedef</span> CGAL::Eigen_sparse_symmetric_matrix&lt;<span class="dt">double</span>&gt; ESMatrix;
+<span class="kw">typedef</span> CGAL::Eigen_vector&lt;<span class="dt">double</span>&gt; EVector;</code></pre>
+<p>其中<code>ESMatrix</code>表示一个稀疏的对称矩阵, 只存储矩阵的下三角部分. 下面定义一个\(n\times n\)的<code>ESMatrix</code>矩阵 \(m\):</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp">ESMatrix  m(n);<span class="co">//默认所有位置的元素值为0</span></code></pre>
+<p>下面的代码等价于 \(m(i,j) = m(i,j) + val\);</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> i = ...;
+<span class="dt">int</span> j = ...;
+<span class="dt">double</span> val = ...;
+m.add_coef(i,j,val);</code></pre>
+<p>其中<code>EVector</code>表示稠密向量. 下面定义一个\(n\)维的’EVector’零向量\(v\), 并对其分量进行相应的运算:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp">EVector v(n);
+<span class="dt">int</span> i = ...;
+<span class="dt">double</span> val = ...;
+v(i) = val; <span class="co">//v(i)的值设为 val</span>
+v(i) += val; <span class="co">//v(i)的值累加val </span></code></pre>
+<p>当使用有限元方法离散上面的Poisson方程, 并进行边界处理后, 得到离散系统\(AX=b\), 然后就可以调用Eigen中的 解法器进行求解, 比如:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">typedef</span> Eigen::BiCGSTAB&lt;ESMatrix, Eigen::Lower&gt; Solver;
+x = solver.compute(A.eigen_object()).solve(b.eigen_object());
+<span class="kw">if</span>(solver.info()!=Success) {
+  std::cout&lt;&lt;<span class="st">&quot;solving failed&quot;</span>&lt;&lt;std::endl;
+  <span class="kw">return</span>;
+}</code></pre>
 
     
     </div>
@@ -229,13 +232,13 @@ T_i(z_i)= \frac{\int_{V_i}\rho(x)x{\rm d}x}{\int_{V_i}\rho(x){\rm d}x}.
   
     
       
-      <li class="active"><a href="/cgal/triangulation-optimization.html" class="active">CGAL学习-二维三角形网格优化(4)</a></li>
+      <li><a href="/cgal/triangulation-optimization.html">CGAL学习-二维三角形网格优化(4)</a></li>
       
     
   
     
       
-      <li><a href="/cgal/Finite-Element-on-CGAL.html">CGAL学习-二维有限元(5)</a></li>
+      <li class="active"><a href="/cgal/Finite-Element-on-CGAL.html" class="active">CGAL学习-二维有限元(5)</a></li>
       
     
   
