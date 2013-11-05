@@ -4,11 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git常用命令总结</title>
-    <meta name="description" content="[Git](https://github.com/)是一个分布式版本控制软件, 网上有大量的介绍文章, 如[yulongfei的专栏](http://blog.csdn.net/gemmem/article/details/7290125), 这里仅对自己在使用过程中常用的命令总结一下.
-">
+    <title>About</title>
+    
     <meta name="author" content="Huayi Wei">
-    <meta name="keywords" content="Huayi's Blog,Huayi Wei,Git常用命令总结,GitVersion Control">
+    <meta name="keywords" content="Huayi's Blog,Huayi Wei,About">
     <meta property="wb:webmaster" content="45f4c044418008e7" />
     <meta name="chinaz-site-verification" content="1a7852f9-b42f-481f-bd38-1b9e92a55496" />
     <link href="/assets/themes/twitter2/css/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +50,7 @@
   
     
       
-      <li><a href="/reading.html">读书计划</a></li>
+      <li class="active"><a href="/reading.html" class="active">读书计划</a></li>
       
     
   
@@ -78,69 +77,63 @@
     <div id="main" class="container-fluid" style="position: relative; padding-left: 8%; padding-right: 8%;">
       
 <div class="row-fluid">
-  <div id="post-span" class="span10" style="margin-left: 10%;">
-    <div class="content post">
-      <h1 class="title">Git常用命令总结</h1>
-      [Git](https://github.com/)是一个分布式版本控制软件, 网上有大量的介绍文章, 如[yulongfei的专栏](http://blog.csdn.net/gemmem/article/details/7290125), 这里仅对自己在使用过程中常用的命令总结一下.
+  <div class="span8 offset2">
+    <div class="content page">
+      <h1 class="title">About</h1>
+      
+      <h2 id="在读书籍">在读书籍</h2>
+<h3 id="程序设计与开发">程序设计与开发</h3>
+<ul>
+<li><a href="http://book.douban.com/subject/1477390/">代码大全 (Code Complete) 第二版</a></li>
+</ul>
+<h3 id="育儿">育儿</h3>
+<ul>
+<li><a href="http://book.douban.com/subject/10773248/">无条件养育</a></li>
+</ul>
+<h3 id="写作">写作</h3>
+<p>*</p>
+<h3 id="数学与科学计算">数学与科学计算</h3>
+<p>*</p>
+<h3 id="心智">心智</h3>
+<p>*</p>
+<h2 id="读书计划">读书计划</h2>
+<h3 id="程序设计与开发-1">程序设计与开发</h3>
+<ul>
+<li><a href="http://book.douban.com/subject/1057170/">C++编程思想</a></li>
+</ul>
+<h3 id="育儿-1">育儿</h3>
+<p>*</p>
+<h3 id="写作-1">写作</h3>
+<ul>
+<li><a href="http://book.douban.com/subject/1451400/">风格的要素</a></li>
+<li><a href="http://book.douban.com/subject/1115748/">故事</a></li>
+<li><a href="http://book.douban.com/subject/3888123/">写作这会事</a></li>
+</ul>
+<h3 id="数学与计算">数学与计算</h3>
+<ul>
+<li><a href="http://book.douban.com/subject/2180067/">计算流体力学基础及其应用</a></li>
+</ul>
+<h3 id="心智-1">心智</h3>
+<ul>
+<li><a href="http://book.douban.com/subject/1065156/">我生活的种种模式</a></li>
+<li><a href="http://book.douban.com/subject/1944205/">追寻记忆的痕迹</a></li>
+</ul>
+<h2 id="已读书籍">已读书籍</h2>
+<h3 id="程序设计与开发-2">程序设计与开发</h3>
+<h3 id="育儿-2">育儿</h3>
+<ul>
+<li><a href="http://book.douban.com/subject/3465080/">好妈妈胜过好老师</a></li>
+<li><a href="http://book.douban.com/subject/11510734/">养儿如修行</a></li>
+</ul>
+<h3 id="数学与科学计算-1">数学与科学计算</h3>
+<p>*</p>
+<h3 id="心智-2">心智</h3>
+<p>*</p>
 
-      <h2 id="个性化配置">个性化配置</h2>
-<p>首先是设置你的大名和邮箱:</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>git config --global user.name <span class="s2">&quot;Your Name Comes Here&quot;</span> 
-<span class="nv">$ </span>git config --global user.email you@yourdomain.example.com 
-</code></pre></div>
-
-
-<p>设置喜欢的编辑器, 这里我用gedit. 注意一定要加上“-w”, 意思是让git等待, 不然git是没有耐心等你把commit写完.</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>git config --global core.editor <span class="s2">&quot;gedit -w&quot;</span>
-</code></pre></div>
-
-
-<p>设置密码缓存, 默认缓存15分钟. 这样只需在第一次推送改变到远程仓库时输入github的用户名和密码, 后面就不用再输入了.</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>git config --global credential.helper cache
-</code></pre></div>
-
-
-<p>当然你可设置更长的时间, 如下面的3600秒.</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>git config --global credential.helper <span class="s1">&#39;cache --timeout=3600&#39;</span>
-</code></pre></div>
-
-
-<h2 id="仓库地址管理">仓库地址管理</h2>
-<p>设置远程仓库地址:</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>git remote <span class="nb">set</span>-url origin https://github.com/weihuayi/weihuayi.github.io.git
-</code></pre></div>
-
-
-
-
-
-
-
-    
-    </div>
-    <hr>
-    
-
-
-  <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_developer = 1;
-    var disqus_shortname = 'huayi'; // required: replace example with your forum shortname
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-
-
+    </div>  
   </div>
 </div>
+
 
       <hr>
       

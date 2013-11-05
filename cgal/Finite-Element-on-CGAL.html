@@ -43,25 +43,31 @@ MathJax.Hub.Config({
   
     
       
-      <li><a href="/archive.html">Archive</a></li>
+      <li><a href="/archive.html">存档</a></li>
       
     
   
     
       
-      <li><a href="/categories.html">Caterories</a></li>
+      <li><a href="/categories.html">分类</a></li>
       
     
   
     
       
-      <li><a href="/tags.html">Tags</a></li>
+      <li><a href="/tags.html">标签</a></li>
       
     
   
     
       
-      <li><a href="/about.html">About</a></li>
+      <li><a href="/reading.html">读书计划</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/about.html">关于我</a></li>
       
     
   
@@ -90,17 +96,18 @@ MathJax.Hub.Config({
       <h2 id="问题模型">问题模型</h2>
 <p>考虑如下D氏边界条件的Poisson方程:</p>
 <p>\[
-\begin{eqnarray}\label{eq:P}
-\Delta u(x) &amp;=&amp; f(x),\text{ on } \Omega.\\
+\begin{eqnarray}
+-\Delta u(x) &amp;=&amp; f(x),\text{ on } \Omega.\label{eq:P}\\
 u|_{\partial\Omega} &amp;=&amp; 0.
 \end{eqnarray}
 \]</p>
-<h2 id="有限元">有限元</h2>
-<p>有限元方法是一种基于PDE(partial differential equations)的变分形式(variational formulation)求解PDE近似解的方法.</p>
-<p>任找一个边界为零且<strong>足够光滑</strong>的函数\(v\). 这里的<strong>足够光滑</strong>是指函数和它的 一阶导数在\(\Omega\)上都是\(L^2\)可积的, 所有这些函数实际组成一个函数空间, 记为 \(H_0^1(\Omega)\). 用这样的函数\(v\)同乘以方程\(\eqref{eq:P}\)的两端, 然后做分部积分可得:</p>
+<h2 id="galerkin方法">Galerkin方法</h2>
+<p>有限元方法是一种基于 PDE (partial differential equations) 的变分形式 (variational formulation) 求解PDE近似解的方法.</p>
+<p>给定一个边界恒为零函数\(v\), 同乘以方程\(\eqref{eq:P}\)的两端, 然后做分部积分可得:</p>
 <p>\[
 \int_{\Omega}\nabla u\cdot\nabla v\mathrm{d}x = \int_{\Omega}fv\mathrm{d}x.
 \]</p>
+<p>当然上面的分部积分要想成立, \(v\)还必须<strong>足够光滑</strong>–函数本身及其一阶导数都在\(\Omega\)上\(L^2\)可积, 满足该条件的函数组成 一函数空间, 记\(H_0^1(\Omega)\).</p>
 <p>原问题就转化为: 求解 \(u\in H_0^1(\Omega)\), 满足</p>
 <p>\[
 \begin{equation}\label{eq:W}
@@ -131,11 +138,40 @@ v = \sum\limits_{i=1}^N v_i\phi_i\leftrightarrow\mathbf{v} =(v_1,v_2,\ldots,v_N)
 <p>\[
 u_h = \sum\limits_{i=1}^N u_i\phi_i.
 \]</p>
-<h2 id="准备">准备</h2>
-<ul>
-<li>用 <code>Triangulation_2&lt;GT,TDS&gt;</code> 存储计算区域上的网格, 负责网格中单元和节点的访问.</li>
-<li>用 Eigen 软件包中的稀疏矩阵和向量存储有限元离散的系数矩阵和右端向量, 并调用Eigen 中的解法器求解离散的代数系统.</li>
-</ul>
+<h2 id="三角形网格和重心坐标">三角形网格和重心坐标</h2>
+<p>给定三个不在同一条直线上的二维点\(\mathbf{x}_1 :=(x_1,y_1)\), \(\mathbf{x}_2 :=(x_2,y_2)\)和\(\mathbf{x}_3 :=(x_3,y_3)\), 则向量\(\mathbf{x}_1\mathbf{x}_2\)和\(\mathbf{x}_1\mathbf{x}_3\)线性无关. 这等价于矩阵</p>
+<p>\[
+A = 
+\begin{pmatrix}
+x_1 &amp; x_2 &amp; x_3 \\
+y_1 &amp; y_2 &amp; y_3 \\
+1   &amp; 1   &amp; 1 
+\end{pmatrix}
+\]</p>
+<p>非奇异. 任给一点\(\mathbf{x}:=(x,y)\), 求解下面的线性方程组</p>
+<p>\[
+A 
+\begin{pmatrix}
+\lambda_1 \\
+\lambda_2\\
+\lambda_3  
+\end{pmatrix}
+=\begin{pmatrix}
+x \\
+y\\
+1  
+\end{pmatrix}
+\]</p>
+<p>可得唯一的一组解\(\lambda_1,\lambda_2,\lambda_3\), 因此对任意二维点\(\mathbf{x}\), 有</p>
+<p>\[
+\mathbf{x}=\lambda_1(\mathbf{x})\mathbf{x}_1 + \lambda_2(\mathbf{x})\mathbf{x}_2 + \lambda_3(\mathbf{x})\mathbf{x}_3 
+\text{ with } \lambda_1(\mathbf{x}) + \lambda_2(\mathbf{x}) + \lambda_3(\mathbf{x}) = 1. 
+\]</p>
+<p>\(\lambda_1,\lambda_2,\lambda_3\)称为点\(\mathbf{x}\)关于点\(\mathbf{x}_1,\mathbf{x}_2\)和\(\mathbf{x}_3\)的<strong>重心坐标</strong>. 重心坐标 有它相应的几何意义. 记\(\mathbf{x}_1,\mathbf{x}_2\)和\(\mathbf{x}_3\)组成的三角形为\(\tau\), 把\(\tau\)的顶点\(\mathbf{x}_i\)换\(\mathbf{x}\) 得到的三角形记为\(\tau_i(\mathbf{x})\), \(i=1,2,3\), 则由克莱姆法则可得</p>
+<p>\[
+\lambda_i = {|\tau_i(\mathbf{x})| \over |\tau|}.
+\]</p>
+<p>其中\(|\cdot|\)表示三角形的面积.</p>
 <h2 id="稀疏矩阵和向量">稀疏矩阵和向量</h2>
 <p>在CGAL中, 已经定义两个wrapper类, 把Eigen中的稀疏矩阵和向量的接口封装起来, 见头文件:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;CGAL/Eigen_matrix.h&gt;</span>

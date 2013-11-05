@@ -1,5 +1,6 @@
 
 http://weihuayi.github.io/sitemap.txt
+http://weihuayi.github.io/reading.html
 http://weihuayi.github.io/tags.html
 http://weihuayi.github.io/categories.html
 http://weihuayi.github.io/about.html
