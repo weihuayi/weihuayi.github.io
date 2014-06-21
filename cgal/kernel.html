@@ -146,13 +146,13 @@
   <span class="n">Vector_2</span> <span class="n">v3</span> <span class="o">=</span> <span class="n">p2</span> <span class="o">-</span> <span class="n">p1</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p3</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">v3</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-
+  
   <span class="c1">//给定一个二维或三维向量，计算向量的长度</span>
 
   <span class="c1">//给定两个二维或三维向量，计算向量的点乘、叉乘及夹角</span>
-
+  
   <span class="c1">//给定两个二维点或三维点，计算两点的距离，中点</span>
-
+ 
   <span class="c1">//给定一组二维点或三维点，每一个点给一个权重， 然后计算它们的重心</span>
 
   <span class="c1">//给定一个二维三角形或三维三角形， 计算其三边边长， 面积， 外接圆圆心</span>
@@ -164,24 +164,26 @@
   <span class="c1">//给定一两条线段， 判断两条线段是否相交， 如果相交算出交点</span>
 
   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
 
 <p>把下面的内容复制到名为CMakeLists.txt的文件中。</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">project<span class="kw">(</span> Kernel_test<span class="kw">)</span>
-cmake_minimum_required<span class="kw">(</span>VERSION 2.6.2<span class="kw">)</span> 
-<span class="kw">set(</span>SRC main.cpp<span class="kw">)</span>
-find_package<span class="kw">(</span>CGAL QUIET COMPONENTS Core <span class="kw">)</span> 
-<span class="kw">if (</span> CGAL_FOUND <span class="kw">)</span> <span class="co">#如果找到CGAL</span>
-  include<span class="kw">(</span> <span class="ot">${CGAL_USE_FILE}</span> <span class="kw">)</span> 
-  include<span class="kw">(</span> CGAL_CreateSingleSourceCGALProgram <span class="kw">)</span>
-  create_single_source_cgal_program<span class="kw">(</span><span class="ot">${SRC}</span><span class="kw">)</span>
-<span class="kw">else()</span> <span class="co"># 找不到时输出错误信息</span>
-    message<span class="kw">(</span>STATUS <span class="st">&quot;This program requires the CGAL library, and will not be compiled.&quot;</span><span class="kw">)</span>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">project</span>( Kernel_test)
+<span class="kw">cmake_minimum_required</span>(VERSION 2.6.2) 
+<span class="kw">set(SRC</span> main.cpp<span class="kw">)</span>
+<span class="kw">find_package</span>(CGAL QUIET COMPONENTS Core ) 
+<span class="kw">if</span> <span class="kw">(</span> <span class="kw">CGAL_FOUND</span> <span class="kw">)</span> <span class="co">#如果找到CGAL</span>
+  <span class="kw">include</span>( <span class="ot">${CGAL_USE_FILE}</span> ) 
+  <span class="kw">include</span>( CGAL_CreateSingleSourceCGALProgram )
+  <span class="kw">create_single_source_cgal_program</span>(<span class="ot">${SRC}</span>)
+<span class="fu">else()</span> <span class="co"># 找不到时输出错误信息</span>
+    <span class="kw">message</span>(STATUS <span class="st">&quot;This program requires the CGAL library, and will not be compiled.&quot;</span>)
 <span class="fu">endif()</span></code></pre>
 <p>把上面两个文件放入同一个目录下， 在终端中运行如下命令：</p>
-<p><code>bash $ cmake . $ make $ ./main</code> 就可以输出下相应的结果。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cmake</span> .
+$ <span class="kw">make</span>
+$ <span class="kw">./main</span></code></pre>
+<p>就可以输出下相应的结果。</p>
 
     
     </div>

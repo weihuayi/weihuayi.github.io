@@ -96,65 +96,67 @@ MathJax.Hub.Config({
       <h2 id="三角形网格优化方法简介">三角形网格优化方法简介</h2>
 <p>三角形优化方法通常分为两类：光滑化方法和拓扑优化方法。前一种方法优化网格节点的坐标位置；后一种方法优化网格节点的连接关系。</p>
 <h3 id="光滑化方法">光滑化方法</h3>
-<p>给定一个网格节点\(x_i\), 设\(\{ x_j\}_{j=1}^{N_i}\)为与节点\(x_i\) 相邻的节点集合, \(\{\tau_j\}_{j=1}^{N}\) 为以\(x_i\)为顶点的三角形集合。下面给出不同光滑方法，新坐标\(x_i^{New}\)的计算公式。</p>
+<p>给定一个网格节点<span class="math">\(x_i\)</span>, 设<span class="math">\(\{ x_j\}_{j=1}^{N_i}\)</span>为与节点<span class="math">\(x_i\)</span> 相邻的节点集合, <span class="math">\(\{\tau_j\}_{j=1}^{N}\)</span> 为以<span class="math">\(x_i\)</span>为顶点的三角形集合。下面给出不同光滑方法，新坐标<span class="math">\(x_i^{New}\)</span>的计算公式。</p>
 <h4 id="laplace-光滑">Laplace 光滑</h4>
-<p>\[
+<p><span class="math">\[
 \begin{equation}\label{eq:L}
 x_i^{New} = \frac{1}{Ｎ_i}\sum\limits_{j=1}^{N_i}　x_j.
 \end{equation}
-\]</p>
+\]</span></p>
 <h4 id="centroidal-patch-triangulationcpt-光滑">Centroidal Patch Triangulation(CPT) 光滑</h4>
-<p>\[
+<p><span class="math">\[
 \begin{equation}\label{eq:CPT}
 x_i^{New} = \frac{1}{Ｎ_i}\sum\limits_{j=1}^{N_i}　b_j.
 \end{equation}
-\]</p>
-<p>其中\(b_j\)为\(\tau_j\)的质心。</p>
+\]</span></p>
+<p>其中<span class="math">\(b_j\)</span>为<span class="math">\(\tau_j\)</span>的质心。</p>
 <h4 id="optimal-delaunay-triangulationodt-光滑">Optimal Delaunay Triangulation(ODT) 光滑</h4>
-<p>\[
+<p><span class="math">\[
 \begin{equation}\label{eq:ODT}
 x_i^{New} = \frac{1}{Ｎ_i}\sum\limits_{j=1}^{N_i}　c_j.
 \end{equation}
-\]</p>
-<p>其中\(c_j\)为\(\tau_j\)的外接圆圆心。</p>
+\]</span></p>
+<p>其中<span class="math">\(c_j\)</span>为<span class="math">\(\tau_j\)</span>的外接圆圆心。</p>
 <h4 id="lloyd-光滑">Lloyd 光滑</h4>
-<p>Lloyd光滑是基于 Centroidal Voronoi tessellation （CVT）导出的光滑方法。给定区域\(\Omega\subset R^n\),对于点集 \({\bf z}=\{ z_i\}_{i=1}^N\subset\Omega\)中的每个点\(z_i\)， 可定义它的 Voronoi 区域（Voronoi Region）如下</p>
-<p>\[
+<p>Lloyd光滑是基于 Centroidal Voronoi tessellation （CVT）导出的光滑方法。给定区域<span class="math">\(\Omega\subset R^n\)</span>,对于点集 <span class="math">\({\bf z}=\{ z_i\}_{i=1}^N\subset\Omega\)</span>中的每个点<span class="math">\(z_i\)</span>， 可定义它的 Voronoi 区域（Voronoi Region）如下</p>
+<p><span class="math">\[
 \begin{equation}\label{eq:VR}
 V_i:=\{ x\, |\, |x - z_i| &lt; |x - z_j| \text{ for } j\neq i \}
 \end{equation}
-\]</p>
-<p>\({\bf V} = \{V_i\}_{i=1}^{N}\)称为 Voronoi Tesselation (VT), 点集\(\bf z\)称为该VT的生成子(generators)。如果VT中 每个Voronoi区域的生成子恰好是它的质心，则称该VT为CVT。基于生成子\(\bf z\)和\(\bf V\)可以定义如下的能量泛函</p>
-<p>\[
+\]</span></p>
+<p><span class="math">\({\bf V} = \{V_i\}_{i=1}^{N}\)</span>称为 Voronoi Tesselation (VT), 点集<span class="math">\(\bf z\)</span>称为该VT的生成子(generators)。如果VT中 每个Voronoi区域的生成子恰好是它的质心，则称该VT为CVT。基于生成子<span class="math">\(\bf z\)</span>和<span class="math">\(\bf V\)</span>可以定义如下的能量泛函</p>
+<p><span class="math">\[
 \begin{equation}\label{eq:CVTE}
 \mathcal{E}({\bf z},{\bf V}({\bf z})) = \sum\limits_{i=1}^N\int_{V_i}\rho(x)\|{x-z_i}\| {\rm d}x
 \end{equation}
-\]</p>
-<p>其中\(\rho(x)\)是一个给定的密度函数。一个CVT是能量泛函\(\mathcal{E}\)的一个<strong>临界点</strong>(Critical Point)， 而一个<strong>稳定</strong>的CVT是\(\mathcal{E}\)的一个局部极小值。\(\mathcal{E}\)对\(z_i\)求导数，可得：</p>
-<p>\[
+\]</span></p>
+<p>其中<span class="math">\(\rho(x)\)</span>是一个给定的密度函数。一个CVT是能量泛函<span class="math">\(\mathcal{E}\)</span>的一个<strong>临界点</strong>(Critical Point)， 而一个<strong>稳定</strong>的CVT是<span class="math">\(\mathcal{E}\)</span>的一个局部极小值。<span class="math">\(\mathcal{E}\)</span>对<span class="math">\(z_i\)</span>求导数，可得：</p>
+<p><span class="math">\[
 \mathcal{F}_i:=\frac{\partial}{\partial z_i}\mathcal{E}({\bf z},{\bf V}({\bf z})) = 2\int_{V_i}\rho(x)(z_i-x)
 {\rm d}x
-\]</p>
-<p>取\(\mathcal{F}_i=0\), 可得：</p>
-<p>\[
+\]</span></p>
+<p>取<span class="math">\(\mathcal{F}_i=0\)</span>, 可得：</p>
+<p><span class="math">\[
 z_i= \frac{\int_{V_i}\rho(x)x{\rm d}x}{\int_{V_i}\rho(x){\rm d}x}.
-\]</p>
-<p>引入<strong>Lloyd map</strong>\({\bf T}:=(T_1,T_2,\ldots,T_N)\), 其中\(T_i\)定义如下：</p>
-<p>\[
+\]</span></p>
+<p>引入<strong>Lloyd map</strong><span class="math">\({\bf T}:=(T_1,T_2,\ldots,T_N)\)</span>, 其中<span class="math">\(T_i\)</span>定义如下：</p>
+<p><span class="math">\[
 T_i(z_i)= \frac{\int_{V_i}\rho(x)x{\rm d}x}{\int_{V_i}\rho(x){\rm d}x}.
-\]</p>
-<p>给定一组初始的生成子\({\bf z}_0\), Llyod光滑方法定义如下：</p>
+\]</span></p>
+<p>给定一组初始的生成子<span class="math">\({\bf z}_0\)</span>, Llyod光滑方法定义如下：</p>
 <ol type="1">
-<li>构造\({\bf V}_k({\bf z}_k)\).</li>
-<li>更新\({\bf z}_{k+1}={\bf T}({\bf z}_k)\).</li>
+<li>构造<span class="math">\({\bf V}_k({\bf z}_k)\)</span>.</li>
+<li>更新<span class="math">\({\bf z}_{k+1}={\bf T}({\bf z}_k)\)</span>.</li>
 </ol>
 <h3 id="拓扑优化方法">拓扑优化方法</h3>
 <p>三角形网格的拓扑优化是通过<strong>换边</strong>实现的. 当两信相邻三角形组成一个凸四边形，就可以进行换边，见下图：</p>
 <figure>
 <img src="/res/images/cgal/edgeflip.png " alt="
 [Edge flip](http://dit-archives.epfl.ch/SCR96/scr8-page4.html).
-"><figcaption> <a href="http://dit-archives.epfl.ch/SCR96/scr8-page4.html">Edge flip</a>. </figcaption>
-</figure>
+">
+<figcaption>
+<a href="http://dit-archives.epfl.ch/SCR96/scr8-page4.html">Edge flip</a>.
+</figcaption></figure>
 
 <p>为了优化拓扑，可以依据不同的准则来换边，如</p>
 <ol type="1">

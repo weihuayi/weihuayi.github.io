@@ -94,48 +94,48 @@ MathJax.Hub.Config({
       水平集方法是一种隐式描述移动界面的欧拉方法， 最早由 Osher 和 Sethian 在1988年引入。
 
       <h2 id="水平集方程的推导">水平集方程的推导</h2>
-<p>在区域\(\Omega\)内，考虑随时间\(t\)演化的界面 \(\Gamma = \Gamma({\bf x},t)\), 其中\(\bf x\)表示\(\Gamma\)上的一点。 移动界面可以用一个函数\(\phi({\bf x},t)\) 的零水平集表示, 即 \(\Gamma = \{ {\bf x} | \phi({\bf x},t)=0 \}\)。给定\(\Omega\) 上的速度向量场\({\bf V}({\bf x},t)\), 则方程\(\eqref{eq:lve0}\)描述了\(\phi\) 的水平集以速度\({\bf V}({\bf x},t)\)在区域\(\Omega\)中传播的过程，该方程就称为<strong>水平集方程</strong>。</p>
-<p>\[
+<p>在区域<span class="math">\(\Omega\)</span>内，考虑随时间<span class="math">\(t\)</span>演化的界面 <span class="math">\(\Gamma = \Gamma({\bf x},t)\)</span>, 其中<span class="math">\(\bf x\)</span>表示<span class="math">\(\Gamma\)</span>上的一点。 移动界面可以用一个函数<span class="math">\(\phi({\bf x},t)\)</span> 的零水平集表示, 即 <span class="math">\(\Gamma = \{ {\bf x} | \phi({\bf x},t)=0 \}\)</span>。给定<span class="math">\(\Omega\)</span> 上的速度向量场<span class="math">\({\bf V}({\bf x},t)\)</span>, 则方程<span class="math">\(\eqref{eq:lve0}\)</span>描述了<span class="math">\(\phi\)</span> 的水平集以速度<span class="math">\({\bf V}({\bf x},t)\)</span>在区域<span class="math">\(\Omega\)</span>中传播的过程，该方程就称为<strong>水平集方程</strong>。</p>
+<p><span class="math">\[
 \begin{equation}
 \phi_t + {\bf V}\cdot\nabla\phi=0 \label{eq:lve0}
 \end{equation}
-\]</p>
-<p>下面在二维情形下推导方程\(\eqref{eq:lve0}\)。我们用零水平集\(\phi(x,y,t)=0\)来表示 移动界面，而且希望界面上的点在移动过程中，始终在这个\(\phi(x,y,t)\)的零水平集上，则有</p>
-<p>\[
+\]</span></p>
+<p>下面在二维情形下推导方程<span class="math">\(\eqref{eq:lve0}\)</span>。我们用零水平集<span class="math">\(\phi(x,y,t)=0\)</span>来表示 移动界面，而且希望界面上的点在移动过程中，始终在这个<span class="math">\(\phi(x,y,t)\)</span>的零水平集上，则有</p>
+<p><span class="math">\[
 \begin{equation}\label{eq:lve1}
 \frac{d}{dt}\phi(x(t),y(t),t)=0
 \end{equation}
-\]</p>
+\]</span></p>
 <p>由链式法则，可得：</p>
-<p>\[
+<p><span class="math">\[
 \begin{eqnarray}
 \phi_t + \phi_x x_t + \phi_y y_t &amp;=&amp; 0 \label{eq:lva}\\
 \phi_t + (x_t, y_t)\cdot(\phi_x,\phi_y) &amp;=&amp;0 \label{eq:lvb}\\
 \phi_t + {\bf V}\cdot\nabla\phi &amp;=&amp; 0 \label{eq:lvc}
 \end{eqnarray}
-\]</p>
-<p>其中\({\bf V}= (x_t, y_t)\)。方程\(\eqref{eq:lvc}\)就是所谓的水平集方程，描述了水平集在外部速度场中的 移动过程。</p>
-<p>因为水平集\(\phi(x,y,t)=c\)的单位法向为：</p>
-<p>\[
+\]</span></p>
+<p>其中<span class="math">\({\bf V}= (x_t, y_t)\)</span>。方程<span class="math">\(\eqref{eq:lvc}\)</span>就是所谓的水平集方程，描述了水平集在外部速度场中的 移动过程。</p>
+<p>因为水平集<span class="math">\(\phi(x,y,t)=c\)</span>的单位法向为：</p>
+<p><span class="math">\[
 \begin{equation}\label{eq:un}
 {\bf n}(x,y,t)=\frac{\nabla\phi(x,y,t)}{|\nabla\phi(x,y,t)|}.
 \end{equation}
-\]</p>
-<p>方程\(\eqref{eq:lvc}\)中的\({\bf V}\cdot\nabla\phi\)项, 可以理解为只有速度场\({\bf V}(x,y,t)\) 在水平集的法向方向分量才会影响水平集的移动，因此可以引入下面的法向速度场：</p>
-<p>\[
+\]</span></p>
+<p>方程<span class="math">\(\eqref{eq:lvc}\)</span>中的<span class="math">\({\bf V}\cdot\nabla\phi\)</span>项, 可以理解为只有速度场<span class="math">\({\bf V}(x,y,t)\)</span> 在水平集的法向方向分量才会影响水平集的移动，因此可以引入下面的法向速度场：</p>
+<p><span class="math">\[
 \begin{equation}\label{eq:nvf}
 V_{\bf n}={\bf\rm V}(x,y,t)\cdot\frac{\nabla\phi(x,y,t)}{|\nabla\phi(x,y,t)|}.
 \end{equation}
-\]</p>
+\]</span></p>
 <p>水平集方程的形式也可改写为：</p>
-<p>\[
+<p><span class="math">\[
 \begin{equation}\label{eq:lvf}
 \phi_t + {\bf V}_{\bf\rm n}|\nabla\phi(x,y,t)|=0
 \end{equation}
-\]</p>
+\]</span></p>
 <strong>参考文献</strong>
 <ol class="bibliography"><li>
-<span id="osher1988fronts">Osher, Stanley, and James A Sethian. “Fronts Propagating With Curvature-Dependent Speed: Algorithms Based On Hamilton-Jacobi Formulations”. <i>Journal of Computational Physics</i> 79, no. 1: 12–49.</span>
+<span id="osher1988fronts">Osher, Stanley, and James A Sethian. “Fronts Propagating with Curvature-Dependent Speed: Algorithms Based on Hamilton-Jacobi Formulations.” <i>Journal of Computational Physics</i> 79, no. 1: 12–49.</span>
 </li></ol>
 
 

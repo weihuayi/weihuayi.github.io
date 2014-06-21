@@ -98,21 +98,24 @@ MathJax.Hub.Config({
 <figure>
 <img src="/res/images/cgal/infinite.png " alt="
 Infinite vertex and infinite faces.
-"><figcaption> Infinite vertex and infinite faces. </figcaption>
-</figure>
+">
+<figcaption>
+Infinite vertex and infinite faces.
+</figcaption></figure>
 
-<p>Triangulation_2&lt;Traits,TDS&gt; 中，除了无限节点外，所有的节点都包含坐标信息、所属的某个三角形面信息。每个三角形面都包 含了三个顶点的信息和三个邻居三角形面信息。在一个三角形面中， 三个顶点的局部编号为0、1和2，方向为逆时针方向。三个邻居 三角形面的编号规则是：\(i\)号顶点对应\(i\)号邻居，见下图。</p>
+<p>Triangulation_2&lt;Traits,TDS&gt; 中，除了无限节点外，所有的节点都包含坐标信息、所属的某个三角形面信息。每个三角形面都包 含了三个顶点的信息和三个邻居三角形面信息。在一个三角形面中， 三个顶点的局部编号为0、1和2，方向为逆时针方向。三个邻居 三角形面的编号规则是：<span class="math">\(i\)</span>号顶点对应<span class="math">\(i\)</span>号邻居，见下图。</p>
 <figure>
 <img src="/res/images/cgal/rep_bis.png " alt="
 Vertices and neighbors.
-"><figcaption> Vertices and neighbors. </figcaption>
-</figure>
+">
+<figcaption>
+Vertices and neighbors.
+</figcaption></figure>
 
 <p>Triangulation_2&lt;Traits,TDS&gt;　中对节点和三角形面的访问是通过 handle、iterator 和 circulator, 它们的用法和指针类似， 通过“-&gt;”来访问其成员函数，但比单纯的指针用起来更安全（单纯的指针如果忘记初始化就使用，后果就很严重）。下面给出一个 Vertex_handle 类型的变量的基本用法：</p>
 <div class="highlight"><pre><code class="cpp"><span class="n">Vertex_handle</span> <span class="n">vh</span> <span class="p">...;</span>
 <span class="n">Point_2</span> <span class="n">p</span> <span class="o">=</span> <span class="n">vh</span><span class="o">-&gt;</span><span class="n">point</span><span class="p">();</span> <span class="c1">//访问其坐标信息，返回一个 Poing_2 类。</span>
-<span class="n">vh</span><span class="o">-&gt;</span><span class="n">set_point</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="c1">//设定其坐标信息。</span>
-</code></pre></div>
+<span class="n">vh</span><span class="o">-&gt;</span><span class="n">set_point</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="c1">//设定其坐标信息。</span></code></pre></div>
 
 
 <p>下面是　Face_handle 类型的变量的基本用法：</p>
@@ -121,16 +124,14 @@ Vertices and neighbors.
 <span class="n">Vertex_handle</span> <span class="n">vh</span> <span class="o">=</span> <span class="n">fh</span><span class="o">-&gt;</span><span class="n">vertex</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 <span class="n">Face_handle</span> <span class="n">fhi</span> <span class="o">=</span> <span class="n">fh</span><span class="o">-&gt;</span><span class="n">neighbor</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 <span class="n">Face_handle</span> <span class="n">fhj</span> <span class="o">=</span> <span class="n">fh</span><span class="o">-&gt;</span><span class="n">neighbor</span><span class="p">(</span><span class="n">fh</span><span class="o">-&gt;</span><span class="n">ccw</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
-<span class="n">Face_hanele</span> <span class="n">fhk</span> <span class="o">=</span> <span class="n">fh</span><span class="o">-&gt;</span><span class="n">neighbor</span><span class="p">(</span><span class="n">fh</span><span class="o">-&gt;</span><span class="n">cw</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
-</code></pre></div>
+<span class="n">Face_hanele</span> <span class="n">fhk</span> <span class="o">=</span> <span class="n">fh</span><span class="o">-&gt;</span><span class="n">neighbor</span><span class="p">(</span><span class="n">fh</span><span class="o">-&gt;</span><span class="n">cw</span><span class="p">(</span><span class="n">i</span><span class="p">));</span></code></pre></div>
 
 
 <p>Triangulation_2&lt;Traits,TDS&gt;中，边是这样定义如下：</p>
 <div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Face_handle</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">Edge</span><span class="p">;</span>
 <span class="n">Edge</span> <span class="n">e</span><span class="err">；</span><span class="c1">// e.first 的类型是 Face_handle, 存储边 e 所属的一个三角形面；</span>
        <span class="c1">// e.second 的类型是 int， 存储边 e 在 e.first　中的局部编号。</span>
-       <span class="c1">// 三角形面中边的局部编号规则是：$i$号顶点对应$i$号边。</span>
-</code></pre></div>
+       <span class="c1">// 三角形面中边的局部编号规则是：$i$号顶点对应$i$号边。</span></code></pre></div>
 
 
 <p>在Triangulation_2&lt;Traits,TDS&gt; 中，要遍历所有的节点、边或三角形面，要用到相应的 iterator，　如：</p>
@@ -223,8 +224,7 @@ Vertices and neighbors.
     <span class="c1">// tri.flip(Face_handle f, int i)</span>
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 
 
 

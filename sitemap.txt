@@ -1,14 +1,15 @@
 
-http://weihuayi.github.io/sitemap.txt
-http://weihuayi.github.io/reading.html
-http://weihuayi.github.io/tags.html
-http://weihuayi.github.io/categories.html
 http://weihuayi.github.io/about.html
 http://weihuayi.github.io/archive.html
-http://weihuayi.github.io/index.html
+http://weihuayi.github.io/categories.html
 http://weihuayi.github.io/footmark/index.html
+http://weihuayi.github.io/index.html
 http://weihuayi.github.io/pages.html
+http://weihuayi.github.io/reading.html
+http://weihuayi.github.io/sitemap.txt
+http://weihuayi.github.io/tags.html
 
+http://weihuayi.github.io/itaps/itaps-install.html
 http://weihuayi.github.io/cgal/Finite-Element-on-CGAL.html
 http://weihuayi.github.io/digest/Hushi-Lecture.html
 http://weihuayi.github.io/digest/Caizhihao-Lecture.html

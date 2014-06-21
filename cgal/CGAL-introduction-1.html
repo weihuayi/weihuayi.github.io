@@ -115,30 +115,26 @@
 <span class="nv">$ </span>sudo apt-get install qtcreator qt4-dev-tools qt4-doc qt4-qtconfig qt4-demos qt4-designer
 <span class="nv">$ </span>sudo apt-get install libgmp-dev libmpfr-dev
 <span class="nv">$ </span>sudo apt-get install geomview
-<span class="nv">$ </span>sudo apt-get install libqglviewer-dev
-</code></pre></div>
+<span class="nv">$ </span>sudo apt-get install libqglviewer-dev</code></pre></div>
 
 
 <p>下载<a href="http://www.boost.org/users/download/">Boost</a>, 进入解压目录:</p>
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>./bootstrap.sh
 <span class="nv">$ </span>./bjam --prefix<span class="o">=</span>/usr/local/ <span class="c">#安装目录是/usr/local/</span>
-<span class="nv">$ </span>sudo ./bjam install
-</code></pre></div>
+<span class="nv">$ </span>sudo ./bjam install</code></pre></div>
 
 
 <p>下载并行矩阵计算软件包<a href="http://bitbucket.org/eigen/eigen/get/3.2.0.zip">Eigen</a>, 进入解压目录:</p>
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>mkdir build
 <span class="nv">$ </span><span class="nb">cd </span>build
 <span class="nv">$ </span>cmake ../
-<span class="nv">$ </span>sudo make install  
-</code></pre></div>
+<span class="nv">$ </span>sudo make install</code></pre></div>
 
 
 <p>下面就可以安装CGAL啦. 首先下载最新<a href="https://gforge.inria.fr/frs/?group_id=52&amp;release_id=7462">CGAL</a>, 进入解压目录:</p>
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cmake .
 <span class="nv">$ </span>make
-<span class="nv">$ </span>sudo make install
-</code></pre></div>
+<span class="nv">$ </span>sudo make install</code></pre></div>
 
 
 <p>在学习CGAL的时候，要涉及很多知识和工具，但要学会突出重点，有些需要深入理解和掌握， 但有些工具只需要学会使用即可，如下面的CMake。 ## CMake 如<a href="http://www.cmake.org/">CMake</a>， 它是一个跨平台开源软件构建系统, CGAL就是利用它构建的。 基本用法见中文手册<a href="http://sewm.pku.edu.cn/src/paradise/reference/CMake%20Practice.pdf">CMake 实践</a></p>
@@ -163,14 +159,12 @@ find_package<span class="o">(</span>CGAL QUIET COMPONENTS Core <span class="o">)
   create_single_source_cgal_program<span class="o">(</span><span class="k">${</span><span class="nv">SRC</span><span class="k">}</span><span class="o">)</span>
 <span class="k">else</span><span class="o">()</span> <span class="c"># 找不到时输出错误信息</span>
     message<span class="o">(</span>STATUS <span class="s2">&quot;This program requires the CGAL library, and will not be compiled.&quot;</span><span class="o">)</span>
-endif<span class="o">()</span>
-</code></pre></div>
+endif<span class="o">()</span></code></pre></div>
 
 
 <p>CMake读取CMakeLists.txt文件，会根据你系统配置生成相应的Makefile文件，然后你就可以利 用make命令编译出你的可执行程序了， 命令如下：</p>
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cmake .
-<span class="nv">$ </span>make
-</code></pre></div>
+<span class="nv">$ </span>make</code></pre></div>
 
 
 
