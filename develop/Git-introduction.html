@@ -85,25 +85,25 @@
 
       <h2 id="个性化配置">个性化配置</h2>
 <p>首先是设置你的大名和邮箱:</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>git config --global user.name <span class="s2">&quot;Your Name Comes Here&quot;</span> 
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git config --global user.name <span class="s2">&quot;Your Name Comes Here&quot;</span> 
 <span class="nv">$ </span>git config --global user.email you@yourdomain.example.com</code></pre></div>
 
 
 <p>设置喜欢的编辑器, 这里我用gedit. 注意一定要加上“-w”, 意思是让git等待, 不然git是没有耐心等你把commit写完.</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>git config --global core.editor <span class="s2">&quot;gedit -w&quot;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git config --global core.editor <span class="s2">&quot;gedit -w&quot;</span></code></pre></div>
 
 
 <p>设置密码缓存, 默认缓存15分钟. 这样只需在第一次推送改变到远程仓库时输入github的用户名和密码, 后面就不用再输入了.</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>git config --global credential.helper cache</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git config --global credential.helper cache</code></pre></div>
 
 
 <p>当然你可设置更长的时间, 如下面的3600秒.</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>git config --global credential.helper <span class="s1">&#39;cache --timeout=3600&#39;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git config --global credential.helper <span class="s1">&#39;cache --timeout=3600&#39;</span></code></pre></div>
 
 
 <h2 id="仓库地址管理">仓库地址管理</h2>
 <p>设置远程仓库地址:</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>git remote <span class="nb">set</span>-url origin https://github.com/weihuayi/weihuayi.github.io.git</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git remote <span class="nb">set</span>-url origin https://github.com/weihuayi/weihuayi.github.io.git</code></pre></div>
 
 
 

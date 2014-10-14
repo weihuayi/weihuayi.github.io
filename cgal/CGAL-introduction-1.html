@@ -108,7 +108,7 @@
 <h2 id="cgal-安装">CGAL 安装</h2>
 <p>这里仅介绍Ubuntu中的安装方法, 其它操作系统的安装以后会陆续介绍.</p>
 <p>首先从Ubuntu自带的软件源中, 安装下列软件:</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$sudo</span> apt-get install g++ gcc <span class="c">#编译器</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$sudo</span> apt-get install g++ gcc <span class="c">#编译器</span>
 <span class="nv">$ </span>sudo apt-get install gdb <span class="c">#调试器</span>
 <span class="nv">$ </span>sudo apt-get install cmake-qt-gui cmake <span class="c"># 软件构建系统 </span>
 <span class="c"># QT相关的软件, 其中qtcreator是一个类似于VC++图形编程环境</span>
@@ -119,20 +119,20 @@
 
 
 <p>下载<a href="http://www.boost.org/users/download/">Boost</a>, 进入解压目录:</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>./bootstrap.sh
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./bootstrap.sh
 <span class="nv">$ </span>./bjam --prefix<span class="o">=</span>/usr/local/ <span class="c">#安装目录是/usr/local/</span>
 <span class="nv">$ </span>sudo ./bjam install</code></pre></div>
 
 
 <p>下载并行矩阵计算软件包<a href="http://bitbucket.org/eigen/eigen/get/3.2.0.zip">Eigen</a>, 进入解压目录:</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>mkdir build
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mkdir build
 <span class="nv">$ </span><span class="nb">cd </span>build
 <span class="nv">$ </span>cmake ../
 <span class="nv">$ </span>sudo make install</code></pre></div>
 
 
 <p>下面就可以安装CGAL啦. 首先下载最新<a href="https://gforge.inria.fr/frs/?group_id=52&amp;release_id=7462">CGAL</a>, 进入解压目录:</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cmake .
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>cmake .
 <span class="nv">$ </span>make
 <span class="nv">$ </span>sudo make install</code></pre></div>
 
@@ -145,7 +145,7 @@
 <li>库文件及其所在目录信息</li>
 </ol>
 <p>下面给出一个简单的CMakeLists.txt的例子。</p>
-<div class="highlight"><pre><code class="bash"><span class="c">#设置工程名字, 可以换成你喜欢的名字</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#设置工程名字, 可以换成你喜欢的名字</span>
 project<span class="o">(</span> project_name <span class="o">)</span>
 <span class="c">#设置CMake的版本要求</span>
 cmake_minimum_required<span class="o">(</span>VERSION 2.6.2<span class="o">)</span> 
@@ -163,7 +163,7 @@ endif<span class="o">()</span></code></pre></div>
 
 
 <p>CMake读取CMakeLists.txt文件，会根据你系统配置生成相应的Makefile文件，然后你就可以利 用make命令编译出你的可执行程序了， 命令如下：</p>
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cmake .
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>cmake .
 <span class="nv">$ </span>make</code></pre></div>
 
 

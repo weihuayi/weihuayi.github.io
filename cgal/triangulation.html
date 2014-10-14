@@ -113,13 +113,13 @@ Vertices and neighbors.
 </figcaption></figure>
 
 <p>Triangulation_2&lt;Traits,TDS&gt;　中对节点和三角形面的访问是通过 handle、iterator 和 circulator, 它们的用法和指针类似， 通过“-&gt;”来访问其成员函数，但比单纯的指针用起来更安全（单纯的指针如果忘记初始化就使用，后果就很严重）。下面给出一个 Vertex_handle 类型的变量的基本用法：</p>
-<div class="highlight"><pre><code class="cpp"><span class="n">Vertex_handle</span> <span class="n">vh</span> <span class="p">...;</span>
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">Vertex_handle</span> <span class="n">vh</span> <span class="p">...;</span>
 <span class="n">Point_2</span> <span class="n">p</span> <span class="o">=</span> <span class="n">vh</span><span class="o">-&gt;</span><span class="n">point</span><span class="p">();</span> <span class="c1">//访问其坐标信息，返回一个 Poing_2 类。</span>
 <span class="n">vh</span><span class="o">-&gt;</span><span class="n">set_point</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="c1">//设定其坐标信息。</span></code></pre></div>
 
 
 <p>下面是　Face_handle 类型的变量的基本用法：</p>
-<div class="highlight"><pre><code class="cpp"><span class="n">Face_handle</span> <span class="n">fh</span> <span class="p">...;</span>
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">Face_handle</span> <span class="n">fh</span> <span class="p">...;</span>
 <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="n">Vertex_handle</span> <span class="n">vh</span> <span class="o">=</span> <span class="n">fh</span><span class="o">-&gt;</span><span class="n">vertex</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 <span class="n">Face_handle</span> <span class="n">fhi</span> <span class="o">=</span> <span class="n">fh</span><span class="o">-&gt;</span><span class="n">neighbor</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
@@ -128,7 +128,7 @@ Vertices and neighbors.
 
 
 <p>Triangulation_2&lt;Traits,TDS&gt;中，边是这样定义如下：</p>
-<div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Face_handle</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">Edge</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Face_handle</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">Edge</span><span class="p">;</span>
 <span class="n">Edge</span> <span class="n">e</span><span class="err">；</span><span class="c1">// e.first 的类型是 Face_handle, 存储边 e 所属的一个三角形面；</span>
        <span class="c1">// e.second 的类型是 int， 存储边 e 在 e.first　中的局部编号。</span>
        <span class="c1">// 三角形面中边的局部编号规则是：$i$号顶点对应$i$号边。</span></code></pre></div>
@@ -148,7 +148,7 @@ Vertices and neighbors.
 </ul>
 <h2 id="例子">例子</h2>
 <p>完善下面的代码，练习使用　Triangulation_2&lt;Traits,TDS&gt;　的接口。</p>
-<div class="highlight"><pre><code class="cpp"><span class="cp">#include &lt;fstream&gt;</span>
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="cp">#include &lt;fstream&gt;</span>
 <span class="cp">#include &lt;unistd.h&gt; </span><span class="c1">// for sleep()</span>
 
 <span class="cp">#include &lt;CGAL/Exact_predicates_inexact_constructions_kernel.h&gt;</span>
