@@ -9,6 +9,7 @@ http://weihuayi.github.io/reading.html
 http://weihuayi.github.io/sitemap.txt
 http://weihuayi.github.io/tags.html
 
+http://weihuayi.github.io/math/sparse-matrix.html
 http://weihuayi.github.io/itaps/itaps-install.html
 http://weihuayi.github.io/cgal/Finite-Element-on-CGAL.html
 http://weihuayi.github.io/digest/Hushi-Lecture.html

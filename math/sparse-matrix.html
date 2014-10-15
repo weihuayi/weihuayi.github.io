@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>稀疏矩阵存储格式</title>
+    <meta name="description" content="本文介绍稀疏矩阵常用的两种存储格式: 压缩行存储(Compressed Row
+Storage, [CRS][CRS])和压缩列存储(Compressed Column Storage, [CCS][SM]).
+">
+    <meta name="author" content="Huayi Wei">
+    <meta name="keywords" content="Huayi's Blog,Huayi Wei,稀疏矩阵存储格式,sparse matrix">
+    <meta property="wb:webmaster" content="45f4c044418008e7" />
+    <meta name="chinaz-site-verification" content="1a7852f9-b42f-481f-bd38-1b9e92a55496" />
+    <link href="/assets/themes/twitter2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter2/css/custom.css?v=0.3" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter2/css/syntax.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+	<script src="/assets/function.js"></script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } },
+  "HTML-CSS": { linebreaks: { automatic: true, width: "75% container" } },
+         SVG: { linebreaks: { automatic: true, width: "75% container" } },
+         tex2jax: {inlineMath: [['$','$'], ["\\(","\\)"]]}
+});
+</script>
+
+  </head>
+
+  <body>
+    <div id="navbar" class="navbar navbar-fixed-top" style="padding-left: 0; padding-right: 0;">
+      <div class="navbar-inner" style="background:#2c2c2c">
+        <div class="container-fluid" style="margin-left:8%; margin-right:5%; overflow:hidden; padding-left: 0; padding-right: 0;">
+          <a class="brand" href="/">Huayi's Blog</a>
+          <ul id="left-nav" class="nav" style="font-weight: 250;">
+            <li class="divider-vertical" id="left-divider"></li>
+            
+            
+
+
+  
+    
+      
+      <li><a href="/archive.html">存档</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/categories.html">分类</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/tags.html">标签</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/reading.html">读书计划</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/about.html">关于我</a></li>
+      
+    
+  
+
+
+
+          </ul>
+          
+          <ul class="nav pull-right nav-right">
+            <li class="sharing"></li>
+            <li class="divider-vertical" id="right-divider"></li>
+            <li><a><span id=localtime class="label" style="background:#FCF8E3; font-size: 11px; font-weight: normal;"></span><script type="text/javascript">tick();</script></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="main" class="container-fluid" style="position: relative; padding-left: 8%; padding-right: 8%;">
+      
+<div class="row-fluid">
+  <div id="post-span" class="span10" style="margin-left: 10%;">
+    <div class="content post">
+      <h1 class="title">稀疏矩阵存储格式</h1>
+      本文介绍稀疏矩阵常用的两种存储格式: 压缩行存储(Compressed Row
+Storage, [CRS][CRS])和压缩列存储(Compressed Column Storage, [CCS][SM]).
+
+      <p>给定 <span class="math">\(n\)</span> 阶矩阵 <span class="math">\(A\)</span> , 如果其非零元的个数比较少, 我们就称其<a href="http://en.wikipedia.org/wiki/Sparse_matrix" title="Sparse Matrix"><strong>稀疏矩阵 </strong></a>. 这样在计算机中存储 <span class="math">\(A\)</span> 时, 如果每个元素都存下来, 是很浪费存储空间 的. 比如一个 10 万阶的矩阵, 就有 <span class="math">\(10^{10}\)</span> 个元素, 假设其中只有 10 万个 非零元. 每个元素如果用双精度存储的话, 要占 8 个字节, 把所有的元素存储 下来, 大概要占多大空间呢?</p>
+<p><span class="math">\[
+\begin{eqnarray} 
+\frac{\mbox{10 万阶矩阵的字节数}}{\mbox{1
+GB 的字节数}} = \frac{10^5\times 10^5\times
+8}{2^{10}\times 2^{10}\times 2^{10}} = 74.5 (GB),
+\end{eqnarray}
+\]</span></p>
+<p>对一般中小规模的计算机, 这是很难以承受的. 但如果用本节介绍的 CRS 或者 CCS, 就可以大大节省存储空间.</p>
+<p>下面以一个具体的矩阵为列进行说明:</p>
+<p><span class="math">\[
+A = 
+\begin{pmatrix}
+0 &amp; 0 &amp; 0 &amp; 10 \\
+21 &amp; 0 &amp; 33 &amp; 0 \\
+0  &amp; 0 &amp; 3  &amp; 0 \\
+12 &amp; 1 &amp; 0 &amp; 4 
+\end{pmatrix}
+\]</span></p>
+<p>这里我们采用 C++ 的习惯, 编号都从 0 开始. 则<strong>压缩行存储</strong>可以用下面三个数组来表示这个矩阵</p>
+<p><span class="math">\[
+\begin{eqnarray}
+row_{ptr} &amp;=&amp; [0,1,3,4,7] \\
+col_{idx} &amp;=&amp; [3,0,2,2,0,1,3] \\
+val &amp;=&amp; [10,21,33,3,12,1,4]
+\end{eqnarray}
+\]</span></p>
+<p>压缩列存储可以用下面三个数组来表示这个矩阵:</p>
+<p><span class="math">\[
+\begin{eqnarray}
+col_{ptr} &amp;=&amp; [0,2,3,5,7] \\
+row_{idx} &amp;=&amp; [1,3,3,1,2,0,3] \\
+val &amp;=&amp; [21,12,1,33,3,10,4]
+\end{eqnarray}
+\]</span></p>
+<p>还以上面的 10 万阶的矩阵为例, 它有 10 万个非零元, 在 CRS 模式下, 它占 的内存为(以 MB 为单位):</p>
+<p><span class="math">\[
+\begin{eqnarray} 
+\frac{(10^5\times 3 + 1)\times 8}{2^{10}\times 2^{10}\times 2^{10}} \approx
+2.29 (MB),
+\end{eqnarray}
+\]</span></p>
+<p>哈哈, 内存节省了 10 万倍.</p>
+
+    
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'huayi'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+      <hr>
+      
+    </div> <!-- /container -->
+
+    <footer class="footer">
+      <p id="footer-first-child">Lovingly authored by Huayi Wei in 2013 with help 
+          <br>from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>,<a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>, and countless humans.
+        </p>
+        <p>&copy; 2013 Huayi Wei, Powered by Github</p>
+        <!--<p><a href="https://mixpanel.com/f/partner"><img src="https://mixpanel.com/site_media/images/partner/badge_light.png" alt="Real Time Web Analytics" /></a></p>-->
+    </footer>
+    
+    
+
+    <!-- <a id="forkme" style="display:none" href="http://github.com/mceiba/mceiba.github.com"><img style="position: absolute; top: 40px; right: 0; border: 0;" src="/assets/images/forkme.png" alt="Fork me on GitHub"></a> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/twitter2/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/app.js?v=0.1"></script>
+    <script>
+      $(function(){
+        //forkme.init(); 
+        var delta = $(window).height() - $(document.body).height() -50;
+        if (delta>0) {
+          $(".footer").css("margin-top", delta);
+          // $(".footer").animate({
+          //   "margin-top": delta+"px"
+          // }, "fast");
+        }
+      
+		  var i=1;
+  		$("h2").each(function(){$(this).attr("id",(i++)+"_"+$(this).text());});
+  		//$("h2").attr("id", function(){ return "h2_"(i++)+"_"+this.title });
+          Toc.init('#sidebar', '#main');
+        
+  	  })
+    </script>
+    
+    <!---->
+  </body>
+</html>
+
