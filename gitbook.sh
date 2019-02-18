@@ -1,4 +1,3 @@
-git checkout master
 git add .
 git commit -m "update" 
 git push 
@@ -8,4 +7,3 @@ cd ../weihuayi.github.io/
 git add .
 git commit -m "update" 
 git push 
-git checkout master
