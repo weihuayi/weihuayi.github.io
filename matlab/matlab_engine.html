@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>开发日志 · 魏华祎的个人网站</title>
+        <title>Matlab engine for Python · 魏华祎的个人网站</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -66,10 +66,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../cpp/" />
+    <link rel="next" href="../tools/" />
     
     
-    <link rel="prev" href="whysc.html" />
+    <link rel="prev" href="./" />
     
 
     <script src="../gitbook/gitbook-plugin-graph/d3.min.js"></script>
@@ -211,9 +211,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="./">
+        <li class="chapter " data-level="1.7" data-path="../whysc/">
             
-                <a href="./">
+                <a href="../whysc/">
             
                     
                     WhySC
@@ -225,9 +225,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="whysc.html">
+        <li class="chapter " data-level="1.7.1" data-path="../whysc/whysc.html">
             
-                <a href="whysc.html">
+                <a href="../whysc/whysc.html">
             
                     
                     开发动机与基本原则
@@ -238,9 +238,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7.2" data-path="develop_note.html">
+        <li class="chapter " data-level="1.7.2" data-path="../whysc/develop_note.html">
             
-                <a href="develop_note.html">
+                <a href="../whysc/develop_note.html">
             
                     
                     开发日志
@@ -282,9 +282,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="../matlab/">
+        <li class="chapter " data-level="1.10" data-path="./">
             
-                <a href="../matlab/">
+                <a href="./">
             
                     
                     Matlab 笔记
@@ -296,9 +296,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.1" data-path="../matlab/matlab_engine.html">
+        <li class="chapter active" data-level="1.10.1" data-path="matlab_engine.html">
             
-                <a href="../matlab/matlab_engine.html">
+                <a href="matlab_engine.html">
             
                     
                     Matlab engine for Python
@@ -648,7 +648,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >开发日志</a>
+        <a href=".." >Matlab engine for Python</a>
     </h1>
 </div>
 
@@ -663,7 +663,59 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5F00;&#x53D1;&#x65E5;&#x5FD7;">&#x5F00;&#x53D1;&#x65E5;&#x5FD7;</h1>
+                                <h1 id="matlab-engine-for-python">Matlab Engine for Python</h1>
+<p>&#x56E0;&#x4E3A;&#x79CD;&#x79CD;&#x539F;&#x56E0;&#xFF0C; &#x6709;&#x65F6;&#x5019;&#x9700;&#x8981;&#x5728; Python &#x548C; Matlab &#x4E4B;&#x95F4;&#x4F20;&#x9012;&#x6570;&#x636E;&#x3002; &#x8FD9;&#x65F6;&#x53EF;&#x4EE5;&#x7528; <code>scipy</code> &#x4E2D;&#x7684; <code>io</code> &#x6A21;&#x5757;&#xFF0C; &#x5177;&#x4F53;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>import scipy.io as sio
+# 1. &#x8BFB;&#x5165;
+# &#x5047;&#x8BBE; mesh.mat &#x662F; Matlab &#x4FDD;&#x5B58;&#x7684;&#x7F51;&#x683C;&#x6570;&#x636E;&#xFF0C; &#x5305;&#x62EC;&#x4E24;&#x4E2A;&#x53D8;&#x91CF; `node` &#x548C; `elem`
+data = sio.loadmat(&#x2018;mesh.mat&#x2019;) # &#x8BFB;&#x5165; mat &#x6587;&#x4EF6;
+node = data[&apos;node&apos;]
+cell = data[&apos;elem&apos;] - 1 # Matlab &#x4E2D;&#x7F16;&#x53F7;&#x662F;&#x4ECE; 1 &#x5F00;&#x59CB;&#x7684;&#xFF0C; &#x8BFB;&#x4E3A; numpy &#x6570;&#x7EC4;&#x8981;&#x51CF; 1
+
+# 2. &#x5199;&#x51FA;
+data = {&apos;node&apos;:node, &apos;elem&apos;: cell+1} # &#x751F;&#x6210;&#x4E00;&#x4E2A; dict &#x6570;&#x636E; data
+sio.savemat(&apos;python-mesh.mat&apos;, data) # &#x628A; data &#x5199;&#x5165; mat &#x6587;&#x4EF6;
+</code></pre><p>&#x4F46;&#x8FD9;&#x79CD;&#x7528;&#x6CD5;&#x8FDD;&#x80CC;&#x4E86;<strong>&#x5C3D;&#x53EF;&#x80FD;&#x5728;&#x4E00;&#x4E2A;&#x73AF;&#x5883;&#x4E0B;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;</strong>&#x7684;&#x539F;&#x5219;&#xFF0C; &#x7528; Python &#x4FDD;&#x5B58;&#x5B8C;&#x6570;&#x636E;&#x4F60;&#x8FD8;
+&#x8981;&#x6253;&#x5F00; Matlab&#xFF0C; &#x518D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x5904;&#x7406;&#xFF0C; &#x8FD9;&#x6837;&#x7684;&#x5DE5;&#x4F5C;&#x6548;&#x7387;&#x663E;&#x7136;&#x4E0D;&#x662F;&#x6700;&#x9AD8;&#x7684;&#x3002; &#x505A;&#x4E8B;&#x60C5;&#x4E00;&#x5B9A;&#x8981;&#x6709;&#x6548;
+&#x7387;&#x610F;&#x8BC6;&#xFF0C; &#x6362;&#x4E2A;&#x8BF4;&#x6CD5;&#x5C31;&#x662F;<strong>&#x5077;&#x61D2;</strong>&#x610F;&#x8BC6;&#xFF0C; &#x8FD9;&#x662F;&#x6211;&#x4EEC;&#x4EBA;&#x7C7B;&#x79D1;&#x6280;&#x4E0D;&#x65AD;&#x8FDB;&#x6B65;&#x7684;&#x4E3B;&#x8981;&#x52A8;&#x529B;&#xFF0C; &#x4E5F;&#x662F;&#x4E00;
+&#x4E2A;&#x4EBA;&#x5B66;&#x4E60;&#x7684;&#x6700;&#x5927;&#x52A8;&#x529B;&#x6765;&#x6E90;&#x3002; &#x5F53;&#x7136;&#x5728;<strong>&#x5B66;&#x4E60;&#x4E0A;</strong>&#x6211;&#x4EEC;&#x4E0D;&#x80FD;<strong>&#x5077;&#x61D2;</strong>&#xFF0C; &#x56E0;&#x4E3A;&#x5B66;&#x4E60;&#x7684;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x4E3A;
+&#x4E86;<strong>&#x66F4;&#x597D;&#x5730;&#x5077;&#x61D2;</strong>&#x3002;</p>
+<p>&#x4F46;&#x6709;&#x65F6;&#x5019;&#x8FD8;&#x662F;&#x9700;&#x8981;&#x7528; Matlab &#x505A;&#x70B9;&#x4E8B;&#x60C5;&#xFF08;&#x6BD5;&#x7ADF;&#x5927;&#x5BB6;&#x4E60;&#x60EF;&#x7528;&#x4E86;&#xFF09;&#xFF0C; &#x6BD4;&#x5982;&#x53D1;&#x73B0; matplotlib &#x6709;
+&#x65F6;&#x753B;&#x51FA;&#x7684;&#x56FE;&#x4E0D;&#x6EE1;&#x610F;&#xFF0C; &#x4F46;&#x4F60;&#x7684;&#x8BBA;&#x6587;&#x53C8;&#x6025;&#x9700;&#x4E00;&#x5F20;&#x66F4;&#x6EE1;&#x610F;&#x7684;&#x56FE;&#x65F6;&#x3002; &#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x5F62;&#x4E0B;&#xFF0C; &#x4F60;&#x9996;&#x5148;&#x8981;&#x95EE;
+&#x81EA;&#x5DF1;&#xFF1A; &#x80FD;&#x5426;&#x7701;&#x70B9;&#x4E8B;&#x4E0D;&#x79BB;&#x5F00; Python &#x73AF;&#x5883;&#xFF0C; &#x53C8;&#x80FD;&#x7528;&#x5230; Matlab? &#x6709;&#x4E86;&#x8FD9;&#x6837;&#x7684;&#x95EE;&#x9898;&#xFF0C; &#x4F60;&#x5C31;&#x53EF;&#x4EE5;
+&#x884C;&#x52A8;&#x4E86;&#xFF0C; &#x6BD4;&#x5982; google &#x548C;&#x95EE;&#x522B;&#x4EBA;&#x3002;</p>
+<p>Matlab &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A; Python &#x7F16;&#x7A0B;&#x63A5;&#x53E3; Matlab Engine for Python&#x3002; &#x5728; Matlab &#x7684;&#x6839;&#x76EE;&#x5F55;
+&#x4E0B;&#xFF0C; &#x8FDB;&#x5165; <code>extern/engines/python</code>, &#x6267;&#x884C;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5B89;&#x88C5;&#x547D;&#x4EE4;&#x5373;&#x53EF;&#xFF0C; &#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>cd /opt/matlab/R2018a/extern/engines/python/
+sudo python3 setup.py install
+</code></pre><p>&#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x4E00;&#x4E9B;&#x7B80;&#x5355;&#x7684;&#x7528;&#x6CD5;&#xFF0C; &#x5176;&#x5B83;&#x60C5;&#x5F62;&#x8BF7;&#x81EA;&#x5DF1;&#x8111;&#x8865;&#x548C; google&#xFF1A;</p>
+<pre><code>import numpy as np
+import matlab.engine
+eng = matlab.engine.start_matlab() # &#x542F;&#x52A8;&#x4E00;&#x4E2A; Matlab &#x7684; session
+
+a = np.random.rand(10) # &#x751F;&#x6210;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E3A; 10 &#x7684;&#x968F;&#x673A;&#x77E9;&#x9635;&#xFF0C; &#x5143;&#x7D20;&#x5728; 0 &#x548C; 1 &#x4E4B;&#x95F4;
+A = matlab.double(a.tolist()) # &#x8F6C;&#x5316;&#x4E3A; matlab &#x7684;&#x77E9;&#x9635;
+eng.sqrt(A) # &#x8BA1;&#x7B97;&#x77E9;&#x9635;&#x7684;&#x5F00;&#x65B9;
+eng.plot(A) # &#x753B;&#x56FE;
+eng.max(A, nargout=1) # &#x8FD4;&#x56DE; A &#x6700;&#x5927;&#x503C;
+eng.max(A, nargout=2) # &#x8FD4;&#x56DE; A &#x7684;&#x6700;&#x5927;&#x503C;&#x53CA;&#x5176;&#x4F4D;&#x7F6E;
+</code></pre><p>&#x753B;&#x51FA;&#x7684;&#x56FE;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="figures/mplot.png" alt=""></p>
+<p>&#x5F53;&#x7136;&#xFF0C; &#x5982;&#x679C;&#x505A;&#x4E86;&#x8DB3;&#x591F;&#x7684;&#x641C;&#x7D22;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0; Matlab Engine for Python &#x4E0D;&#x662F;&#x552F;&#x4E00;&#x7684;&#x9009;&#x62E9;&#xFF0C; &#x4F60;&#x7684;&#x9009;&#x62E9;&#x8FD8;&#x6709; <a href="https://github.com/bastibe/transplant" target="_blank">Transplant</a>, &#x63A5;&#x53E3;&#x505A;&#x7684;&#x6BD4; Matlab Engine for Python &#x66F4;&#x7B80;&#x6D01;&#x4E00;&#x70B9;&#xFF0C; &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7528; numpy &#x6570;&#x7EC4;&#x505A;&#x53C2;&#x6570;&#x3002; &#x5B89;&#x88C5;&#x5F88;&#x7B80;&#x5355;&#xFF1A;</p>
+<pre><code>sudo -H pip3 install transplant
+</code></pre><p>&#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x4E00;&#x4E2A;&#x4E24;&#x79CD;&#x63A5;&#x53E3;&#x7684;&#x4EE3;&#x7801;&#x6BD4;&#x8F83;&#xFF1A;</p>
+<pre><code>Matlab Engine for Python               |              Transplant
+---------------------------------------|---------------------------------------
+import numpy  as np                    | import numpy as np
+import matlab                          | import transplant
+import matlab.engine                   |
+                                       |
+eng = matlab.engine.start_matlab()     | eng = transplant.Matlab()
+numpy_data = np.random.randn(100)      | numpy_data = np.random.randn(100)
+list_data = numpy_data.tolist()        |
+matlab_data = matlab.double(list_data) |
+data_sum = eng.sum(matlab_data)        | data_sum = eng.sum(numpy_data)
+</code></pre><p>&#x66F4;&#x591A;&#x5185;&#x5BB9;&#x8BF7;&#x53C2;&#x89C1; <a href="https://bastibe.de/2015-11-03-matlab-engine-performance.html&#x3002;" target="_blank">https://bastibe.de/2015-11-03-matlab-engine-performance.html&#x3002;</a></p>
 
                                 
                                 </section>
@@ -691,12 +743,12 @@
 
             
                 
-                <a href="whysc.html" class="navigation navigation-prev " aria-label="Previous page: 开发动机与基本原则">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Matlab 笔记">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../cpp/" class="navigation navigation-next " aria-label="Next page: C/C++ 笔记">
+                <a href="../tools/" class="navigation navigation-next " aria-label="Next page: 效率工具">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -707,7 +759,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"开发日志","level":"1.7.2","depth":2,"next":{"title":"C/C++ 笔记","level":"1.8","depth":1,"path":"cpp/README.md","ref":"./cpp/README.md","articles":[]},"previous":{"title":"开发动机与基本原则","level":"1.7.1","depth":2,"path":"whysc/whysc.md","ref":"./whysc/whysc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"whysc/develop_note.md","mtime":"2019-02-21T00:52:37.999Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-23T02:44:31.458Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Matlab engine for Python","level":"1.10.1","depth":2,"next":{"title":"效率工具","level":"1.11","depth":1,"path":"tools/README.md","ref":"./tools/README.md","articles":[{"title":"Ubuntu","level":"1.11.1","depth":2,"path":"tools/ubuntu.md","ref":"./tools/ubuntu.md","articles":[]},{"title":"Windows","level":"1.11.2","depth":2,"path":"tools/windows.md","ref":"./tools/windows.md","articles":[]},{"title":"五笔输入法","level":"1.11.3","depth":2,"path":"tools/wubi.md","ref":"./tools/wubi.md","articles":[]},{"title":"Git 版本控制","level":"1.11.4","depth":2,"path":"tools/git.md","ref":"./tools/git.md","articles":[]},{"title":"Gitbook","level":"1.11.5","depth":2,"path":"tools/gitbook.md","ref":"./tools/gitbook.md","articles":[]},{"title":"Make","level":"1.11.6","depth":2,"path":"tools/make.md","ref":"./tools/make.md","articles":[]},{"title":"CMake","level":"1.11.7","depth":2,"path":"tools/cmake.md","ref":"./tools/cmake.md","articles":[]},{"title":"latex","level":"1.11.8","depth":2,"path":"tools/latex.md","ref":"./tools/latex.md","articles":[]},{"title":"Markdown","level":"1.11.9","depth":2,"path":"tools/markdown.md","ref":"./tools/markdown.md","articles":[]},{"title":"代码托管","level":"1.11.10","depth":2,"path":"tools/github.md","ref":"./tools/github.md","articles":[]},{"title":"文献管理","level":"1.11.11","depth":2,"path":"tools/zotero.md","ref":"./tools/zotero.md","articles":[]}]},"previous":{"title":"Matlab 笔记","level":"1.10","depth":1,"path":"matlab/README.md","ref":"./matlab/README.md","articles":[{"title":"Matlab engine for Python","level":"1.10.1","depth":2,"path":"matlab/matlab_engine.md","ref":"./matlab/matlab_engine.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"matlab/matlab_engine.md","mtime":"2019-02-21T06:45:55.637Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-23T02:44:31.458Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
