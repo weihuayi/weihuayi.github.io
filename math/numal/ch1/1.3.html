@@ -1,0 +1,542 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1.3 数值代数研究的一般技术 · 数值代数课件</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Wei, Huayi">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="1.2.html" />
+    
+
+    <script src="../gitbook/gitbook-plugin-graph/d3.min.js"></script>
+    <script src="../gitbook/gitbook-plugin-graph/function-plot.js"></script>    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    课程简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../perusall.html">
+            
+                <a href="../perusall.html">
+            
+                    
+                    Peruall 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../python.html">
+            
+                <a href="../python.html">
+            
+                    
+                    Python 基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../markdown.html">
+            
+                <a href="../markdown.html">
+            
+                    
+                    Markdown 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../others.html">
+            
+                <a href="../others.html">
+            
+                    
+                    其它
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../todo.html">
+            
+                <a href="../todo.html">
+            
+                    
+                    课程建设任务列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第一章：数值代数的研究对象与方法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="1.1.html">
+            
+                <a href="1.1.html">
+            
+                    
+                    1.1 基本符号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="1.2.html">
+            
+                <a href="1.2.html">
+            
+                    
+                    1.2 数值代数研究的基本问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.3" data-path="1.3.html">
+            
+                <a href="1.3.html">
+            
+                    
+                    1.3 数值代数研究的一般技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >1.3 数值代数研究的一般技术</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="13-&#x6570;&#x503C;&#x4EE3;&#x6570;&#x7814;&#x7A76;&#x4E2D;&#x7684;&#x57FA;&#x672C;&#x6280;&#x672F;">1.3 &#x6570;&#x503C;&#x4EE3;&#x6570;&#x7814;&#x7A76;&#x4E2D;&#x7684;&#x57FA;&#x672C;&#x6280;&#x672F;</h1>
+<ol>
+<li>&#x77E9;&#x9635;&#x5206;&#x89E3; (matrix factorizations)</li>
+<li>&#x6270;&#x52A8;&#x7406;&#x8BBA;&#x548C;&#x6761;&#x4EF6;&#x6570; (Perturbation and condition numbers)</li>
+<li>&#x820D;&#x5165;&#x8BEF;&#x5DEE;&#x5BF9;&#x7B97;&#x6CD5;&#x7684;&#x5F71;&#x54CD; (effects of roundoff error on algorithms)</li>
+<li>&#x7B97;&#x6CD5;&#x901F;&#x5EA6;&#x7684;&#x5206;&#x6790; (analysis of the speed of algorithm)</li>
+<li>&#x6570;&#x503C;&#x8F6F;&#x4EF6;&#x5DE5;&#x7A0B; (engineering numerical software)</li>
+</ol>
+<h2 id="131-&#x77E9;&#x9635;&#x5206;&#x89E3;">1.3.1 &#x77E9;&#x9635;&#x5206;&#x89E3;</h2>
+<p><strong>&#x77E9;&#x9635;&#x5206;&#x89E3;</strong>&#x5C31;&#x662F;&#x628A;&#x590D;&#x6742;&#x7684;&#x77E9;&#x9635;&#x5206;&#x89E3;&#x4E3A;&#x591A;&#x4E2A;&#x7B80;&#x5355;&#x77E9;&#x9635;&#x4E58;&#x79EF;&#x7684;&#x5F62;&#x5F0F;&#xFF0C; &#x4ECE;&#x800C;&#x66F4;&#x6709;&#x5229;&#x4E8E;&#x95EE;&#x9898;&#x7684;&#x6C42;&#x89E3;
+&#x3002;</p>
+<p><strong>&#x4F8B;1.1</strong> &#x5047;&#x5982;&#x8981;&#x6C42;&#x89E3; <script type="math/tex; ">Ax = b</script>&#xFF0C; &#x5176;&#x4E2D;
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+a_{11} \\
+a_{21} & a_{22} \\
+\vdots &  & \ddots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{bmatrix}
+=
+\begin{bmatrix}
+b_1 \\
+b_2 \\
+\vdots \\
+b_n
+\end{bmatrix}
+</script></p>
+<p>&#x82E5; <script type="math/tex; ">A</script> &#x662F;&#x4E0B;&#x4E09;&#x89D2;&#x77E9;&#x9635;&#xFF0C;&#x5229;&#x7528;<strong>&#x524D;&#x5411;&#x66FF;&#x6362;(forward substitutions)</strong>&#x5F88;&#x5BB9;&#x6613;&#x6C42;&#x89E3;:</p>
+<p><strong>&#x5B9A;&#x7406;1.1</strong> &#x82E5; <script type="math/tex; ">n\times n</script> &#x9636;&#x77E9;&#x9635; <script type="math/tex; ">A</script> &#x975E;&#x5947;&#x5F02;&#xFF0C;&#x5219;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x7F6E;&#x6362;&#x77E9;&#x9635; <script type="math/tex; ">P</script> (&#x5BF9;&#x5355;
+&#x4F4D;&#x77E9;&#x9635;&#x8FDB;&#x884C;&#x884C;&#x7F6E;&#x6362;&#x540E;&#x5F97;&#x5230;&#x7684;&#x77E9;&#x9635;)&#x3001;&#x4E00;&#x4E2A;&#x975E;&#x5947;&#x5F02;&#x4E0B;&#x4E09;&#x89D2;&#x77E9;&#x9635; <script type="math/tex; ">L</script> &#x548C;&#x4E00;&#x4E2A;&#x975E;&#x5947;&#x5F02;&#x4E0A;&#x4E09;&#x89D2;&#x9635;
+<script type="math/tex; ">U</script>&#xFF0C;&#x4F7F;&#x5F97; <script type="math/tex; ">A = P\cdot L\cdot  U </script>&#x3002; &#x6C42;&#x89E3; <script type="math/tex; ">Ax = b</script> &#x53EF;&#x8F6C;&#x5316;&#x4E3A;&#x6C42;&#x89E3;
+&#x7B49;&#x4EF7;&#x65B9;&#x7A0B;&#x7EC4; <script type="math/tex; ">PLUx = b</script>, &#x6C42;&#x89E3;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;:</p>
+<p><script type="math/tex; mode=display">
+\begin{aligned}
+LUx = & P^{-1}b = P^Tb  \\
+Ux = &L^{-1}(P^{-1}b)  \\
+x =  &U^{-1}(L^{-1}P^{-1}b) 
+\end{aligned}
+</script></p>
+<blockquote>
+<p><strong>&#x8BB2;&#x8BFE;&#x7B14;&#x8BB0;</strong></p>
+<ol>
+<li>&#x4EE3;&#x7801;&#x6F14;&#x793A;</li>
+<li>&#x7F6E;&#x6362;&#x77E9;&#x9635;</li>
+</ol>
+</blockquote>
+<p><strong>Jordan &#x6807;&#x51C6;&#x5206;&#x89E3;:</strong> <script type="math/tex; ">A = VJV^{-1}</script> </p>
+<ol>
+<li><script type="math/tex; ">J</script> &#x7684;&#x4E3B;&#x5BF9;&#x89D2;&#x7EBF;&#x4E3A; <script type="math/tex; ">A</script> &#x7684;&#x7279;&#x5F81;&#x503C;</li>
+<li><script type="math/tex; ">V</script> &#x7684;&#x5217;&#x5411;&#x91CF;&#x4E3A;&#x5BF9;&#x5E94;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;</li>
+<li><script type="math/tex; ">V</script> &#x975E;&#x5947;&#x5F02;</li>
+</ol>
+<p><strong>Schur &#x5206;&#x89E3;:</strong> <script type="math/tex; ">A = UTU^*</script>&#x3002; </p>
+<ol>
+<li><script type="math/tex; ">U</script> &#x662F;&#x9149;&#x77E9;&#x9635;(unitary matrix), &#x5B83;&#x7684;&#x5217;&#x5411;&#x91CF;&#x6B63;&#x4EA4; <script type="math/tex; "> UU^* = I</script></li>
+<li><script type="math/tex; ">T</script> &#x7684;&#x5BF9;&#x89D2;&#x7EBF;&#x5143;&#x7D20;&#x4E3A; <script type="math/tex; ">A</script> &#x7684;&#x7279;&#x5F81;&#x503C;</li>
+</ol>
+<blockquote>
+<p><strong>&#x8BB2;&#x8BFE;&#x7B14;&#x8BB0;</strong></p>
+<ol>
+<li>&#x89E3;&#x91CA;&#x6BD4;&#x8F83;&#x4E24;&#x79CD;&#x5206;&#x89E3;</li>
+</ol>
+</blockquote>
+<h2 id="132-&#x6270;&#x52A8;&#x7406;&#x8BBA;&#x4E0E;&#x6761;&#x4EF6;&#x6570;">1.3.2 &#x6270;&#x52A8;&#x7406;&#x8BBA;&#x4E0E;&#x6761;&#x4EF6;&#x6570;</h2>
+<p>&#x6570;&#x503C;&#x7B97;&#x6CD5;&#x7B97;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x4E00;&#x822C;&#x6709;&#x4E24;&#x7C7B;&#x8BEF;&#x5DEE;&#x6765;&#x6E90;&#xFF1A;</p>
+<ol>
+<li>&#x8F93;&#x5165;&#x6570;&#x636E;&#x8BEF;&#x5DEE;</li>
+<li>&#x7B97;&#x6CD5;&#x903C;&#x8FD1;&#x8BEF;&#x5DEE;</li>
+</ol>
+<p><strong>&#x95EE;&#x9898;&#xFF1A;</strong> &#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x8F93;&#x5165;&#x6570;&#x636E;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x5C0F;&#x5C0F;&#x7684;&#x6270;&#x52A8;&#xFF0C;&#x4F1A;&#x7ED9;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x5E26;&#x6765;&#x591A;&#x5927;&#x7684;
+&#x6539;&#x53D8;&#x6216;&#x6270;&#x52A8;&#x3002;</p>
+<p><strong>&#x4F8B; 1.3</strong> &#x8BBE; <script type="math/tex; ">f(x)</script> &#x662F;&#x5173;&#x4E8E;&#x5B9E;&#x53D8;&#x91CF; <script type="math/tex; ">x</script> &#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x503C;&#x53EF;&#x5FAE;&#x51FD;&#x6570;&#x3002;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x5E26;&#x6270;&#x52A8;&#x7684;&#x8F93;&#x5165;
+<script type="math/tex; ">x + \delta x</script>, &#x4E14;&#x77E5;&#x9053; <script type="math/tex; ">\delta x</script> &#x4E0A;&#x754C;&#xFF0C;&#x95EE;&#x51FD;&#x6570;&#x503C; <script type="math/tex; ">f(x)</script> &#x7684;&#x6270;&#x52A8;&#x6709;&#x591A;&#x5927;&#x3002;</p>
+<p><strong>&#x5206;&#x6790;&#xFF1A;</strong>  &#x8981;&#x8BA1;&#x7B97; <script type="math/tex; ">f(x)</script>, &#x4F46;&#x5B9E;&#x9645;&#x8BA1;&#x7B97;&#x7684;&#x662F; <script type="math/tex; ">f(x + \delta x)</script>&#xFF0C; &#x5E76;&#x8BD5;&#x56FE;&#x7ED9;&#x51FA;<strong>&#x7EDD;&#x5BF9;
+&#x8BEF;&#x5DEE;</strong> <script type="math/tex; ">|f(x + \delta x)-f(x)|</script> &#x7684;&#x754C;.</p>
+<p>&#x5BF9; <script type="math/tex; ">f</script> &#x8FDB;&#x884C;&#x7B80;&#x5355;&#x7684;&#x7EBF;&#x6027;&#x8FD1;&#x4F3C;&#x53EF;&#x5F97;</p>
+<p><script type="math/tex; mode=display">
+f(x + \delta x) \approx f(x) + \delta xf'(x),
+</script></p>
+<p><script type="math/tex; mode=display">
+|f(x + \delta x) - f(x)| \approx |\delta x|\cdot |f'(x)|.
+</script></p>
+<p>&#x79F0; <script type="math/tex; ">|f'(x)|</script> &#x4E3A; <script type="math/tex; ">f</script> &#x5728; <script type="math/tex; ">x</script> &#x4E0A;&#x7684;<strong>&#x7EDD;&#x5BF9;&#x6761;&#x4EF6;&#x6570;</strong>&#x3002;</p>
+<p>&#x82E5; <script type="math/tex; ">|f'(x)|</script> &#x8DB3;&#x591F;&#x5927;&#xFF0C;&#x5373;&#x4F7F; <script type="math/tex; ">\delta x</script> &#x5F88;&#x5C0F;&#xFF0C;&#x51FD;&#x6570;&#x503C;&#x7684;&#x6270;&#x52A8;&#x4E5F;&#x53EF;&#x80FD;&#x5F88;&#x5927;, &#x5373;&#x8BEF;&#x5DEE;&#x5F88;
+&#x5927;&#x3002; &#x6B64;&#x65F6;&#xFF0C;&#x79F0; <script type="math/tex; ">f</script> &#x4E8E; <script type="math/tex; ">x</script> &#x5904;&#x662F;<strong>&#x75C5;&#x6001;&#x7684;</strong>&#x3002;</p>
+<p>&#x901A;&#x5E38;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x6765;&#x754C;&#x5B9A;&#x8BEF;&#x5DEE;:</p>
+<p><script type="math/tex; mode=display">
+\frac{|f(x+\delta x) - f(x)|}{|f(x)|} \approx \frac{|\delta x|}{|
+x|}\cdot\frac{|f'(x)|\cdot|x|}{|f(x)|}
+</script></p>
+<p>&#x4E0A;&#x5F0F;&#x5DE6;&#x7AEF;&#x79F0;&#x4E3A;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x7684;<strong>&#x76F8;&#x5BF9;&#x8BEF;&#x5DEE;</strong>, &#x5B83;&#x7684;&#x5927;&#x5C0F;&#x53EF;&#x7531;&#x53F3;&#x7AEF;&#x7684;&#x76F8;&#x5BF9;&#x8F93;&#x5165;&#x8BEF;&#x5DEE; <script type="math/tex; mode=display">
+\frac{|\delta x|}{| x|} </script> &#x548C;<strong>&#x76F8;&#x5BF9;&#x6761;&#x4EF6;&#x6570;</strong> <script type="math/tex; "> \frac{|f'(x)|\cdot|x|}{|f(x)|} </script>
+&#x7684;&#x4E58;&#x79EF;&#x6765;&#x754C;&#x5B9A;&#x3002;</p>
+<p>&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x4EE3;&#x6570;&#x8BA1;&#x7B97;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x90FD;&#x4F1A;&#x7ED9;&#x51FA;&#x76F8;&#x5E94;&#x7684;<strong>&#x6761;&#x4EF6;&#x6570;</strong>&#x3002;</p>
+<blockquote>
+<p><strong>&#x8BB2;&#x8BFE;&#x7B14;&#x8BB0;</strong></p>
+<ol>
+<li>&#x4E3E;&#x4F8B;&#x89E3;&#x91CA;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;&#x76F8;&#x5BF9;&#x8BEF;&#x5DEE;</li>
+</ol>
+</blockquote>
+<h2 id="133-&#x820D;&#x5165;&#x8BEF;&#x5DEE;&#x5BF9;&#x7B97;&#x6CD5;&#x7684;&#x5F71;&#x54CD;effects-of-roundoff-error-on-algorithms">1.3.3 &#x820D;&#x5165;&#x8BEF;&#x5DEE;&#x5BF9;&#x7B97;&#x6CD5;&#x7684;&#x5F71;&#x54CD;(Effects of Roundoff Error on Algorithms)</h2>
+<p>&#x8BBE; <script type="math/tex; ">alg(x)</script> &#x662F;&#x542B;&#x6709;&#x820D;&#x5165;&#x8BEF;&#x5DEE;&#x5F71;&#x54CD;&#x7684;&#x8BA1;&#x7B97; <script type="math/tex; ">f(x)</script> &#x7684;&#x7B97;&#x6CD5;&#xFF0C; &#x82E5;&#x5BF9;&#x4E00;&#x5207; <script type="math/tex; ">x</script> &#x5B58;&#x5728;&#x4E00;&#x4E2A;
+&#x201C;&#x5C0F;&#x7684;&#x201D; <script type="math/tex; ">\delta x</script>, &#x4F7F;&#x5F97; <script type="math/tex; ">alg(x) = f(x + \delta x)</script>, &#x5219;&#x79F0; <script type="math/tex; ">alg(x)</script> &#x4E3A;
+<script type="math/tex; ">f(x)</script> &#x7684;<strong>&#x5411;&#x540E;&#x7A33;&#x5B9A;&#x7B97;&#x6CD5; (backward stable algorithm)</strong>, <script type="math/tex; ">\delta x</script> &#x79F0;&#x4E3A;&#x76F8;&#x5E94;&#x7684;
+<strong>&#x5411;&#x540E;&#x8BEF;&#x5DEE; (backward error)</strong>&#x3002;</p>
+<p><script type="math/tex; mode=display">
+\text{error} = |alg(x) - f(x)| = |f(x + \delta x) - f(x)| 
+\approx |f'(x)|\cdot|\delta x|
+</script></p>
+<blockquote>
+<p><strong>&#x8BB2;&#x8BFE;&#x7B14;&#x8BB0;</strong></p>
+<ol>
+<li>&#x89E3;&#x91CA;&#x5411;&#x540E;&#x7A33;&#x5B9A;&#x7684;&#x610F;&#x4E49;</li>
+<li>&#x8981;&#x9009;&#x62E9;&#x5411;&#x540E;&#x7A33;&#x5B9A;&#x7684;&#x7B97;&#x6CD5;</li>
+<li>&#x5411;&#x540E;&#x7A33;&#x5B9A;&#x7684;&#x7B97;&#x6CD5;&#x4E5F;&#x53EF;&#x4EE5;&#x8BEF;&#x5DEE;&#x5F88;&#x5927;</li>
+</ol>
+</blockquote>
+<h2 id="134-&#x5206;&#x6790;&#x7B97;&#x6CD5;&#x7684;&#x901F;&#x5EA6;&#xFF08;analyzing-the-speed-of-algorithms&#xFF09;">1.3.4 &#x5206;&#x6790;&#x7B97;&#x6CD5;&#x7684;&#x901F;&#x5EA6;&#xFF08;Analyzing the Speed of Algorithms&#xFF09;</h2>
+<p>&#x9009;&#x62E9;&#x7B97;&#x6CD5;&#x65F6;&#xFF0C;&#x9664;&#x4E86;&#x8981;&#x8003;&#x8651;&#x5411;&#x540E;&#x7A33;&#x5B9A;&#x6027;&#xFF0C;&#x8FD8;&#x8981;&#x8003;&#x8651;<strong>&#x7B97;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x901F;&#x5EA6;(speed)</strong>, &#x6709;&#x4EE5;&#x4E0B;&#x4E09;&#x79CD;
+&#x5E38;&#x7528;&#x7684;&#x4F30;&#x8BA1;&#x901F;&#x5EA6;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ol>
+<li>&#x5B9E;&#x73B0;&#x7B97;&#x6CD5;&#x5728;&#x673A;&#x5668;&#x4E0A;&#x8DD1;&#x4E00;&#x904D;</li>
+<li>&#x6D6E;&#x70B9;&#x6570;&#x64CD;&#x4F5C;&#x7684;&#x6570;&#x76EE; (flops, floating point operations)</li>
+<li>&#x8FED;&#x4EE3;&#x6CD5;&#x4E2D;&#x4F30;&#x8BA1;&#x8BEF;&#x5DEE;&#x7684;&#x4E0B;&#x964D;&#x7387; <script type="math/tex; "> 0 < c < 1</script><ul>
+<li>&#x7EBF;&#x6027;&#xFF1A;<script type="math/tex; ">|\text{error}_i| < c\cdot |\text{error}_{i-1}|</script></li>
+<li>&#x4E8C;&#x6B21;&#xFF1A;<script type="math/tex; ">|\text{error}_i| < c\cdot |\text{error}_{i-1}|^2</script></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>&#x8BB2;&#x8BFE;&#x7B14;&#x8BB0;</strong></p>
+<ol>
+<li>&#x89E3;&#x91CA;&#x4E09;&#x79CD;&#x65B9;&#x6CD5;</li>
+<li>&#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#x5404;&#x81EA;&#x7684;&#x5C40;&#x9650;</li>
+</ol>
+</blockquote>
+<h2 id="135-&#x5DE5;&#x7A0B;&#x6570;&#x503C;&#x8BA1;&#x7B97;&#x8F6F;&#x4EF6;engineering-numerical-software">1.3.5 &#x5DE5;&#x7A0B;&#x6570;&#x503C;&#x8BA1;&#x7B97;&#x8F6F;&#x4EF6;(Engineering Numerical Software)</h2>
+<p>&#x8BBE;&#x8BA1;&#x6216;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6570;&#x503C;&#x8F6F;&#x4EF6;&#x7684;&#x5E38;&#x7528;&#x6807;&#x51C6;&#xFF1A;</p>
+<ol>
+<li>&#x6613;&#x7528;&#x6027; (easy of use)</li>
+<li>&#x53EF;&#x9760;&#x6027; (reliablility)</li>
+<li>&#x901F;&#x5EA6;  (speed)</li>
+</ol>
+<blockquote>
+<p><strong>&#x8BB2;&#x8BFE;&#x7B14;&#x8BB0;</strong></p>
+<ol>
+<li>&#x89E3;&#x91CA;&#x4F55;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6613;&#x7528;&#x6027;&#x6BD4;&#x5176;&#x5B83;&#x6807;&#x51C6;&#xFF0C;&#x66F4;&#x91CD;&#x8981;</li>
+</ol>
+</blockquote>
+<p>&#x4F7F;&#x7528;&#x5176;&#x5B83;&#x4E13;&#x5BB6;&#x7684;&#x6570;&#x503C;&#x4EE3;&#x6570;&#x8F6F;&#x4EF6;&#x7684;&#x4E09;&#x79CD;&#x57FA;&#x672C;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<ol>
+<li>&#x8F6F;&#x4EF6;&#x5E93;&#xFF0C;&#x5982; <a href="https://www.netlib.org/" target="_blank">Netlib</a> &#x4E0A;&#x7684; <a href="http://www.netlib.org/lapack/index.html" target="_blank">LAPACK</a> </li>
+<li>&#x7B97;&#x6CD5;&#x96C6;&#x6210;&#x73AF;&#x5883;&#xFF0C;&#x5982; <a href="https://www.mathworks.com" target="_blank">Matlab</a>, &#x66F4;&#x6613;&#x7528;&#xFF0C;&#x5728;&#x67D0;&#x79CD;&#x7A0B;&#x5EA6;&#x4E0A;&#x727A;&#x7272;&#x4E86;&#x6267;&#x884C;&#x6548;&#x7387;</li>
+<li>&#x6A21;&#x677F;&#x5E93;</li>
+</ol>
+<blockquote>
+<p><strong>&#x8BB2;&#x8BFE;&#x7B14;&#x8BB0;</strong></p>
+<ol>
+<li>&#x89E3;&#x91CA; Matlab &#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x964D;&#x4F4E;&#x4E86;&#x7B97;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x6548;&#x7387;</li>
+<li>&#x89E3;&#x91CA;&#x6A21;&#x677F;&#x5E93;&#x7684;&#x5E94;&#x7528;&#x73AF;&#x5883;&#x3002;</li>
+</ol>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1.2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 1.2 数值代数研究的基本问题">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1.3 数值代数研究的一般技术","level":"1.7.3","depth":2,"previous":{"title":"1.2 数值代数研究的基本问题","level":"1.7.2","depth":2,"path":"ch1/1.2.md","ref":"./ch1/1.2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch1/1.3.md","mtime":"2019-02-25T09:34:27.819Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-25T09:34:56.491Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+

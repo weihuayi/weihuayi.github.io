@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>第一章：数值代数的研究对象与方法 · 数值代数课件</title>
+        <title>1.2 数值代数研究的基本问题 · 数值代数课件</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -66,10 +66,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="1.1.html" />
+    <link rel="next" href="1.3.html" />
     
     
-    <link rel="prev" href="../todo.html" />
+    <link rel="prev" href="1.1.html" />
     
 
     <script src="../gitbook/gitbook-plugin-graph/d3.min.js"></script>
@@ -179,7 +179,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7" data-path="./">
+        <li class="chapter " data-level="1.7" data-path="./">
             
                 <a href="./">
             
@@ -206,7 +206,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="1.2.html">
+        <li class="chapter active" data-level="1.7.2" data-path="1.2.html">
             
                 <a href="1.2.html">
             
@@ -267,7 +267,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >第一章：数值代数的研究对象与方法</a>
+        <a href=".." >1.2 数值代数研究的基本问题</a>
     </h1>
 </div>
 
@@ -282,7 +282,26 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="12-&#x6570;&#x503C;&#x4EE3;&#x6570;&#x7814;&#x7A76;&#x7684;&#x57FA;&#x672C;&#x95EE;&#x9898;">1.2 &#x6570;&#x503C;&#x4EE3;&#x6570;&#x7814;&#x7A76;&#x7684;&#x57FA;&#x672C;&#x95EE;&#x9898;</h1>
+<ol>
+<li>&#x7EBF;&#x6027;&#x65B9;&#x7A0B;&#x7EC4;: <script type="math/tex; ">Ax = b</script> .&#x8FD9;&#x91CC; <script type="math/tex; ">A</script> &#x662F;&#x4E00;&#x4E2A;&#x5DF2;&#x77E5;&#x7684; <script type="math/tex; ">n\times n</script> &#x9636;&#x975E;&#x5947;&#x5F02;&#x5B9E;&#x6216;&#x590D;&#x7684;
+&#x77E9;&#x9635;, <script type="math/tex; ">b</script> &#x662F;&#x4E00;&#x4E2A;&#x5DF2;&#x77E5;&#x7684; <script type="math/tex; ">n</script> &#x7EF4;&#x5217;&#x5411;&#x91CF;&#xFF0C; <script type="math/tex; ">x</script> &#x662F;&#x5F85;&#x6C42;&#x7684; <script type="math/tex; ">n</script> &#x7EF4;&#x5217;&#x5411;&#x91CF;. </li>
+<li>&#x6700;&#x5C0F;&#x4E8C;&#x4E58;&#x95EE;&#x9898;: &#x8BA1;&#x7B97;&#x6781;&#x5C0F;&#x5316; <script type="math/tex; ">\lVert Ax-b\rVert_2</script> &#x7684; <script type="math/tex; ">x</script> &#xFF0C;&#x8FD9;&#x91CC; <script type="math/tex; ">A</script> s&#x662F; <script type="math/tex; ">m\times n</script> &#x9636;
+&#x7684;&#xFF0C; <script type="math/tex; ">b</script> &#x662F; <script type="math/tex; ">m\times 1</script> &#x9636;&#x7684;&#xFF0C; <script type="math/tex; ">x</script>  &#x662F; <script type="math/tex; ">n\times 1</script> &#x9636;&#x7684;&#xFF0C;&#x800C; <script type="math/tex; ">\lVert y \rVert_2 \equiv
+\sqrt{\sum_{i}\mid y_i\mid^2}</script> &#x79F0;&#x4E3A;&#x5411;&#x91CF; <script type="math/tex; ">y</script> &#x7684; 2-&#x8303;&#x6570;.&#x82E5; <script type="math/tex; ">m > n</script> ,&#x5373;&#x65B9;&#x7A0B;&#x6570;&#x5927;&#x4E8E;&#x672A;
+&#x77E5;&#x91CF;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x7A0B;&#x79F0;&#x4E3A;&#x8D85;&#x5B9A;&#x7684;. &#x6B64;&#x65F6;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x80FD;&#x7CBE;&#x786E;&#x5730;&#x6C42;&#x89E3; <script type="math/tex; ">Ax = b</script>. &#x82E5; <script type="math/tex; ">m < n</script>, &#x8FD9;
+&#x4E2A;&#x65B9;&#x7A0B;&#x662F;&#x4E9A;&#x5B9A;&#x7684;&#xFF0C;&#x5176;&#x5C06;&#x6709;&#x65E0;&#x7A77;&#x591A;&#x4E2A;&#x89E3;. </li>
+<li>&#x7279;&#x5F81;&#x503C;&#x95EE;&#x9898;: &#x7ED9;&#x5B9A; <script type="math/tex; ">n\times n</script> &#x9636;&#x77E9;&#x9635; <script type="math/tex; ">A</script>&#xFF0C;&#x6C42; <script type="math/tex; ">n\times 1</script> &#x9636;&#x975E;&#x96F6;&#x5411;&#x91CF; <script type="math/tex; ">x</script> &#x548C;&#x6807;&#x91CF;
+<script type="math/tex; ">\lambda</script> &#x4F7F;&#x5F97; <script type="math/tex; ">Ax = \lambda x</script>.</li>
+<li>&#x5947;&#x5F02;&#x503C;&#x95EE;&#x9898;:&#x7ED9;&#x5B9A; <script type="math/tex; ">m\times n</script> &#x7684;&#x77E9;&#x9635; <script type="math/tex; ">A</script> &#xFF0C;&#x6C42; <script type="math/tex; ">n\times 1</script> &#x9636;&#x975E;&#x96F6;&#x5411;&#x91CF; <script type="math/tex; ">x</script> &#x548C;&#x6807;&#x91CF;
+<script type="math/tex; ">\lambda</script> &#x4F7F;&#x5F97; <script type="math/tex; ">A^TAx = \lambda x</script>. </li>
+</ol>
+<ul>
+<li>&#x4EE5;&#x4E0A;&#x56DB;&#x7C7B;&#x95EE;&#x9898;&#x662F;&#x79D1;&#x5B66;&#x8BA1;&#x7B97;&#x4E2D;&#x7ECF;&#x5E38;&#x51FA;&#x73B0;&#x7684;&#x95EE;&#x9898;</li>
+<li>&#x4EE5;&#x4E0A;&#x95EE;&#x9898;&#x8FD8;&#x5B58;&#x5728;&#x5F88;&#x591A;&#x53D8;&#x4F53;</li>
+<li>&#x95EE;&#x9898;&#x7684;&#x7ED3;&#x6784;&#x5BF9;&#x4E8E;&#x8BBE;&#x8BA1;&#x9AD8;&#x6548;&#x7684;&#x7B97;&#x6CD5;&#x5F88;&#x91CD;&#x8981;</li>
+</ul>
+
                                 
                                 </section>
                             
@@ -309,12 +328,12 @@
 
             
                 
-                <a href="../todo.html" class="navigation navigation-prev " aria-label="Previous page: 课程建设任务列表">
+                <a href="1.1.html" class="navigation navigation-prev " aria-label="Previous page: 1.1 基本符号">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="1.1.html" class="navigation navigation-next " aria-label="Next page: 1.1 基本符号">
+                <a href="1.3.html" class="navigation navigation-next " aria-label="Next page: 1.3 数值代数研究的一般技术">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -325,7 +344,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第一章：数值代数的研究对象与方法","level":"1.7","depth":1,"next":{"title":"1.1 基本符号","level":"1.7.1","depth":2,"path":"ch1/1.1.md","ref":"./ch1/1.1.md","articles":[]},"previous":{"title":"课程建设任务列表","level":"1.6","depth":1,"path":"todo.md","ref":"./todo.md","articles":[]},"dir":"neutral"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch1/README.md","mtime":"2019-02-25T05:46:18.320Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-25T09:34:56.491Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.2 数值代数研究的基本问题","level":"1.7.2","depth":2,"next":{"title":"1.3 数值代数研究的一般技术","level":"1.7.3","depth":2,"path":"ch1/1.3.md","ref":"./ch1/1.3.md","articles":[]},"previous":{"title":"1.1 基本符号","level":"1.7.1","depth":2,"path":"ch1/1.1.md","ref":"./ch1/1.1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch1/1.2.md","mtime":"2019-02-25T06:50:01.928Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-25T09:34:56.491Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
