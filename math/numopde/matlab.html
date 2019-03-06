@@ -278,32 +278,36 @@ ans =
 
 
 <h3 id="&#x753B;&#x56FE;">&#x753B;&#x56FE;</h3>
+<p>&#x753B;&#x4E00;&#x6761;&#x66F2;&#x7EBF;</p>
 <pre><code>&gt;&gt; x = -4:0.05:4;
 &gt;&gt; y = sin(x);
-&gt;&gt; plotx,y&#xFF09;
-</code></pre><pre><code>&gt;&gt; x = 0:.01:2*pi;
+&gt;&gt; plot(x, y)
+</code></pre><p><img src="figures/plot_1.jpg" alt=""></p>
+<pre><code>&gt;&gt; x = 0:.01:2*pi;
 &gt;&gt; y1 = sin(x);
-&gt;&gt; y2 = sin2*x&#xFF09;;
-&gt;&gt; y3 = sin4*x&#xFF09;;
-&gt;&gt; plotx, [y1; y2; y3]&#xFF09;
-&gt;&gt; legend&apos;y=sin&#xFF08;x&#xFF09;&apos;, &apos;y=sin (2x)&apos;,&apos;y=sin (4x)&apos;)
-</code></pre><pre><code>&gt;&gt; t = linspace&#xFF08;0, 2*pi, 512&#xFF09;;
-&gt;&gt; [u,v] = meshgrid (t);
+&gt;&gt; y2 = sin(2*x);
+&gt;&gt; y3 = sin(4*x);
+&gt;&gt; plot(x, [y1; y2; y3])
+&gt;&gt; legend(&apos;y=sin(x)&apos;, &apos;y=sin(2x)&apos;,&apos;y=sin(4x)&apos;)
+</code></pre><p><img src="figures/plot_2.jpg" alt=""></p>
+<pre><code>&gt;&gt; t = linspace(0, 2*pi, 512);
+&gt;&gt; [u,v] = meshgri(t);
 &gt;&gt; a = -0.4; b = .5; c = .1;
 &gt;&gt; n = 3;
-&gt;&gt; x =&#xFF08;a*(1 - v/(2*pi&#xFF09;) .*&#xFF08;1+cos&#xFF08;u&#xFF09;) + c) .* cos&#xFF08;n*v&#xFF09;;
-&gt;&gt; y =&#xFF08;a*(1 - v/(2*pi&#xFF09;) .*&#xFF08;1+cos&#xFF08;u&#xFF09;) + c) .* sin&#xFF08;n*v&#xFF09;;
-&gt;&gt; z = b*v/&#xFF08;2*pi&#xFF09; + a*&#xFF08;1 - v/(2*pi&#xFF09;) .* sin (u);
-&gt;&gt; surf&#xFF08;x,y,z,y&#xFF09;
+&gt;&gt; x = (a*(1 - v/(2*pi)) .*(1+cos(u)) + c) .* cos(n*v);
+&gt;&gt; y = (a*(1 - v/(2*pi)) .*(1+cos(u)) + c) .* sin(n*v);
+&gt;&gt; z = b*v/(2*pi) + a*(1 - v/(2*pi)) .* sin (u);
+&gt;&gt; surf(x,y,z,y)
 &gt;&gt; axis off
 &gt;&gt; axis equal
-&gt;&gt; colormap&#xFF08;hsv&#xFF08;1024&#xFF09;)
+&gt;&gt; colormap(hsv(1024))
 &gt;&gt; shading interp
 &gt;&gt; material shiny
 &gt;&gt; lighting phong
-&gt;&gt; camlight&#xFF08;&apos;left&apos;, &apos;infinite&apos;&#xFF09;
-&gt;&gt; view&#xFF08;[-160 25]&#xFF09;
-</code></pre><h3 id="&#x5411;&#x91CF;&#x5316;&#x64CD;&#x4F5C;"><a href="https://ww2.mathworks.cn/help/matlab/matlab_prog/vectorization.html" target="_blank">&#x5411;&#x91CF;&#x5316;&#x64CD;&#x4F5C;</a></h3>
+&gt;&gt; camlight(&apos;left&apos;, &apos;infinite&apos;)
+&gt;&gt; view([-160 25])
+</code></pre><p><img src="figures/plot_2.jpg" alt=""></p>
+<h3 id="&#x5411;&#x91CF;&#x5316;&#x64CD;&#x4F5C;"><a href="https://ww2.mathworks.cn/help/matlab/matlab_prog/vectorization.html" target="_blank">&#x5411;&#x91CF;&#x5316;&#x64CD;&#x4F5C;</a></h3>
 <p>matlab &#x4E2D;&#x7684;&#x5927;&#x90E8;&#x5206;&#x51FD;&#x6570;&#x90FD;&#x652F;&#x6301;&#x8F93;&#x5165;&#x77E9;&#x9635;&#x5411;&#x91CF;&#xFF0C;&#x5373;&#x5411;&#x91CF;&#x5316;&#x64CD;&#x4F5C;</p>
 <pre><code>i = 0;
 for t = 0:.01:10
@@ -426,27 +430,74 @@ b  = [7 -21 15]&apos;;
 x0 = [0 0 0]&apos;;
 tol = 1e-7;
 x = jacobi(A, b, x0, 1e-7);
+% &#x6253;&#x5370;&#x8FED;&#x4EE3;&#x7ED3;&#x679C;
 fprintf(&apos;      x(1)             x(2)            x(3)\n&apos;);
 fprintf(&apos;%12.8e   %12.8e    %12.8e\n&apos;, x);
+
+% &#x753B;&#x56FE;
+plot(1:k, x)
+legend(&apos;x(1)=2&apos;, &apos;x(2)=4&apos;, &apos;x(3)=3&apos;)
+ylim([0, 5])
+title(&apos;Jacobi &#x8FED;&#x4EE3;&#x7ED3;&#x679C;&apos;)
 </code></pre><p><strong>&#x4E09;&#x3001;&#x5B9E;&#x9A8C;&#x7ED3;&#x679C;&#x4E0E;&#x5206;&#x6790;</strong> </p>
-<p>&#x5728;&#x547D;&#x4EE4;&#x7A97;&#x53E3;&#x8F93;&#x5165;</p>
+<p>&#x5728;&#x547D;&#x4EE4;&#x7A97;&#x53E3;&#x8F93;&#x5165; <code>test_jacobi</code>, &#x56DE;&#x8F66;</p>
+<pre><code>&gt;&gt; test_jacobi
+      x(1)             x(2)            x(3)
+0.00000000e+00   0.00000000e+00    0.00000000e+00
+1.75000000e+00   2.62500000e+00    3.00000000e+00
+1.65625000e+00   3.87500000e+00    3.17500000e+00
+1.92500000e+00   3.85000000e+00    2.88750000e+00
+1.99062500e+00   3.94843750e+00    3.00000000e+00
+1.98710937e+00   3.99531250e+00    3.00656250e+00
+1.99718750e+00   3.99437500e+00    2.99578125e+00
+1.99964844e+00   3.99806641e+00    3.00000000e+00
+1.99951660e+00   3.99982422e+00    3.00024609e+00
+1.99989453e+00   3.99978906e+00    2.99984180e+00
+1.99998682e+00   3.99992749e+00    3.00000000e+00
+1.99998187e+00   3.99999341e+00    3.00000923e+00
+1.99999604e+00   3.99999209e+00    2.99999407e+00
+1.99999951e+00   3.99999728e+00    3.00000000e+00
+1.99999932e+00   3.99999975e+00    3.00000035e+00
+1.99999985e+00   3.99999970e+00    2.99999978e+00
+1.99999998e+00   3.99999990e+00    3.00000000e+00
+1.99999997e+00   3.99999999e+00    3.00000001e+00
+</code></pre><figure id="fig1.2.1"><img src="figures/jacobi.jpg" alt="Jacobi &#x8FED;&#x4EE3;&#x8FC7;&#x7A0B;"><figcaption>Figure: Jacobi &#x8FED;&#x4EE3;&#x8FC7;&#x7A0B;</figcaption></figure>
+<p>&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x8868;&#x660E;&#xFF0C;Jacobi &#x65B9;&#x6CD5;&#x5BF9;&#x4E8E;&#x8BE5;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x6536;&#x655B;&#x4E8E;&#x771F;&#x89E3;&#x3002;</p>
 <h2 id="&#x5B9E;&#x9A8C;&#x62A5;&#x544A;&#x9898;&#x76EE;">&#x5B9E;&#x9A8C;&#x62A5;&#x544A;&#x9898;&#x76EE;</h2>
 <p>&#x5728;&#x4E0A;&#x8FF0; Jacobi &#x8FED;&#x4EE3;&#x5B9E;&#x9A8C;&#x57FA;&#x7840;&#x4E0A;, &#x5B8C;&#x6210;&#x4EE5;&#x4E0B;&#x5B9E;&#x9A8C;&#x4EFB;&#x52A1;&#xFF1A;</p>
 <ol>
-<li><p>&#x4E0B;&#x8F7D;&#x7EBF;&#x6027;&#x7CFB;&#x7EDF; <a href="data/ls.mat">Ax=b</a>, &#x7528;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x5BFC;&#x5165; Matlab</p>
+<li>&#x4E0B;&#x8F7D;&#x7EBF;&#x6027;&#x7CFB;&#x7EDF; <a href="data/ls.mat">Ax=b</a>, &#x7528;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x5BFC;&#x5165; Matlab</li>
+</ol>
 <pre><code>&gt;&gt; load ls.mat
 &gt;&gt; whos
 &gt;&gt; load ls.mat
 &gt;&gt; whos
-Name         Size               Bytes  Class     Attributes
+  Name         Size               Bytes  Class     Attributes
 
-A         4225x4225            351392  double    sparse
-b         4225x1                33800  double
-x         4225x1                33800  double
-</code></pre></li>
+  A         4225x4225            351392  double    sparse
+  b         4225x1                33800  double
+  x         4225x1                33800  double
+</code></pre><ol>
 <li>&#x628A;&#x4E0A;&#x8FF0; Jacobi &#x8FED;&#x4EE3;&#x51FD;&#x6570;&#x4E2D;&#x7684; <code>x(:, 2) = B*x(:, 1) + f</code> &#x8BED;&#x53E5;&#x7528; for &#x5FAA;&#x73AF;&#x5B9E;&#x73B0;&#xFF0C;&#x6D4B;&#x91CF;
 &#x8BA1;&#x7B97;&#x65F6;&#x95F4;&#xFF0C;&#x5E76;&#x4E0E;&#x539F;&#x59CB;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x3002;</li>
 </ol>
+<p><div id="container"></div></p>
+<p><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"></p>
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+
+<script>
+var gitment = new Gitment({
+  id: 'window.location.pathname', // 可选。默认为 location.href
+  owner: 'weihuayi',
+  repo: 'weihuayi.github.io',
+  oauth: {
+    client_id: '7dd9c9fc3ac45352b55b',
+    client_secret: '4e6f74b82a7ac18671c7e9e0d17a1ceb9359a5ad',
+  },
+})
+gitment.render('container')
+</script>
+
 
                                 
                                 </section>
@@ -486,7 +537,7 @@ x         4225x1                33800  double
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Matlab 基础","level":"1.2","depth":1,"previous":{"title":"课程简介","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"matlab.md","mtime":"2019-03-06T00:28:38.956Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-06T01:15:22.206Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Matlab 基础","level":"1.2","depth":1,"previous":{"title":"课程简介","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"matlab.html#fig1.2.1","level":"1.2","list_caption":"Figure: Jacobi 迭代过程","alt":"Jacobi 迭代过程","nro":1,"url":"./figures/jacobi.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Jacobi 迭代过程","attributes":{},"skip":false,"key":"1.2.1"}]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"matlab.md","mtime":"2019-03-06T01:54:56.494Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-06T01:55:16.960Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
