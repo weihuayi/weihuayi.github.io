@@ -1,0 +1,617 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1.7 矩阵向量的范数 · 数值代数课件</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Wei, Huayi">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="1.6.html" />
+    
+
+    <script src="../gitbook/gitbook-plugin-graph/d3.min.js"></script>
+    <script src="../gitbook/gitbook-plugin-graph/function-plot.js"></script>    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    课程简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../perusall.html">
+            
+                <a href="../perusall.html">
+            
+                    
+                    Peruall 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../others.html">
+            
+                <a href="../others.html">
+            
+                    
+                    其它
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../todo.html">
+            
+                <a href="../todo.html">
+            
+                    
+                    课程建设任务列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第一章：数值代数的研究对象与方法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="1.1.html">
+            
+                <a href="1.1.html">
+            
+                    
+                    1.1 基本符号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="1.2.html">
+            
+                <a href="1.2.html">
+            
+                    
+                    1.2 数值代数研究的基本问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="1.3.html">
+            
+                <a href="1.3.html">
+            
+                    
+                    1.3 数值代数研究的一般技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="1.4.html">
+            
+                <a href="1.4.html">
+            
+                    
+                    1.4 多项式计算示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="1.5.html">
+            
+                <a href="1.5.html">
+            
+                    
+                    1.5 浮点数算术运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="1.6.html">
+            
+                <a href="1.6.html">
+            
+                    
+                    1.6 再议多项式求值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.7" data-path="1.7.html">
+            
+                <a href="1.7.html">
+            
+                    
+                    1.7 矩阵向量的范数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >1.7 矩阵向量的范数</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="17-&#x5411;&#x91CF;&#x548C;&#x77E9;&#x9635;&#x8303;&#x6570;vector-and-matrix-norms">1.7 &#x5411;&#x91CF;&#x548C;&#x77E9;&#x9635;&#x8303;&#x6570;(Vector and Matrix Norms)</h1>
+<p><strong>&#x5B9A;&#x4E49; 1.3</strong> &#x8BBE; <script type="math/tex; ">\mathcal B</script> &#x662F;&#x4E00;&#x4E2A;&#x5B9E;(&#x590D;)&#x7EBF;&#x6027;&#x7A7A;&#x95F4; <script type="math/tex; ">\mathbb R^n</script>(&#x6216;
+<script type="math/tex; ">\mathbb c^n</script> )&#x3002; &#x8FD9;&#x4E2A;&#x7A7A;&#x95F4;&#x662F;&#x8D4B;&#x8303;&#x7684;&#xFF0C;&#x82E5;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x51FD;&#x6570; <script type="math/tex; ">\norm {\cdot}</script>:
+<script type="math/tex; ">\mathcal B\to \mathbb R</script>&#xFF0C;&#x5B83;&#x6EE1;&#x8DB3;&#x4E0B;&#x5217;&#x5173;&#x7CFB;:</p>
+<ol>
+<li><script type="math/tex; ">\norm {\mathbf x} \ge 0</script>,&#x4E14; <script type="math/tex; ">\norm{\mathbf x} = 0</script> &#x5F53;&#x4E14;&#x4EC5;&#x5F53; <script type="math/tex; ">\mathbf x = 0</script>(&#x6B63;&#x5B9A;&#x6027;);  </li>
+<li><script type="math/tex; ">\norm {\alpha{\mathbf x}} = \abs {\alpha}\cdot \norm{\mathbf x}</script>,&#x5BF9;&#x4E00;&#x5207;&#x7684;&#x5B9E;(&#x6216;&#x590D;)&#x6807;&#x91CF; <script type="math/tex; ">\alpha</script> &#x6210;&#x7ACB;(&#x9F50;&#x6B21;&#x6027;);  </li>
+<li><script type="math/tex; ">\norm{\mathbf{x + y}}\le \norm{\mathbf x} + \norm{\mathbf y}</script>(&#x4E09;&#x89D2;&#x5F62;&#x4E0D;&#x7B49;&#x5F0F;)</li>
+</ol>
+<p>&#x5219;&#x79F0;&#x6B64;&#x51FD;&#x6570;&#x4E3A;<strong>&#x8303;&#x6570;</strong>&#x3002;</p>
+<p><strong>&#x4F8B; 1.4</strong> &#x6700;&#x5E38;&#x7528;&#x7684;&#x8303;&#x6570;&#x662F;  </p>
+<p><script type="math/tex; mode=display">
+\norm{\mathbf x}_p = (\sum_i \abs{x_i}^p)^{\frac{1}{p}},1\le p\le \infty,
+</script></p>
+<p>&#x79F0;&#x4E4B;&#x4E3A; p-&#x8303;&#x6570;&#x3002; </p>
+<p><script type="math/tex; mode=display">
+\norm {\mathbf x}_\infty = \max_i\abs{x_i},
+</script></p>
+<p>&#x79F0;&#x4E4B;&#x4E3A; <script type="math/tex; ">\infty-</script> &#x8303;&#x6570;&#x6216;&#x65E0;&#x7A77;&#x8303;&#x6570;.</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x82E5; <script type="math/tex; ">\norm {\mathbf x}</script> &#x662F;&#x4EFB;&#x610F;&#x7684;&#x8303;&#x6570;&#x800C; <script type="math/tex; ">\mathbf C</script> &#x662F;&#x4EFB;&#x610F;&#x7684;&#x975E;&#x5F02;&#x77E9;&#x9635;&#xFF0C;&#x5219; <script type="math/tex; ">\norm {\mathbf {Cx}}</script> &#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x8303;&#x6570;.</p>
+<p>&#x867D;&#x7136;&#x6709;&#x8BB8;&#x591A;&#x5EA6;&#x91CF;&#x8BEF;&#x5DEE;&#x7684;&#x8303;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x91CD;&#x8981;&#x7684;&#x662F;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x9002;&#x5F53;&#x7684;&#x8303;&#x6570;.</p>
+<p><strong>&#x4F8B;</strong> &#x8BBE; <script type="math/tex; ">\mathbf x_1 = [1,2,3]^T</script>,&#x5206;&#x91CF;&#x5355;&#x4F4D;&#x662F;&#x7C73;&#xFF0C;<script type="math/tex; ">\mathbf x_2 = [1.01,2.01,2.99]^T</script>,&#x5206;&#x91CF;&#x5355;&#x4F4D;&#x662F;&#x7C73;&#xFF0C;&#x5219; <script type="math/tex; ">\mathbf x_2</script> &#x662F; <script type="math/tex; ">\mathbf x_1</script> &#x7684;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x8FD1;&#x4F3C;,&#x56E0;&#x4E3A;&#x76F8;&#x5BF9;&#x8BEF;&#x5DEE;:</p>
+<p><script type="math/tex; mode=display">
+    \frac{\norm {\mathbf x_1 - \mathbf x_2}_{\infty}}{\norm {\mathbf x_1}_{\infty}} \approx 0.0033
+</script></p>
+<p>&#x800C;</p>
+<p><script type="math/tex; mode=display">
+\mathbf x_3 = [10,2.01,2.99]^T
+</script></p>
+<p>&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x597D;&#x7684;&#x8FD1;&#x4F3C;&#xFF0C;&#x56E0;&#x4E3A;</p>
+<p><script type="math/tex; mode=display">
+\frac{\norm {\mathbf x_1 - \mathbf x_3}_{\infty}}{\norm {\mathbf x_1}_{\infty}} \approx 3.
+</script></p>
+<p>&#x4F46;&#x662F;&#x5047;&#x5B9A;&#x7B2C;&#x4E00;&#x4E2A;&#x5206;&#x91CF;&#x7528;&#x5343;&#x7C73;&#x800C;&#x4E0D;&#x662F;&#x7C73;&#x6765;&#x5EA6;&#x91CF;&#xFF0C;&#x5219;&#x5728;&#x8FD9;&#x4E2A;&#x8303;&#x6570;&#x4E0B; <script type="math/tex; ">\widehat{\mathbf x}_1</script> &#x548C; <script type="math/tex; ">\widehat{\mathbf x}_3</script> &#x6BD4;&#x8F83;&#x63A5;&#x8FD1;.</p>
+<p><script type="math/tex; mode=display">
+\widehat{\mathbf x}_1 = 
+\begin{bmatrix}
+0.001 \\
+2 \\
+3
+\end{bmatrix},
+\widehat{\mathbf x}_3 =
+\begin{bmatrix}
+0.01 \\
+2.01 \\
+2.99
+\end{bmatrix}
+</script></p>
+<p>&#x4E14;</p>
+<p><script type="math/tex; mode=display">
+\frac{\norm {\widehat{\mathbf x}_1 - \widehat{\mathbf x}_3}_{\infty}}{\norm {\widehat{\mathbf x}_1}_{\infty}} \approx 0.0033.
+</script></p>
+<p>&#x4E3A;&#x4E86;&#x6BD4;&#x8F83; <script type="math/tex; ">\widehat{\mathbf x}_1</script> &#x548C; <script type="math/tex; ">\widehat{\mathbf x}_3</script>&#xFF0C;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;</p>
+<p><script type="math/tex; mode=display">
+\norm{\widehat{\mathbf x}}_s =
+\begin{Vmatrix}{
+\begin{bmatrix}
+1000 \\
+  & 1 \\
+  &   & 1
+\end{bmatrix}
+\widehat {\mathbf x}}
+\end{Vmatrix}_{\infty}
+</script></p>
+<p>&#x8FBE;&#x5230;&#x5355;&#x4F4D;&#x76F8;&#x540C;&#x6216;&#x8005;&#x4F7F;&#x91CD;&#x8981;&#x7684;&#x8BEF;&#x5DEE;&#x83B7;&#x5F97;&#x540C;&#x6837;&#x5927;&#x7684;&#x8303;&#x6570;.</p>
+<p><strong>&#x5B9A;&#x4E49; 1.4 </strong> &#x8BBE; <script type="math/tex; ">\mathcal B</script> &#x662F;&#x4E00;&#x4E2A;&#x5B9E;(&#x590D;)&#x7EBF;&#x6027;&#x7A7A;&#x95F4;. <script type="math/tex; ">\inner{\cdot ,\cdot}:\mathcal B\times \mathcal B \to \mathbb{R}\mathbb{(C)}</script> &#x662F;&#x4E00;&#x4E2A;&#x5185;&#x79EF;&#xFF0C;&#x5982;&#x679C;&#x5B83;&#x9002;&#x5408;&#x4E0B;&#x9762;&#x6240;&#x6709;&#x6761;&#x4EF6;:</p>
+<p>1) <script type="math/tex; ">\inner{x,y} = \inner{y,x}(\text{或}\overline{\inner{y,x}})</script>;  </p>
+<p>2) <script type="math/tex; ">\inner{x,y+z} = \inner{x,y}+\inner{x,z}</script>;  </p>
+<p>3) <script type="math/tex; ">\inner{\alpha x,y} = \alpha \inner{x,y}</script>,&#x5BF9;&#x4E00;&#x5207;&#x7684;&#x5B9E;(&#x6216;&#x590D;)&#x6807;&#x91CF; <script type="math/tex; ">\alpha</script>;  </p>
+<p>4) <script type="math/tex; ">\inner{x,x}\ge 0</script>,&#x5F53;&#x4E14;&#x4EC5;&#x5F53; <script type="math/tex; ">x =0</script> &#x65F6;&#x7B49;&#x53F7;&#x6210;&#x7ACB;.</p>
+<p><strong>&#x4F8B; 1.5 </strong> &#x5728; <script type="math/tex; ">\mathbb{R}</script> &#x4E0A;&#xFF0C;<script type="math/tex; ">\inner{x,y} = y^Tx = \sum_ix_iy_i</script>,&#x800C;&#x5728; <script type="math/tex; ">\mathbb{C}</script> &#x4E0A;&#xFF0C;<script type="math/tex; ">\inner{x,y} = y^*x = \sum_ix_i\overline{y_i}</script> &#x662F;&#x5185;&#x79EF;.</p>
+<p>&#x6CE8;&#x610F;:<script type="math/tex; ">y^* = \overline {y}^T</script> &#x662F; <script type="math/tex; ">y</script> &#x7684;&#x5171;&#x8F6D;&#x8F6C;&#x7F6E;.</p>
+<p><strong>&#x5B9A;&#x4E49; 1.5</strong> &#x82E5; </p>
+<p><script type="math/tex; mode=display">
+\inner{x,y} = 0,
+</script></p>
+<p>&#x5219;&#x79F0; <script type="math/tex; ">x</script> &#x548C; <script type="math/tex; ">y</script> &#x662F;&#x6B63;&#x4EA4;&#x7684;.</p>
+<p>&#x5185;&#x79EF;&#x6700;&#x91CD;&#x8981;&#x7684;&#x6027;&#x8D28;&#x662F;&#x5B83;&#x6EE1;&#x8DB3;&#x67EF;&#x897F;-&#x65BD;&#x74E6;&#x8328;&#x4E0D;&#x7B49;&#x5F0F;.</p>
+<p><strong>&#x5F15;&#x7406; 1.1</strong> &#x67EF;&#x897F;-&#x65BD;&#x74E6;&#x8328;&#x4E0D;&#x7B49;&#x5F0F;: </p>
+<p><script type="math/tex; mode=display">
+\abs{\inner{x,y}} \le \sqrt{\inner{x,x}\cdot\inner{y,y}}.
+</script></p>
+<p><strong>&#x5F15;&#x7406; 1.2</strong> <script type="math/tex; ">\sqrt{\inner{x,x}}</script> &#x662F;&#x4E00;&#x4E2A;&#x8303;&#x6570;.</p>
+<p>&#x5185;&#x79EF;&#x548C;&#x5BF9;&#x79F0;(&#x57C3;&#x5C14;&#x7C73;&#x7279;)&#x6B63;&#x5B9A;&#x9635;&#x4E4B;&#x95F4;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x5982;&#x4E0B;&#x5B9A;&#x4E49;&#x7684; 1-1 &#x5BF9;&#x5E94;&#xFF0C;&#x8FD9;&#x4E9B;&#x77E9;&#x9635;&#x5728;&#x5E94;&#x7528;&#x4E2D;&#x7ECF;&#x5E38;&#x9047;&#x5230;.</p>
+<p><strong>&#x5B9A;&#x4E49; 1.6</strong> &#x82E5;&#x5BF9;&#x4E00;&#x5207;&#x7684; </p>
+<p><script type="math/tex; mode=display">
+\mathbf x \ne 0,
+</script></p>
+<p>&#x6709; </p>
+<p><script type="math/tex; mode=display">
+\mathbf{x^TAx}>0(\mathbf{x^*Ax}>0)
+</script></p>
+<p>&#x6210;&#x7ACB;,  </p>
+<p>&#x5219;&#x79F0;&#x5B9E;&#x5BF9;&#x79F0;(&#x590D;&#x57C3;&#x5C14;&#x7C73;&#x7279;) &#x9635; <script type="math/tex; ">\mathbf A</script> &#x662F;&#x6B63;&#x5B9A;&#x7684;.&#x7B80;&#x5199;&#x5BF9;&#x79F0;&#x6B63;&#x5B9A;&#x4E3A; <script type="math/tex; ">s.p.d</script>,&#x57C3;&#x5C14;&#x7C73;&#x7279; <script type="math/tex; ">h.p.d</script>.</p>
+<p><strong>&#x5F15;&#x7406; 1.3</strong> &#x8BBE; <script type="math/tex; ">\mathcal B = \mathbb{R}^n(\text{或}\mathbb{C}^n)</script>,<script type="math/tex; ">\inner{\cdot,\cdot}</script> &#x4E3A;&#x4E00;&#x4E2A;&#x5185;&#x79EF;&#xFF0C;&#x5219;&#x5B58;&#x5728;&#x4E00;&#x4E2A; <script type="math/tex; ">n\times n</script> &#x9636; <script type="math/tex; ">s.p.d</script>( <script type="math/tex; ">h.p.d</script>)&#x9635; <script type="math/tex; ">\mathbf A</script> &#x4F7F;&#x5F97; </p>
+<p><script type="math/tex; mode=display">
+\inner{x,y} = y^T\mathbf Ax(y^*\mathbf Ax).
+</script></p>
+<p>&#x53CD;&#x4E4B;&#xFF0C;&#x82E5; <script type="math/tex; ">\mathbf A</script> &#x662F; <script type="math/tex; ">s.p.d</script>( <script type="math/tex; ">h.p.d</script>), &#x5219; <script type="math/tex; ">y^T\mathbf Ax(y^*\mathbf Ax)</script> &#x662F;&#x4E00;&#x4E2A;&#x5185;&#x79EF;.</p>
+<p><strong>&#x5F15;&#x7406; 1.4</strong> &#x8BBE; <script type="math/tex; ">\norm{\cdot}_{\alpha}</script> &#x548C; <script type="math/tex; ">\norm{\cdot}_{\beta}</script> &#x662F; <script type="math/tex; ">\mathbb{R}^n(\text{或}\mathbb{C}^n)</script> &#x4E0A;&#x7684;&#x4E24;&#x4E2A;&#x8303;&#x6570;,&#x5B58;&#x5728;&#x5E38;&#x6570; <script type="math/tex; ">c_1,c_2 > 0</script> &#x4F7F;&#x5F97;&#x5BF9;&#x4E00;&#x5207;&#x7684; <script type="math/tex; ">x</script> ,</p>
+<p><script type="math/tex; mode=display">
+c_1\norm{\mathbf x}_{\alpha}\le \norm{\mathbf x}_{\beta} \le c_2\norm{\mathbf x}_{\alpha}.
+</script></p>
+<p>&#x6211;&#x4EEC;&#x4E5F;&#x79F0;&#x8303;&#x6570; <script type="math/tex; ">\norm{\cdot}_{\alpha}</script> &#x548C; <script type="math/tex; ">\norm{\cdot}_{\beta}</script> &#x5173;&#x4E8E;&#x5E38;&#x6570; <script type="math/tex; ">c_1</script> &#x548C; <script type="math/tex; ">c_2</script> &#x7B49;&#x4EF7;.</p>
+<p><strong>&#x5F15;&#x7406; 1.5</strong><br><script type="math/tex; mode=display">
+\norm{\mathbf x}_2\le \norm{\mathbf x}_1 \le \sqrt n\norm{\mathbf x}_2,
+</script></p>
+<p><script type="math/tex; mode=display">
+\norm{\mathbf x}_{\infty}\le \norm{\mathbf x}_2 \le \sqrt n\norm{\mathbf x}_{\infty},
+</script></p>
+<p><script type="math/tex; mode=display">
+\norm{\mathbf x}_{\infty}\le \norm{\mathbf x}_1 \le n\norm{\mathbf x}_{\infty}.
+</script></p>
+<p> <strong>&#x5B9A;&#x4E49; 1.7</strong> <script type="math/tex; ">\norm{\cdot}</script> &#x662F;&#x5173;&#x4E8E; <script type="math/tex; ">m\times n</script> &#x9636;&#x77E9;&#x9635;&#x7684;&#x4E00;&#x4E2A;&#x77E9;&#x9635;&#x8303;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x5B83;&#x662F; <script type="math/tex; ">m\cdot n</script> &#x7EF4;&#x7A7A;&#x95F4;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x5411;&#x91CF;&#x8303;&#x6570;:  </p>
+<p>1) <script type="math/tex; ">\norm{\mathbf A}\ge,\text{当且仅当}\mathbf A = 0\text{时等号成立}</script>;  </p>
+<p>2) <script type="math/tex; ">\norm{\alpha\mathbf A} = \norm{\alpha}\cdot \norm{\mathbf A}</script>;  </p>
+<p>3) <script type="math/tex; ">\norm{\mathbf A +\mathbf B} \le \norm{\mathbf A} + \norm{\mathbf B}</script>.</p>
+<p><strong>&#x4F8B; 1.6</strong> 
+<script type="math/tex; mode=display">
+\max_{ij}\abs{a_{ij}}
+</script></p>
+<p>&#x79F0;&#x4E3A;&#x6700;&#x5927;&#x8303;&#x6570;&#xFF0C;&#x800C;</p>
+<p><script type="math/tex; mode=display">
+(\sum{\abs{a_{ij}}^2})^\frac{1}{2} = \norm{\mathbf A}_F
+</script></p>
+<p>&#x79F0;&#x4E3A;&#x5F17;&#x7F57;&#x8D1D;&#x5C3C;&#x4E4C;&#x65AF;(<script type="math/tex; ">Frobenius</script>)&#x8303;&#x6570;.</p>
+<p><strong>&#x5B9A;&#x4E49; 1.8</strong> &#x8BBE; <script type="math/tex; ">\norm{\cdot}_{m\times n}</script> &#x662F;&#x5173;&#x4E8E; <script type="math/tex; ">m\times n</script> &#x9636;&#x77E9;&#x9635;&#x7684;&#x4E00;&#x4E2A;&#x77E9;&#x9635;&#x8303;&#x6570;, <script type="math/tex; ">\norm{\cdot}_{n\times p}</script> &#x662F;&#x5173;&#x4E8E; <script type="math/tex; ">n\times p</script> &#x9636;&#x77E9;&#x9635;&#x7684;&#x4E00;&#x4E2A;&#x77E9;&#x9635;&#x8303;&#x6570;,&#x800C; <script type="math/tex; ">\norm{\cdot}_{m\times p}</script> &#x662F;&#x5173;&#x4E8E; <script type="math/tex; ">m\times p</script> &#x9636;&#x77E9;&#x9635;&#x7684;&#x4E00;&#x4E2A;&#x77E9;&#x9635;&#x8303;&#x6570;.  </p>
+<p>&#x5982;&#x679C;</p>
+<p><script type="math/tex; mode=display">
+\norm{\mathbf {A\cdot B}}_{m\times p} \le \norm {\mathbf A}_{m\times n}\cdot \norm{\mathbf B}_{n\times p},
+</script></p>
+<p>&#x5176;&#x4E2D;<script type="math/tex; ">\mathbf A</script> &#x662F; <script type="math/tex; ">m\times n</script> &#x9636;&#x77E9;&#x9635;&#xFF0C; <script type="math/tex; ">\mathbf B</script> &#x662F; <script type="math/tex; ">n\times p</script> &#x9636;&#x77E9;&#x9635;&#xFF0C;&#x5219;&#x8FD9;&#x4E9B;&#x8303;&#x6570;&#x79F0;&#x4E3A;&#x76F8;&#x4E92;&#x76F8;&#x5BB9;&#x7684;.</p>
+<p><strong>&#x5B9A;&#x4E49; 1.9</strong> &#x8BBE; <script type="math/tex; ">\mathbf A</script> &#x662F; <script type="math/tex; ">\widehat m\times \widehat n</script> &#x9636;&#x77E9;&#x9635;, <script type="math/tex; ">\norm{\cdot}_{\widehat m}</script> &#x662F; <script type="math/tex; ">\mathbb{R}^m</script> &#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x5411;&#x91CF;&#x8303;&#x6570;&#xFF0C; <script type="math/tex; ">\norm{\cdot}_{\widehat n}</script> &#x662F; <script type="math/tex; ">\mathbb{R}^n</script> &#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x5411;&#x91CF;&#x8303;&#x6570;&#xFF0C;&#x5219;</p>
+<p><script type="math/tex; mode=display">
+\norm{\mathbf A}_{\widehat m\widehat n} \equiv \max_{x\ne0\,\ x \in \mathbb{R}^n}\frac{\norm{\mathbf {Ax}}_{\widehat m}}{\norm{\mathbf {x}}_{\widehat n}}
+</script></p>
+<p>&#x79F0;&#x4E3A;&#x4E00;&#x4E2A;&#x7B97;&#x5B50;&#x8303;&#x6570;,&#x6216;&#x5BFC;&#x51FA;&#x8303;&#x6570;&#xFF0C;&#x6216;&#x4ECE;&#x5C5E;&#x77E9;&#x9635;&#x8303;&#x6570;.</p>
+<p><strong>&#x5F15;&#x7406; 1.6 </strong> &#x7B97;&#x5B50;&#x8303;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x77E9;&#x9635;&#x8303;&#x6570;.</p>
+<p><strong>&#x5B9A;&#x4E49; 1.10</strong> &#x82E5;</p>
+<p><script type="math/tex; mode=display">
+\mathbf Q^{-1} = \mathbf Q^T,
+</script></p>
+<p>&#x79F0;&#x5B9E;&#x65B9;&#x9635; <script type="math/tex; ">\mathbf Q</script> &#x662F;&#x6B63;&#x4EA4;&#x9635;,&#x82E5;</p>
+<p><script type="math/tex; mode=display">
+\mathbf Q^{-1} = \mathbf Q^*,
+</script></p>
+<p>&#x5219;&#x79F0;&#x5B9E;&#x65B9;&#x9635; <script type="math/tex; ">\mathbf Q</script> &#x662F;&#x9149;&#x9635;.</p>
+<p>&#x6B63;&#x4EA4;(&#x6216;&#x9149;&#x9635;)&#x7684;&#x6240;&#x6709;&#x884C;(&#x6216;&#x5217;)&#x6709;&#x5355;&#x4F4D; 2- &#x8303;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x56E0;&#x4E3A;</p>
+<p><script type="math/tex; mode=display">
+\mathbf Q \mathbf Q^T =  \mathbf Q^T \mathbf Q =  \mathbf I(\mathbf Q \mathbf Q^* =  \mathbf Q^* \mathbf Q =  \mathbf I),
+</script></p>
+<p>&#x6240;&#x4EE5;&#x5B83;&#x4EEC;&#x5F7C;&#x6B64;&#x662F;&#x6B63;&#x4EA4;&#x7684;.</p>
+<p><strong>&#x5F15;&#x7406; 1.7 </strong>  </p>
+<ol>
+<li><script type="math/tex; mode=display">
+\norm{\mathbf {Ax}}\le \norm{\mathbf A}\cdot\norm{\mathbf x},
+</script></li>
+</ol>
+<p>&#x5BF9;&#x4E00;&#x4E2A;&#x5411;&#x91CF;&#x8303;&#x6570;&#x53CA;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x7B97;&#x5B50;&#x8303;&#x6570;&#xFF0C;&#x6216;&#x5411;&#x91CF; 2- &#x8303;&#x6570;&#x548C;&#x77E9;&#x9635;&#x5F17;&#x7F57;&#x8D1D;&#x5C3C;&#x4E4C;&#x65AF;&#x8303;&#x6570;&#x6210;&#x7ACB;.</p>
+<p>2.
+<script type="math/tex; mode=display">
+\norm{\mathbf {AB}}\le \norm{\mathbf A}\cdot\norm{\mathbf B},
+</script></p>
+<p>&#x5BF9;&#x4EFB;&#x4F55;&#x7B97;&#x5B50;&#x7B97;&#x6570;&#x6216;&#x5F17;&#x7F57;&#x8D1D;&#x5C3C;&#x4E4C;&#x65AF;&#x8303;&#x6570;&#x6210;&#x7ACB;. &#x6362;&#x8A00;&#x4E4B;&#xFF0C; &#x4EFB;&#x4F55;&#x7B97;&#x5B50;&#x8303;&#x6570;(&#x6216;&#x5F17;&#x7F57;&#x8D1D;&#x5C3C;&#x4E4C;&#x65AF;&#x8303;&#x6570;)&#x548C;&#x5B83;&#x672C;&#x8EAB;&#x662F;&#x76F8;&#x4E92;&#x76F8;&#x5BB9;&#x7684;.</p>
+<p>3.<script type="math/tex; "> \,\ </script>&#x6700;&#x5927;&#x8303;&#x6570;&#x548C;&#x5F17;&#x7F57;&#x8D1D;&#x5C3C;&#x4E4C;&#x65AF;&#x8303;&#x6570;&#x4E0D;&#x662F;&#x7B97;&#x5B50;&#x8303;&#x6570;.</p>
+<p>4.
+<script type="math/tex; mode=display">
+\norm{\mathbf {QAZ}} = \norm{\mathbf A},
+</script></p>
+<p>&#x5F53; <script type="math/tex; ">\mathbf Q</script> &#x548C; <script type="math/tex; ">\mathbf Z</script> &#x662F;&#x6B63;&#x4EA4;&#x9635;&#x6216;&#x9149;&#x9635;&#x65F6;&#xFF0C;&#x5BF9;&#x5F17;&#x7F57;&#x8D1D;&#x5C3C;&#x4E4C;&#x65AF;&#x8303;&#x6570;&#x53CA;&#x7531; <script type="math/tex; ">\norm{\cdot}_2</script> &#x5BFC;&#x51FA;&#x7684;&#x7B97;&#x5B50;&#x8303;&#x6570;&#x6210;&#x7ACB;. &#x800C;&#x8FD9;&#x5B9E;&#x9645;&#x4E0A;&#x6B63;&#x597D;&#x662F;&#x6BD5;&#x8FBE;&#x54E5;&#x62C9;&#x65AF;&#x5B9A;&#x7406;.</p>
+<p>5.<script type="math/tex; ">\norm{\mathbf A}_{\infty} \equiv \max_{x\ne 0}\frac{\norm{\mathbf {Ax}}_{\infty}}{\norm{\mathbf x}_{\infty}} = \max_i\sum_j\abs{a_ij} = </script>&#x6700;&#x5927;&#x7684;&#x7EDD;&#x5BF9;&#x503C;&#x884C;&#x548C;.</p>
+<p>6.<script type="math/tex; ">\norm{\mathbf A}_1\equiv \max_{x\ne 0}\frac{\norm{\mathbf {Ax}}_1}{\norm{\mathbf x}_1} = \max_j\sum_i\abs{a_ij} = </script>&#x6700;&#x5927;&#x7684;&#x7EDD;&#x5BF9;&#x503C;&#x5217;&#x548C;.</p>
+<p>&#xFF17;.<script type="math/tex; ">\norm{\mathbf A}_２ \equiv \max_{x\ne 0}\frac{\norm{\mathbf {Ax}}_２}{\norm{\mathbf x}_２} = \sqrt{\lambda_{max}(\mathbf A^*\mathbf A)} </script>,&#x5176;&#x4E2D; <script type="math/tex; ">\lambda_{max}</script> &#x8868;&#x793A;&#x6700;&#x5927;&#x7684;&#x7279;&#x5F81;&#x503C;.</p>
+<p>8.<script type="math/tex; ">\norm{\mathbf A}_２ = \norm{\mathbf A^T}_２</script>.</p>
+<p>9.<script type="math/tex; ">\norm{\mathbf A}_２ = \max_i\abs{\lambda_i(\mathbf A)}</script>, &#x5F53; <script type="math/tex; ">\mathbf A</script> &#x662F;&#x6B63;&#x89C4;&#x9635;,&#x5373; <script type="math/tex; ">\mathbf A\mathbf A^* = \mathbf A^*\mathbf A</script> &#x65F6;&#x6210;&#x7ACB;.</p>
+<p>10.&#x82E5; <script type="math/tex; ">\mathbf A</script> &#x662F; <script type="math/tex; ">n\times n</script> &#x9636;&#x77E9;&#x9635;&#xFF0C;&#x5219;</p>
+<p><script type="math/tex; mode=display">
+n^{-\frac{1}{2}}\norm{\mathbf A}_2\le \norm{\mathbf A}_1\le n^{\frac{1}{2}}\norm{\mathbf A}_2.
+</script></p>
+<p>11.&#x82E5; <script type="math/tex; ">\mathbf A</script> &#x662F; <script type="math/tex; ">n\times n</script> &#x9636;&#x77E9;&#x9635;&#xFF0C;&#x5219;</p>
+<p><script type="math/tex; mode=display">
+n^{-\frac{1}{2}}\norm{\mathbf A}_2\le \norm{\mathbf A}_{\infty}\le n^{\frac{1}{2}}\norm{\mathbf A}_2.
+</script></p>
+<p>12.&#x82E5; <script type="math/tex; ">\mathbf A</script> &#x662F; <script type="math/tex; ">n\times n</script> &#x9636;&#x77E9;&#x9635;&#xFF0C;&#x5219;</p>
+<p><script type="math/tex; mode=display">
+n^{-1}\norm{\mathbf A}_{\infty}\le \norm{\mathbf A}_1\le n\norm{\mathbf A}_{\infty}.
+</script></p>
+<p>13.&#x82E5; <script type="math/tex; ">\mathbf A</script> &#x662F; <script type="math/tex; ">n\times n</script> &#x9636;&#x77E9;&#x9635;&#xFF0C;&#x5219;</p>
+<p><script type="math/tex; mode=display">
+\norm{\mathbf A}_1\le \norm{\mathbf A}_F\le n^{\frac{1}{2}}\norm{\mathbf A}_2.
+</script></p>
+<p><strong>&#x8BC1;&#x660E; </strong> &#x53EA;&#x8BC1;&#x660E;&#x7B2C;&#x4E03;&#x90E8;&#x5206;</p>
+<p>&#x56E0;&#x4E3A; <script type="math/tex; ">\norm{\mathbf A}_2</script> &#x4E0E; <script type="math/tex; ">\mathbf A^*</script> &#x6709;&#x5173;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x8003;&#x8651; <script type="math/tex; ">\mathbf A^*\mathbf A</script> &#x7684;&#x7279;&#x5F81;&#x5206;&#x89E3;.</p>
+<p>&#x7531;&#x4E8E; <script type="math/tex; ">\mathbf A^*\mathbf A</script> &#x662F;&#x57C3;&#x5C14;&#x7C73;&#x7279;&#x77E9;&#x9635;&#xFF0C;&#x6545;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#x5206;&#x89E3;</p>
+<p><script type="math/tex; mode=display">
+\mathbf A^*\mathbf A = \mathbf Q\mathbf {\Lambda}\mathbf Q^*,
+</script></p>
+<p>&#x5176;&#x4E2D;&#xFF0C; <script type="math/tex; ">\mathbf Q</script> &#x662F;&#x9149;&#x9635;(&#x5217;&#x662F;&#x7279;&#x5F81;&#x5411;&#x91CF;)&#xFF0C; <script type="math/tex; ">\mathbf {\Lambda} = diag(\lambda_1,\cdots,\lambda_n)</script> &#x662F;&#x5305;&#x542B;&#x7279;&#x5F81;&#x503C;&#x7684;&#x5BF9;&#x89D2;&#x9635;,&#x4E14;&#x7279;&#x5F81;&#x503C;&#x90FD;&#x662F;&#x5B9E;&#x7684;.</p>
+<p>&#x6240;&#x6709;&#x7684; <script type="math/tex; ">\lambda_i\ge 0</script>, &#x56E0;&#x4E3A;&#x82E5;&#x5B58;&#x5728;&#x67D0;&#x4E2A; <script type="math/tex; ">\lambda</script> &#x4E3A;&#x8D1F;, &#x6211;&#x4EEC;&#x53D6;&#x5B83;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x4E3A; <script type="math/tex; ">\mathbf q</script>, &#x6709;</p>
+<p><script type="math/tex; mode=display">
+0\le \norm{\mathbf {Aq}}_2^2 = \mathbf q^T\mathbf A^T\mathbf A\mathbf q = \mathbf q^T\lambda\mathbf q = \lambda\norm{\mathbf q}_2^2 \le0,
+</script></p>
+<p>&#x77DB;&#x76FE;.  </p>
+<p>&#x6240;&#x4EE5;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+\norm{\mathbf A}_2 & = \max_{x\ne0}\frac{\norm{\mathbf {Ax}}_2}{\norm{\mathbf x}_2} \\
+& = \max_{x\ne 0}\frac{(\mathbf x^*\mathbf A^*\mathbf A\mathbf x)^{\frac{1}{2}}}{\norm{\mathbf x}_2} \\
+& = \max_{x\ne 0}\frac{(\mathbf x^*\mathbf {Q\Lambda Q^*}\mathbf x)^{\frac{1}{2}}}{\norm{\mathbf x}_2} \\
+& = \max_{x\ne 0}\frac{(\mathbf (Q^*x)^*\mathbf {\Lambda}\mathbf {Q^*x})^{\frac{1}{2}}}{\norm{\mathbf x}_2} \\
+& = \max_{y\ne 0}\frac{(\mathbf y^*\mathbf {\Lambda}\mathbf y)^{\frac{1}{2}}}{\norm{\mathbf y}_2} \\
+& = \max_{y\ne 0}\frac{\sqrt{\sum\lambda_iy_i^2}}{\sqrt{\sum y_i^2}} \\
+& \le \max_{y\ne 0}\sqrt{\lambda_{max}}\sqrt{\frac{\sum y_i^2}{\sum y_i^2}} \\
+& = \sqrt{\lambda_{max}},
+\end{align}
+</script></p>
+<p>&#x5F53;&#x9009;&#x62E9; <script type="math/tex; ">y</script> &#x662F;&#x5355;&#x4F4D;&#x9635;&#x7684;&#x9002;&#x5F53;&#x7684;&#x5217;&#x65F6;&#xFF0C;&#x4E0A;&#x754C;&#x662F;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x7684;.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1.6.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 1.6 再议多项式求值">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1.7 矩阵向量的范数","level":"1.5.7","depth":2,"previous":{"title":"1.6 再议多项式求值","level":"1.5.6","depth":2,"path":"ch1/1.6.md","ref":"./ch1/1.6.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch1/1.7.md","mtime":"2019-03-18T23:01:01.734Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-18T23:43:58.515Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,513 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1.5 浮点数算术运算 · 数值代数课件</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Wei, Huayi">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="1.6.html" />
+    
+    
+    <link rel="prev" href="1.4.html" />
+    
+
+    <script src="../gitbook/gitbook-plugin-graph/d3.min.js"></script>
+    <script src="../gitbook/gitbook-plugin-graph/function-plot.js"></script>    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    课程简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../perusall.html">
+            
+                <a href="../perusall.html">
+            
+                    
+                    Peruall 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../others.html">
+            
+                <a href="../others.html">
+            
+                    
+                    其它
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../todo.html">
+            
+                <a href="../todo.html">
+            
+                    
+                    课程建设任务列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第一章：数值代数的研究对象与方法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="1.1.html">
+            
+                <a href="1.1.html">
+            
+                    
+                    1.1 基本符号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="1.2.html">
+            
+                <a href="1.2.html">
+            
+                    
+                    1.2 数值代数研究的基本问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="1.3.html">
+            
+                <a href="1.3.html">
+            
+                    
+                    1.3 数值代数研究的一般技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="1.4.html">
+            
+                <a href="1.4.html">
+            
+                    
+                    1.4 多项式计算示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.5" data-path="1.5.html">
+            
+                <a href="1.5.html">
+            
+                    
+                    1.5 浮点数算术运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="1.6.html">
+            
+                <a href="1.6.html">
+            
+                    
+                    1.6 再议多项式求值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="1.7.html">
+            
+                <a href="1.7.html">
+            
+                    
+                    1.7 矩阵向量的范数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >1.5 浮点数算术运算</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="15-&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;floating-point-arithmetic">1.5 &#x6D6E;&#x70B9;&#x8FD0;&#x7B97;(Floating Point Arithmetic)</h1>
+<p>-3.1416 &#x7684;<strong>&#x79D1;&#x5B66;&#x8BA1;&#x6570;&#x6CD5;</strong>&#x8868;&#x793A;&#x4E3A;&#xFF1A;</p>
+<p><script type="math/tex; mode=display">
+-.31416\times 10^1
+</script></p>
+<ul>
+<li>&#x57FA;(base) </li>
+<li>&#x5206;&#x6570;(fraction)</li>
+<li>&#x6307;&#x6570;(exponent)</li>
+<li>&#x7B26;&#x53F7;(sign)</li>
+</ul>
+<p>&#x8BA1;&#x7B97;&#x673A;&#x7528;&#x7C7B;&#x4F3C;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8868;&#x793A;&#x6570;&#x5B57;&#xFF0C; &#x79F0;&#x4E3A;<strong>&#x6D6E;&#x70B9;&#x6570;(floating point)</strong>&#xFF0C; &#x5982;&#xFF1A;</p>
+<p><script type="math/tex; mode=display">
+.10101_2\times 2^3 = 5.25_{10}
+</script></p>
+<p>&#x5982;&#x679C;&#x5C3E;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4F4D;&#x6570;&#x662F;&#x975E;&#x96F6;&#x7684;&#x6570;&#xFF0C;&#x5219;&#x79F0;&#x5BF9;&#x5E94;&#x7684;&#x6D6E;&#x70B9;&#x6570;&#x4E3A;<strong>&#x89C4;&#x7EA6;(normalized)</strong>&#x7684;, &#x5982;</p>
+<p><script type="math/tex; mode=display">
+.10101_2\times 2^3 \\
+.010101_2\times 2^4
+</script></p>
+<ul>
+<li>&#x89C4;&#x7EA6;&#x786E;&#x4FDD;&#x6BCF;&#x4E2A;&#x6D6E;&#x70B9;&#x6570;&#x90FD;&#x7528;&#x4E00;&#x4E2A;&#x552F;&#x4E00;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x4E32;&#x6765;&#x8868;&#x793A;&#x3002;</li>
+<li>&#x89C4;&#x7EA6;&#x5F62;&#x5F0F;&#x7684;&#x6D6E;&#x70B9;&#x6570;&#x7B2C;&#x4E00;&#x4F4D;&#x6C38;&#x8FDC;&#x4E3A; 1, &#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x4E0D;&#x5B58;&#x50A8;&#xFF0C;&#x5C3E;&#x6570;&#x591A;&#x4E86;&#x4E00;&#x4F4D;&#x6765;&#x66F4;&#x7CBE;&#x786E;&#x5730;&#x8868;&#x793A;&#x6570;&#x3002;</li>
+<li>&#x57FA;&#x662F;&#x6D6E;&#x70B9;&#x6570;&#x6700;&#x91CD;&#x8981;&#x7684;&#x53C2;&#x6570;&#x3002;</li>
+<li>&#x5206;&#x6570;&#x7684;&#x4F4D;&#x6570;&#x51B3;&#x5B9A;&#x4E86;&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x8868;&#x793A;&#x7CBE;&#x5EA6;</li>
+<li>&#x6307;&#x6570;&#x51B3;&#x5B9A;&#x4E86;&#x6D6E;&#x70B9;&#x6570;&#x80FD;&#x8868;&#x793A;&#x7684;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;&#x8303;&#x56F4;&#x3002;</li>
+<li>&#x4E0D;&#x540C;&#x7684;&#x6D6E;&#x70B9;&#x6570;&#x8FD8;&#x8868;&#x73B0;&#x5728;&#x5176;&#x5B83;&#x65B9;&#x9762;&#xFF0C;&#x5982;<ul>
+<li>&#x5982;&#x4F55;&#x5904;&#x7406;&#x820D;&#x5165;</li>
+<li>&#x5982;&#x4F55;&#x5904;&#x7406; underflow &#x548C; overflow</li>
+<li>&#x662F;&#x5426;&#x5141;&#x8BB8; <script type="math/tex; ">\pm\infty</script></li>
+<li>NaN (Not a Number)</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x8868;&#x793A;&#x8BEF;&#x5DEE;">&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x8868;&#x793A;&#x8BEF;&#x5DEE;</h2>
+<p>&#x6D6E;&#x70B9;&#x6570; <script type="math/tex; "> 0.31416\times 10^1 </script> &#x6709; 5 &#x4E2A; 10 &#x8FDB;&#x5236;&#x6570;&#x5B57;&#x8868;&#x793A;&#xFF0C;&#x6545;&#x6240;&#x6709;&#x5C0F;&#x4E8E; <script type="math/tex; "> 0.5\times
+10^{-4} </script> &#x7684;&#x4FE1;&#x606F;&#x53EF;&#x80FD;&#x88AB;&#x4E22;&#x5931;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x82E5; <script type="math/tex; ">x</script> &#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x6570;&#xFF0C;&#x5176;&#x6700;&#x4F73;&#x7684; 5 &#x4F4D;&#x6570;&#x5B57;&#x8FD1;&#x4F3C;&#x6570;
+&#x662F; <script type="math/tex; ">0.31416 \times 10^1</script>, &#x5219;&#x5728; <script type="math/tex; ">0.31416 \times 10^1</script> &#x4E2D;&#x7684; <strong>&#x76F8;&#x5BF9;&#x8868;&#x793A;&#x8BEF;&#x5DEE;</strong>&#x662F;
+:</p>
+<p><script type="math/tex; mode=display">
+\frac{|x - 0.31416\times10^1|}{0.31416\times10^1}\le\frac{0.5\times10^{-4}}{0.31416\times10^1}\approx0.16\times10^{-4}
+</script></p>
+<p>&#x5728;&#x4E00;&#x4E2A; <script type="math/tex; ">p</script> &#x4F4D;&#x6570;&#x5B57;&#x548C;&#x57FA;&#x4E3A; <script type="math/tex; ">\beta</script> &#x7684;&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;&#x4E2D;&#x7684;<strong>&#x6700;&#x5927;&#x76F8;&#x5BF9;&#x8868;&#x793A;&#x8BEF;&#x5DEE;</strong>&#x662F;</p>
+<p><script type="math/tex; mode=display">
+0.5\times\beta^{1-p},
+</script></p>
+<p>&#x5B83;&#x662F; 1 &#x548C;&#x4E0B;&#x4E00;&#x4E2A;&#x6700;&#x5927;&#x7684;&#x6D6E;&#x70B9;&#x6570; <script type="math/tex; ">1 + \beta^{1-p}</script> &#x4E4B;&#x95F4;&#x8DDD;&#x79BB;&#x7684;&#x4E00;&#x534A;&#x3002;</p>
+<p>&#x4EE5; 10 &#x8FDB;&#x5236;&#x6709; 5 &#x4F4D;&#x5C3E;&#x6570;&#x7684;&#x6D6E;&#x70B9;&#x6570;&#x4E3A;&#x4F8B;&#xFF0C;&#x533A;&#x95F4; <script type="math/tex; ">[0.999995, 1.00005)</script> &#x4E4B;&#x95F4;&#x7684;&#x6570;&#x7684;&#x6D6E;&#x70B9;&#x6570;
+&#x8868;&#x793A;&#x90FD;&#x4E3A; </p>
+<p><script type="math/tex; mode=display">
+.10000\times 10^1
+</script></p>
+<p>&#x5176;&#x6700;&#x5927;&#x7684;&#x8868;&#x793A;&#x8BEF;&#x5DEE;&#x4E3A;</p>
+<p><script type="math/tex; mode=display">
+0.5\times 10^{1-5} = 0.5\times 10^{-4}
+</script></p>
+<h2 id="ieee-&#x6D6E;&#x70B9;&#x6570;&#x6807;&#x51C6;">IEEE &#x6D6E;&#x70B9;&#x6570;&#x6807;&#x51C6;</h2>
+<p><strong>IEEE Single precision</strong></p>
+<ul>
+<li>&#x7B26;&#x53F7; <script type="math/tex; ">s</script>: 1 &#x4F4D;</li>
+<li>&#x6307;&#x6570; <script type="math/tex; ">e</script>: 8 &#x4F4D;</li>
+<li>&#x5206;&#x6570; <script type="math/tex; ">f<1</script>: 23 &#x4F4D;</li>
+</ul>
+<p>&#x5176;&#x8868;&#x793A;&#x7684;&#x6570;&#x4E3A;</p>
+<p><script type="math/tex; "> 
+(-1)^s\cdot 2^{e-127} \cdot (1 + f) 
+</script></p>
+<ul>
+<li>&#x6700;&#x5927;&#x76F8;&#x5BF9;&#x8868;&#x793A;&#x8BEF;&#x5DEE; <script type="math/tex; ">0.5\times 2^{1 - 24} = 2^{-24} \approx 6\cdot 10^{-8}</script>&#x3002;</li>
+<li>&#x4E0B;&#x754C;&#x4E3A; <script type="math/tex; ">2^{-126}</script> (<script type="math/tex; "> 10^{-38}</script>, underflow threshold)&#x3002;</li>
+<li>&#x4E0A;&#x754C;&#x4E3A; <script type="math/tex; ">2^{127}\cdot (2 - 2^{-23}) \approx 2^{128}</script> (<script type="math/tex; "> 10^{38}</script>, overflow threshhold)&#x3002;</li>
+</ul>
+<p><img src="figures/floatnumber.png" alt=""></p>
+<p><strong>IEEE Double precision</strong></p>
+<ul>
+<li>&#x7B26;&#x53F7; <script type="math/tex; ">s</script>: 1 &#x4F4D;</li>
+<li>&#x6307;&#x6570; <script type="math/tex; ">e</script>: 11 &#x4F4D;</li>
+<li>&#x5206;&#x6570; <script type="math/tex; ">f<1</script>: 52 &#x4F4D;</li>
+</ul>
+<p>&#x5176;&#x8868;&#x793A;&#x7684;&#x6570;&#x4E3A;</p>
+<p><script type="math/tex; "> 
+(-1)^s\cdot 2^{e-1023} \cdot (1 + f) 
+</script></p>
+<ul>
+<li>&#x6700;&#x5927;&#x76F8;&#x5BF9;&#x8868;&#x793A;&#x8BEF;&#x5DEE; <script type="math/tex; ">0.5\times 2^{1 - 54} = 2^{-54} \approx 6\cdot 10^{-16}</script>&#x3002;</li>
+<li>&#x4E0B;&#x754C;&#x4E3A; <script type="math/tex; ">2^{-1022}</script> (<script type="math/tex; "> 10^{-308}</script>, underflow threshold)&#x3002;</li>
+<li>&#x4E0A;&#x754C;&#x4E3A; <script type="math/tex; ">2^{1023}\cdot (2 - 2^{-52}) \approx 2^{128}</script> (<script type="math/tex; "> 10^{308}</script>, overflow threshhold)&#x3002;</li>
+</ul>
+<h2 id="&#x820D;&#x5165;&#x8BEF;&#x5DEE;-roundoff-error">&#x820D;&#x5165;&#x8BEF;&#x5DEE; (Roundoff Error)</h2>
+<p>&#x5F53;&#x8BA1;&#x7B97; <script type="math/tex; ">a\odot b</script> &#x65F6;&#xFF08; <script type="math/tex; ">\odot</script> &#x53EF;&#x4EE5;&#x662F;&#x52A0;&#x3001;&#x51CF;&#x3001;&#x4E58;&#x3001;&#x9664;&#x56DB;&#x79CD;&#x8FD0;&#x7B97;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x79CD;&#xFF09;&#xFF0C;
+&#x5176;&#x7ED3;&#x679C;&#x4E0D;&#x80FD;&#x7CBE;&#x786E;&#x5730;&#x8868;&#x793A;&#x6210;&#x4E00;&#x4E2A;&#x6D6E;&#x70B9;&#x6570;&#xFF0C;&#x5219;&#x5B83;&#x88AB;&#x653E;&#x5230;&#x5185;&#x5B58;&#x6216;&#x5BC4;&#x5B58;&#x5668;&#x4E4B;&#x524D;&#xFF0C;&#x5FC5;&#x987B;&#x7528;&#x4E00;&#x4E2A;&#x90BB;&#x8FD1;&#x7684;&#x6D6E;
+&#x70B9;&#x6570;&#x6765;&#x8FD1;&#x4F3C;&#x8868;&#x793A;&#x3002; &#x7528; <script type="math/tex; ">\text{fl}(a\odot b)</script> &#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x8FD1;&#x4F3C;, &#x5219;&#x79F0;</p>
+<p><script type="math/tex; "> 
+(a\odot b) - \text{fl}(a\odot b)
+</script> </p>
+<p>&#x4E3A;<strong>&#x820D;&#x5165;&#x8BEF;&#x5DEE;</strong>&#x3002;</p>
+<p>&#x82E5; <script type="math/tex; ">fl(a\odot b)</script> &#x662F;&#x4E00;&#x4E2A;&#x6700;&#x63A5;&#x8FD1;&#x4E8E; <script type="math/tex; ">a\odot b</script> &#x7684;&#x6D6E;&#x70B9;&#x6570;&#xFF0C;&#x5219;&#x79F0;&#x8FD0;&#x7B97;&#x8FDB;&#x884C;&#x4E86;<strong>&#x6B63;&#x786E;&#x5730;
+&#x820D;&#x5165;</strong>&#x3002; &#x5F53;&#x6B63;&#x786E;&#x5730;&#x820D;&#x5165;&#x65F6;&#xFF0C;&#x4E14; <script type="math/tex; ">a\odot b</script> &#x6CA1;&#x6709;&#x6EA2;&#x51FA;&#xFF0C;&#x5219;&#x8BB0;</p>
+<p><script type="math/tex; mode=display">
+fl(a\odot b) = (a\odot b)(1 + \delta)
+</script></p>
+<p>&#x5176;&#x4E2D; $\abs\delta$ &#x4EE5; $\varepsilon$ &#x4E3A;&#x754C;&#xFF0C; &#x79F0; $\varepsilon$ &#x4E3A;<strong>&#x673A;&#x5668;&#x7CBE;&#x5EA6;</strong>
+(machine epsilon, machine precision, or macheps)&#x3002;</p>
+<ul>
+<li><script type="math/tex; "> \varepsilon = 0.5\cdot\beta^{1-p}</script></li>
+<li>IEEE &#x6807;&#x51C6;&#x7684;&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;&#x4E5F;&#x4FDD;&#x8BC1; <script type="math/tex; ">\text{fl}(\sqrt{a}) = \sqrt{a}(1 + \delta)</script></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1.4.html" class="navigation navigation-prev " aria-label="Previous page: 1.4 多项式计算示例">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="1.6.html" class="navigation navigation-next " aria-label="Next page: 1.6 再议多项式求值">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1.5 浮点数算术运算","level":"1.5.5","depth":2,"next":{"title":"1.6 再议多项式求值","level":"1.5.6","depth":2,"path":"ch1/1.6.md","ref":"./ch1/1.6.md","articles":[]},"previous":{"title":"1.4 多项式计算示例","level":"1.5.4","depth":2,"path":"ch1/1.4.md","ref":"./ch1/1.4.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch1/1.5.md","mtime":"2019-03-18T12:06:40.982Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-18T23:43:58.515Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+
