@@ -17,6 +17,10 @@
     
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
                 
             
@@ -26,10 +30,6 @@
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -57,7 +57,6 @@
         
     
     
-    
     <meta name="HandheldFriendly" content="true"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -71,9 +70,6 @@
     
     <link rel="prev" href="1.3.html" />
     
-
-    <script src="../gitbook/gitbook-plugin-graph/d3.min.js"></script>
-    <script src="../gitbook/gitbook-plugin-graph/function-plot.js"></script>    
 
     </head>
     <body>
@@ -334,36 +330,36 @@ p(x) =& (x-2)^9 \\
 </script></p>
 <p>&#x7F16;&#x5199; Python &#x7A0B;&#x5E8F;, &#x5206;&#x522B;&#x7528; <script type="math/tex; ">(x-2)^9</script> &#x548C; Horner &#x89C4;&#x5219;&#x8BA1;&#x7B97;&#x4E0A;&#x8FF0;&#x591A;&#x9879;&#x5F0F;&#x5728;&#x533A;&#x95F4; <script type="math/tex; ">[1.92,
 2.08]</script> &#x7684;&#x51FD;&#x6570;&#x56FE;&#x50CF;&#x3002; </p>
-<pre><code class="lang-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
-<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<pre class="language-"><code class="lang-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">horner</span><span class="hljs-params">(x)</span>:</span>
-    a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">-18</span>, <span class="hljs-number">144</span>, <span class="hljs-number">-672</span>, <span class="hljs-number">2016</span>,<span class="hljs-number">-4032</span>, <span class="hljs-number">5376</span>, <span class="hljs-number">-4608</span>, <span class="hljs-number">2304</span>, <span class="hljs-number">-512</span>],dtype=np.float)
-    n = len(x)
-    p = np.ones(n)*a[<span class="hljs-number">0</span>]
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>):
-        p = x*p + a[i]
-    <span class="hljs-keyword">return</span> p
+<span class="token keyword">def</span> <span class="token function">horner</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">144</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">672</span><span class="token punctuation">,</span> <span class="token number">2016</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">4032</span><span class="token punctuation">,</span> <span class="token number">5376</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4608</span><span class="token punctuation">,</span> <span class="token number">2304</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">512</span><span class="token punctuation">]</span><span class="token punctuation">,</span>dtype<span class="token operator">=</span>np<span class="token punctuation">.</span><span class="token builtin">float</span><span class="token punctuation">)</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    p <span class="token operator">=</span> np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token operator">*</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        p <span class="token operator">=</span> x<span class="token operator">*</span>p <span class="token operator">+</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token keyword">return</span> p
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">poly</span><span class="hljs-params">(x)</span>:</span>
-    <span class="hljs-keyword">return</span> (x<span class="hljs-number">-2</span>)**<span class="hljs-number">9</span>
+<span class="token keyword">def</span> <span class="token function">poly</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>x<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">**</span><span class="token number">9</span>
 
 
-x = np.linspace(<span class="hljs-number">1.92</span>, <span class="hljs-number">2.08</span>, num=<span class="hljs-number">8000</span>)
+x <span class="token operator">=</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">1.92</span><span class="token punctuation">,</span> <span class="token number">2.08</span><span class="token punctuation">,</span> num<span class="token operator">=</span><span class="token number">8000</span><span class="token punctuation">)</span>
 
-y0 = horner(x)
-y1 = poly(x)
+y0 <span class="token operator">=</span> horner<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+y1 <span class="token operator">=</span> poly<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 
-fig0 = plt.figure()
-fig1 = plt.figure()
+fig0 <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token punctuation">)</span>
+fig1 <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-axes0 = fig0.gca()
-axes1 = fig1.gca()
+axes0 <span class="token operator">=</span> fig0<span class="token punctuation">.</span>gca<span class="token punctuation">(</span><span class="token punctuation">)</span>
+axes1 <span class="token operator">=</span> fig1<span class="token punctuation">.</span>gca<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-axes0.plot(x, y0)
-axes1.plot(x, y1)
+axes0<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y0<span class="token punctuation">)</span>
+axes1<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y1<span class="token punctuation">)</span>
 
-plt.show()
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <h2 id="&#x5229;&#x7528;&#x4E8C;&#x5206;&#x6CD5;&#x7F16;&#x7A0B;&#x6C42;&#x89E3;&#x591A;&#x9879;&#x5F0F;&#x7684;&#x96F6;&#x70B9;">&#x5229;&#x7528;&#x4E8C;&#x5206;&#x6CD5;&#x7F16;&#x7A0B;&#x6C42;&#x89E3;&#x591A;&#x9879;&#x5F0F;&#x7684;&#x96F6;&#x70B9;</h2>
 <p><script type="math/tex; mode=display">
@@ -419,7 +415,7 @@ plt.show()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.4 多项式计算示例","level":"1.5.4","depth":2,"next":{"title":"1.5 浮点数算术运算","level":"1.5.5","depth":2,"path":"ch1/1.5.md","ref":"./ch1/1.5.md","articles":[]},"previous":{"title":"1.3 数值代数研究的一般技术","level":"1.5.3","depth":2,"path":"ch1/1.3.md","ref":"./ch1/1.3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch1/1.4.md","mtime":"2019-03-20T08:53:09.465Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-20T08:53:20.205Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.4 多项式计算示例","level":"1.5.4","depth":2,"next":{"title":"1.5 浮点数算术运算","level":"1.5.5","depth":2,"path":"ch1/1.5.md","ref":"./ch1/1.5.md","articles":[]},"previous":{"title":"1.3 数值代数研究的一般技术","level":"1.5.3","depth":2,"path":"ch1/1.3.md","ref":"./ch1/1.3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch1/1.4.md","mtime":"2019-03-20T08:53:09.465Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-20T11:09:58.768Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -446,6 +442,10 @@ plt.show()
     
         
         <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
         
     
         
