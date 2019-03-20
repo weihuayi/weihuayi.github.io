@@ -17,6 +17,10 @@
     
             
                 
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
                 <link rel="stylesheet" href="../../gitbook/gitbook-plugin-image-captions/image-captions.css">
                 
             
@@ -26,10 +30,6 @@
             
                 
                 <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -57,7 +57,6 @@
         
     
     
-    
     <meta name="HandheldFriendly" content="true"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -71,9 +70,6 @@
     
     <link rel="prev" href="python_env.html" />
     
-
-    <script src="../../gitbook/gitbook-plugin-graph/d3.min.js"></script>
-    <script src="../../gitbook/gitbook-plugin-graph/function-plot.js"></script>    
 
     </head>
     <body>
@@ -912,7 +908,7 @@
 </li>
 </ul>
 <h2 id="python-&#x7684;&#x8BBE;&#x8BA1;&#x539F;&#x5219;">Python &#x7684;&#x8BBE;&#x8BA1;&#x539F;&#x5219;</h2>
-<pre><code>why@why-XPS-15-9530:~$ ipython3
+<pre class="language-"><code>why@why-XPS-15-9530:~$ ipython3
 Python 3.6.7 (default, Oct 22 2018, 11:32:17)
 Type &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 
@@ -973,7 +969,7 @@ Namespaces are one honking great idea -- let&apos;s do more of those!
 <p>&#x5229;&#x7528; Python &#x4EA4;&#x4E92;&#x73AF;&#x5883;&#xFF0C;&#x662F;&#x5229;&#x7528; Python &#x8BED;&#x8A00;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x6700;&#x4FBF;&#x6377;&#x65B9;&#x5F0F;&#xFF0C;&#x9010;&#x6B65;&#x5730;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;
 &#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x66F4;&#x597D;&#x5730;&#x6D4B;&#x8BD5;&#x548C;&#x7406;&#x89E3;&#x7B97;&#x6CD5;&#x3002;</p>
 <p>&#x4E0B;&#x9762;&#x6F14;&#x793A; <code>IPython</code> &#x7684;&#x4EA4;&#x4E92;&#x7528;&#x6CD5;, &#x5728;&#x547D;&#x4EE4;&#x884C;&#x7EC8;&#x7AEF;&#x8F93;&#x5165; <code>ipython3</code>&#xFF1A;</p>
-<pre><code>why@why-XPS-15-9530:~$ ipython3 
+<pre class="language-"><code>why@why-XPS-15-9530:~$ ipython3 
 Python 3.6.7 (default, Oct 22 2018, 11:32:17) 
 Type &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 
@@ -984,11 +980,11 @@ help      -&gt; Python&apos;s own help system.
 object?   -&gt; Details about &apos;object&apos;, use &apos;object??&apos; for extra details.
 
 In [1]:
-</code></pre><pre><code>In [1]: print(&quot;Hello World&quot;) # &#x56DE;&#x8F66;&#x6267;&#x884C;&#x547D;&#x4EE4;
+</code></pre><pre class="language-"><code>In [1]: print(&quot;Hello World&quot;) # &#x56DE;&#x8F66;&#x6267;&#x884C;&#x547D;&#x4EE4;
 Hello World
 
 In [2]:
-</code></pre><pre><code>
+</code></pre><pre class="language-"><code>
 In [2]: print?
 Docstring:
 print(value, ..., sep=&apos; &apos;, end=&apos;\n&apos;, file=sys.stdout, flush=False)
@@ -1002,12 +998,12 @@ flush: whether to forcibly flush the stream.
 Type:      builtin_function_or_method
 </code></pre><p>&#x4E5F;&#x53EF;&#x4EE5;&#x628A;&#x547D;&#x4EE4;&#x4EE3;&#x7801;&#x653E;&#x5230;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5305;&#x542B;&#x53EF;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x547D;&#x4EE4;&#x7684;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x79F0;&#x4E3A;<strong>&#x811A;&#x672C;</strong>&#x3002;&#x5982;&#x628A;&#x4E0B;
 &#x9762;&#x7684;&#x5185;&#x5BB9;</p>
-<pre><code>s = &apos;Hello world&apos;
+<pre class="language-"><code>s = &apos;Hello world&apos;
 print(s)
 </code></pre><p>&#x653E;&#x5165;&#x811A;&#x672C;&#x6587;&#x4EF6; <code>my_file.py</code>, &#x7136;&#x540E;&#x5728; <code>IPython</code> &#x4E2D;</p>
-<pre><code>In [3]: run my_file.py
+<pre class="language-"><code>In [3]: run my_file.py
 Hello world!
-</code></pre><pre><code>In [4]: s
+</code></pre><pre class="language-"><code>In [4]: s
 Out[4]: &apos;Hello world!&apos;
 
 In [5]: whos
@@ -1017,11 +1013,11 @@ s          str     Hello world!
 </code></pre><p><strong>&#x6CE8;&#xFF1A;</strong> &#x811A;&#x672C;(script)&#x662F;&#x547D;&#x4EE4;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x7528;&#x8D77;&#x6765;&#x5F88;&#x65B9;&#x4FBF;&#xFF0C;&#x4F46;&#x6700;&#x5927;&#x7F3A;&#x70B9;&#x662F;&#x65E0;&#x6CD5;<strong>&#x91CD;&#x7528;</strong>&#x3002;</p>
 <h2 id="ipython-&#x64CD;&#x4F5C;&#x6280;&#x5DE7;"><code>IPython</code> &#x64CD;&#x4F5C;&#x6280;&#x5DE7;</h2>
 <h3 id="&#x5386;&#x53F2;&#x547D;&#x4EE4;">&#x5386;&#x53F2;&#x547D;&#x4EE4;</h3>
-<p>&#x5229;&#x7528; <code>&lt;UP&gt;</code> &#x548C; <code>&lt;DOWN&gt;</code>  &#x952E;&#x904D;&#x5386;&#x5DF2;&#x7ECF;&#x8F93;&#x5165;&#x8FC7;&#x7684;&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x5229;&#x7528; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>UP</span><span class="token punctuation">&gt;</span></span></code> &#x548C; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>DOWN</span><span class="token punctuation">&gt;</span></span></code>  &#x952E;&#x904D;&#x5386;&#x5DF2;&#x7ECF;&#x8F93;&#x5165;&#x8FC7;&#x7684;&#x547D;&#x4EE4;&#x3002;</p>
 <h3 id="tab-&#x952E;&#x8865;&#x5168;">Tab &#x952E;&#x8865;&#x5168;</h3>
-<pre><code>In [6]: x = 10
+<pre class="language-"><code>In [6]: x = 10
 
-In [7]: x.&lt;TAB&gt;
+In [7]: x.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TAB</span><span class="token punctuation">&gt;</span></span>
            x.bit_length  x.from_bytes  x.real
            x.conjugate   x.imag        x.to_bytes
            x.denominator x.numerator
@@ -1030,22 +1026,22 @@ In [7]: x.&lt;TAB&gt;
 &#x53C2;&#x6570;&#x4E0D;&#x9700;&#x8981;&#x653E;&#x5230;&#x62EC;&#x53F7;&#x91CC;&#x3002;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x6781;&#x5927;&#x7684;&#x65B9;&#x4FBF;&#x7528;&#x6237;&#x4E0E; <code>IPython</code> &#x7684;&#x4EA4;&#x4E92;, &#x63D0;&#x9AD8;&#x4EA4;&#x4E92;&#x6548;
 &#x7387;&#x3002;</p>
 <p><strong>&#x7C98;&#x8D34;&#x4EE3;&#x7801;</strong></p>
-<pre><code>&gt;&gt;&gt; for i in range(3):
+<pre class="language-"><code>&gt;&gt;&gt; for i in range(3):
         print(i)
-</code></pre><pre><code>In [8]: %cpaste
+</code></pre><pre class="language-"><code>In [8]: %cpaste
 Pasting code; enter &apos;--&apos; alone on the line to stop or use Ctrl-D.
 :&gt;&gt;&gt; for i in range(3):
         print(i)
-::&lt;EOF&gt;
+::<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>EOF</span><span class="token punctuation">&gt;</span></span>
 0
 1
 2
 </code></pre><p><strong>&#x8BA1;&#x65F6;</strong></p>
-<pre><code>In [7]: %timeit x=10
+<pre class="language-"><code>In [7]: %timeit x=10
 100000000 loops, best of 3: 10.3 ns per loop
 </code></pre><p><strong>&#x8C03;&#x8BD5;</strong></p>
-<pre><code>In [12]: x === 10
-  File &quot;&lt;ipython-input-12-8e8bc565444b&gt;&quot;, line 1
+<pre class="language-"><code>In [12]: x === 10
+  File &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ipython-input-12-8e8bc565444b</span><span class="token punctuation">&gt;</span></span>&quot;, line 1
     x === 10
         ^
 SyntaxError: invalid syntax
@@ -1063,14 +1059,14 @@ ipdb&gt; locals()
 {&apos;prompt&apos;: &apos;:&apos;}
 ipdb&gt;
 </code></pre><p><strong>&#x9B54;&#x6CD5;&#x51FD;&#x6570;&#x7D22;&#x5F15;&#x547D;&#x4EE4;</strong></p>
-<pre><code>In [14]: %quickref
+<pre class="language-"><code>In [14]: %quickref
 </code></pre><h2 id="python-&#x8BED;&#x8A00;&#x57FA;&#x7840;">Python &#x8BED;&#x8A00;&#x57FA;&#x7840;</h2>
 <h3 id="&#x7B2C;&#x4E00;&#x6B65;">&#x7B2C;&#x4E00;&#x6B65;</h3>
 <p><strong> Hello World!</strong></p>
-<pre><code>In [1]: print(&quot;Hello, world!&quot;)
+<pre class="language-"><code>In [1]: print(&quot;Hello, world!&quot;)
 Hello, world!
 </code></pre><p><strong>&#x53D8;&#x91CF;</strong></p>
-<pre><code>In [2]: a = 3
+<pre class="language-"><code>In [2]: a = 3
 
 In [3]: b = 2*a
 
@@ -1147,7 +1143,7 @@ Out[10]: &apos;hellohello&apos;
 <li>&#x7D22;&#x5F15;</li>
 <li>&#x5207;&#x7247;</li>
 <li>&#x4E0D;&#x53EF;&#x53D8;&#x5BF9;&#x8C61; (immutable object)&#xFF0C;&#x4F46;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x539F;&#x6765;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;</li>
-<li>&#x5B57;&#x7B26;&#x4E32;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x65B9;&#x6CD5;, &#x7528; <code>&lt;TAB&gt;</code> &#x548C;<code>help(str)</code> &#x53D1;&#x73B0;&#x66F4;&#x591A;&#x65B0;&#x65B9;&#x6CD5;&#x3002;</li>
+<li>&#x5B57;&#x7B26;&#x4E32;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x65B9;&#x6CD5;, &#x7528; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TAB</span><span class="token punctuation">&gt;</span></span></code> &#x548C;<code>help(str)</code> &#x53D1;&#x73B0;&#x66F4;&#x591A;&#x65B0;&#x65B9;&#x6CD5;&#x3002;</li>
 <li>&#x5B57;&#x7B26;&#x4E32;&#x683C;&#x5F0F;&#x5316;&#x3002;</li>
 </ol>
 </li>
@@ -1186,7 +1182,7 @@ Out[10]: &apos;hellohello&apos;
 </ul>
 <h3 id="&#x63A7;&#x5236;&#x6D41;-control-flow">&#x63A7;&#x5236;&#x6D41; (Control Flow)</h3>
 <ul>
-<li><code>if/elif/else</code><pre><code>In [11]: if 2**2 == 4:
+<li><code>if/elif/else</code><pre class="language-"><code>In [11]: if 2**2 == 4:
   ...:     print(&apos;Obvious!&apos;)
   ...:
 Obvious!
@@ -1274,7 +1270,7 @@ Obvious!
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python 基础","level":"1.6.2.2","depth":3,"next":{"title":"matlab","level":"1.6.3","depth":2,"path":"code/matlab/README.md","ref":"./code/matlab/README.md","articles":[{"title":"Matlab engine for Python","level":"1.6.3.1","depth":3,"path":"code/matlab/matlab_engine.md","ref":"./code/matlab/matlab_engine.md","articles":[]}]},"previous":{"title":"Python 环境搭建","level":"1.6.2.1","depth":3,"path":"code/python/python_env.md","ref":"./code/python/python_env.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.6.2.1.1","level":"1.6.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.6.2.1.1"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"code/python/python_basic.md","mtime":"2019-03-11T23:27:48.885Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-12T14:32:40.806Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python 基础","level":"1.6.2.2","depth":3,"next":{"title":"matlab","level":"1.6.3","depth":2,"path":"code/matlab/README.md","ref":"./code/matlab/README.md","articles":[{"title":"Matlab engine for Python","level":"1.6.3.1","depth":3,"path":"code/matlab/matlab_engine.md","ref":"./code/matlab/matlab_engine.md","articles":[]}]},"previous":{"title":"Python 环境搭建","level":"1.6.2.1","depth":3,"path":"code/python/python_env.md","ref":"./code/python/python_env.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.6.2.1.1","level":"1.6.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.6.2.1.1"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"code/python/python_basic.md","mtime":"2019-03-11T23:27:48.885Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-20T11:08:05.455Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1301,6 +1297,10 @@ Obvious!
     
         
         <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ga/plugin.js"></script>
         
     
         
