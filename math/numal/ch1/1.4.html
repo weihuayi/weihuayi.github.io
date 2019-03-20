@@ -335,8 +335,35 @@ p(x) =& (x-2)^9 \\
 <p>&#x7F16;&#x5199; Python &#x7A0B;&#x5E8F;, &#x5206;&#x522B;&#x7528; <script type="math/tex; ">(x-2)^9</script> &#x548C; Horner &#x89C4;&#x5219;&#x8BA1;&#x7B97;&#x4E0A;&#x8FF0;&#x591A;&#x9879;&#x5F0F;&#x5728;&#x533A;&#x95F4; <script type="math/tex; ">[1.92,
 2.08]</script> &#x7684;&#x51FD;&#x6570;&#x56FE;&#x50CF;&#x3002; </p>
 <pre><code class="lang-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
-a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">-18</span>, <span class="hljs-number">144</span>, <span class="hljs-number">-672</span>, <span class="hljs-number">2016</span>, <span class="hljs-number">-4032</span>, <span class="hljs-number">5376</span>, <span class="hljs-number">-4608</span>, <span class="hljs-number">2304</span>, <span class="hljs-number">-512</span>],
-    dtype=np.float)
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">horner</span><span class="hljs-params">(x)</span>:</span>
+    a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">-18</span>, <span class="hljs-number">144</span>, <span class="hljs-number">-672</span>, <span class="hljs-number">2016</span>,<span class="hljs-number">-4032</span>, <span class="hljs-number">5376</span>, <span class="hljs-number">-4608</span>, <span class="hljs-number">2304</span>, <span class="hljs-number">-512</span>],dtype=np.float)
+    n = len(x)
+    p = np.ones(n)*a[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>):
+        p = x*p + a[i]
+    <span class="hljs-keyword">return</span> p
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">poly</span><span class="hljs-params">(x)</span>:</span>
+    <span class="hljs-keyword">return</span> (x<span class="hljs-number">-2</span>)**<span class="hljs-number">9</span>
+
+
+x = np.linspace(<span class="hljs-number">1.92</span>, <span class="hljs-number">2.08</span>, num=<span class="hljs-number">8000</span>)
+
+y0 = horner(x)
+y1 = poly(x)
+
+fig0 = plt.figure()
+fig1 = plt.figure()
+
+axes0 = fig0.gca()
+axes1 = fig1.gca()
+
+axes0.plot(x, y0)
+axes1.plot(x, y1)
+
+plt.show()
 </code></pre>
 <h2 id="&#x5229;&#x7528;&#x4E8C;&#x5206;&#x6CD5;&#x7F16;&#x7A0B;&#x6C42;&#x89E3;&#x591A;&#x9879;&#x5F0F;&#x7684;&#x96F6;&#x70B9;">&#x5229;&#x7528;&#x4E8C;&#x5206;&#x6CD5;&#x7F16;&#x7A0B;&#x6C42;&#x89E3;&#x591A;&#x9879;&#x5F0F;&#x7684;&#x96F6;&#x70B9;</h2>
 <p><script type="math/tex; mode=display">
@@ -392,7 +419,7 @@ a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">-18<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.4 多项式计算示例","level":"1.5.4","depth":2,"next":{"title":"1.5 浮点数算术运算","level":"1.5.5","depth":2,"path":"ch1/1.5.md","ref":"./ch1/1.5.md","articles":[]},"previous":{"title":"1.3 数值代数研究的一般技术","level":"1.5.3","depth":2,"path":"ch1/1.3.md","ref":"./ch1/1.3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch1/1.4.md","mtime":"2019-03-18T12:13:13.971Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-19T02:02:52.776Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.4 多项式计算示例","level":"1.5.4","depth":2,"next":{"title":"1.5 浮点数算术运算","level":"1.5.5","depth":2,"path":"ch1/1.5.md","ref":"./ch1/1.5.md","articles":[]},"previous":{"title":"1.3 数值代数研究的一般技术","level":"1.5.3","depth":2,"path":"ch1/1.3.md","ref":"./ch1/1.3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch1/1.4.md","mtime":"2019-03-20T08:53:09.465Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-20T08:53:20.205Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
