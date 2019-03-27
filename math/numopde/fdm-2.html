@@ -1,0 +1,558 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>一维热传导问题的有限差分求解算法实现 · 数值代数课件</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Wei, Huayi">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="fdm-1.html" />
+    
+
+    <script src="gitbook/gitbook-plugin-graph/d3.min.js"></script>
+    <script src="gitbook/gitbook-plugin-graph/function-plot.js"></script>    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    课程简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="matlab.html">
+            
+                <a href="matlab.html">
+            
+                    
+                    Matlab 基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="matlab-advance.html">
+            
+                <a href="matlab-advance.html">
+            
+                    
+                    Matlab 进阶
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="sparse.html">
+            
+                <a href="sparse.html">
+            
+                    
+                    Matlab 中的稀疏矩阵
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="fdm-1.html">
+            
+                <a href="fdm-1.html">
+            
+                    
+                    一维椭圆问题的有限差分求解算法实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="fdm-2.html">
+            
+                <a href="fdm-2.html">
+            
+                    
+                    一维热传导问题的有限差分求解算法实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >一维热传导问题的有限差分求解算法实现</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x4E00;&#x7EF4;&#x70ED;&#x4F20;&#x5BFC;&#x95EE;&#x9898;&#x7684;&#x6709;&#x9650;&#x5DEE;&#x5206;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;">&#x4E00;&#x7EF4;&#x70ED;&#x4F20;&#x5BFC;&#x95EE;&#x9898;&#x7684;&#x6709;&#x9650;&#x5DEE;&#x5206;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;</h1>
+<h2 id="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;">&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;</h2>
+<h2 id="matlab-&#x5B9E;&#x73B0;">Matlab &#x5B9E;&#x73B0;</h2>
+<p><script type="math/tex; mode=display">
+\begin{aligned}
+&\frac{\partial u}{\partial t}-a\frac{\partial^2u}{\partial x^2}=0,\\
+& u(0,t)=0,\quad u(1,t)=0,\\
+& u(x,0)=e^{-\frac{(x-0.25)^2}{0.01}} + 0.1\sin(20\pi x).
+\end{aligned}
+</script></p>
+<p>&#x5176;&#x4E2D;&#x7CFB;&#x6570; <script type="math/tex; ">a=1</script>&#x3002;</p>
+<p>1) &#x9996;&#x5148;&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x6570;&#x636E;</p>
+<pre><code class="lang-matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pde</span> = <span class="hljs-title">model_data</span><span class="hljs-params">(t0, t1, l, r)</span></span>
+<span class="hljs-comment">% &#x4E00;&#x7EF4;&#x70ED;&#x4F20;&#x5BFC;&#x95EE;&#x9898;&#x7684;&#x6570;&#x5B66;&#x6A21;&#x578B;</span>
+
+pde = struct(<span class="hljs-string">&apos;u_initial&apos;</span>,@u_initial,<span class="hljs-string">&apos;u_left&apos;</span>,@u_left,...
+    <span class="hljs-string">&apos;u_right&apos;</span>,@u_right,<span class="hljs-string">&apos;f&apos;</span>,@f,<span class="hljs-string">&apos;time_grid&apos;</span>,@time_grid,...
+    <span class="hljs-string">&apos;space_grid&apos;</span>,@space_grid,<span class="hljs-string">&apos;a&apos;</span>,@a);
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[T,tau]</span> = <span class="hljs-title">time_grid</span><span class="hljs-params">(NT)</span></span>
+    <span class="hljs-comment">%% &#x65F6;&#x95F4;&#x65B9;&#x5411;&#x7684;&#x7F51;&#x683C;&#x79BB;&#x6563;</span>
+        T = <span class="hljs-built_in">linspace</span>(t0, t1,NT+<span class="hljs-number">1</span>);
+        tau = <span class="hljs-number">0.1</span>/NT;
+    <span class="hljs-keyword">end</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[X,h]</span> = <span class="hljs-title">space_grid</span><span class="hljs-params">(NS)</span></span>
+    <span class="hljs-comment">%% &#x7A7A;&#x95F4;&#x65B9;&#x5411;&#x7684;&#x7F51;&#x683C;&#x79BB;&#x6563;</span>
+        X = <span class="hljs-built_in">linspace</span>(l, r, NS+<span class="hljs-number">1</span>)&apos;;
+        h = <span class="hljs-number">1</span>/NS;
+    <span class="hljs-keyword">end</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">u</span> = <span class="hljs-title">init_solution</span><span class="hljs-params">(x)</span></span>
+    <span class="hljs-comment">%% &#x6A21;&#x578B;&#x771F;&#x89E3;&#x7684;&#x521D;&#x503C;&#x6761;&#x4EF6;</span>
+        u = <span class="hljs-built_in">exp</span>(-(x<span class="hljs-number">-0.025</span>).^<span class="hljs-number">2</span>/<span class="hljs-number">0.01</span>)+<span class="hljs-number">0.1</span>*<span class="hljs-built_in">sin</span>(<span class="hljs-number">20</span>*<span class="hljs-built_in">pi</span>*x);
+    <span class="hljs-keyword">end</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">u</span> = <span class="hljs-title">left_solution</span><span class="hljs-params">(t)</span></span>
+    <span class="hljs-comment">%% &#x6A21;&#x578B;&#x5DE6;&#x7AEF;&#x8FB9;&#x503C;&#x6761;&#x4EF6;</span>
+        u = <span class="hljs-built_in">zeros</span>(<span class="hljs-built_in">size</span>(t));
+    <span class="hljs-keyword">end</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">u</span> = <span class="hljs-title">right_solution</span><span class="hljs-params">(t)</span></span>
+    <span class="hljs-comment">%% &#x6A21;&#x578B;&#x53F3;&#x7AEF;&#x8FB9;&#x503C;&#x6761;&#x4EF6;</span>
+        u = <span class="hljs-built_in">zeros</span>(<span class="hljs-built_in">size</span>(t));
+    <span class="hljs-keyword">end</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span> = <span class="hljs-title">source</span><span class="hljs-params">(x,t)</span></span>
+    <span class="hljs-comment">%% &#x6A21;&#x578B;&#x53F3;&#x7AEF;&#x9879;</span>
+        f = <span class="hljs-built_in">zeros</span>(<span class="hljs-built_in">size</span>(x));
+    <span class="hljs-keyword">end</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span> = <span class="hljs-title">a</span><span class="hljs-params">()</span></span>
+        a = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>2) &#x7F16;&#x5199;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;</p>
+<pre><code class="lang-matlab"><span class="hljs-comment">%% &#x4E00;&#x7EF4;&#x70ED;&#x4F20;&#x5BFC;&#x65B9;&#x7A0B;&#x6709;&#x9650;&#x5DEE;&#x5206;&#x65B9;&#x6CD5;&#x4E3B;&#x6D4B;&#x8BD5;&#x811A;&#x672C; main_test.m</span>
+<span class="hljs-comment">%   &#x6D4B;&#x8BD5;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</span>
+<span class="hljs-comment">%   1. &#x5411;&#x524D;&#x5DEE;&#x5206;</span>
+<span class="hljs-comment">%   1. &#x5411;&#x540E;&#x5DEE;&#x5206;</span>
+<span class="hljs-comment">%   1. &#x516D;&#x70B9;&#x5BF9;&#x79F0;&#x683C;&#x5F0F;</span>
+<span class="hljs-comment">%   1. &#x53EF;&#x89C6;&#x5316;&#x6570;&#x503C;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x3002;</span>
+<span class="hljs-comment">%</span>
+<span class="hljs-comment">% &#x4F5C;&#x8005;&#xFF1A;&#x9B4F;&#x534E;&#x794E; &lt;weihuayi@xtu.edu.cn&gt; </span>
+
+pde = model_data(); <span class="hljs-comment">%&#x6A21;&#x578B;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4F53;</span>
+
+<span class="hljs-comment">% &#x5411;&#x524D;&#x5DEE;&#x5206;&#x683C;&#x5F0F;</span>
+[X,T,U] = heat_equation_fd1d(<span class="hljs-number">100</span>,<span class="hljs-number">10000</span>,pde,<span class="hljs-string">&apos;forward&apos;</span>);
+showvarysolution(X,T,U);<span class="hljs-comment">% &#x4EE5;&#x968F;&#x65F6;&#x95F4;&#x53D8;&#x5316;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;</span>
+showsolution(X,T,U); <span class="hljs-comment">% &#x4EE5;&#x4E8C;&#x5143;&#x51FD;&#x6570;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;</span>
+
+<span class="hljs-comment">% &#x5411;&#x540E;&#x5DEE;&#x5206;&#x683C;&#x5F0F;</span>
+[X,T,U] = heat_equation_fd1d(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,pde,<span class="hljs-string">&apos;backward&apos;</span>);
+showvarysolution(X,T,U);<span class="hljs-comment">% &#x4EE5;&#x968F;&#x65F6;&#x95F4;&#x53D8;&#x5316;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;</span>
+showsolution(X,T,U); <span class="hljs-comment">% &#x4EE5;&#x4E8C;&#x5143;&#x51FD;&#x6570;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;</span>
+
+<span class="hljs-comment">% &#x516D;&#x70B9;&#x5BF9;&#x79F0;&#x683C;&#x5F0F;&#xFF0C;&#x5373; Crank-Nicholson &#x683C;&#x5F0F;</span>
+[X,T,U] = heat_equation_fd1d(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,pde,<span class="hljs-string">&apos;crank-nicholson&apos;</span>);
+showvarysolution(X,T,U);<span class="hljs-comment">% &#x4EE5;&#x968F;&#x65F6;&#x95F4;&#x53D8;&#x5316;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;</span>
+showsolution(X,T,U); <span class="hljs-comment">% &#x4EE5;&#x4E8C;&#x5143;&#x51FD;&#x6570;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;</span>
+</code></pre>
+<p>3) &#x5B9E;&#x73B0;&#x6838;&#x5FC3;&#x7B97;&#x6CD5;</p>
+<pre><code class="lang-matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[X,T,U]</span> = <span class="hljs-title">heat_equation_fd1d</span><span class="hljs-params">(NS,NT,pde,method)</span></span>
+<span class="hljs-comment">%% HEAT_EQUATION_FD1D &#x5229;&#x7528;&#x6709;&#x9650;&#x5DEE;&#x5206;&#x65B9;&#x6CD5;&#x8BA1;&#x7B97;&#x4E00;&#x7EF4;&#x70ED;&#x4F20;&#x5BFC;&#x65B9;&#x7A0B;</span>
+<span class="hljs-comment">%   </span>
+<span class="hljs-comment">%   &#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF1A;</span>
+<span class="hljs-comment">%       NS &#x6574;&#x578B;&#xFF0C;&#x7A7A;&#x95F4;&#x5256;&#x5206;&#x6BB5;&#x6570;</span>
+<span class="hljs-comment">%       NT &#x6574;&#x578B;&#xFF0C;&#x65F6;&#x95F4;&#x5256;&#x5206;&#x6BB5;&#x6570;</span>
+<span class="hljs-comment">%       pde &#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x5F85;&#x6C42;&#x89E3;&#x7684;&#x5FAE;&#x5206;&#x65B9;&#x7A0B;&#x6A21;&#x578B;&#x7684;&#x5DF2;&#x77E5;&#x6570;&#x636E;&#xFF0C;</span>
+<span class="hljs-comment">%                  &#x5982;&#x8FB9;&#x754C;&#x3001;&#x521D;&#x59CB;&#x3001;&#x7CFB;&#x6570;&#x548C;&#x53F3;&#x7AEF;&#x9879;&#x7B49;&#x6761;&#x4EF6;</span>
+<span class="hljs-comment">%       method &#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4EE3;&#x8868;&#x6C42;&#x89E3;&#x6240;&#x7528;&#x79BB;&#x6563;&#x683C;&#x5F0F;</span>
+<span class="hljs-comment">%           F &#x6216; f &#x6216; forward &#xFF1A; &#x5411;&#x524D;&#x5DEE;&#x5206;&#x683C;&#x5F0F;</span>
+<span class="hljs-comment">%           B &#x6216; b &#x6216; backward &#xFF1A; &#x5411;&#x540E;&#x5DEE;&#x5206;&#x683C;&#x5F0F;</span>
+<span class="hljs-comment">%           CN &#x6216; cn &#x6216; crank-nicholson &#x6216; Crank-Nicholson &#xFF1A;</span>
+<span class="hljs-comment">%                      -- &#x516D;&#x70B9;&#x5BF9;&#x79F0;&#x683C;&#x5F0F;( Crank-Nicholson &#x683C;&#x5F0F;)</span>
+<span class="hljs-comment">%   &#x8F93;&#x51FA;&#x53C2;&#x6570;&#xFF1A;</span>
+<span class="hljs-comment">%       X &#x957F;&#x5EA6;&#x4E3A; NS+1 &#x7684;&#x5217;&#x5411;&#x91CF;&#xFF0C;&#x7A7A;&#x95F4;&#x7F51;&#x683C;&#x5256;&#x5206;</span>
+<span class="hljs-comment">%       T &#x957F;&#x5EA6;&#x4E3A; NT+1 &#x7684;&#x884C;&#x5411;&#x91CF;&#xFF0C;&#x65F6;&#x95F4;&#x7F51;&#x683C;&#x5256;&#x5206;</span>
+<span class="hljs-comment">%       U (NS+1)*(NT+1) &#x77E9;&#x9635;&#xFF0C;U(:,i) &#x8868;&#x793A;&#x7B2C; i &#x4E2A;&#x65F6;&#x95F4;&#x5C42;&#x7F51;&#x683C;&#x90E8;&#x5206;&#x4E0A;&#x7684;&#x6570;&#x503C;&#x89E3;</span>
+<span class="hljs-comment">%</span>
+<span class="hljs-comment">%   &#x4F5C;&#x8005;&#xFF1A;&#x9B4F;&#x534E;&#x794E; &lt;weihuayi@xtu.edu.cn&gt;</span>
+
+[X, h] = pde.space_grid(NS);
+[T, tau] = pde.time_grid(NT);
+
+N = <span class="hljs-built_in">length</span>(X);
+M = <span class="hljs-built_in">length</span>(T);
+
+r = pde.a()*tau/h/h;
+<span class="hljs-keyword">if</span> r &gt;= <span class="hljs-number">0.5</span> &amp;&amp; ismember(method, {<span class="hljs-string">&apos;F&apos;</span>,<span class="hljs-string">&apos;f&apos;</span>,<span class="hljs-string">&apos;forward&apos;</span>})
+    error(<span class="hljs-string">&apos;&#x65F6;&#x95F4;&#x7A7A;&#x95F4;&#x79BB;&#x6563;&#x4E0D;&#x6EE1;&#x8DB3;&#x5411;&#x524D;&#x5DEE;&#x5206;&#x7684;&#x7A33;&#x5B9A;&#x6761;&#x4EF6;&#xFF01;&apos;</span>)
+<span class="hljs-keyword">end</span>
+
+U = <span class="hljs-built_in">zeros</span>(N,M);
+U(:,<span class="hljs-number">1</span>) = pde.u_initial(X);
+U(<span class="hljs-number">1</span>,:) = pde.u_left(T);
+U(<span class="hljs-keyword">end</span>,:) = pde.u_right(T);
+<span class="hljs-keyword">switch</span>(method)
+    <span class="hljs-keyword">case</span> {<span class="hljs-string">&apos;F&apos;</span>,<span class="hljs-string">&apos;f&apos;</span>,<span class="hljs-string">&apos;forward&apos;</span>}
+        forward();
+    <span class="hljs-keyword">case</span> {<span class="hljs-string">&apos;B&apos;</span>,<span class="hljs-string">&apos;b&apos;</span>,<span class="hljs-string">&apos;backward&apos;</span>}
+        backward();
+    <span class="hljs-keyword">case</span> {<span class="hljs-string">&apos;CN&apos;</span>,<span class="hljs-string">&apos;cn&apos;</span>,<span class="hljs-string">&apos;crank-nicholson&apos;</span>,<span class="hljs-string">&apos;Crank-Nicholson&apos;</span>}
+        crank_nicholson();
+    <span class="hljs-keyword">otherwise</span>
+        <span class="hljs-built_in">disp</span>([<span class="hljs-string">&apos;Sorry, I do not know your &apos;</span>, method]);
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment">%% &#x5B50;&#x51FD;&#x6570;, &#x5B9E;&#x73B0;&#x4E0D;&#x540C;&#x7684;&#x5DEE;&#x5206;&#x683C;&#x5F0F;</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">forward</span><span class="hljs-params">()</span></span>
+<span class="hljs-comment">%% &#x5411;&#x524D;&#x5DEE;&#x5206;&#x65B9;&#x6CD5;</span>
+    d = <span class="hljs-number">1</span> - <span class="hljs-number">2</span>*<span class="hljs-built_in">ones</span>(N<span class="hljs-number">-2</span>,<span class="hljs-number">1</span>)*r;
+    c = <span class="hljs-built_in">ones</span>(N<span class="hljs-number">-3</span>,<span class="hljs-number">1</span>)*r;
+    A = <span class="hljs-built_in">diag</span>(c,<span class="hljs-number">-1</span>) + <span class="hljs-built_in">diag</span>(c,<span class="hljs-number">1</span>)+<span class="hljs-built_in">diag</span>(d);
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">2</span>:M
+        RHS = tau*pde.f(X,T(<span class="hljs-built_in">i</span>));
+        RHS(<span class="hljs-number">2</span>) = RHS(<span class="hljs-number">2</span>) + r*U(<span class="hljs-number">1</span>,<span class="hljs-built_in">i</span><span class="hljs-number">-1</span>);
+        RHS(<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>) = RHS(<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>) + r*U(<span class="hljs-keyword">end</span>,<span class="hljs-built_in">i</span><span class="hljs-number">-1</span>);
+        U(<span class="hljs-number">2</span>:<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>,<span class="hljs-built_in">i</span>)=A*U(<span class="hljs-number">2</span>:<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>,<span class="hljs-built_in">i</span><span class="hljs-number">-1</span>)+ RHS(<span class="hljs-number">2</span>:<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>);
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">backward</span><span class="hljs-params">()</span></span>
+<span class="hljs-comment">%% &#x5411;&#x540E;&#x5DEE;&#x5206;&#x65B9;&#x6CD5;</span>
+    d = <span class="hljs-number">1</span> + <span class="hljs-number">2</span>*<span class="hljs-built_in">ones</span>(N<span class="hljs-number">-2</span>,<span class="hljs-number">1</span>)*r;
+    c = -<span class="hljs-built_in">ones</span>(N<span class="hljs-number">-3</span>,<span class="hljs-number">1</span>)*r;
+    A = <span class="hljs-built_in">diag</span>(c,<span class="hljs-number">-1</span>) + <span class="hljs-built_in">diag</span>(c,<span class="hljs-number">1</span>)+<span class="hljs-built_in">diag</span>(d);    
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">2</span>:M
+        RHS = tau*pde.f(X,T(<span class="hljs-built_in">i</span>));
+        RHS(<span class="hljs-number">2</span>) = RHS(<span class="hljs-number">2</span>) + r*U(<span class="hljs-number">1</span>,<span class="hljs-built_in">i</span>);
+        RHS(<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>) = RHS(<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>) + r*U(<span class="hljs-keyword">end</span>,<span class="hljs-built_in">i</span>);
+        U(<span class="hljs-number">2</span>:<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>,<span class="hljs-built_in">i</span>)=A\(U(<span class="hljs-number">2</span>:<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>,<span class="hljs-built_in">i</span><span class="hljs-number">-1</span>)+ RHS(<span class="hljs-number">2</span>:<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>));
+    <span class="hljs-keyword">end</span> 
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">crank_nicholson</span><span class="hljs-params">()</span></span>
+<span class="hljs-comment">%% &#x516D;&#x70B9;&#x5BF9;&#x79F0;&#x683C;&#x5F0F;&#xFF0C; &#x5373; Crank_Nicholson &#x683C;&#x5F0F;</span>
+    d1 = <span class="hljs-number">1</span> + <span class="hljs-built_in">ones</span>(N<span class="hljs-number">-2</span>,<span class="hljs-number">1</span>)*r;
+    d2 = <span class="hljs-number">1</span> - <span class="hljs-built_in">ones</span>(N<span class="hljs-number">-2</span>,<span class="hljs-number">1</span>)*r;
+    c = <span class="hljs-number">0.5</span>*<span class="hljs-built_in">ones</span>(N<span class="hljs-number">-3</span>,<span class="hljs-number">1</span>)*r;
+    A1 = <span class="hljs-built_in">diag</span>(-c,<span class="hljs-number">-1</span>) + <span class="hljs-built_in">diag</span>(-c,<span class="hljs-number">1</span>)+<span class="hljs-built_in">diag</span>(d1);  
+    A0 = <span class="hljs-built_in">diag</span>(c,<span class="hljs-number">-1</span>) + <span class="hljs-built_in">diag</span>(c,<span class="hljs-number">1</span>) + <span class="hljs-built_in">diag</span>(d2);
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">2</span>:M
+        RHS = tau*pde.f(X,T(<span class="hljs-built_in">i</span>));
+        RHS(<span class="hljs-number">2</span>) = RHS(<span class="hljs-number">2</span>) + <span class="hljs-number">0.5</span>*r*(U(<span class="hljs-number">1</span>,<span class="hljs-built_in">i</span>)+U(<span class="hljs-number">1</span>,<span class="hljs-built_in">i</span><span class="hljs-number">-1</span>));
+        RHS(<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>) = RHS(<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>) + ...
+            <span class="hljs-number">0.5</span>*r*(U(<span class="hljs-keyword">end</span>,<span class="hljs-built_in">i</span>)+U(<span class="hljs-keyword">end</span>,<span class="hljs-built_in">i</span><span class="hljs-number">-1</span>));
+        U(<span class="hljs-number">2</span>:<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>,<span class="hljs-built_in">i</span>)=A1\(A0*U(<span class="hljs-number">2</span>:<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>,<span class="hljs-built_in">i</span><span class="hljs-number">-1</span>)+ RHS(<span class="hljs-number">2</span>:<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>));
+    <span class="hljs-keyword">end</span> 
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>4) &#x7F16;&#x5199;&#x53EF;&#x89C6;&#x5316;&#x51FD;&#x6570;</p>
+<pre><code class="lang-Matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showsolution</span><span class="hljs-params">(X,T,U)</span></span>
+<span class="hljs-comment">%%  SHOWSOLUTION  &#x4EE5;&#x4E8C;&#x5143;&#x51FD;&#x6570;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;</span>
+<span class="hljs-comment">% </span>
+<span class="hljs-comment">%  &#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF1A;</span>
+<span class="hljs-comment">%       X &#x957F;&#x5EA6;&#x4E3A;N&#x7684;&#x5217;&#x5411;&#x91CF;&#xFF0C;&#x7A7A;&#x95F4;&#x7F51;&#x683C;&#x5256;&#x5206;</span>
+<span class="hljs-comment">%       T &#x7B2C;&#x5EA6;&#x4E3A;M&#x7684;&#x884C;&#x5411;&#x91CF;&#xFF0C;&#x65F6;&#x95F4;&#x7F51;&#x683C;&#x5256;&#x5206;</span>
+<span class="hljs-comment">%       U N*M &#x77E9;&#x9635;&#xFF0C;U(:,i) &#x8868;&#x793A;&#x7B2C;  i &#x4E2A;&#x65F6;&#x95F4;&#x5C42;&#x7F51;&#x683C;&#x90E8;&#x5206;&#x4E0A;&#x7684;&#x6570;&#x503C;&#x89E3;</span>
+<span class="hljs-comment">%</span>
+<span class="hljs-comment">%   &#x4F5C;&#x8005;&#xFF1A;&#x9B4F;&#x534E;&#x794E; &lt;weihuayi@xtu.edu.cn&gt;   </span>
+
+[x,t] = <span class="hljs-built_in">meshgrid</span>(X,T);
+mesh(x,t,U&apos;);
+xlabel(<span class="hljs-string">&apos;X&apos;</span>);
+ylabel(<span class="hljs-string">&apos;T&apos;</span>);
+zlabel(<span class="hljs-string">&apos;U(X,T)&apos;</span>);
+<span class="hljs-keyword">end</span>
+</code></pre>
+<pre><code class="lang-matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showvarysolution</span><span class="hljs-params">(X,T,U)</span></span>
+<span class="hljs-comment">%%  SHOWVARYSOLUTION  &#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;&#x968F;&#x7740;&#x65F6;&#x95F4;&#x7684;&#x53D8;&#x5316;</span>
+<span class="hljs-comment">% </span>
+<span class="hljs-comment">%  &#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF1A;</span>
+<span class="hljs-comment">%       X &#x957F;&#x5EA6;&#x4E3A;N&#x7684;&#x5217;&#x5411;&#x91CF;&#xFF0C;&#x7A7A;&#x95F4;&#x7F51;&#x683C;&#x5256;&#x5206;</span>
+<span class="hljs-comment">%       T &#x7B2C;&#x5EA6;&#x4E3A;M&#x7684;&#x884C;&#x5411;&#x91CF;&#xFF0C;&#x65F6;&#x95F4;&#x7F51;&#x683C;&#x5256;&#x5206;</span>
+<span class="hljs-comment">%       U N*M &#x77E9;&#x9635;&#xFF0C;U(:,i) &#x8868;&#x793A;&#x7B2C;  i &#x4E2A;&#x65F6;&#x95F4;&#x5C42;&#x7F51;&#x683C;&#x90E8;&#x5206;&#x4E0A;&#x7684;&#x6570;&#x503C;&#x89E3;</span>
+<span class="hljs-comment">%</span>
+<span class="hljs-comment">%   &#x4F5C;&#x8005;&#xFF1A;&#x9B4F;&#x534E;&#x794E; &lt;weihuayi@xtu.edu.cn&gt;   </span>
+
+M = <span class="hljs-built_in">size</span>(U,<span class="hljs-number">2</span>);
+figure
+xlabel(<span class="hljs-string">&apos;X&apos;</span>);
+ylabel(<span class="hljs-string">&apos;U&apos;</span>);
+s = [X(<span class="hljs-number">1</span>),X(end),min(min(U)),max(max(U))];
+axis(s);
+<span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:M
+   plot(X,U(:,<span class="hljs-built_in">i</span>));
+   axis(s);
+   pause(<span class="hljs-number">0.0001</span>);
+   title([<span class="hljs-string">&apos;T=&apos;</span>, num2str(T(i)), <span class="hljs-string">&apos; &#x65F6;&#x523B;&#x7684;&#x6E29;&#x5EA6;&#x5206;&#x5E03;&apos;</span>])
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2 id="&#x4E0A;&#x673A;&#x5B9E;&#x8DF5;">&#x4E0A;&#x673A;&#x5B9E;&#x8DF5;</h2>
+<p>&#x7528;&#x5411;&#x524D;&#x5DEE;&#x5206;&#x6C42;&#x89E3;&#x4E0B;&#x9762;&#x70ED;&#x4F20;&#x5BFC;&#x65B9;&#x7A0B;&#x6A21;&#x578B;, &#x5E76;&#x7F16;&#x5199;&#x6700;&#x5927;&#x6A21;&#x8BEF;&#x5DEE;&#x7684;&#x8BA1;&#x7B97;&#x51FD;&#x6570;&#xFF0C;&#x89C2;&#x5BDF;&#x6700;&#x5927;&#x6A21;&#x8BEF;&#x5DEE;&#x7684;&#x53D8;
+&#x5316;&#x89C4;&#x5F8B;&#x3002;</p>
+<p><script type="math/tex; mode=display">
+\begin{cases}
+&\frac{\partial u}{\partial t}-a\frac{\partial^2u}{\partial x^2}=f(x,t),\\
+& u(L,t)=u_L(x),\quad u(R,t)=u_R(x),\\
+& u(x,0)=u_0(x).
+\end{cases}
+</script></p>
+<p>&#x5176;&#x4E2D;, </p>
+<ul>
+<li>&#x7A7A;&#x95F4;&#x533A;&#x95F4;&#x4E3A; <script type="math/tex; ">[L, R]=[0, 1]</script>;</li>
+<li>&#x65F6;&#x95F4;&#x533A;&#x95F4; <script type="math/tex; ">[0, 0.1]</script>;</li>
+<li>&#x70ED;&#x4F20;&#x5BFC;&#x7CFB;&#x6570;&#x4E3A; <script type="math/tex; ">a = 1</script>;</li>
+<li>&#x771F;&#x89E3; <script type="math/tex; "> u(x,t) = \sin(2\pi x)e^{10t}</script></li>
+</ul>
+<p>&#x628A;&#x771F;&#x89E3;&#x4EE3;&#x5165;&#x4E0A;&#x9762;&#x6A21;&#x578B;, &#x5373;&#x53EF;&#x5F97;&#x5230;&#x76F8;&#x5173;&#x7684;&#x53C2;&#x6570;.</p>
+<p>&#x6700;&#x5927;&#x6A21;&#x8BEF;&#x5DEE;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><script type="math/tex; "> E = \max_{x_i,t_j}|u(x_i,t_j) - U(i,j)| </script></p>
+<p>&#x5373;<strong>&#x6240;&#x6709;&#x7F51;&#x683C;&#x70B9;&#x5904;&#x6570;&#x503C;&#x89E3;&#x548C;&#x771F;&#x89E3;&#x8BEF;&#x5DEE;&#x7EDD;&#x5BF9;&#x503C;&#x7684;&#x6700;&#x5927;&#x503C;</strong>, &#x6700;&#x5927;&#x6A21;&#x8BEF;&#x5DEE; <script type="math/tex; ">E</script> &#x4E0E;&#x65F6;&#x95F4;&#x6B65;&#x957F;
+<script type="math/tex; ">\tau</script> &#x548C;&#x7A7A;&#x95F4;&#x6B65;&#x957F; <script type="math/tex; ">h</script> &#x6EE1;&#x8DB3;&#x5982;&#x4E0B;&#x5173;&#x7CFB;&#xFF1A;</p>
+<p><script type="math/tex; "> E = O(\tau+h^2) </script></p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x5F53; <script type="math/tex; ">\tau</script> &#x53D8;&#x4E3A; <script type="math/tex; ">\tau \over 4</script>, <script type="math/tex; ">h</script> &#x53D8;&#x4E3A; <script type="math/tex; ">h \over 2</script> &#x65F6;&#xFF0C; <script type="math/tex; ">E</script> &#x5E94;&#x53D8;&#x4E3A; <script type="math/tex; ">E
+\over 4</script>&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="fdm-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 一维椭圆问题的有限差分求解算法实现">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"一维热传导问题的有限差分求解算法实现","level":"1.6","depth":1,"previous":{"title":"一维椭圆问题的有限差分求解算法实现","level":"1.5","depth":1,"path":"fdm-1.md","ref":"fdm-1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"matlab.html#fig1.2.1","level":"1.2","list_caption":"Figure: Jacobi 迭代过程","alt":"Jacobi 迭代过程","nro":1,"url":"./figures/jacobi.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Jacobi 迭代过程","attributes":{},"skip":false,"key":"1.2.1"}]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"fdm-2.md","mtime":"2019-03-24T23:06:34.094Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-27T07:47:59.461Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+
