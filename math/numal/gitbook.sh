@@ -1,3 +1,5 @@
+#!/bin/sh
+
 cd ../weihuayi.github.io/
 git pull
 
