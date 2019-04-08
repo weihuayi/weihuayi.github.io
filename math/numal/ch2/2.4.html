@@ -1,0 +1,632 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.4 误差分析 · 数值代数课件</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Wei, Huayi">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="2.3.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    课程简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../perusall.html">
+            
+                <a href="../perusall.html">
+            
+                    
+                    Peruall 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../others.html">
+            
+                <a href="../others.html">
+            
+                    
+                    其它
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../todo.html">
+            
+                <a href="../todo.html">
+            
+                    
+                    课程建设任务列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../class-plan.html">
+            
+                <a href="../class-plan.html">
+            
+                    
+                    讲课计划
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../ch1/">
+            
+                <a href="../ch1/">
+            
+                    
+                    第一章：数值代数的研究对象与方法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../ch1/1.1.html">
+            
+                <a href="../ch1/1.1.html">
+            
+                    
+                    1.1 基本符号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../ch1/1.2.html">
+            
+                <a href="../ch1/1.2.html">
+            
+                    
+                    1.2 数值代数研究的基本问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../ch1/1.3.html">
+            
+                <a href="../ch1/1.3.html">
+            
+                    
+                    1.3 数值代数研究的一般技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../ch1/1.4.html">
+            
+                <a href="../ch1/1.4.html">
+            
+                    
+                    1.4 多项式计算示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../ch1/1.5.html">
+            
+                <a href="../ch1/1.5.html">
+            
+                    
+                    1.5 浮点数算术运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../ch1/1.6.html">
+            
+                <a href="../ch1/1.6.html">
+            
+                    
+                    1.6 再议多项式求值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../ch1/1.7.html">
+            
+                <a href="../ch1/1.7.html">
+            
+                    
+                    1.7 矩阵向量的范数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第二章：线性方程组求解
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="2.1.html">
+            
+                <a href="2.1.html">
+            
+                    
+                    2.1 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="2.2.html">
+            
+                <a href="2.2.html">
+            
+                    
+                    2.2 扰动理论
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="2.3.html">
+            
+                <a href="2.3.html">
+            
+                    
+                    2.3 高斯消去法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.4" data-path="2.4.html">
+            
+                <a href="2.4.html">
+            
+                    
+                    2.4 误差分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >2.4 误差分析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x9AD8;&#x65AF;&#x6D88;&#x53BB;&#x6CD5;&#x7684;&#x8BEF;&#x5DEE;&#x5206;&#x6790;">&#x9AD8;&#x65AF;&#x6D88;&#x53BB;&#x6CD5;&#x7684;&#x8BEF;&#x5DEE;&#x5206;&#x6790;</h1>
+<p>&#x4E24;&#x6B65;&#x6CD5;&#x83B7;&#x5F97; <script type="math/tex; "> Ax=b </script> &#x89E3;&#x7684;&#x8BEF;&#x5DEE;&#x754C;&#xFF1A;</p>
+<p>1) <strong>&#x5411;&#x540E;&#x8BEF;&#x5DEE;&#x5206;&#x6790;</strong></p>
+<p>&#x6C42;&#x89E3;&#x7EBF;&#x6027;&#x4EE3;&#x6570;&#x65B9;&#x7A0B;&#x7EC4;</p>
+<p><script type="math/tex; "> 
+Ax = b 
+</script></p>
+<p>&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5; <script type="math/tex; "> alg(A, b) </script>, &#x6C42;&#x51FA;&#x4E00;&#x4E2A;&#x6570;&#x503C;&#x89E3;</p>
+<p><script type="math/tex; mode=display">
+\hat x = alg(A, b)
+</script> </p>
+<p>&#x6570;&#x503C;&#x89E3; <script type="math/tex; "> \hat x </script>&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x6C42;&#x89E3;&#x4E0B;&#x9762;&#x6270;&#x52A8;&#x540E;&#x7684;&#x65B9;&#x7A0B;&#xFF1A;</p>
+<p><script type="math/tex; "> 
+(A + \delta A)\hat x = b + \delta b 
+</script></p>
+<p>&#x5176;&#x4E2D; <script type="math/tex; "> \delta A </script> &#x548C; <script type="math/tex; "> \delta b </script> &#x79F0;&#x4E3A;&#x7B97;&#x6CD5;&#x7684; <strong>&#x5411;&#x540E;&#x8BEF;&#x5DEE;</strong>&#x3002;</p>
+<p>&#x800C; <script type="math/tex; "> \delta x = \hat{x} - x </script> &#x7684;&#x754C;&#x662F;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x754C;&#x5B9A;&#x7684; <strong>&#x8BA1;&#x7B97;&#x8BEF;&#x5DEE;</strong>&#x3002;</p>
+<p>2&#xFF09;&#x5229;&#x7528;&#x6270;&#x52A8;&#x5206;&#x6790;&#x7406;&#x8BBA;&#x5206;&#x6790;, &#x5982;&#x524D;&#x9762;&#x5F97;&#x5230;&#x7684; ( 2.2 ) &#x548C; ( 2.5 )&#x3002;</p>
+<p><script type="math/tex; mode=display">
+\frac{ \| \delta x \|}{ \| \hat x \|} \leq \| A^{-1} \|\cdot \| A \|\cdot 
+\left(\frac{ \| \delta A \|}{ \| A \|} 
++ \frac{ \| \delta b \| }{ \| A \| \| \hat x \| } \right)\quad ( 2.3 ).
+</script></p>
+<ul>
+<li>(2.3) &#x7B97;&#x51FA;&#x7684;&#x8BEF;&#x5DEE;&#x754C;&#x5F80;&#x5F80;&#x592A;&#x5927;&#x3002;</li>
+</ul>
+<p><script type="math/tex; mode=display">
+\| \delta x \| = \| A^{-1}r \|\leq \| A^{-1} \|\cdot \| A\hat{x} - b \|.\quad ( 2.5 )
+</script></p>
+<ul>
+<li>( 2.5 ) &#x66F4;&#x6613;&#x8BA1;&#x7B97;, &#x5728;&#x5B9E;&#x8DF5;&#x4E2D;&#x66F4;&#x5E38;&#x4F7F;&#x7528;&#x3002;</li>
+</ul>
+<p>&#x672C;&#x8282;&#x7684;&#x4E24;&#x4E2A;&#x76EE;&#x6807;&#xFF1A;</p>
+<ul>
+<li>&#x5C55;&#x793A;&#x5982;&#x4F55;&#x5B9E;&#x65BD;&#x9AD8;&#x65AF;&#x6D88;&#x53BB;&#x6CD5;&#xFF0C;&#x4F7F;&#x5F97;&#x5411;&#x540E;&#x8BEF;&#x5DEE; <script type="math/tex; "> \delta A </script> &#x548C; <script type="math/tex; "> \delta b </script> &#x5C3D;&#x91CF;&#x5C0F;&#xFF1A;</li>
+</ul>
+<p><script type="math/tex; mode=display">
+\begin{align}
+   \frac{ \| \delta A \| }{ \| A \| } = O(\varepsilon), \quad \frac{ \| \delta b \| }{ \| b \| } = O(\varepsilon).
+\end{align}
+</script></p>
+<ul>
+<li>&#x83B7;&#x5F97;&#x540C;&#x65F6;<strong>&#x6613;&#x4E8E;&#x8BA1;&#x7B97;(cheapness)</strong>&#x548C;<strong>&#x7D27;&#x81F4;(tightness)</strong>&#x7684;&#x8BEF;&#x5DEE;&#x754C;&#x3002;<ul>
+<li>&#x7D27;&#x81F4;&#x5C31;&#x662F;&#x8BF4;&#x7B97;&#x51FA;&#x7684;&#x8BEF;&#x5DEE;&#x754C;&#x5C3D;&#x91CF;&#x63A5;&#x8FD1;&#x771F;&#x5B9E;&#x7684;&#x8BEF;&#x5DEE;&#x3002;</li>
+<li>&#x6613;&#x4E8E;&#x8BA1;&#x7B97;&#x548C;&#x7D27;&#x81F4;&#x7684;&#x8BEF;&#x5DEE;&#x754C;&#x53EF;&#x80FD;&#x4E0D;&#x5B58;&#x5728;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x9009;&#x4E3B;&#x5143;&#xFF1F;">&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x9009;&#x4E3B;&#x5143;&#xFF1F;</h2>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x77E9;&#x9635;, &#x8FD9;&#x91CC;&#x7528; 4 &#x4F4D;&#x7684;&#x5341;&#x8FDB;&#x5236;&#x7684;&#x6D6E;&#x70B9;&#x6570;&#x8868;&#x793A;&#xFF0C; </p>
+<p><script type="math/tex; mode=display">
+A = \begin{bmatrix}
+    0.0001 & 1 \\
+    1 & 1 \\
+\end{bmatrix}
+</script></p>
+<p>&#x6613;&#x77E5; <script type="math/tex; "> \| A \|_\infty \| A^{-1} \|_\infty \approx 4</script>&#x3002; </p>
+<p><script type="math/tex; mode=display">
+L = \begin{bmatrix}
+    1 & 0 \\
+    fl(\frac{1}{10^{-4}}) & 1
+\end{bmatrix}
+</script>
+&#x5176;&#x4E2D; <script type="math/tex; "> fl(\frac{1}{10^{-4}}) = 10^4 </script> </p>
+<p><script type="math/tex; mode=display">
+U = \begin{bmatrix}
+    10^{-4} & 1 \\
+    & fl(1 - 10^4*1) 
+\end{bmatrix}
+</script>
+&#x5176;&#x4E2D; <script type="math/tex; "> fl(1 - 10^4*1) = -10^4 </script> ( &#x5927;&#x6570;&#x5403;&#x5C0F;&#x6570; )</p>
+<p><script type="math/tex; mode=display">
+LU = \begin{bmatrix}
+    1 & 0 \\
+    10^4 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+    10^{-4} & 1 \\  & -10^4 
+\end{bmatrix}
+= \begin{bmatrix}
+    10^{-4} & 1 \\ 1 & 0
+\end{bmatrix}
+\not=\begin{bmatrix}
+    0.0001 & 1 \\
+    1 & 1 \\
+\end{bmatrix}
+</script></p>
+<ul>
+<li><script type="math/tex; "> a_{22} </script> &#x6362;&#x6210;&#x5176;&#x5B83;&#x5C0F;&#x7684;&#x6570;,  <script type="math/tex; "> LU </script> &#x5206;&#x89E3;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C; &#x56E0;&#x4E3A; <script type="math/tex; "> fl(a_{22} - 10^4*1) = -10^4 </script>&#x3002;</li>
+<li>&#x8FD9;&#x79CD;&#x73B0;&#x8C61;&#x79F0;&#x4E3A; <strong>&#x6570;&#x503C;&#x4E0D;&#x7A33;&#x5B9A; ( numerical instability )</strong>&#x3002;</li>
+<li>&#x53D6; <script type="math/tex; "> b = [1, 2]^T </script>&#xFF0C; &#x7528; <script type="math/tex; "> LU </script> &#x5206;&#x89E3;&#x6C42;&#x89E3; <script type="math/tex; "> Ax=b </script>&#x3002;  </li>
+<li><script type="math/tex; "> \| A-LU \| </script>  &#x592A;&#x5927;&#x3002; </li>
+<li><script type="math/tex; "> \kappa(A) \approx 4 </script>&#xFF0C; &#x800C; <script type="math/tex; "> \kappa(LU) \approx 10^8 </script> </li>
+<li>&#x5217;&#x4E3B;&#x5143;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x6570;&#x503C;&#x4E0D;&#x7A33;&#x5B9A;&#x7684;&#x95EE;&#x9898;&#x3002;</li>
+</ul>
+<p><script type="math/tex; mode=display">
+L = \begin{bmatrix}
+    1 & 0 \\ fl( .0001 / 1) & 1
+\end{bmatrix}
+\begin{bmatrix}
+    1 & 0 \\ 0.0001 & 1
+\end{bmatrix}
+</script></p>
+<p><script type="math/tex; mode=display">
+U = \begin{bmatrix}
+    1 & 1 \\ 0 & fl(1 - .0001\cdot 1) 
+\end{bmatrix}
+\begin{bmatrix}
+    1 & 1 \\ 0 & 1
+\end{bmatrix}
+.
+</script></p>
+<p><strong>&#x6CE8;&#x610F;</strong> &#x5982;&#x679C; <script type="math/tex; "> LU </script> &#x5206;&#x89E3;&#x8FC7;&#x7A0B;&#x4E2D;&#x51FA;&#x73B0;&#x5F88;&#x5927;&#x7684;&#x91CF;&#xFF0C;&#x5219; <script type="math/tex; "> A </script> &#x4E2D;&#x7684;&#x5143;&#x7D20;&#x51CF;&#x53BB;&#x8FD9;&#x4E9B;&#x91CF;&#x65F6;&#xFF0C;
+&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x5927;&#x6570;&#x5403;&#x5C0F;&#x6570;&#x7684;&#x73B0;&#x8C61;&#x3002;</p>
+<h2 id="&#x6B63;&#x5F0F;&#x7684;&#x9AD8;&#x65AF;&#x6D88;&#x53BB;&#x6CD5;&#x8BEF;&#x5DEE;&#x5206;&#x6790;">&#x6B63;&#x5F0F;&#x7684;&#x9AD8;&#x65AF;&#x6D88;&#x53BB;&#x6CD5;&#x8BEF;&#x5DEE;&#x5206;&#x6790;</h2>
+<p>&#x56E0;&#x4E3A;&#x6D6E;&#x70B9;&#x6570;&#x8FD0;&#x7B97;&#x4E2D;&#x820D;&#x5165;&#x8BEF;&#x5DEE;&#x7684;&#x5B58;&#x5728;&#xFF0C; &#x7528; <script type="math/tex; "> LU </script> &#x5206;&#x89E3;&#x7B97;&#x6CD5;&#x6765;&#x8BA1;&#x7B97; <script type="math/tex; "> Ax=b  </script> &#x4F1A;&#x5E26;&#x6765;&#x5411;
+&#x540E;&#x8BEF;&#x5DEE; <script type="math/tex; "> \delta A </script> &#xFF0C;&#x8FD9;&#x4E2A;&#x5411;&#x540E;&#x8BEF;&#x5DEE;&#x6709;&#x4E24;&#x90E8;&#x5206;&#x7EC4;&#x6210;</p>
+<ol>
+<li><script type="math/tex; "> LU </script> &#x5206;&#x89E3;&#x7B97;&#x6CD5;&#x5E26;&#x6765;&#x7684;&#x8BEF;&#x5DEE;&#xFF0C; &#x5373; <script type="math/tex; "> A = LU + E </script>&#x3002;</li>
+<li>&#x6C42;&#x89E3; <script type="math/tex; "> LU x = b </script> &#x5E26;&#x6765;&#x7684;&#x5411;&#x540E;&#x8BEF;&#x5DEE;&#xFF0C; &#x5373; <script type="math/tex; "> ( L+\delta L ) ( U + \delta U )
+   \hat{x} = b</script>&#x3002; </li>
+</ol>
+<p>&#x672C;&#x5C0F;&#x8282;&#x5C31;&#x6765;&#x5206;&#x6790;&#x8FD9;&#x4E24;&#x79CD;&#x8BEF;&#x5DEE;&#x7684;&#x754C;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x5206;&#x6790; <script type="math/tex; "> A </script> &#x7684;&#x5143;&#x7D20; <script type="math/tex; "> a_{jk} </script> &#x4E0E; <script type="math/tex; "> L\cdot U </script> &#x7684;&#x5143;&#x7D20; <script type="math/tex; "> \sum_{i=1}^{k} l_{ji}u_{ik} </script> &#x7684;&#x5DEE;&#x522B;&#x3002; 
+<script type="math/tex; mode=display">
+u_{j k}=a_{j k}-\sum_{i=1}^{j-1} l_{j i} u_{i k}
+</script></p>
+<p><script type="math/tex; mode=display">
+l_{j k}=\frac{a_{j k}-\sum_{i=1}^{k-1} l_{j i} u_{i k}}{u_{k k}}
+</script></p>
+<p><script type="math/tex; mode=display">
+\mathrm{f}\left(\sum_{i=1}^{d} x_{i} y_{i}\right)=\sum_{i=1}^{d} x_{i} y_{i}\left(1+\delta_{i}\right) \quad \text { with }\left|\delta_{i}\right| \leq d \varepsilon
+</script></p>
+<p><script type="math/tex; mode=display">
+u_{j k}=\left(a_{j k}-\sum_{i=1}^{j-1} l_{j i} u_{i k}\left(1+\delta_{i}\right)\right)\left(1+\delta^{\prime}\right)
+</script></p>
+<p><script type="math/tex; mode=display">
+\begin{aligned} a_{j k}=& \frac{1}{1+\delta^{\prime}} u_{j k} \cdot l_{j j}+\sum_{i=1}^{j-1} l_{j i} u_{i k}\left(1+\delta_{i}\right) \quad \text { since } l_{j j}=1 \\=& \sum_{i=1}^{j} l_{j i} u_{i k}+\sum_{i=1}^{j} l_{j i} u_{i k} \delta_{i} \\ & \text { with }\left|\delta_{i}\right| \leq(j-1) \varepsilon \text { and } 1+\delta_{j} \equiv \frac{1}{1+\delta^{\prime}} \\ & \equiv \sum_{i=1}^{j} l_{j i} u_{i k}+E_{j k} \end{aligned}
+</script></p>
+<p><script type="math/tex; mode=display">
+\left|E_{j k}\right|=\left|\sum_{i=1}^{j} l_{j i} \cdot u_{i k} \cdot \delta_{i}\right| \leq \sum_{i=1}^{j}\left|l_{j i}\right| \cdot\left|u_{i k}\right| \cdot n \varepsilon=n \varepsilon(|L| \cdot|U|)_{j k}
+</script></p>
+<p><script type="math/tex; mode=display">
+l_{j k}=\left(1+\delta^{\prime \prime}\right)\left(\frac{\left(1+\delta^{\prime}\right)\left(a_{j k}-\sum_{i=1}^{k-1} l_{j i} u_{i k}\left(1+\delta_{i}\right)\right)}{u_{k k}}\right)
+</script></p>
+<p><script type="math/tex; mode=display">
+\begin{aligned} a_{j k} &=\frac{1}{\left(1+\delta^{\prime}\right)\left(1+\delta^{\prime \prime}\right)} u_{k k} l_{j k}+\sum_{i=1}^{k-1} l_{j i} u_{i k}\left(1+\delta_{i}\right) \\ &=\sum_{i=1}^{k} l_{j i} u_{i k}+\sum_{i=1}^{k} l_{j i} u_{i k} \delta_{i} & \text { with } 1+\delta_{k} \equiv \frac{1}{\left(1+\delta^{\prime}\right)\left(1+\delta^{\prime \prime}\right)} \\ & \equiv \sum_{i=1}^{k} l_{j i} u_{i k}+E_{j k} \end{aligned}
+</script></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="2.3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 2.3 高斯消去法">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.4 误差分析","level":"1.7.4","depth":2,"previous":{"title":"2.3 高斯消去法","level":"1.7.3","depth":2,"path":"ch2/2.3.md","ref":"./ch2/2.3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch2/2.4.md","mtime":"2019-04-07T23:25:22.660Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-08T06:27:24.688Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+

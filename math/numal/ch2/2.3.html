@@ -1,0 +1,799 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.3 高斯消去法 · 数值代数课件</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Wei, Huayi">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2.4.html" />
+    
+    
+    <link rel="prev" href="2.2.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    课程简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../perusall.html">
+            
+                <a href="../perusall.html">
+            
+                    
+                    Peruall 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../others.html">
+            
+                <a href="../others.html">
+            
+                    
+                    其它
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../todo.html">
+            
+                <a href="../todo.html">
+            
+                    
+                    课程建设任务列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../class-plan.html">
+            
+                <a href="../class-plan.html">
+            
+                    
+                    讲课计划
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../ch1/">
+            
+                <a href="../ch1/">
+            
+                    
+                    第一章：数值代数的研究对象与方法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../ch1/1.1.html">
+            
+                <a href="../ch1/1.1.html">
+            
+                    
+                    1.1 基本符号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../ch1/1.2.html">
+            
+                <a href="../ch1/1.2.html">
+            
+                    
+                    1.2 数值代数研究的基本问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../ch1/1.3.html">
+            
+                <a href="../ch1/1.3.html">
+            
+                    
+                    1.3 数值代数研究的一般技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../ch1/1.4.html">
+            
+                <a href="../ch1/1.4.html">
+            
+                    
+                    1.4 多项式计算示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../ch1/1.5.html">
+            
+                <a href="../ch1/1.5.html">
+            
+                    
+                    1.5 浮点数算术运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../ch1/1.6.html">
+            
+                <a href="../ch1/1.6.html">
+            
+                    
+                    1.6 再议多项式求值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../ch1/1.7.html">
+            
+                <a href="../ch1/1.7.html">
+            
+                    
+                    1.7 矩阵向量的范数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第二章：线性方程组求解
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="2.1.html">
+            
+                <a href="2.1.html">
+            
+                    
+                    2.1 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="2.2.html">
+            
+                <a href="2.2.html">
+            
+                    
+                    2.2 扰动理论
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.3" data-path="2.3.html">
+            
+                <a href="2.3.html">
+            
+                    
+                    2.3 高斯消去法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="2.4.html">
+            
+                <a href="2.4.html">
+            
+                    
+                    2.4 误差分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >2.3 高斯消去法</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x9AD8;&#x65AF;&#x6D88;&#x53BB;&#x6CD5;">&#x9AD8;&#x65AF;&#x6D88;&#x53BB;&#x6CD5;</h1>
+<p><strong>&#x7F6E;&#x6362;&#x77E9;&#x9635;&#xFF08;permutaion matrix)</strong>&#xFF1A; &#x4E00;&#x4E2A;&#x5355;&#x4F4D;&#x77E9;&#x9635;&#x7684;&#x884C;&#x91CD;&#x65B0;&#x6392;&#x5217;&#x540E;&#x5F62;&#x6210;&#x7684;&#x77E9;&#x9635;&#x3002;</p>
+<p><script type="math/tex; mode=display">
+\begin{pmatrix}
+    0 & 0 & 1 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0
+\end{pmatrix}
+</script></p>
+<p><strong>Lemma 2.2: </strong> &#x8F6C;&#x6362;&#x77E9;&#x9635;&#x7684;&#x6027;&#x8D28;</p>
+<ol>
+<li><script type="math/tex; "> PX </script>  &#x548C; <script type="math/tex; "> XP </script> &#x7684;&#x610F;&#x4E49;</li>
+<li><script type="math/tex; "> P^{-1} = P^T </script> </li>
+<li><script type="math/tex; "> det(P) = \pm 1 </script> </li>
+<li><script type="math/tex; "> P_1\cdot P_2 </script> &#x4ECD;&#x7136;&#x662F;&#x8F6C;&#x6362;&#x77E9;&#x9635;&#x3002;</li>
+</ol>
+<p><strong>Alg 2.1: </strong> &#x9AD8;&#x65AF;&#x6CD5;&#x6C42;&#x89E3; <script type="math/tex; "> Ax = b </script> &#x7684;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li>&#x5206;&#x89E3; <script type="math/tex; "> A = PLU </script> <ul>
+<li><script type="math/tex; "> P </script> &#x4E3A;&#x8F6C;&#x6362;&#x77E9;&#x9635;&#x3002;</li>
+<li><script type="math/tex; "> L </script> &#x4E3A;&#x5355;&#x4F4D;&#x4E0B;&#x4E09;&#x89D2;&#x77E9;&#x9635;&#x3002;</li>
+<li><script type="math/tex; "> U </script> &#x975E;&#x5947;&#x5F02;&#x7684;&#x4E0A;&#x4E09;&#x89D2;&#x77E9;&#x9635;&#x3002;</li>
+</ul>
+</li>
+<li><script type="math/tex; "> LUx = P^{-1}b = P^Tb </script>.</li>
+<li><script type="math/tex; "> Ux = L^{-1}(P^{-1}b)</script> </li>
+<li><script type="math/tex; "> x = U^{-1}(L^{-1}P^{-1}b) </script> </li>
+</ol>
+<p><strong>&#x5B9A;&#x4E49; 2.2&#xFF1A;&#x987A;&#x5E8F;&#x4E3B;&#x5B50;&#x77E9;&#x9635;</strong> &#x7B2C; <script type="math/tex; "> j </script> &#x4E2A;&#x987A;&#x5E8F;&#x4E3B;&#x5B50;&#x77E9;&#x9635;&#x4E3A; <script type="math/tex; "> A(1:j，1:j) </script>&#x3002;</p>
+<p><strong>&#x5B9A;&#x7406; 2.4</strong> &#x4E0B;&#x9762;&#x7684;&#x4E24;&#x4E2A;&#x58F0;&#x660E;&#x7B49;&#x4EF7;&#xFF1A;</p>
+<ol>
+<li><script type="math/tex; "> A = LU  </script> &#x5206;&#x89E3;&#x662F;&#x552F;&#x4E00;&#x7684;&#x3002;</li>
+<li><script type="math/tex; "> A </script> &#x7684;&#x6240;&#x6709;&#x987A;&#x5E8F;&#x4E3B;&#x5B50;&#x77E9;&#x9635;&#x90FD;&#x662F;&#x975E;&#x5947;&#x5F02;&#x7684;&#x3002;  </li>
+</ol>
+<p><strong>&#x8BC1;&#x660E;&#x5206;&#x6790;&#xFF1A;</strong> </p>
+<ol>
+<li>&#x4ECE;&#x5206;&#x89E3;&#x552F;&#x4E00;&#x51FA;&#x53D1;&#x8BC1;&#x660E;&#xFF0C;&#x5BF9;&#x77E9;&#x9635; <script type="math/tex; "> A </script> &#x8FDB;&#x884C;&#x5206;&#x5757;&#xFF0C;&#x5206;&#x51FA;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x987A;&#x5E8F;&#x4E3B;&#x5B50;&#x77E9;&#x9635;&#x3002;</li>
+<li>&#x4ECE;&#x987A;&#x5E8F;&#x4E3B;&#x5B50;&#x77E9;&#x9635;&#x975E;&#x5947;&#x5F02;&#x51FA;&#x53D1;&#xFF0C;&#x5F52;&#x7EB3;&#x6CD5;&#x8BC1;&#x660E;&#xFF0C;&#x5047;&#x8BBE; <script type="math/tex; "> n-1\times n-1 </script> &#x7684;&#x77E9;&#x9635;&#x53EF;&#x5206;&#x89E3; </li>
+</ol>
+<p><strong>&#x5B9A;&#x7406; 2.5</strong> &#x5BF9;&#x4E8E;&#x975E;&#x5947;&#x5F02;&#x7684;&#x77E9;&#x9635; <script type="math/tex; "> A </script>&#xFF0C; &#x4E00;&#x5B9A;&#x5B58;&#x5728;&#x5982;&#x4E0B;&#x5206;&#x89E3;&#xFF1A;</p>
+<p><script type="math/tex; mode=display">
+P_1AP_2 = LU
+</script></p>
+<p>&#x5176;&#x4E2D; <script type="math/tex; "> P_1 </script> &#x548C; <script type="math/tex; "> P_2 </script> &#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x662F;&#x5FC5;&#x987B;&#x7684;&#x3002;</p>
+<p><strong>&#x8BC1;&#x660E;&#x5206;&#x6790;&#xFF1A;</strong> &#x7528;&#x5F52;&#x7EB3;&#x6CD5;&#x8BC1;&#x660E;</p>
+<p>1) &#x5BF9;&#x4E8E; <script type="math/tex; "> 1\times 1 </script> &#x77E9;&#x9635; <script type="math/tex; "> A </script> &#xFF0C; <script type="math/tex; "> P_1=P_2=L=1 </script> &#x548C; <script type="math/tex; "> U = A </script> &#x3002;
+2) &#x5047;&#x8BBE;&#x5BF9;&#x4E8E; <script type="math/tex; "> n-1\times n-1 </script> &#x77E9;&#x9635;&#xFF0C; &#x4E0A;&#x8FF0;&#x7ED3;&#x8BBA;&#x6210;&#x7ACB;&#x3002;
+3) &#x4E0B;&#x9762;&#x8BC1;&#x660E;&#x5BF9; <script type="math/tex; "> n\times n </script> &#x77E9;&#x9635;&#x6210;&#x7ACB;&#xFF0C;&#x9996;&#x5148;&#x5229;&#x7528; <script type="math/tex; "> A </script> &#x975E;&#x5947;&#x5F02;
+   &#xFF0C;&#x628A;&#x95EE;&#x9898;&#x8F6C;&#x5316;&#x4E3A; <script type="math/tex; "> n-1\times n-1 </script> &#x7684;&#x95EE;&#x9898;&#x3002; </p>
+<p><script type="math/tex; mode=display">
+\begin{aligned} P_{1}^{\prime} A P_{2}^{\prime} &=\left[ \begin{array}{cc}{a_{11}} & {A_{12}} \\ 
+{A_{21}} & {A_{22}}\end{array}\right] &= \left[ \begin{array}{cc}{1} & {0} \\ 
+{L_{21}} & {I}\end{array}\right] \cdot \left[ 
+\begin{array}
+{cc}{u_{11}} & {U_{12}} \\ 
+{0} & {\tilde{A}_{22}} 
+\end{array}
+\right] \\ &=\left[ 
+\begin{array}{cc}{u_{11}} & {U_{12}} \\ {L_{21} u_{11}} & {L_{21} U_{12}+\tilde{A}_{22}}\end{array}\right]
+\end{aligned}
+</script></p>
+<p>&#x6BD4;&#x8F83;&#x7B49;&#x5F0F;&#x4E24;&#x8FB9;&#x7684;&#x7CFB;&#x6570;&#xFF0C; &#x53EF;&#x5F97;&#xFF1A;</p>
+<ul>
+<li><script type="math/tex; "> u_{11}=a_{11}</script> </li>
+<li><script type="math/tex; "> U_{12}=A_{12}</script> </li>
+<li><script type="math/tex; "> L_{21} = \frac{A_{21}}{u_{11}} = \frac{A_{21}}{a_{11}}</script> </li>
+<li><script type="math/tex; "> L_{21}U_{12}+\tilde A_{22}=A_{22} </script> &#x63A8;&#x51FA; <script type="math/tex; "> \tilde A_{22} = A_{22} - L_{21}U_{12} = A_{22} - \frac{A_{21}}{a_{11}}A_{12}</script></li>
+<li><script type="math/tex; "> \tilde A_{22} </script> &#x662F;&#x975E;&#x5947;&#x5F02;&#x7684;, &#x9A8C;&#x8BC1;&#x5982;&#x4E0B;&#xFF1A;
+<script type="math/tex; mode=display">
+\operatorname{det} P_{1}^{\prime} A P_{2}^{\prime}=\operatorname{det} \left[ \begin{array}{cc}{1} & {0} \\ {L_{21}} & {I}\end{array}\right] \cdot \operatorname{det} \left[ \begin{array}{cc}{u_{11}} & {U_{12}} \\ {0} & {\tilde{A}_{22}}\end{array}\right]=1 \cdot\left(u_{11} \cdot \operatorname{det} \tilde{A}_{22}\right)
+</script></li>
+<li>&#x4E0A;&#x8FF0;&#x8F6C;&#x5316;&#x8FC7;&#x7A0B;&#x5B9E;&#x9645;&#x4E0A;&#x7ED9;&#x51FA;&#x7684;&#x9AD8;&#x65AF;&#x6D88;&#x53BB;&#x6CD5;&#x7684;&#x4E3B;&#x8981;&#x7B97;&#x6CD5;&#x6B65;&#x9AA4;&#x3002;</li>
+</ul>
+<p>4) <script type="math/tex; "> n-1 \times n-1 </script> &#x7684;&#x5206;&#x89E3;&#x5047;&#x8BBE;&#x5B58;&#x5728;</p>
+<p><script type="math/tex; mode=display">
+\tilde P_1 \tilde{A}_{22} \tilde P_2 = \tilde L\tilde U
+</script></p>
+<p>&#x6700;&#x540E;&#x63A8;&#x51FA; <script type="math/tex; "> A </script> &#x7684;&#x5206;&#x89E3;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+    P_1'AP_2' &= \begin{bmatrix}
+        1 & 0 \\
+        L_{21} & I
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{11} & U_{12} \\
+        0 & \tilde P_1^T \tilde L \tilde U \tilde U_2^T
+    \end{bmatrix}\\
+    &= \begin{bmatrix}
+        1 & 0 \\
+        L_{21} & I
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & \tilde P_1^T\tilde L
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{11} & U_{12} \\
+        0 & \tilde U\tilde P_2^T
+    \end{bmatrix}\\
+    &= \begin{bmatrix}
+        1 & 0 \\
+        L_{21} & \tilde P_1^T\tilde L
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{11} & U_{12}\tilde P_2 \\
+        0 & \tilde U
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & \tilde P_2^T
+    \end{bmatrix}\\
+    &= \begin{bmatrix}
+        1 & 0 \\
+        0 & \tilde P_1^T
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 \\
+        \tilde P_1^T L_{21} & \tilde L
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{11} & U_{12}\tilde P_2 \\
+        0 & \tilde U
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & \tilde P_2^T
+    \end{bmatrix},
+\end{align}
+</script></p>
+<p>&#x6700;&#x7EC8;&#x5F97;&#x5230; <script type="math/tex; "> A </script> &#x7684;&#x5206;&#x89E3;&#xFF1A;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+P_1AP_2 &= \left( \begin{bmatrix}
+    1 & 0 \\
+    0 & \tilde P_1
+\end{bmatrix}
+P_1'
+\right) 
+A 
+\left( P_2' \begin{bmatrix}
+    1 & 0 \\
+    0 & \tilde P_2
+\end{bmatrix}
+  \right)\\
+  &= \begin{bmatrix}
+      1 & 0 \\
+      \tilde P_1 L_{21} & \tilde L
+  \end{bmatrix}
+  \begin{bmatrix}
+      u_{11} & U_{12}\tilde P_2 \\
+      0 & \tilde U
+  \end{bmatrix}
+\end{align}
+</script>
+<script type="math/tex; "> \square </script> </p>
+<p><strong>&#x63A8;&#x8BBA; 2.1&#xFF08;GEPP&#xFF09;</strong> &#x5217;&#x4E3B;&#x5143;&#x9AD8;&#x65AF;&#x6D88;&#x53BB;&#x6CD5;</p>
+<p><strong>&#x63A8;&#x8BBA; 2.2 &#xFF08;GECP&#xFF09;</strong> &#x5B8C;&#x5168;&#x4E3B;&#x5143;&#x9AD8;&#x65AF;&#x6D88;&#x53BB;&#x6CD5;</p>
+<p><strong>&#x7B97;&#x6CD5; 2.2</strong> &#x4E3B;&#x5143; <script type="math/tex; "> LU </script> &#x5206;&#x89E3;
+<script type="math/tex; mode=display">
+\begin{align}
+&\text{for } i=1 \text{ to } n-1 \\
+&\quad \text{apply permutation so } a_{ii} \not= 0 \\
+&\quad \text{for } j = i + 1 \text{ to } n \\
+&\quad\quad l_{ji} = a_{ji}/a_{ii}\\
+&\quad \text{end for} \\
+&\quad \text{for } j = i \text{ to } n \\
+&\quad\quad u_{ij} = a_{ij} \\
+&\quad \text{end for}\\
+&\quad \text{for } j=i+1 \text{ to } n \\
+&\quad\quad \text{for } k=i+1 \text{ to }  n\\
+&\quad\quad\quad a_{jk} = a_{jk} - l_{ji}*u_{ik} \\
+&\quad\quad \text{end for} \\
+&\quad \text{end for}\\
+&\text{end for}
+\end{align}
+</script></p>
+<p><strong>&#x7B97;&#x6CD5; 2.3</strong> &#x4E3B;&#x5143; <script type="math/tex; "> LU </script> &#x5206;&#x89E3;&#xFF0C;&#x5229;&#x7528; <script type="math/tex; "> A </script> &#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x5B58;&#x653E; <script type="math/tex; "> L </script> &#x548C; <script type="math/tex; "> U </script> 
+<script type="math/tex; mode=display">
+\begin{align}
+&\text{for } i=1 \text{ to } n-1 \\
+&\quad \text{apply permutations} \\
+&\quad \text{for } j=i+1 \text{ to } n \\
+&\quad\quad a_{ji} = a_{ji}/a_{ii}  \\
+&\quad \text{end for} \\
+&\quad \text{for } j=i+1 \text{ to } n \\
+&\quad\quad \text{for } k=i+1 \text{ to }  n\\
+&\quad\quad\quad a_{jk} = a_{jk} - a_{ji}*a_{ik} \\
+&\quad\quad \text{end for} \\
+&\quad \text{end for}\\
+&\text{end for}\\
+\end{align}
+</script></p>
+<p><strong>&#x8BB2;&#x8BFE;&#x7B14;&#x8BB0;</strong></p>
+<ul>
+<li>&#x7528;&#x4E00;&#x4E2A; 4 &#x9636;&#x7684;&#x77E9;&#x9635;&#x6F14;&#x793A; <script type="math/tex; "> LU </script> &#x5206;&#x89E3;&#x7684;&#x8FC7;&#x7A0B;</li>
+</ul>
+<p><strong>Python &#x5B9E;&#x73B0;</strong> &#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x4E0A;&#x9762;&#x7B97;&#x6CD5;&#x7684; Python &#x5B9E;&#x73B0;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">algorithm_2_2</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span>
+    P<span class="token punctuation">,</span> L<span class="token punctuation">,</span> U <span class="token operator">=</span> np<span class="token punctuation">.</span>eye<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        m <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>np<span class="token punctuation">.</span><span class="token builtin">abs</span><span class="token punctuation">(</span>A<span class="token punctuation">[</span>i<span class="token punctuation">:</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> i
+        <span class="token keyword">if</span> A<span class="token punctuation">[</span>m<span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">&quot;matrix is singular.&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> m <span class="token operator">!=</span> i<span class="token punctuation">:</span>
+                A<span class="token punctuation">[</span><span class="token punctuation">[</span>i<span class="token punctuation">,</span> m<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span><span class="token punctuation">[</span>m<span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>
+                L<span class="token punctuation">[</span><span class="token punctuation">[</span>i<span class="token punctuation">,</span> m<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> L<span class="token punctuation">[</span><span class="token punctuation">[</span>m<span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>
+                P<span class="token punctuation">[</span><span class="token punctuation">[</span>i<span class="token punctuation">,</span> m<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> P<span class="token punctuation">[</span><span class="token punctuation">[</span>m<span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>
+            <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                L<span class="token punctuation">[</span>j<span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span>j<span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">/</span> A<span class="token punctuation">[</span>i<span class="token punctuation">,</span> i<span class="token punctuation">]</span>
+
+            <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                U<span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">]</span>
+
+            <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    A<span class="token punctuation">[</span>j<span class="token punctuation">,</span> k<span class="token punctuation">]</span> <span class="token operator">-=</span> L<span class="token punctuation">[</span>j<span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">*</span> U<span class="token punctuation">[</span>i<span class="token punctuation">,</span> k<span class="token punctuation">]</span>
+
+    P <span class="token operator">=</span> P<span class="token punctuation">.</span>T
+    L <span class="token operator">+=</span> np<span class="token punctuation">.</span>eye<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+    U<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> A<span class="token punctuation">,</span> P<span class="token punctuation">,</span> L<span class="token punctuation">,</span> U
+</code></pre>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">algorithm_2_3</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span>
+    P <span class="token operator">=</span> np<span class="token punctuation">.</span>eye<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+        m <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>np<span class="token punctuation">.</span><span class="token builtin">abs</span><span class="token punctuation">(</span>A<span class="token punctuation">[</span>i<span class="token punctuation">:</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> i
+
+        <span class="token keyword">if</span> A<span class="token punctuation">[</span>m<span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">&quot;matrix is singular.&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> m <span class="token operator">!=</span> i<span class="token punctuation">:</span>
+                A<span class="token punctuation">[</span><span class="token punctuation">[</span>i<span class="token punctuation">,</span> m<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span><span class="token punctuation">[</span>m<span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>
+                P<span class="token punctuation">[</span><span class="token punctuation">[</span>i<span class="token punctuation">,</span> m<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> P<span class="token punctuation">[</span><span class="token punctuation">[</span>m<span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>
+
+            <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                A<span class="token punctuation">[</span>j<span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span>j<span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">/</span> A<span class="token punctuation">[</span>i<span class="token punctuation">,</span> i<span class="token punctuation">]</span>
+
+            <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    A<span class="token punctuation">[</span>j<span class="token punctuation">,</span> k<span class="token punctuation">]</span> <span class="token operator">-=</span> A<span class="token punctuation">[</span>j<span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">*</span> A<span class="token punctuation">[</span>i<span class="token punctuation">,</span> k<span class="token punctuation">]</span>
+
+    P <span class="token operator">=</span> P<span class="token punctuation">.</span>T
+    L <span class="token operator">=</span> np<span class="token punctuation">.</span>tril<span class="token punctuation">(</span>A<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> np<span class="token punctuation">.</span>eye<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+    U <span class="token operator">=</span> np<span class="token punctuation">.</span>triu<span class="token punctuation">(</span>A<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> A<span class="token punctuation">,</span> P<span class="token punctuation">,</span> L<span class="token punctuation">,</span> U
+</code></pre>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">algorithm_2_4</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span>
+    P <span class="token operator">=</span> np<span class="token punctuation">.</span>eye<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        m <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>np<span class="token punctuation">.</span><span class="token builtin">abs</span><span class="token punctuation">(</span>A<span class="token punctuation">[</span>i<span class="token punctuation">:</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> i
+
+        <span class="token keyword">if</span> A<span class="token punctuation">[</span>m<span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">&quot;matrix is singular.&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> m <span class="token operator">!=</span> i<span class="token punctuation">:</span>
+                A<span class="token punctuation">[</span><span class="token punctuation">[</span>i<span class="token punctuation">,</span> m<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span><span class="token punctuation">[</span>m<span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>
+                P<span class="token punctuation">[</span><span class="token punctuation">[</span>i<span class="token punctuation">,</span> m<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> P<span class="token punctuation">[</span><span class="token punctuation">[</span>m<span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>
+
+            A<span class="token punctuation">[</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">/</span> A<span class="token punctuation">[</span>i<span class="token punctuation">,</span> i<span class="token punctuation">]</span>
+            A<span class="token punctuation">[</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">-=</span> A<span class="token punctuation">[</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span>A<span class="token punctuation">[</span>i<span class="token punctuation">,</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+
+    P <span class="token operator">=</span> P<span class="token punctuation">.</span>T
+    L <span class="token operator">=</span> np<span class="token punctuation">.</span>tril<span class="token punctuation">(</span>A<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> np<span class="token punctuation">.</span>eye<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+    U <span class="token operator">=</span> np<span class="token punctuation">.</span>triu<span class="token punctuation">(</span>A<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> A<span class="token punctuation">,</span> P<span class="token punctuation">,</span> L<span class="token punctuation">,</span> U
+</code></pre>
+<h2 id="lu--&#x5206;&#x89E3;&#x7684;&#x7B97;&#x6CD5;&#x590D;&#x6742;&#x5EA6;"><script type="math/tex; "> LU </script> &#x5206;&#x89E3;&#x7684;&#x7B97;&#x6CD5;&#x590D;&#x6742;&#x5EA6;</h2>
+<p><script type="math/tex; mode=display">
+\begin{align}
+&\text{for } i=1 \text{ to } n-1 \\
+&\quad \text{apply permutations} \\
+&\quad \text{for } j=i+1 \text{ to } n \\
+&\quad\quad l_{ji} = a_{ji}/a_{ii}  \\
+&\quad \text{end for} \\
+&\quad \text{for } j=i+1 \text{ to } n \\
+&\quad\quad \text{for } k=i+1 \text{ to }  n\\
+&\quad\quad\quad a_{jk} = a_{jk} - l_{ji}*a_{ik} \\
+&\quad\quad \text{end for} \\
+&\quad \text{end for}\\
+&\text{end for}\\
+\end{align}
+</script></p>
+<p>&#x628A;&#x4E0A;&#x9762;&#x7684; for &#x5FAA;&#x73AF;&#x7528; <script type="math/tex; "> \sum_{}^{}  </script> &#x66FF;&#x6362;&#xFF0C;&#x53EF;&#x5F97;</p>
+<p><script type="math/tex; mode=display">
+\begin{align}
+   &\sum_{i=1}^{n-1} \left( \sum_{j=i+1}^{n} 1 + \sum_{j=i+1}^{n} \sum_{k=i+1}^{n}2  \right) \\
+   =& \sum_{i=1}^{n-1} \left( ( n-i ) + 2(n-i)^2\right) \\
+   =& \sum_{i=1}^{n-1} \left( n-i + 2n^2 + 2i^2 - 2ni \right)  \\
+   =& \sum_{i=1}^{n-1} ( n + 2n^2 ) + 2\sum_{i=1}^{n-1} i^2 - (2n+1)\sum_{i=1}^{n-1} i\\ 
+   =& ( n - 1 ) ( n + 2n^2 ) + \frac{(n-1)n(n+1)}{3} - ( 2n+1 )\frac{ n(n+1) }{ 2 }\\
+   =& \frac{2}{3}n^3 + O(n^2)
+\end{align}
+</script></p>
+<p><script type="math/tex; mode=display">
+1^{2}+2^{2}+\ldots +k^{2}=\frac{k(k+1)(2k+1)}{6} 
+</script></p>
+<p><script type="math/tex; mode=display">
+1 + 2 + 3 + \ldots + k = \frac{ ( k+1 ) ( k+2 ) }{ 2 }
+</script></p>
+<h2 id="&#x5B9E;&#x9A8C;&#x62A5;&#x544A;">&#x5B9E;&#x9A8C;&#x62A5;&#x544A;</h2>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A; 100 &#x9636;&#x7684;&#x975E;&#x5947;&#x5F02;&#x77E9;&#x9635;&#xFF0C;&#x6BD4;&#x8F83;&#x4E0A;&#x8FF0;&#x51E0;&#x79CD;&#x7B97;&#x6CD5;&#x7684;&#x6548;&#x7387;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="2.2.html" class="navigation navigation-prev " aria-label="Previous page: 2.2 扰动理论">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="2.4.html" class="navigation navigation-next " aria-label="Next page: 2.4 误差分析">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.3 高斯消去法","level":"1.7.3","depth":2,"next":{"title":"2.4 误差分析","level":"1.7.4","depth":2,"path":"ch2/2.4.md","ref":"./ch2/2.4.md","articles":[]},"previous":{"title":"2.2 扰动理论","level":"1.7.2","depth":2,"path":"ch2/2.2.md","ref":"./ch2/2.2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch2/2.3.md","mtime":"2019-04-07T03:37:20.740Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-08T06:27:24.688Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+
