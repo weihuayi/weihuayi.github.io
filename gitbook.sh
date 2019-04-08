@@ -1,3 +1,9 @@
+# update the site first
+cd ../weihuayi.github.io/
+git pull
+
+
+cd ../whysite/
 git add .
 git commit -m "update" 
 git push 
