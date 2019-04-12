@@ -49,6 +49,14 @@ snippet trigger_word ["description" [options] ]
 endsnippet
 ```
 
+options 
+1. i: 任何位置
+1. r: 正则表达式
+1. w:
+1. A: 自动展开
+1. b:
+
+
 
 
 ### vim-surrounding: 

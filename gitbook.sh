@@ -6,6 +6,7 @@ git pull
 cd ../whysite/
 git add .
 git commit -m "update" 
+git pull
 git push 
 gitbook build
 cp -r _book/* ../weihuayi.github.io/
