@@ -1,4 +1,5 @@
-# update the site first
+#!/bin/bash
+
 if [[ `git status --porcelain` ]]; then
     cd ../weihuayi.github.io/
     git pull
