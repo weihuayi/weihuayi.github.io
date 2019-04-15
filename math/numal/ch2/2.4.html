@@ -636,10 +636,94 @@ not two norm}\\
 <li>&#x76F4;&#x63A5;&#x8BA1;&#x7B97; <script type="math/tex; "> A^{-1} </script> &#x7684;&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x5EA6;&#x4E3A; <script type="math/tex; "> 2n^3 > \frac{2}{3} n^3</script>&#x3002;</li>
 <li>&#x907F;&#x514D;&#x76F4;&#x63A5;&#x8BA1;&#x7B97; <script type="math/tex; "> A^{-1} </script> &#x4E14;&#x4EE3;&#x4EF7;&#x66F4;&#x4F4E;&#x7684;&#x7B97;&#x6CD5;&#x79F0;&#x4E3A;<strong>&#x6761;&#x4EF6;&#x6570;&#x4F30;&#x8BA1;&#x5B50;</strong>&#xFF0C; &#x8981;&#x5177;&#x5907;&#x5982;&#x4E0B;&#x6027;&#x8D28;<ol>
 <li>&#x5DF2;&#x7ECF;&#x8BA1;&#x7B97;&#x51FA; <script type="math/tex; "> L </script> &#x548C; <script type="math/tex; "> U </script> &#x65F6;&#xFF0C;&#x5B83;&#x7684;&#x8BA1;&#x7B97;&#x4EE3;&#x4EF7;&#x4E3A;<script type="math/tex; "> O(n^2) </script>&#x3002;</li>
-<li>&#x4F30;&#x8BA1;&#x5B50;&#x7684;&#x5927;&#x5C0F;&#x4E3A;<script type="math/tex; "> C\| A \| </script>&#xFF0C; &#x5219;&#x5176;&#x4E2D; <script type="math/tex; "> C </script> &#x8981;&#x5C0F;&#x4E8E; 10 &#x3002;</li>
+<li>&#x4F30;&#x8BA1;&#x5B50;&#x7684;&#x5927;&#x5C0F;&#x4E3A;<script type="math/tex; "> C\| A \| </script>&#xFF0C; &#x5219;&#x5176;&#x4E2D; <script type="math/tex; "> C </script> &#x8981;&#x5C0F;&#x4E8E; 10, &#x76F8;&#x5F53;&#x4E8E;&#x4E4B;&#x5DEE;&#x4E86;&#x4E00;&#x4E2A;
+&#x5341;&#x8FDB;&#x5236;&#x4F4D;&#x3002;</li>
 </ol>
 </li>
 </ul>
+<p><script type="math/tex; mode=display">
+\begin{aligned}
+\| B \|_1 =& \max_{j} \sum_{i=1}^{n} |b_{ij}| \\
+\| B \|_1 =& \max_{x\not=0} \frac{ \| Bx \|_1 }{ \| x \|_1 }
+\end{aligned}
+</script> </p>
+<ul>
+<li>&#x4E24;&#x4E2A;&#x7B49;&#x5F0F;&#x4EE3;&#x8868;&#x4E24;&#x79CD;&#x7B49;&#x4EF7;&#x7684;&#x8BA1;&#x7B97;&#x65B9;&#x5F0F;&#x3002;</li>
+<li>&#x4F46;&#x8BA1;&#x7B97;&#x6548;&#x7387;&#x4E0D;&#x7B49;&#x6548;&#x3002;</li>
+</ul>
+<p><script type="math/tex; mode=display">
+f(x) = \max_{\| x \|_1\leq 1}\| Bx \|_1
+</script> </p>
+<ul>
+<li><script type="math/tex; "> \| x \|_1 \leq 1</script> &#x662F;&#x4E00;&#x4E2A;&#x51F8;&#x96C6;&#x3002;</li>
+<li><script type="math/tex; "> f(x) </script> &#x662F;&#x4E00;&#x4E2A;&#x51F8;&#x51FD;&#x6570;&#x3002;</li>
+</ul>
+<p>&#x4E0A;&#x8FF0;&#x6C42;&#x6781;&#x5927;&#x503C;&#x7684;&#x95EE;&#x9898;&#x53EF;&#x4EE5;&#x7528;<strong>&#x68AF;&#x5EA6;&#x4E0A;&#x5347;&#x6CD5;</strong>&#x89E3;&#x51B3;, &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x5173;&#x952E;&#x662F;&#x8BA1;&#x7B97; <script type="math/tex; "> \nabla f </script>
+&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x6709;&#x7EDD;&#x5BF9;&#x503C;&#x7684;&#x5B58;&#x5728;&#xFF0C;&#x5728;&#x96F6;&#x70B9;&#x5904;&#x51FD;&#x6570;&#x4E0D;&#x53EF;&#x5BFC;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x5047;&#x8BBE;
+<script type="math/tex; mode=display">
+f(x) = \sum_i|\sum_j b_{ij}x_j| \text{ with all } \sum_{j} b_{ij}x_j \not=0.
+</script> </p>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x4E2A;&#x5047;&#x8BBE;&#x662F;&#x51E0;&#x4E4E;&#x603B;&#x662F;&#x6210;&#x7ACB;&#x7684;&#x3002;</p>
+<p>&#x5F15;&#x5165; 
+<script type="math/tex; mode=display">
+\zeta_i = \text{sign}(\sum_j b_{ij}x_j) = \pm 1
+</script> </p>
+<p>&#x53EF;&#x5F97;</p>
+<p><script type="math/tex; mode=display">
+f(x) = \sum_i\sum_j \zeta_i b_{ij}x_j.
+</script> </p>
+<p>&#x4ECE;&#x800C;&#x53EF;&#x5F97;
+<script type="math/tex; mode=display">
+\frac{ \partial f  }{ \partial x_k } = \sum_i \zeta_i b_{ik} 
+</script> </p>
+<p><script type="math/tex; mode=display">
+\nabla f = \zeta^T B = (B^T\zeta)^T
+</script> </p>
+<p><strong>&#x7B97;&#x6CD5; 2.5</strong> Hager&apos;s condition estimator returns a lower bound <script type="math/tex; "> \| w \|_1 </script>
+on <script type="math/tex; "> \| B \|_1</script>:
+<script type="math/tex; mode=display">
+\begin{align}
+&\text{choose any } x \text{ such that } \| x \|_1 = 1\\
+&\text{repeat }\\
+&\quad\text{if }\|z\|_\infty \leq z^Tx \text{ then}\\
+&\quad\quad\text{return }\|w\|_1\\
+&\quad\text{else}
+&\quad\quad x = e_j \text{ where } |z_j| = \|z\|_\infty
+&\quad text{endif}
+&\text{end repeat}\\
+\end{align}
+</script></p>
+<ul>
+<li>&#x521D;&#x503C;&#x53D6; <script type="math/tex; ">x_i=\frac{1}{n}</script> </li>
+<li><script type="math/tex; ">z^T=\nabla f</script> </li>
+</ul>
+<p><strong>&#x5B9A;&#x7406; 2.6</strong> </p>
+<ol>
+<li>&#x5982;&#x679C;&#x8FD4;&#x56DE; <script type="math/tex; ">\|w\|_1</script>&#xFF0C;&#x5219;<script type="math/tex; ">\|w\|_1 = \|Bx\|_1</script>  &#x662F; <script type="math/tex; ">\|Bx\|_1</script> &#x7684;&#x5C40;&#x90E8;&#x6700;&#x5927;&#x503C;
+&#x3002;</li>
+<li>&#x5426;&#x5219; <script type="math/tex; ">\|Be_j\|_1 (\text{at end of loop}) > \|Bx\|(\text{at start})</script></li>
+</ol>
+<p><strong>&#x8BC1;&#x660E;&#xFF1A;</strong> </p>
+<ol>
+<li><p>&#x76EE;&#x6807;&#x662F;&#x8BC1;&#x660E; <script type="math/tex; ">x</script> &#x662F;&#x5C40;&#x90E8;&#x6781;&#x5927;&#x503C;&#x70B9;&#x3002;&#x6613;&#x77E5;&#x5728; <script type="math/tex; ">x</script> &#x9644;&#x8FD1;&#xFF0C; <script type="math/tex; ">f(x)</script> &#x662F;&#x7EBF;&#x6027;&#x51FD;&#x6570;&#xFF0C;&#x5219;
+&#x6709;
+<script type="math/tex; mode=display">
+f(y) = f(x) + \nabla f(x)\cdot(y-x) = f(x)+z^T(y-x)
+</script> 
+&#x5176;&#x4E2D; <script type="math/tex; ">z^T = \nabla f(x)</script>&#x3002;&#x53D6; <script type="math/tex; ">\|y\|_1=1</script>, 
+<script type="math/tex; mode=display">
+\begin{aligned}
+z^T(y-x) =& z^Ty - z^Tx = \sum_i z_i\cdot y_i - z^Tx \leq \sum_i |z_i|\cdot |y_i|
+- z^Tx \\
+\leq & \|z\|_\infty\cdot \|y\|_1 - z^Tx = \|z\|_\infty - z^Tx\leq 0.
+\end{aligned}
+</script> </p>
+</li>
+<li><p>&#x5982;&#x679C; <script type="math/tex; ">\|z\|_\infty > z^Tx</script>&#x3002;&#x8BBE; <script type="math/tex; ">|z_j| = \|z\|_\infty</script>,   </p>
+</li>
+</ol>
+<p>&#x8BC1;&#x6BD5;&#x3002;<script type="math/tex; ">\square</script> </p>
 <h2 id="&#x8BFE;&#x540E;&#x4F5C;&#x4E1A;">&#x8BFE;&#x540E;&#x4F5C;&#x4E1A;</h2>
 <ol>
 <li>&#x7B2C;&#x4E00;&#x7AE0; Question 1.10</li>
@@ -684,7 +768,7 @@ not two norm}\\
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.4 误差分析","level":"1.7.4","depth":2,"previous":{"title":"2.3 高斯消去法","level":"1.7.3","depth":2,"path":"ch2/2.3.md","ref":"./ch2/2.3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch2/2.4.md","mtime":"2019-04-15T03:51:23.481Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-15T07:19:12.101Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.4 误差分析","level":"1.7.4","depth":2,"previous":{"title":"2.3 高斯消去法","level":"1.7.3","depth":2,"path":"ch2/2.3.md","ref":"./ch2/2.3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch2/2.4.md","mtime":"2019-04-15T13:10:32.386Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-15T13:11:30.918Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
