@@ -14,4 +14,6 @@ if [[ `git status --porcelain` ]];then
     git add .
     git commit -m "update" 
     git push 
+else
+    git pull
 fi
