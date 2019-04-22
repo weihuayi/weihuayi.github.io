@@ -969,9 +969,14 @@
 <li>&#x6A2A;&#x6760;&#x63A5;&#x5B57;&#x6BCD;, &#x5982; <code>-h</code></li>
 <li>&#x53CC;&#x6A2A;&#x6760;&#x63A5;&#x5355;&#x8BCD;, &#x5982; <code>--help</code></li>
 </ol>
-<p>&#x5177;&#x4F53;&#x5E38;&#x7528;&#x547D;&#x4EE4;&#x8BF7;&#x53C2;&#x8003;&#x4EE5;&#x4E0B;&#x6559;&#x7A0B;</p>
-<p><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html" target="_blank">http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html</a></p>
-<p><a href="http://www.ipc.me/ubuntu-useful-commands-collection-for-newbie.html" target="_blank">http://www.ipc.me/ubuntu-useful-commands-collection-for-newbie.html</a></p>
+<h2 id="&#x547D;&#x4EE4;&#x5E2E;&#x52A9;">&#x547D;&#x4EE4;&#x5E2E;&#x52A9;</h2>
+<pre class="language-"><code>whatis command
+</code></pre><pre class="language-"><code>whatis -w &quot;loca*&quot;
+</code></pre><pre class="language-"><code>info command
+</code></pre><p>&#x5177;&#x4F53;&#x5E38;&#x7528;&#x547D;&#x4EE4;&#x8BF7;&#x53C2;&#x8003;&#x4EE5;&#x4E0B;&#x6559;&#x7A0B;</p>
+<p><a href="https://blog.51cto.com/391977/1424403" target="_blank">https://blog.51cto.com/391977/1424403</a>
+<a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html" target="_blank">http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html</a>
+<a href="http://www.ipc.me/ubuntu-useful-commands-collection-for-newbie.html" target="_blank">http://www.ipc.me/ubuntu-useful-commands-collection-for-newbie.html</a></p>
 <h2 id="&#x5E38;&#x7528;&#x547D;&#x4EE4;">&#x5E38;&#x7528;&#x547D;&#x4EE4;</h2>
 <h3 id="apt"><code>apt</code></h3>
 <pre class="language-"><code>$ sudo apt-get install
@@ -1079,7 +1084,26 @@ drwxrwxr-x
 <pre class="language-"><code>$ chmod u+x test
 $ chmod u-x test
 $ chmod -R 755 test
-</code></pre>
+</code></pre><h2 id="&#x5386;&#x53F2;&#x547D;&#x4EE4;&#x53C2;&#x6570;&#x5FEB;&#x901F;&#x83B7;&#x53D6;&#x64CD;&#x4F5C;">&#x5386;&#x53F2;&#x547D;&#x4EE4;&#x53C2;&#x6570;&#x5FEB;&#x901F;&#x83B7;&#x53D6;&#x64CD;&#x4F5C;</h2>
+<h3 id="readline">readline</h3>
+<h3 id=""><code>$_</code></h3>
+<pre class="language-"><code>makedir dir &amp;&amp; cd &quot;$_&quot;
+</code></pre><h3 id="bash-&#x5386;&#x53F2;&#x5C55;&#x5F00;">bash &#x5386;&#x53F2;&#x5C55;&#x5F00;</h3>
+<ul>
+<li><code>!$</code> &#x83B7;&#x53D6;&#x4E0A;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;</li>
+<li><code>!n</code>  &#x7B2C; n &#x6761;&#x547D;&#x4EE4;</li>
+<li><code>!-n</code> &#x5230;&#x6570;&#x7B2C; n &#x6761;&#x547D;&#x4EE4;</li>
+<li><code>!!</code> &#x4E0A;&#x4E00;&#x6761;&#x547D;&#x4EE4;</li>
+<li><code>!string</code> &#x4EE5; string &#x5F00;&#x59CB;&#x7684;&#x6700;&#x8FD1;&#x4E00;&#x6761;&#x547D;&#x4EE4;</li>
+<li><code>!?sring?</code> &#x5305;&#x542B;&#x6709; string &#x7684;&#x6700;&#x8FD1;&#x4E00;&#x6761;&#x547D;&#x4EE4;</li>
+<li><code>^string1^string2</code> &#x8868;&#x793A;&#x6267;&#x884C;&#x4E0A;&#x4E00;&#x6761;&#x547D;&#x4EE4;&#xFF0C;&#x5E76;&#x5C06;&#x7B2C;&#x4E00;&#x4E2A; string1 &#x66FF;&#x6362;&#x4E3A; string2</li>
+<li><code>!#</code> &#x8868;&#x793A;&#x5F53;&#x524D;&#x547D;&#x4EE4;&#x5DF2;&#x7ECF;&#x8F93;&#x5165;&#x7684;&#x90E8;&#x5206;</li>
+</ul>
+<h2 id="&#x6709;&#x8DA3;&#x7684;-linux-&#x547D;&#x4EE4;">&#x6709;&#x8DA3;&#x7684; Linux &#x547D;&#x4EE4;</h2>
+<p><strong>cowsay</strong></p>
+<p><strong>sl</strong></p>
+<p><strong>linuxlogo</strong></p>
+
                                 
                                 </section>
                             
@@ -1122,7 +1146,7 @@ $ chmod -R 755 test
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux 命令行","level":"1.12.3","depth":2,"next":{"title":"Ubuntu","level":"1.12.4","depth":2,"path":"tools/ubuntu.md","ref":"./tools/ubuntu.md","articles":[]},"previous":{"title":"Linux","level":"1.12.2","depth":2,"path":"tools/linux.md","ref":"./tools/linux.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.6.2.1.1","level":"1.6.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.6.2.1.1"},{"backlink":"./tools/linux.html#fig1.12.2.1","level":"1.12.2","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":2,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.12.2.1"},{"backlink":"./tools/linux.html#fig1.12.2.2","level":"1.12.2","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":3,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.12.2.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"tools/linux_cli.md","mtime":"2019-04-08T08:58:13.714Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-16T09:46:23.920Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux 命令行","level":"1.12.3","depth":2,"next":{"title":"Ubuntu","level":"1.12.4","depth":2,"path":"tools/ubuntu.md","ref":"./tools/ubuntu.md","articles":[]},"previous":{"title":"Linux","level":"1.12.2","depth":2,"path":"tools/linux.md","ref":"./tools/linux.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.6.2.1.1","level":"1.6.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.6.2.1.1"},{"backlink":"./tools/linux.html#fig1.12.2.1","level":"1.12.2","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":2,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.12.2.1"},{"backlink":"./tools/linux.html#fig1.12.2.2","level":"1.12.2","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":3,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.12.2.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"tools/linux_cli.md","mtime":"2019-04-22T10:52:50.479Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-22T10:59:13.928Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
