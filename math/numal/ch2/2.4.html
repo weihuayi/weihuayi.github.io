@@ -65,6 +65,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="../ch3/" />
+    
     
     <link rel="prev" href="2.3.html" />
     
@@ -338,6 +340,51 @@
     
 
             </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../ch3/">
+            
+                <a href="../ch3/">
+            
+                    
+                    第三章：最小二乘问题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../ch3/3.1.html">
+            
+                <a href="../ch3/3.1.html">
+            
+                    
+                    3.1 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../ch4/">
+            
+                <a href="../ch4/">
+            
+                    
+                    第四章：非对称的特征值问题
+            
+                </a>
+            
+
             
         </li>
     
@@ -688,9 +735,9 @@ on <script type="math/tex; "> \| B \|_1</script>:
 &\text{repeat }\\
 &\quad\text{if }\|z\|_\infty \leq z^Tx \text{ then}\\
 &\quad\quad\text{return }\|w\|_1\\
-&\quad\text{else}
-&\quad\quad x = e_j \text{ where } |z_j| = \|z\|_\infty
-&\quad text{endif}
+&\quad\text{else}\\
+&\quad\quad x = e_j \text{ where } |z_j| = \|z\|_\infty\\
+&\quad text{endif}\\
 &\text{end repeat}\\
 \end{align}
 </script></p>
@@ -720,10 +767,56 @@ z^T(y-x) =& z^Ty - z^Tx = \sum_i z_i\cdot y_i - z^Tx \leq \sum_i |z_i|\cdot |y_i
 \end{aligned}
 </script> </p>
 </li>
-<li><p>&#x5982;&#x679C; <script type="math/tex; ">\|z\|_\infty > z^Tx</script>&#x3002;&#x8BBE; <script type="math/tex; ">|z_j| = \|z\|_\infty</script>,   </p>
+<li><p>&#x5982;&#x679C; <script type="math/tex; ">\|z\|_\infty > z^Tx</script>&#x3002;&#x8BBE; <script type="math/tex; ">|z_j| = \|z\|_\infty</script>&#xFF0C;&#x53D6; <script type="math/tex; ">\tilde x =
+   e_j\cdot\text{sign}(z_j)</script>&#xFF0C; &#x5219;
+<script type="math/tex; mode=display">
+   \begin{aligned}
+   f(\tilde x) \geq& f(x) + \nabla f\cdot(\tilde x - x) = f(x) + z^T(\tilde x - x)\\
+   =& f(x) + z^T\tilde x - z^Tx = f(x)+|z_j| - z^Tx > f(x)
+   \end{aligned} \quad (2.12)
+   </script> </p>
 </li>
 </ol>
 <p>&#x8BC1;&#x6BD5;&#x3002;<script type="math/tex; ">\square</script> </p>
+<p><strong>&#x4F30;&#x8BA1;&#x76F8;&#x5BF9;&#x6761;&#x4EF6;&#x6570; <script type="math/tex; ">\kappa_{CR} = \||A^{-1}|\cdot|A|\|_\infty</script> </strong></p>
+<p><script type="math/tex; mode=display">
+\frac{\|\delta x\|}{\|x\|} \leq \epsilon\left\|\left|A^{-1}\right| \cdot|A|\right\|. \quad (2.8)
+</script> </p>
+<p>&#x6216;&#x8005;&#x4F30;&#x8BA1; <script type="math/tex; ">\left\|\left|A^{-1}\right| \cdot|r|\right\|</script>&#x3002;</p>
+<p><script type="math/tex; mode=display">
+\|\delta x\|=\left\|A^{-1} r\right\| \leq\left\|\left|A^{-1}\right| \cdot|r|\right\|. \quad (2.9)
+</script> </p>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4E24;&#x4E2A;&#x4F30;&#x8BA1;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x8F6C;&#x5316;&#x4E3A;&#x76F8;&#x540C;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5373;&#x4F30;&#x8BA1; <script type="math/tex; ">\||A^{-1}|\cdot g\|_\infty</script>&#xFF0C;
+&#x5176;&#x4E2D; <script type="math/tex; ">g</script> &#x662F;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x975E;&#x8D1F;&#x7684;&#x5411;&#x91CF;&#x3002;</p>
+<p>&#x5229;&#x7528;<strong>&#x5F15;&#x7406; 1.7</strong>&#x7684;&#x7B2C; 5 &#x4E2A;&#x7ED3;&#x8BBA;&#xFF0C; &#x53EF;&#x77E5;&#x5982;&#x679C;&#x77E9;&#x9635; <script type="math/tex; ">X</script> &#x7684;&#x5143;&#x7D20;&#x90FD;&#x662F;&#x975E;&#x8D1F;&#x7684;&#xFF0C;<script type="math/tex; ">e = (1, 1, \cdots, 1)^T</script> &#x5219; 
+<script type="math/tex; mode=display">
+\|X\|_\infty = \|Xe\|_\infty.
+</script>
+&#x53EF;&#x63A8;&#x51FA;
+<script type="math/tex; mode=display">
+\left\|\left|A^{-1}\right| \cdot|A|\right\|_{\infty}=\left\|\left|A^{-1}\right| \cdot|A| e\right\|_{\infty}=\left\|\left|A^{-1}\right| \cdot g\right\|_{\infty}, \quad \text { where } g=|A| e.
+</script> </p>
+<p>&#x5F15;&#x5165;&#x5BF9;&#x89D2;&#x77E9;&#x9635;<script type="math/tex; ">G = \text{diag}(g_1, g_2, \cdots, g_n)</script>, &#x5219;&#x6709; <script type="math/tex; ">g = Ge</script>.
+<script type="math/tex; mode=display">
+\begin{aligned}
+\left\|\left|A^{-1}\right| \cdot g\right\|_{\infty} &=\left\|\left|A^{-1}\right| \cdot G e\right\|_{\infty}=\left\|\left|A^{-1}\right| \cdot G\right\|_{\infty}=\left\|A^{-1} G |\right\|_{\infty} \\ &=\left\|A^{-1} G\right\|_{\infty} 
+\end{aligned}
+</script> </p>
+<p>&#x6700;&#x540E;&#x8F6C;&#x5316;&#x4E3A;
+<script type="math/tex; mode=display">
+\left\|(A^TG)^T\right\|_1 = \left\|A^TG\right\|_\infty
+</script> </p>
+<h2 id="244-&#x5B9E;&#x7528;&#x7684;&#x8BEF;&#x5DEE;&#x754C;">2.4.4 &#x5B9E;&#x7528;&#x7684;&#x8BEF;&#x5DEE;&#x754C;</h2>
+<p><script type="math/tex; mode=display">
+\text{error} = =\frac{\|\hat{x}-x\|_{\infty}}{\|\hat{x}\|_{\infty}}
+\leq\left\|A^{-1}\right\|_{\infty} \cdot
+\frac{\|r\|_{\infty}}{\|\hat{x}\|_{\infty}} \quad (2.13)
+</script> </p>
+<p><script type="math/tex; mode=display">
+\text{error}=\frac{\|\hat{x}-x\|_{\infty}}{\|\hat{x}\|_{\infty}} \leq
+\frac{\left\|\left|A^{-1}\right|
+\cdot|r|\right\|_{\infty}}{\|\hat{x}\|_{\infty}}\quad (2.14)
+</script> </p>
 <h2 id="&#x8BFE;&#x540E;&#x4F5C;&#x4E1A;">&#x8BFE;&#x540E;&#x4F5C;&#x4E1A;</h2>
 <ol>
 <li>&#x7B2C;&#x4E00;&#x7AE0; Question 1.10</li>
@@ -756,10 +849,14 @@ z^T(y-x) =& z^Ty - z^Tx = \sum_i z_i\cdot y_i - z^Tx \leq \sum_i |z_i|\cdot |y_i
 
             
                 
-                <a href="2.3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 2.3 高斯消去法">
+                <a href="2.3.html" class="navigation navigation-prev " aria-label="Previous page: 2.3 高斯消去法">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="../ch3/" class="navigation navigation-next " aria-label="Next page: 第三章：最小二乘问题">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -768,7 +865,7 @@ z^T(y-x) =& z^Ty - z^Tx = \sum_i z_i\cdot y_i - z^Tx \leq \sum_i |z_i|\cdot |y_i
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.4 误差分析","level":"1.7.4","depth":2,"previous":{"title":"2.3 高斯消去法","level":"1.7.3","depth":2,"path":"ch2/2.3.md","ref":"./ch2/2.3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch2/2.4.md","mtime":"2019-04-15T21:13:06.760Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-15T21:16:35.530Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.4 误差分析","level":"1.7.4","depth":2,"next":{"title":"第三章：最小二乘问题","level":"1.8","depth":1,"path":"ch3/README.md","ref":"./ch3/README.md","articles":[{"title":"3.1 简介","level":"1.8.1","depth":2,"path":"ch3/3.1.md","ref":"./ch3/3.1.md","articles":[]}]},"previous":{"title":"2.3 高斯消去法","level":"1.7.3","depth":2,"path":"ch2/2.3.md","ref":"./ch2/2.3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./ch3/3.1.html#fig1.8.1.1","level":"1.8.1","list_caption":"Figure: 大地测量三角形示意图","alt":"大地测量三角形示意图","nro":1,"url":"./figures/geodetic.png","index":1,"caption_template":"Figure: _CAPTION_","label":"大地测量三角形示意图","attributes":{},"skip":false,"key":"1.8.1.1"}]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"ch2/2.4.md","mtime":"2019-04-22T06:58:16.089Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-22T23:55:00.811Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
