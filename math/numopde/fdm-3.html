@@ -1,0 +1,628 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>弦的横振动问题的有限差分求解算法实现 · 数值代数课件</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Wei, Huayi">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="fdm-4.html" />
+    
+    
+    <link rel="prev" href="fdm-2.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    课程简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="matlab.html">
+            
+                <a href="matlab.html">
+            
+                    
+                    Matlab 基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="matlab-advance.html">
+            
+                <a href="matlab-advance.html">
+            
+                    
+                    Matlab 进阶
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="sparse.html">
+            
+                <a href="sparse.html">
+            
+                    
+                    Matlab 中的稀疏矩阵
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="fdm-1.html">
+            
+                <a href="fdm-1.html">
+            
+                    
+                    一维椭圆问题的有限差分求解算法实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="fdm-2.html">
+            
+                <a href="fdm-2.html">
+            
+                    
+                    一维热传导问题的有限差分求解算法实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7" data-path="fdm-3.html">
+            
+                <a href="fdm-3.html">
+            
+                    
+                    弦的横振动问题的有限差分求解算法实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="fdm-4.html">
+            
+                <a href="fdm-4.html">
+            
+                    
+                    一维管激波问题的有限差分求解算法实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >弦的横振动问题的有限差分求解算法实现</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5F26;&#x7684;&#x6A2A;&#x632F;&#x52A8;&#x95EE;&#x9898;">&#x5F26;&#x7684;&#x6A2A;&#x632F;&#x52A8;&#x95EE;&#x9898;</h1>
+<h2 id="&#x6A21;&#x578B;">&#x6A21;&#x578B;</h2>
+<p>&#x6CE2;&#x52A8;&#x65B9;&#x7A0B;&#x7684;&#x521D;&#x503C;&#x95EE;&#x9898;&#x6A21;&#x578B;&#x4E3A;</p>
+<p><script type="math/tex; mode=display">
+\begin{array}{l}
+{
+\frac{\partial^{2} u}{\partial t^{2}}-a^{2} 
+\frac{\partial^{2} u}{\partial x^{2}} = 0,\quad -\infty<x<\infty,\quad t>0
+} \\ 
+{
+u(x, 0) = \phi_{0}(x), u_{t}(x, 0) = \phi_{1}(x),\quad -\infty<x<\infty
+}
+\end{array}
+</script> </p>
+<h2 id="&#x6709;&#x9650;&#x5DEE;&#x5206;&#x79BB;&#x6563;">&#x6709;&#x9650;&#x5DEE;&#x5206;&#x79BB;&#x6563;</h2>
+<p>&#x7ED9;&#x5B9A;&#x7A7A;&#x95F4;&#x548C;&#x65F6;&#x95F4;&#x6B65;&#x957F;&#xFF1A;<script type="math/tex; ">h</script> &#x548C; <script type="math/tex; ">\tau</script>&#xFF0C;  &#x5BF9;&#x6C42;&#x89E3;&#x533A;&#x57DF; <script type="math/tex; ">G=(-\infty, \infty)
+\times(0, \infty)</script>&#xFF0C; &#x505A;&#x5747;&#x5300;&#x7F51;&#x683C;&#x5256;&#x5206;&#xFF0C;&#x76F8;&#x5E94;&#x7684; <script type="math/tex; ">\theta</script> &#x683C;&#x5F0F;&#x4E3A;</p>
+<p><script type="math/tex; mode=display">
+\begin{aligned} 
+& \frac{u_{j}^{n+1}-2 u_{j}^{n}+u_{j}^{n-1}}{\tau^{2}}\\ 
+= & a^{2} \left[\theta \frac{u_{j+1}^{n+1}-2 u_{j}^{n+1}+u_{j-1}^{n+1}}{h^{2}}
+\right.\\
+& + (1-2 \theta) \frac{u_{j+1}^{n}-2 u_{j}^{n}+u_{j-1}^{n}}{h^{2}}\\
+& + \left.\theta \frac{u_{j+1}^{n-1}-2 u_{j}^{n-1}+u_{j-1}^{n-1}}{h^{2}} 
+\right] \\
+\end{aligned}
+</script></p>
+<p>&#x5F15;&#x5165;&#x7F51;&#x6BD4; </p>
+<p><script type="math/tex; mode=display">
+r = \frac{a\tau}{h},
+</script> </p>
+<p>&#x53EF;&#x5F97;</p>
+<p><script type="math/tex; mode=display">
+\begin{aligned}
+& u_{j}^{n+1}-2 u_{j}^{n}+u_{j}^{n-1}\\
+= & r^2\left[\theta (u_{j+1}^{n+1}-2 u_{j}^{n+1}+u_{j-1}^{n+1})
+\right.\\
+& + (1-2 \theta) (u_{j+1}^{n}-2 u_{j}^{n}+u_{j-1}^{n})\\
+& + \left.\theta (u_{j+1}^{n-1}-2 u_{j}^{n-1}+u_{j-1}^{n-1}) 
+\right] \\
+\end{aligned}
+</script> </p>
+<p>&#x8FDB;&#x4E00;&#x6B65;&#x53D8;&#x5F62;&#x53EF;&#x5F97;&#xFF1A;</p>
+<p><script type="math/tex; mode=display">
+\begin{aligned}
+&-r^2\theta u_{j+1}^{n+1} + (1 + 2r^2 \theta) u_{j}^{n+1} 
+- r^2\theta u_{j-1}^{n+1} \\
+= & r^2(1 - 2\theta)u_{j+1}^n + \left(2 - 2r^2(1 - 2\theta)\right)u_{j}^n 
++ r^2(1 - 2\theta)u_{j-1}^n\\
+= & r^2\theta u_{j+1}^{n-1} -(2r^2\theta + 1) u_j^{n-1} + r^2\theta
+u_{j-1}^{n-1}
+\end{aligned}
+</script> </p>
+<p>&#x6700;&#x540E;&#x53EF;&#x5F97;&#x4E0A;&#x8FF0;&#x683C;&#x5F0F;&#x7684;&#x77E9;&#x9635;&#x5F62;&#x5F0F;
+<script type="math/tex; mode=display">
+A_0 U^{n+1} = A_1 U^{n} + A_2 U^{n-1}
+</script> </p>
+<p>&#x4E0A;&#x9762;&#x7684;&#x683C;&#x5F0F;&#x4E2D;&#x8981;&#x7528;&#x5230;&#x8FC7;&#x53BB;&#x4E24;&#x4E2A;&#x65F6;&#x95F4;&#x5C42;&#x7684;&#x51FD;&#x6570;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x5FC5;&#x987B;&#x77E5;&#x9053;&#x7B2C; 0 &#x5C42;&#x548C;&#x7B2C; 1 &#x5C42;&#x7684;&#x51FD;&#x6570;&#x503C;
+&#xFF0C;&#x624D;&#x80FD;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x683C;&#x5F0F;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x3002;&#x4E0B;&#x9762;&#x8BA8;&#x8BBA;&#x5982;&#x4F55;&#x6784;&#x9020;&#x7B2C; 1 &#x5C42;&#x7684;&#x51FD;&#x6570;&#x503C;&#x3002;&#x9996;&#x5148;&#x5047;&#x8BBE;&#x7B2C; 0 &#x5C42;&#x4E0B;
+&#x5728;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x7B2C; -1 &#x5C42;&#xFF0C; &#x5229;&#x7528;&#x4E2D;&#x5FC3;&#x5DEE;&#x5206;&#x683C;&#x5F0F;&#x53EF;&#x5F97;&#x4E0B;&#x5F0F;</p>
+<p><script type="math/tex; mode=display">
+\frac{u_{j}^{1}-2 u_{j}^{0}+u_{j}^{-1}}{\tau^{2}}
+=a^{2}\frac{u_{j+1}^{0}-2 u_{j}^{0}+u_{j-1}^{0}}{h^{2}}
+</script> </p>
+<p>&#x7528;&#x6570;&#x503C;&#x5FAE;&#x5206;&#x66FF;&#x4EE3;&#x5728;&#x7B2C; 0 &#x5C42;&#x7684;&#x5BFC;&#x6570;&#x6761;&#x4EF6;</p>
+<p><script type="math/tex; mode=display">
+\frac{u_{j}^{1}-u_{j}^{-1}}{2 \tau}=\phi_{1}\left(x_{j}\right)
+</script> </p>
+<p>&#x4E0A;&#x9762;&#x4E24;&#x5F0F;&#x7ED3;&#x5408;&#xFF0C;&#x6D88;&#x53BB; <script type="math/tex; ">u_j^{-1}</script>&#xFF0C; &#x53EF;&#x5F97;</p>
+<p><script type="math/tex; mode=display">
+u_{j}^{1}=\frac{r^{2}}{2}\left[\phi_{0}\left(x_{j-1}\right)
++\phi_{0}\left(x_{j+1}\right)\right]
++\left(1-r^{2}\right) \phi_{0}\left(x_{j}\right)
++\tau \phi_{1}\left(x_{j}\right)
+</script> </p>
+<h2 id="&#x6570;&#x503C;&#x5B9E;&#x9A8C;">&#x6570;&#x503C;&#x5B9E;&#x9A8C;</h2>
+<p>&#x5229;&#x7528;&#x6709;&#x9650;&#x5DEE;&#x5206;&#x6CD5;&#x53BB;&#x6C42;&#x89E3;
+<script type="math/tex; mode=display">
+\begin{align}
+\frac{\partial^2 u}{\partial t^2} - a^2\frac{\partial^2 u}{\partial x^2} 
+= & 0, \quad 0 < x < 1, \quad 0 < t < 4, \\
+u(0,t)= & 0,\\ 
+u(1,t)= & 0,\\
+u(x,0)= & 
+\begin{cases} 
+\frac{0.5}{7}x, & x<0.7\\
+\frac{0.5}{3}(1-x), & x\geq 0.7
+\end{cases}\\
+u_t(x,0) = &0.
+\end{align}
+</script> 
+&#x5176;&#x4E2D;&#x7CFB;&#x6570; <script type="math/tex; ">a^2=1</script>&#x3002;</p>
+<h2 id="matlab-&#x5B9E;&#x73B0;&#x4EE3;&#x7801;">Matlab &#x5B9E;&#x73B0;&#x4EE3;&#x7801;</h2>
+<pre class="language-"><code>function pde = model_data(t0, t1, x0, x1)
+% MODEL_DATA &#x6A21;&#x578B;&#x6570;&#x636E;
+
+pde = struct(...
+    &apos;init_solution&apos;, @init_solution, ...
+    &apos;init_dt_solution&apos;, @init_dt_solution, ...
+    &apos;left_solution&apos;, @left_solution, ...
+    &apos;right_solution&apos;, @right_solution, ...
+    &apos;source&apos;, @source, ...
+    &apos;time_grid&apos;, @time_grid, ...
+    &apos;space_grid&apos;, @space_grid, ...
+    &apos;a&apos;, @a);
+
+    function [T,tau] = time_grid(NT)
+        T = linspace(t0, t1, NT+1);
+        tau = (t1 - t0)/NT;
+    end
+
+    function [X,h] = space_grid(NS)
+        X = linspace(x0, x1, NS+1)&apos;;
+        h = (x1 - x0)/NS;
+    end
+
+    function u = init_solution(x)
+        u = zeros(size(x));
+        u(x &lt; 0.7) = 0.5/7*x(x&lt;0.7);
+        u(x &gt;= 0.7) = 0.5/3*(1-x(x&gt;=0.7));
+    end
+
+    function u =init_dt_solution(x)
+       u = zeros(size(x)); 
+    end
+
+    function u = left_solution(t)
+        u = zeros(size(t));
+    end
+
+    function u = right_solution(t)
+        u = zeros(size(t));
+    end
+
+    function f = source(x,t)
+        f = zeros(size(x));
+    end
+
+    function a = a()
+        a = 1;
+    end
+end
+</code></pre><pre class="language-"><code>%% &#x4E00;&#x7EF4;&#x4E00;&#x7EF4;&#x5F26;&#x632F;&#x52A8;&#x65B9;&#x7A0B;&#x6709;&#x9650;&#x5DEE;&#x5206;&#x65B9;&#x6CD5;&#x4E3B;&#x6D4B;&#x8BD5;&#x811A;&#x672C; main_test.m
+%   &#x4F9D;&#x6B21;&#x6D4B;&#x8BD5;&#xFF1A;
+%       &#x663E;&#x683C;&#x5F0F; (theta = 0)
+%       &#x9690;&#x683C;&#x5F0F;&#xFF08;theta = 0.5)
+%   &#x5E76;&#x53EF;&#x89C6;&#x5316;&#x6570;&#x503C;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x3002;
+%
+% &#x4F5C;&#x8005;&#xFF1A;&#x9B4F;&#x534E;&#x794E; <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>weihuayi@xtu.edu.cn</span><span class="token punctuation">&gt;</span></span> 
+
+t0 = 0;
+t1 = 4;
+x0 = 0;
+x1 = 1;
+pde = model_data(t0, t1, x0, x1); %&#x6A21;&#x578B;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4F53;
+
+% &#x663E;&#x683C;&#x5F0F;
+[X,T,U] = wave_equation_fd1d(100,800,pde);
+showvarysolution(X,T,U);% &#x4EE5;&#x968F;&#x65F6;&#x95F4;&#x53D8;&#x5316;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;
+showsolution(X,T,U); % &#x4EE5;&#x4E8C;&#x5143;&#x51FD;&#x6570;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;
+
+% &#x9690;&#x683C;&#x5F0F;
+[X,T,U] = wave_equation_fd1d(100,400,pde,0.5);
+showvarysolution(X,T,U);% &#x4EE5;&#x968F;&#x65F6;&#x95F4;&#x53D8;&#x5316;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;
+showsolution(X,T,U); % &#x4EE5;&#x4E8C;&#x5143;&#x51FD;&#x6570;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;
+</code></pre><pre class="language-"><code>function [X, T, U] = wave_equation_fd1d(NS, NT, pde, theta)
+%% WAVE_EQUATION_FD1D &#x5229;&#x7528;&#x6709;&#x9650;&#x5DEE;&#x5206;&#x65B9;&#x6CD5;&#x8BA1;&#x7B97;&#x4E00;&#x7EF4;&#x5F26;&#x632F;&#x52A8;&#x65B9;&#x7A0B;
+%   
+%   &#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF1A;
+%       NS &#x6574;&#x578B;&#xFF0C;&#x7A7A;&#x95F4;&#x5256;&#x5206;&#x6BB5;&#x6570;.
+%       NT &#x6574;&#x578B;&#xFF0C;&#x65F6;&#x95F4;&#x5256;&#x5206;&#x6BB5;&#x6570;.
+%       pde &#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x5F85;&#x6C42;&#x89E3;&#x7684;&#x5FAE;&#x5206;&#x65B9;&#x7A0B;&#x6A21;&#x578B;&#x7684;&#x5DF2;&#x77E5;&#x6570;&#x636E;&#xFF0C;
+%                  &#x5982;&#x8FB9;&#x754C;&#x3001;&#x521D;&#x59CB;&#x3001;&#x7CFB;&#x6570;&#x548C;&#x53F3;&#x7AEF;&#x9879;&#x7B49;&#x6761;&#x4EF6;.
+%       theta &#x53CC;&#x7CBE;&#x5EA6;&#x7C7B;&#x578B;&#xFF0C; &#x9690;&#x683C;&#x5F0F;&#x53C2;&#x6570;&#xFF0C; &#x5728; [0,1] &#x4E4B;&#x95F4;&#xFF0C; 
+%             &#x5F53; theta=0 &#x65F6;&#xFF0C;&#x683C;&#x5F0F;&#x4E3A;&#x663E;&#x683C;&#x5F0F;. 
+%   &#x8F93;&#x51FA;&#x53C2;&#x6570;&#xFF1A;
+%       X &#x957F;&#x5EA6;&#x4E3A; NS+1 &#x7684;&#x5217;&#x5411;&#x91CF;&#xFF0C;&#x7A7A;&#x95F4;&#x7F51;&#x683C;&#x5256;&#x5206;
+%       T &#x957F;&#x5EA6;&#x4E3A; NT+1 &#x7684;&#x884C;&#x5411;&#x91CF;&#xFF0C;&#x65F6;&#x95F4;&#x7F51;&#x683C;&#x5256;&#x5206;
+%       U (NS+1)*(NT+1) &#x77E9;&#x9635;&#xFF0C;U(:,i) &#x8868;&#x793A;&#x7B2C; i &#x4E2A;&#x65F6;&#x95F4;&#x5C42;&#x7F51;&#x683C;&#x90E8;&#x5206;&#x4E0A;&#x7684;&#x6570;&#x503C;&#x89E3;
+%
+%   &#x4F5C;&#x8005;&#xFF1A;&#x9B4F;&#x534E;&#x794E; <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>weihuayi@xtu.edu.cn</span><span class="token punctuation">&gt;</span></span>
+
+if nargin &lt; 4
+    theta = 0; % &#x9ED8;&#x8BA4;&#x7528;&#x663E;&#x683C;&#x5F0F;
+end
+
+[X, h] = pde.space_grid(NS);
+[T, tau] = pde.time_grid(NT);
+N = length(X);
+M = length(T);
+r = pde.a()*tau/h;
+if r &gt;=1 &amp;&amp; theta==0
+   error(&apos;&#x65F6;&#x95F4;&#x7A7A;&#x95F4;&#x79BB;&#x6563;&#x4E0D;&#x6EE1;&#x8DB3;&#x663E;&#x683C;&#x5F0F;&#x7684;&#x7A33;&#x5B9A;&#x6761;&#x4EF6;&#xFF01;&apos;) 
+end
+r2 = r*r;
+U = zeros(N,M);
+% &#x521D;&#x503C;&#x6761;&#x4EF6;
+U(:,1) = pde.init_solution(X); 
+U(2:end-1,2) = r2/2*(U(1:end-2,1)+U(3:end,1)) + (1-r2)*U(2:end-1,1)...
+    + tau*pde.init_dt_solution(X(2:end-1));
+% &#x8FB9;&#x503C;&#x6761;&#x4EF6;
+U(1,:) = pde.left_solution(T);
+U(end,:) = pde.right_solution(T);
+
+%% &#x9690;&#x683C;&#x5F0F;
+d = 1 + 2*ones(N-2,1)*r2*theta;
+c = -ones(N-3,1)*r2*theta;
+A2 = diag(c,-1) + diag(c,1)+diag(d);
+
+d = 2 - 2*ones(N-2,1)*r2*(1-2*theta);
+c = ones(N-3,1)*r2*(1-2*theta);
+A1 = diag(c,-1) + diag(c,1)+diag(d);
+
+d = -1 - 2*ones(N-2,1)*r2*theta;
+c = ones(N-3,1)*r2*theta;
+A0 = diag(c,-1) + diag(c,1)+diag(d);
+for i=3:M
+    RHS = tau*tau*pde.source(X,T(i));
+    RHS(2) = RHS(2) + theta*r2*U(1,i) + ...
+        (1-2*theta)*r2*U(1,i-1)+ theta*r2*U(1,i-2);
+    RHS(end-1) = RHS(end-1) + theta*r2*U(end,i) + ...
+        (1-2*theta)*r2*U(end,i-1)+ theta*r2*U(end,i-2);
+    U(2:end-1,i) = A2\(A1*U(2:end-1,i-1) + A0*U(2:end-1,i-2)+RHS(2:end-1));
+end
+
+end
+</code></pre><pre class="language-"><code>function e = getmaxerror(X,T,U,u)
+%%  GETMAXERROR &#x6C42;&#x6700;&#x5927;&#x6A21;&#x8BEF;&#x5DEE;
+%       E(h,\tau) = max_{x_i,t_j}| u_exact(x_i,t_j) - U(i,j)| 
+%                 = O( \tau + h^2)
+%
+% &#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF1A;
+%       X &#x957F;&#x5EA6;&#x4E3A; N  &#x7684;&#x5217;&#x5411;&#x91CF;&#xFF0C;&#x7A7A;&#x95F4;&#x5256;&#x5206;
+%       T &#x957F;&#x5EA6;&#x4E3A; M  &#x7684;&#x884C;&#x5411;&#x91CF;&#xFF0C;&#x65F6;&#x95F4;&#x5256;&#x5206;
+%       U N*M &#x7684;&#x77E9;&#x9635;&#xFF0C;U(:,i) &#x8868;&#x793A;&#x7B2C; i &#x4E2A;&#x65F6;&#x95F4;&#x6B65;&#x7684;&#x6570;&#x503C;&#x89E3;
+%       u_exact &#x51FD;&#x6570;&#x53E5;&#x67C4;&#xFF0C;&#x771F;&#x89E3;&#x51FD;&#x6570;
+% &#x8F93;&#x51FA;&#x53C2;&#x6570;&#xFF1A;
+%       e &#x6700;&#x5927;&#x6A21;&#x8BEF;&#x5DEE;
+%
+% &#x4F5C;&#x8005;&#xFF1A;&#x9B4F;&#x534E;&#x794E; <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>weihuayi@xtu.edu.cn</span><span class="token punctuation">&gt;</span></span>
+
+[x,t] = meshgrid(X,T);
+u = u(x&apos;,t&apos;);
+e = max(max(abs(u - U)));
+</code></pre><pre class="language-"><code>function showsolution(X, T, U)
+%%  SHOWSOLUTION  &#x4EE5;&#x4E8C;&#x5143;&#x51FD;&#x6570;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;
+% 
+%  &#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF1A;
+%       X &#x957F;&#x5EA6;&#x4E3A;N&#x7684;&#x5217;&#x5411;&#x91CF;&#xFF0C;&#x7A7A;&#x95F4;&#x7F51;&#x683C;&#x5256;&#x5206;
+%       T &#x7B2C;&#x5EA6;&#x4E3A;M&#x7684;&#x884C;&#x5411;&#x91CF;&#xFF0C;&#x65F6;&#x95F4;&#x7F51;&#x683C;&#x5256;&#x5206;
+%       U N*M &#x77E9;&#x9635;&#xFF0C;U(:,i) &#x8868;&#x793A;&#x7B2C;  i &#x4E2A;&#x65F6;&#x95F4;&#x5C42;&#x7F51;&#x683C;&#x90E8;&#x5206;&#x4E0A;&#x7684;&#x6570;&#x503C;&#x89E3;
+%
+%   &#x4F5C;&#x8005;&#xFF1A;&#x9B4F;&#x534E;&#x794E; <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>weihuayi@xtu.edu.cn</span><span class="token punctuation">&gt;</span></span>   
+
+[x, t] = meshgrid(X, T);
+mesh(x, t, U&apos;);
+xlabel(&apos;X&apos;);
+ylabel(&apos;T&apos;);
+zlabel(&apos;U(X,T)&apos;);
+end
+</code></pre><pre class="language-"><code>function showvarysolution(X, T, U)
+%%  SHOWVARYSOLUTION  &#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;&#x968F;&#x7740;&#x65F6;&#x95F4;&#x7684;&#x53D8;&#x5316;
+% 
+%  &#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF1A;
+%       X &#x957F;&#x5EA6;&#x4E3A;N&#x7684;&#x5217;&#x5411;&#x91CF;&#xFF0C;&#x7A7A;&#x95F4;&#x7F51;&#x683C;&#x5256;&#x5206;
+%       T &#x7B2C;&#x5EA6;&#x4E3A;M&#x7684;&#x884C;&#x5411;&#x91CF;&#xFF0C;&#x65F6;&#x95F4;&#x7F51;&#x683C;&#x5256;&#x5206;
+%       U N*M &#x77E9;&#x9635;&#xFF0C;U(:,i) &#x8868;&#x793A;&#x7B2C;  i &#x4E2A;&#x65F6;&#x95F4;&#x5C42;&#x7F51;&#x683C;&#x90E8;&#x5206;&#x4E0A;&#x7684;&#x6570;&#x503C;&#x89E3;
+%
+%   &#x4F5C;&#x8005;&#xFF1A;&#x9B4F;&#x534E;&#x794E; <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>weihuayi@xtu.edu.cn</span><span class="token punctuation">&gt;</span></span>   
+
+M = size(U, 2);
+figure
+xlabel(&apos;X&apos;);
+ylabel(&apos;U&apos;);
+s = [X(1), X(end), min(min(U)), max(max(U))];
+axis(s);
+for i = 1:M
+   plot(X, U(:,i));
+   axis(s);
+   pause(0.01);
+   title([&apos;T=&apos;, num2str(T(i)),&apos; &#x65F6;&#x523B;&#x6570;&#x503C;&#x89E3;&#x7684;&#x56FE;&#x50CF;&apos;])
+end
+</code></pre><h2 id="&#x5B9E;&#x9A8C;&#x62A5;&#x544A;">&#x5B9E;&#x9A8C;&#x62A5;&#x544A;</h2>
+<p>&#x6559;&#x6750;PP. 158. &#x4E60;&#x9898;4&#x548C;5</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="fdm-2.html" class="navigation navigation-prev " aria-label="Previous page: 一维热传导问题的有限差分求解算法实现">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="fdm-4.html" class="navigation navigation-next " aria-label="Next page: 一维管激波问题的有限差分求解算法实现">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"弦的横振动问题的有限差分求解算法实现","level":"1.7","depth":1,"next":{"title":"一维管激波问题的有限差分求解算法实现","level":"1.8","depth":1,"path":"fdm-4.md","ref":"fdm-4.md","articles":[]},"previous":{"title":"一维热传导问题的有限差分求解算法实现","level":"1.6","depth":1,"path":"fdm-2.md","ref":"fdm-2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"matlab.html#fig1.2.1","level":"1.2","list_caption":"Figure: Jacobi 迭代过程","alt":"Jacobi 迭代过程","nro":1,"url":"./figures/jacobi.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Jacobi 迭代过程","attributes":{},"skip":false,"key":"1.2.1"}]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"fdm-3.md","mtime":"2019-04-22T02:47:14.080Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-22T02:47:27.937Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -17,6 +17,10 @@
     
             
                 
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-image-captions/image-captions.css">
                 
             
@@ -26,10 +30,6 @@
             
                 
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -57,7 +57,6 @@
         
     
     
-    
     <meta name="HandheldFriendly" content="true"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -71,9 +70,6 @@
     
     <link rel="prev" href="sparse.html" />
     
-
-    <script src="gitbook/gitbook-plugin-graph/d3.min.js"></script>
-    <script src="gitbook/gitbook-plugin-graph/function-plot.js"></script>    
 
     </head>
     <body>
@@ -172,6 +168,32 @@
             
                     
                     一维热传导问题的有限差分求解算法实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="fdm-3.html">
+            
+                <a href="fdm-3.html">
+            
+                    
+                    弦的横振动问题的有限差分求解算法实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="fdm-4.html">
+            
+                <a href="fdm-4.html">
+            
+                    
+                    一维管激波问题的有限差分求解算法实现
             
                 </a>
             
@@ -306,139 +328,139 @@ a_i=-\frac{1}{h^2},\quad d_i= \frac{2}{h^2},\quad c_i=-\frac{1}{h^2}
 <p>1) &#x9996;&#x5148;&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x6570;&#x636E;</p>
 <p>&#x8FD9;&#x91CC;&#x7528;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x628A;&#x6A21;&#x578B;&#x6570;&#x636E;&#x653E;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x628A;&#x7ED3;&#x6784;&#x4F53;&#x76F4;&#x63A5;&#x8F93;&#x5165;&#x7ED9;&#x7B97;&#x6CD5;&#xFF0C;&#x907F;&#x514D;&#x7ED9;&#x7B97;&#x6CD5;&#x8BBE;
 &#x8BA1;&#x8FC7;&#x591A;&#x7684;&#x53C2;&#x6570;&#x8F93;&#x5165;&#x3002;</p>
-<pre><code class="lang-Matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">model</span> = <span class="hljs-title">model_data</span><span class="hljs-params">(l, r)</span></span>
-<span class="hljs-comment">% MODEL_DATA &#x6A21;&#x578B;&#x6570;&#x636E;</span>
-<span class="hljs-comment">% </span>
-<span class="hljs-comment">% Input</span>
-<span class="hljs-comment">% -----</span>
-<span class="hljs-comment">%  l: &#x533A;&#x95F4;&#x5DE6;&#x7AEF;&#x70B9;</span>
-<span class="hljs-comment">%  r: &#x533A;&#x95F4;&#x53F3;&#x7AEF;&#x70B9;</span>
+<pre class="language-"><code class="lang-Matlab">function model = model_data(l, r)
+% MODEL_DATA &#x6A21;&#x578B;&#x6570;&#x636E;
+% 
+% Input
+% -----
+%  l: &#x533A;&#x95F4;&#x5DE6;&#x7AEF;&#x70B9;
+%  r: &#x533A;&#x95F4;&#x53F3;&#x7AEF;&#x70B9;
 
 L = l;
 R = r;
 
-model = struct(<span class="hljs-string">&apos;init_mesh&apos;</span>, @init_mesh, <span class="hljs-string">&apos;solution&apos;</span>, @solution,...
-    <span class="hljs-string">&apos;source&apos;</span>, @source);
+model = struct(&apos;init_mesh&apos;, @init_mesh, &apos;solution&apos;, @solution,...
+    &apos;source&apos;, @source);
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[X, h]</span> = <span class="hljs-title">init_mesh</span><span class="hljs-params">(NS)</span></span>
-    X = <span class="hljs-built_in">linspace</span>(L, R,NS+<span class="hljs-number">1</span>)&apos;;
+function [X, h] = init_mesh(NS)
+    X = linspace(L, R,NS+1)&apos;;
     h = (R - L)/NS;
-<span class="hljs-keyword">end</span>
+end
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">u</span> = <span class="hljs-title">solution</span><span class="hljs-params">(x)</span></span>
-    u=<span class="hljs-built_in">sin</span>(<span class="hljs-number">4</span>*<span class="hljs-built_in">pi</span>*x);
-<span class="hljs-keyword">end</span>
+function u = solution(x)
+    u=sin(4*pi*x);
+end
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span> = <span class="hljs-title">source</span><span class="hljs-params">(x)</span></span>
-    f=<span class="hljs-number">16</span>*<span class="hljs-built_in">pi</span>*<span class="hljs-built_in">pi</span>*<span class="hljs-built_in">sin</span>(<span class="hljs-number">4</span>*<span class="hljs-built_in">pi</span>*x);
-<span class="hljs-keyword">end</span>
+function f = source(x)
+    f=16*pi*pi*sin(4*pi*x);
+end
 
-<span class="hljs-keyword">end</span>
+end
 </code></pre>
 <p>2) &#x7F16;&#x5199;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;</p>
 <p>&#x6CE8;&#x610F;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x662F;&#x6700;&#x7EC8;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x6700;&#x5F00;&#x59CB;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x5F00;&#x59CB;&#x8981;&#x5148;&#x7528;&#x6CE8;&#x91CA;&#x7684;&#x65B9;&#x5F0F;&#x628A;&#x6D4B;&#x8BD5;&#x6D41;&#x7A0B;&#x5199;
 &#x51FA;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6309;&#x6D41;&#x7A0B;&#x7F16;&#x5199;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x8981;&#x5145;&#x5206;&#x5229;&#x7528; Matlab &#x8BED;&#x8A00;&#x7684;&#x4EA4;&#x4E92;&#x6027;&#x3002;</p>
-<pre><code class="lang-Matlab"><span class="hljs-comment">%% &#x6D4B;&#x8BD5;&#x811A;&#x672C; FD1d_bvp_test.m</span>
+<pre class="language-"><code class="lang-Matlab">%% &#x6D4B;&#x8BD5;&#x811A;&#x672C; FD1d_bvp_test.m
 
 clear all
 close all
 
- <span class="hljs-comment">% &#x521D;&#x59CB;&#x5316;&#x76F8;&#x5173;&#x6570;&#x636E;</span>
-NS = [<span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">40</span>, <span class="hljs-number">80</span>];
-L = <span class="hljs-number">0</span>;
-R = <span class="hljs-number">1</span>;
+ % &#x521D;&#x59CB;&#x5316;&#x76F8;&#x5173;&#x6570;&#x636E;
+NS = [5, 10, 20, 40, 80];
+L = 0;
+R = 1;
 
 model = model_data(L, R);
 
-emax = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>);
-e0 = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>);
-e1 = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>);
+emax = zeros(5,1);
+e0 = zeros(5,1);
+e1 = zeros(5,1);
 
-<span class="hljs-comment">%% &#x6C42;&#x89E3;&#x5E76;&#x8BA1;&#x7B97;&#x8BEF;&#x5DEE;</span>
-<span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:<span class="hljs-number">5</span>
-    [uh, x] = FD1d_bvp(model, NS(<span class="hljs-built_in">i</span>));
+%% &#x6C42;&#x89E3;&#x5E76;&#x8BA1;&#x7B97;&#x8BEF;&#x5DEE;
+for i = 1:5
+    [uh, x] = FD1d_bvp(model, NS(i));
     [e0(i), e1(i), emax(i)]=FD1d_error(model.solution, uh, x);
     X{i} = x;
     U{i} = uh;
-<span class="hljs-keyword">end</span>
+end
 
-u = model.solution(X{<span class="hljs-number">5</span>});
+u = model.solution(X{5});
 
-<span class="hljs-comment">%% &#x663E;&#x793A;&#x771F;&#x89E3;&#x53CA;&#x4E0D;&#x540C;&#x7F51;&#x683C;&#x5256;&#x5206;&#x4E0B;&#x7684;&#x6570;&#x503C;&#x89E3;</span>
-plot(X{<span class="hljs-number">5</span>}, u, <span class="hljs-string">&apos;-k*&apos;</span>, X{<span class="hljs-number">1</span>}, U{<span class="hljs-number">1</span>}, <span class="hljs-string">&apos;-ro&apos;</span>, X{<span class="hljs-number">2</span>},...
-    U{<span class="hljs-number">2</span>}, <span class="hljs-string">&apos;-gs&apos;</span>, X{<span class="hljs-number">3</span>}, U{<span class="hljs-number">3</span>}, <span class="hljs-string">&apos;-bd&apos;</span>,...
-    X{<span class="hljs-number">4</span>}, U{<span class="hljs-number">4</span>}, <span class="hljs-string">&apos;-ch&apos;</span>, X{<span class="hljs-number">5</span>}, U{<span class="hljs-number">5</span>},<span class="hljs-string">&apos;-mx&apos;</span>);
-title(<span class="hljs-string">&apos;The solution plot&apos;</span>);
-xlabel(<span class="hljs-string">&apos;x&apos;</span>);  ylabel(<span class="hljs-string">&apos;u&apos;</span>);
-legend(<span class="hljs-string">&apos;exact&apos;</span>,<span class="hljs-string">&apos;NS=5&apos;</span>,<span class="hljs-string">&apos;NS=10&apos;</span>,<span class="hljs-string">&apos;NS=20&apos;</span>,<span class="hljs-string">&apos;NS=40&apos;</span>,<span class="hljs-string">&apos;NS=80&apos;</span>);
+%% &#x663E;&#x793A;&#x771F;&#x89E3;&#x53CA;&#x4E0D;&#x540C;&#x7F51;&#x683C;&#x5256;&#x5206;&#x4E0B;&#x7684;&#x6570;&#x503C;&#x89E3;
+plot(X{5}, u, &apos;-k*&apos;, X{1}, U{1}, &apos;-ro&apos;, X{2},...
+    U{2}, &apos;-gs&apos;, X{3}, U{3}, &apos;-bd&apos;,...
+    X{4}, U{4}, &apos;-ch&apos;, X{5}, U{5},&apos;-mx&apos;);
+title(&apos;The solution plot&apos;);
+xlabel(&apos;x&apos;);  ylabel(&apos;u&apos;);
+legend(&apos;exact&apos;,&apos;NS=5&apos;,&apos;NS=10&apos;,&apos;NS=20&apos;,&apos;NS=40&apos;,&apos;NS=80&apos;);
 
-<span class="hljs-comment">%% &#x663E;&#x793A;&#x8BEF;&#x5DEE;</span>
+%% &#x663E;&#x793A;&#x8BEF;&#x5DEE;
 format shorte
-<span class="hljs-built_in">disp</span>(<span class="hljs-string">&apos;     emax           e0          e1&apos;</span>);
-<span class="hljs-built_in">disp</span>([emax, e0, e1]);
+disp(&apos;     emax           e0          e1&apos;);
+disp([emax, e0, e1]);
 </code></pre>
 <p>3) &#x5B9E;&#x73B0;&#x6838;&#x5FC3;&#x7B97;&#x6CD5;</p>
 <p>&#x7F16;&#x5199;&#x65F6;&#x8981;&#x628A;&#x51FD;&#x6570;&#x7684;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x53C2;&#x6570;&#x53CA;&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;&#x6CE8;&#x91CA;&#x5199;&#x4E00;&#x4E0B;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x4E00;&#x6B65;&#x6B65;&#x4EA4;&#x4E92;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x3002;</p>
-<pre><code class="lang-Matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[uh, x]</span> = <span class="hljs-title">FD1d_bvp</span><span class="hljs-params">(model, NS)</span></span>
-<span class="hljs-comment">%*************************************************************</span>
-<span class="hljs-comment">%% FD1d_bvp &#x5229;&#x7528;&#x4E2D;&#x5FC3;&#x5DEE;&#x5206;&#x683C;&#x5F0F;&#x6C42;&#x89E3;&#x4E24;&#x70B9;&#x8FB9;&#x503C;&#x95EE;&#x9898;.</span>
-<span class="hljs-comment">%</span>
-<span class="hljs-comment">% Input</span>
-<span class="hljs-comment">% -----</span>
-<span class="hljs-comment">%   model : &#x6A21;&#x578B;&#x6570;&#x636E;</span>
-<span class="hljs-comment">%   NS    &#xFF1A;&#x7F51;&#x683C;&#x5256;&#x5206;&#x6BB5;&#x6570;</span>
-<span class="hljs-comment">% Output</span>
-<span class="hljs-comment">% ------</span>
-<span class="hljs-comment">%   uh &#xFF1A;&#x5217;&#x5411;&#x91CF;&#xFF0C;&#x957F;&#x5EA6;&#x4E3A; NS+1&#xFF0C; &#x89E3;&#x5411;&#x91CF;</span>
-<span class="hljs-comment">%   x  : &#x5217;&#x5411;&#x91CF;&#xFF0C;&#x957F;&#x5EA6;&#x4E3A; NS+1&#xFF0C; &#x7F51;&#x683C;&#x8282;&#x70B9;</span>
-<span class="hljs-comment">%      </span>
+<pre class="language-"><code class="lang-Matlab">function [uh, x] = FD1d_bvp(model, NS)
+%*************************************************************
+%% FD1d_bvp &#x5229;&#x7528;&#x4E2D;&#x5FC3;&#x5DEE;&#x5206;&#x683C;&#x5F0F;&#x6C42;&#x89E3;&#x4E24;&#x70B9;&#x8FB9;&#x503C;&#x95EE;&#x9898;.
+%
+% Input
+% -----
+%   model : &#x6A21;&#x578B;&#x6570;&#x636E;
+%   NS    &#xFF1A;&#x7F51;&#x683C;&#x5256;&#x5206;&#x6BB5;&#x6570;
+% Output
+% ------
+%   uh &#xFF1A;&#x5217;&#x5411;&#x91CF;&#xFF0C;&#x957F;&#x5EA6;&#x4E3A; NS+1&#xFF0C; &#x89E3;&#x5411;&#x91CF;
+%   x  : &#x5217;&#x5411;&#x91CF;&#xFF0C;&#x957F;&#x5EA6;&#x4E3A; NS+1&#xFF0C; &#x7F51;&#x683C;&#x8282;&#x70B9;
+%      
 
 [x, h] = model.init_mesh(NS);
-NV = NS + <span class="hljs-number">1</span>;
+NV = NS + 1;
 
-<span class="hljs-comment">%</span>
-<span class="hljs-comment">%  &#x521B;&#x5EFA;&#x7EBF;&#x6027;&#x5DEE;&#x5206;&#x65B9;&#x7A0B;&#x7EC4;&#x7CFB;&#x6570;&#x77E9;&#x9635;</span>
-<span class="hljs-comment">%</span>
+%
+%  &#x521B;&#x5EFA;&#x7EBF;&#x6027;&#x5DEE;&#x5206;&#x65B9;&#x7A0B;&#x7EC4;&#x7CFB;&#x6570;&#x77E9;&#x9635;
+%
 
-c1 = <span class="hljs-number">-1</span>/h/h;
-c2 = <span class="hljs-number">2</span>/h/h;
-g = [c1*ones(<span class="hljs-number">1</span>, NV<span class="hljs-number">-2</span>), <span class="hljs-number">0</span>];
-c = [<span class="hljs-number">0</span>, c1*ones(<span class="hljs-number">1</span>, NV<span class="hljs-number">-2</span>)];
-d = [<span class="hljs-number">1</span>, c2*ones(<span class="hljs-number">1</span>, NV<span class="hljs-number">-2</span>), <span class="hljs-number">1</span>];
-A = <span class="hljs-built_in">diag</span>(g, <span class="hljs-number">-1</span>) + <span class="hljs-built_in">diag</span>(d) + <span class="hljs-built_in">diag</span>(c,<span class="hljs-number">1</span>);
+c1 = -1/h/h;
+c2 = 2/h/h;
+g = [c1*ones(1, NV-2), 0];
+c = [0, c1*ones(1, NV-2)];
+d = [1, c2*ones(1, NV-2), 1];
+A = diag(g, -1) + diag(d) + diag(c,1);
 
-<span class="hljs-comment">%</span>
-<span class="hljs-comment">%  &#x521B;&#x5EFA;&#x7EBF;&#x6027;&#x5DEE;&#x5206;&#x65B9;&#x7A0B;&#x7EC4;&#x53F3;&#x7AEF;&#x9879;</span>
-<span class="hljs-comment">%</span>
+%
+%  &#x521B;&#x5EFA;&#x7EBF;&#x6027;&#x5DEE;&#x5206;&#x65B9;&#x7A0B;&#x7EC4;&#x53F3;&#x7AEF;&#x9879;
+%
 
 rhs = model.source(x);
-rhs(<span class="hljs-number">1</span>) = model.solution(x(<span class="hljs-number">1</span>));
-rhs(<span class="hljs-keyword">end</span>) = model.solution(x(<span class="hljs-keyword">end</span>));
+rhs(1) = model.solution(x(1));
+rhs(end) = model.solution(x(end));
 
-<span class="hljs-comment">%</span>
-<span class="hljs-comment">%  &#x6C42;&#x89E3;&#x4E0A;&#x8FF0;&#x4EE3;&#x6570;&#x7CFB;&#x7EDF;.</span>
-<span class="hljs-comment">%</span>
+%
+%  &#x6C42;&#x89E3;&#x4E0A;&#x8FF0;&#x4EE3;&#x6570;&#x7CFB;&#x7EDF;.
+%
 
 uh = A \ rhs;
-<span class="hljs-keyword">end</span>
+end
 </code></pre>
 <p>4) &#x7F16;&#x5199;&#x8BEF;&#x5DEE;&#x5206;&#x6790;&#x51FD;&#x6570;</p>
-<pre><code class="lang-Matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[e0, e1, emax]</span> = <span class="hljs-title">FD1d_error</span><span class="hljs-params">(solution, uh, X)</span></span>
+<pre class="language-"><code class="lang-Matlab">function [e0, e1, emax] = FD1d_error(solution, uh, X)
 
-NN = <span class="hljs-built_in">length</span>(X);
-h = (X(<span class="hljs-keyword">end</span>) - X(<span class="hljs-number">1</span>))/(NN <span class="hljs-number">-1</span>);
+NN = length(X);
+h = (X(end) - X(1))/(NN -1);
 u = solution(X);
 ee= u - uh;
 
-e0 = h*sum(ee.^<span class="hljs-number">2</span>);
-e1 = sum((ee(<span class="hljs-number">2</span>:<span class="hljs-keyword">end</span>)-ee(<span class="hljs-number">1</span>:<span class="hljs-keyword">end</span><span class="hljs-number">-1</span>)).^<span class="hljs-number">2</span>)/h;
+e0 = h*sum(ee.^2);
+e1 = sum((ee(2:end)-ee(1:end-1)).^2)/h;
 e1 = e1+e0;
 
-e0 = <span class="hljs-built_in">sqrt</span>(e0);
-e1 = <span class="hljs-built_in">sqrt</span>(e1);
-emax=max(<span class="hljs-built_in">abs</span>(ee));
+e0 = sqrt(e0);
+e1 = sqrt(e1);
+emax=max(abs(ee));
 
-<span class="hljs-keyword">end</span>
+end
 </code></pre>
 <h2 id="&#x4E0A;&#x673A;&#x5B9E;&#x8DF5;">&#x4E0A;&#x673A;&#x5B9E;&#x8DF5;</h2>
 <p>&#x5229;&#x7528;&#x4E2D;&#x5FC3;&#x6709;&#x9650;&#x5DEE;&#x5206;&#x6CD5;&#x683C;&#x5F0F;&#x6C42;&#x89E3;</p>
@@ -533,7 +555,7 @@ gitment.render('container')
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"一维椭圆问题的有限差分求解算法实现","level":"1.5","depth":1,"next":{"title":"一维热传导问题的有限差分求解算法实现","level":"1.6","depth":1,"path":"fdm-2.md","ref":"fdm-2.md","articles":[]},"previous":{"title":"Matlab 中的稀疏矩阵","level":"1.4","depth":1,"path":"sparse.md","ref":"sparse.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax","image-captions","fontsettings","expandable-chapters-small","graph","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"graph":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"highlight":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"matlab.html#fig1.2.1","level":"1.2","list_caption":"Figure: Jacobi 迭代过程","alt":"Jacobi 迭代过程","nro":1,"url":"./figures/jacobi.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Jacobi 迭代过程","attributes":{},"skip":false,"key":"1.2.1"}]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"fdm-1.md","mtime":"2019-03-20T22:46:38.271Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-17T10:05:21.115Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"一维椭圆问题的有限差分求解算法实现","level":"1.5","depth":1,"next":{"title":"一维热传导问题的有限差分求解算法实现","level":"1.6","depth":1,"path":"fdm-2.md","ref":"fdm-2.md","articles":[]},"previous":{"title":"Matlab 中的稀疏矩阵","level":"1.4","depth":1,"path":"sparse.md","ref":"sparse.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"matlab.html#fig1.2.1","level":"1.2","list_caption":"Figure: Jacobi 迭代过程","alt":"Jacobi 迭代过程","nro":1,"url":"./figures/jacobi.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Jacobi 迭代过程","attributes":{},"skip":false,"key":"1.2.1"}]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"fdm-1.md","mtime":"2019-04-21T21:27:00.469Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-22T02:47:27.937Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
