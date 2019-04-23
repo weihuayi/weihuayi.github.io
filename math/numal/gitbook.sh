@@ -16,4 +16,5 @@ if [[ `git status --porcelain` ]];then
     git push 
 else
     git pull
+    git push
 fi
