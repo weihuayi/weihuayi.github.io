@@ -529,7 +529,39 @@ for i = 1:M
    title([&apos;T=&apos;, num2str(T(i)),&apos; &#x65F6;&#x523B;&#x6570;&#x503C;&#x89E3;&#x7684;&#x56FE;&#x50CF;&apos;])
 end
 </code></pre><h2 id="&#x5B9E;&#x9A8C;&#x62A5;&#x544A;">&#x5B9E;&#x9A8C;&#x62A5;&#x544A;</h2>
-<p>&#x6559;&#x6750;PP. 158. &#x4E60;&#x9898;4&#x548C;5</p>
+<p>&#x5229;&#x7528;&#x4E0B;&#x9762;&#x5DEE;&#x5206;&#x683C;&#x5F0F;</p>
+<p><script type="math/tex; mode=display">
+\frac{u_{j}^{n+1}-2 u_{j}^{n}+u_{j}^{n-1}}{\tau^{2}} 
+=  a^{2} \frac{u_{j+1}^{n}-2 u_{j}^{n}+u_{j-1}^{n}}{h^{2}}
+</script>
+&#x5176;&#x4E2D; <script type="math/tex; ">j=0, \pm 1, \pm 2, \cdots,\quad n = 1, 2, \cdots</script>&#x3002;</p>
+<p>&#x53CA;&#x521D;&#x59CB;&#x5DEE;&#x5206;&#x65B9;&#x7A0B;</p>
+<p><script type="math/tex; mode=display">
+\begin{aligned}
+u_j^0 = \phi_0(x_j),\\
+\frac{u_j^1 - u_j^0}{\tau} = \phi_1(x_j).
+\end{aligned}
+</script> </p>
+<p>&#x6570;&#x503C;&#x6C42;&#x89E3;</p>
+<p><script type="math/tex; mode=display">
+\begin{array}{l}
+{
+\frac{\partial^{2} u}{\partial t^{2}}- 
+\frac{\partial^{2} u}{\partial x^{2}} = 0,\quad 0 <x<1,\quad t>0
+} \\ 
+{
+u(x, 0) = \phi_{0}(x), u_{t}(x, 0) = \phi_{1}(x),\quad 0<x<1,
+}\\
+u(0, t) = u(1, t) = 0, \quad t\leq=0.
+\end{array}
+</script> 
+&#x5176;&#x4E2D; <script type="math/tex; ">\phi_{0}(x) = \sin\pi x</script>&#xFF0C; <script type="math/tex; ">\phi_1(x) = \cos\pi x</script>&#x3002; &#x771F;&#x89E3;&#x4E3A;
+<script type="math/tex; mode=display">
+u(x, t) = \sin\pi (x - t) + \sin\pi (x + t).
+</script> </p>
+<p>(1) &#x53D6; <script type="math/tex; ">\tau = 0.05, h = 0.1</script>, &#x753B;&#x51FA;&#x65F6;&#x95F4;&#x5C42; <script type="math/tex; ">t=0.5, 1.0, 1.5, 2.0</script> &#x7684;&#x89E3;&#x7684;&#x56FE;&#x50CF;&#xFF0C;&#x5E76;&#x8BA1;
+&#x7B97;&#x8FD9;&#x4E9B;&#x65F6;&#x95F4;&#x5C42;&#x4E0A;&#x6570;&#x503C;&#x89E3;&#x4E0E;&#x771F;&#x89E3;&#x7684;&#x8BEF;&#x5DEE;&#x3002;<br>(2) &#x53D6; <script type="math/tex; ">\tau = h = 0.1</script>, &#x753B;&#x51FA;&#x65F6;&#x95F4;&#x5C42; <script type="math/tex; ">t=0.5, 1.0, 1.5, 2.0</script> &#x7684;&#x89E3;&#x7684;&#x56FE;&#x50CF;&#xFF0C;&#x5E76;&#x8BA1;
+&#x7B97;&#x8FD9;&#x4E9B;&#x65F6;&#x95F4;&#x5C42;&#x4E0A;&#x6570;&#x503C;&#x89E3;&#x4E0E;&#x771F;&#x89E3;&#x7684;&#x8BEF;&#x5DEE;&#x3002;</p>
 
                                 
                                 </section>
@@ -573,7 +605,7 @@ end
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"弦的横振动问题的有限差分求解算法实现","level":"1.7","depth":1,"next":{"title":"一维管激波问题的有限差分求解算法实现","level":"1.8","depth":1,"path":"fdm-4.md","ref":"fdm-4.md","articles":[]},"previous":{"title":"一维热传导问题的有限差分求解算法实现","level":"1.6","depth":1,"path":"fdm-2.md","ref":"fdm-2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"matlab.html#fig1.2.1","level":"1.2","list_caption":"Figure: Jacobi 迭代过程","alt":"Jacobi 迭代过程","nro":1,"url":"./figures/jacobi.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Jacobi 迭代过程","attributes":{},"skip":false,"key":"1.2.1"}]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"fdm-3.md","mtime":"2019-04-22T02:47:14.080Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-22T02:50:06.107Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"弦的横振动问题的有限差分求解算法实现","level":"1.7","depth":1,"next":{"title":"一维管激波问题的有限差分求解算法实现","level":"1.8","depth":1,"path":"fdm-4.md","ref":"fdm-4.md","articles":[]},"previous":{"title":"一维热传导问题的有限差分求解算法实现","level":"1.6","depth":1,"path":"fdm-2.md","ref":"fdm-2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"matlab.html#fig1.2.1","level":"1.2","list_caption":"Figure: Jacobi 迭代过程","alt":"Jacobi 迭代过程","nro":1,"url":"./figures/jacobi.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Jacobi 迭代过程","attributes":{},"skip":false,"key":"1.2.1"}]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"fdm-3.md","mtime":"2019-04-24T07:21:36.305Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-24T07:52:00.122Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
