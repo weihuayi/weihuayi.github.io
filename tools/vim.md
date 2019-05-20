@@ -1,11 +1,30 @@
 # VIM 
 
+> Better, Stronger, Faster.
 
-## VIM 的文本编辑模型
+* vim 的精髓就在于命令键的组合，全键盘的操作，可以使你收不离开键盘输入区域即可完成
+所有的操作。
+* 其它编辑器一般是通过键盘和鼠标的组合来完成指定功能。
 
+## Ubuntu 下的安装
 
-## VIM 学习路径
+```
+sudo apt -y install vim vim-gtk
+```
+## 学习资源
 
+1. [简明 VIM 练级攻略](https://coolshell.cn/articles/5426.html)
+1. `vimtutor`
+
+## 基本概念
+
+### 模式
+最常用的四个模式：
+
+1. 普通模式(Normal mode)
+1. 插入模式(Insert mode)
+1. 可视模式(Visual mode)
+1. 命令行模式(Command mode)
 
 ## VIM 内置常用功能
 
