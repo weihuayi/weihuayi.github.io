@@ -1,0 +1,608 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Galerkin 方法 · 数值代数课件</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Wei, Huayi">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="fdm-4.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    课程简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="matlab.html">
+            
+                <a href="matlab.html">
+            
+                    
+                    Matlab 基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="matlab-advance.html">
+            
+                <a href="matlab-advance.html">
+            
+                    
+                    Matlab 进阶
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="sparse.html">
+            
+                <a href="sparse.html">
+            
+                    
+                    Matlab 中的稀疏矩阵
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="fdm-1.html">
+            
+                <a href="fdm-1.html">
+            
+                    
+                    一维椭圆问题的有限差分求解算法实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="fdm-2.html">
+            
+                <a href="fdm-2.html">
+            
+                    
+                    一维热传导问题的有限差分求解算法实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="fdm-3.html">
+            
+                <a href="fdm-3.html">
+            
+                    
+                    弦的横振动问题的有限差分求解算法实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="fdm-4.html">
+            
+                <a href="fdm-4.html">
+            
+                    
+                    一维管激波问题的有限差分求解算法实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9" data-path="fem-5.html">
+            
+                <a href="fem-5.html">
+            
+                    
+                    Galerkin 方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Galerkin 方法</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="galerkin-&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x3001;&#x5B9E;&#x73B0;&#x4E0E;&#x6570;&#x503C;&#x5B9E;&#x9A8C;">Galerkin &#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x3001;&#x5B9E;&#x73B0;&#x4E0E;&#x6570;&#x503C;&#x5B9E;&#x9A8C;</h1>
+<h2 id="&#x6A21;&#x578B;&#x95EE;&#x9898;">&#x6A21;&#x578B;&#x95EE;&#x9898;</h2>
+<p>&#x8003;&#x8651;&#x5982;&#x4E0B;&#x4E24;&#x70B9;&#x8FB9;&#x503C;&#x95EE;&#x9898;&#xFF1A;</p>
+<p><script type="math/tex; mode=display">
+\left\{
+\begin{array}{l}
+{L u :=u^{\prime \prime}+u=-x, \quad 0<x<1} \\ 
+{u(0)=u(1)=0}
+\end{array}\right.
+</script> </p>
+<p>&#x5176;&#x771F;&#x89E3;&#x4E3A;</p>
+<p><script type="math/tex; mode=display">
+u(x)=\frac{\sin x}{\sin 1}-x
+</script> </p>
+<p>&#x4EE4; 
+<script type="math/tex; mode=display">
+H_{0}^{1}(I)=\left\{u \in H^{1}(I), u(0)=u(1)=0\right\},
+</script> </p>
+<p>&#x5219;&#x4E0A;&#x8FF0;&#x95EE;&#x9898;&#x7684;&#x57FA;&#x4E8E;&#x865A;&#x529F;&#x65B9;&#x7A0B;&#x7684;&#x53D8;&#x5206;&#x95EE;&#x9898;&#x4E3A;&#xFF1A; &#x6C42; <script type="math/tex; ">u \in H_{0}^{1}(I)</script>, &#x4F7F;&#x5F97;&#xFF1A;</p>
+<p><script type="math/tex; mode=display">
+a(u, v)=-(x, v), \forall v \in H_{0}^{1}(l)
+</script> </p>
+<p>&#x5176;&#x4E2D;
+<script type="math/tex; mode=display">
+a(u, v)=(L u, v)=\int_{0}^{1}\left(-u^{\prime} v^{\prime}+u v\right) dx
+</script> </p>
+<h2 id="&#x79BB;&#x6563;&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;">&#x79BB;&#x6563;&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;</h2>
+<p>&#x8BB0; <script type="math/tex; ">\omega(x)=x(1-x)</script>, &#x5F15;&#x5165; <script type="math/tex; ">H_0^1(I)</script> &#x7684; <script type="math/tex; ">n</script> &#x7EF4;&#x8FD1;&#x4F3C;&#x5B50;&#x7A7A;&#x95F4;</p>
+<p><script type="math/tex; mode=display">
+U_{n}=\left\{\phi_{1}, \cdots, \phi_{n}\right\},
+\phi_{i}=\omega(x) x^{i-1}, i=1, \cdots, n
+</script></p>
+<p>&#x4E0A;&#x8FF0;&#x95EE;&#x9898;&#x53EF;&#x8FD1;&#x4F3C;&#x4E3A;&#xFF1A;&#x5728;&#x7A7A;&#x95F4; <script type="math/tex; ">U_n</script> &#x4E2D;&#xFF0C;&#x627E;&#x5230;&#x4E00;&#x4E2A;&#x8FD1;&#x4F3C;&#x89E3; </p>
+<p><script type="math/tex; mode=display">
+u_{n}(x)=\sum_{i=1}^{n} c_{i} \phi_{i}(x)
+</script></p>
+<p>&#x6EE1;&#x8DB3;</p>
+<p><script type="math/tex; mode=display">
+\sum_{j=1}^{n} a\left(\phi_{j}, \phi_{i}\right) c_{j}=
+-\left(x, \phi_{i}\right), i=1,2, \cdots, n
+</script></p>
+<h2 id="&#x7A0B;&#x5E8F;&#x5B9E;&#x73B0;">&#x7A0B;&#x5E8F;&#x5B9E;&#x73B0;</h2>
+<h3 id="&#x6A21;&#x578B;&#x6570;&#x636E;">&#x6A21;&#x578B;&#x6570;&#x636E;</h3>
+<pre class="language-"><code class="lang-matlab"><span class="token keyword">function</span> pde <span class="token operator">=</span> <span class="token function">model_data</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">%% MODELDATA</span>
+<span class="token comment">%  u(x) = sin(x)/sin(1) - x</span>
+<span class="token comment">%  Du(x) = cos(x)/sin(1) -1 </span>
+<span class="token comment">%  f(x) = -x</span>
+
+pde <span class="token operator">=</span> <span class="token function">struct</span><span class="token punctuation">(</span><span class="token string">&apos;solution&apos;</span><span class="token punctuation">,</span> <span class="token operator">@</span>solution<span class="token punctuation">,</span> <span class="token string">&apos;source&apos;</span><span class="token punctuation">,</span><span class="token operator">@</span>source<span class="token punctuation">,</span> <span class="token string">&apos;gradient&apos;</span><span class="token punctuation">,</span> <span class="token operator">@</span>gradient<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">%% &#x7CBE;&#x786E;&#x89E3;</span>
+<span class="token keyword">function</span> z <span class="token operator">=</span> <span class="token function">solution</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+z <span class="token operator">=</span> <span class="token function">sin</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">sin</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">-</span> x<span class="token punctuation">;</span>
+<span class="token keyword">end</span>
+<span class="token comment">%% &#x53F3;&#x7AEF;&#x9879;</span>
+<span class="token keyword">function</span> z <span class="token operator">=</span> <span class="token function">source</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+z <span class="token operator">=</span> <span class="token operator">-</span>x<span class="token punctuation">;</span>
+<span class="token keyword">end</span>
+<span class="token comment">%% &#x7CBE;&#x786E;&#x89E3;&#x68AF;&#x5EA6;</span>
+<span class="token keyword">function</span> z <span class="token operator">=</span> <span class="token function">gradient</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+z <span class="token operator">=</span> <span class="token function">cos</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">sin</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">end</span> 
+<span class="token keyword">end</span>
+</code></pre>
+<h3 id="&#x6570;&#x503C;&#x79EF;&#x5206;&#x70B9;">&#x6570;&#x503C;&#x79EF;&#x5206;&#x70B9;</h3>
+<pre class="language-"><code class="lang-matlab">
+<span class="token keyword">function</span> <span class="token punctuation">[</span>lambda<span class="token punctuation">,</span>weight<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">gquadpts1d</span><span class="token punctuation">(</span>numPts<span class="token punctuation">)</span>
+<span class="token comment">%% QUADPTS1d quadrature points in 1-D.</span>
+%
+<span class="token comment">% [lambda,weight] = QUADPTS1d(numPts) </span>
+%
+<span class="token comment">% Copyright (C) Long Chen. See COPYRIGHT.txt for details. </span>
+
+
+<span class="token keyword">if</span> numPts <span class="token operator">&gt;</span> <span class="token number">10</span>
+   numPts <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> 
+<span class="token keyword">end</span>
+
+<span class="token keyword">switch</span> numPts
+    <span class="token keyword">case</span> <span class="token number">1</span>
+        A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span>      <span class="token number">2.0000000000000000000000000</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">case</span> <span class="token number">2</span>
+        A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.5773502691896257645091488</span>     <span class="token number">1.0000000000000000000000000</span>
+        <span class="token operator">-</span><span class="token number">0.5773502691896257645091488</span>     <span class="token number">1.0000000000000000000000000</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">case</span> <span class="token number">3</span>
+        A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span>     <span class="token number">0.8888888888888888888888889</span>
+            <span class="token number">0.7745966692414833770358531</span>     <span class="token number">0.5555555555555555555555556</span>
+            <span class="token operator">-</span><span class="token number">0.7745966692414833770358531</span>     <span class="token number">0.5555555555555555555555556</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">case</span> <span class="token number">4</span>
+        A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.3399810435848562648026658</span>     <span class="token number">0.6521451548625461426269361</span>
+            <span class="token number">0.8611363115940525752239465</span>     <span class="token number">0.3478548451374538573730639</span>
+            <span class="token operator">-</span><span class="token number">0.3399810435848562648026658</span>     <span class="token number">0.6521451548625461426269361</span>
+            <span class="token operator">-</span><span class="token number">0.8611363115940525752239465</span>     <span class="token number">0.3478548451374538573730639</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">case</span> <span class="token number">5</span>
+        A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span>                                 <span class="token number">0.5688888888888888888888889</span>
+            <span class="token number">0.5384693101056830910363144</span>     <span class="token number">0.4786286704993664680412915</span>
+            <span class="token number">0.9061798459386639927976269</span>     <span class="token number">0.2369268850561890875142640</span>
+            <span class="token operator">-</span><span class="token number">0.5384693101056830910363144</span>     <span class="token number">0.4786286704993664680412915</span>
+            <span class="token operator">-</span><span class="token number">0.9061798459386639927976269</span>     <span class="token number">0.2369268850561890875142640</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">case</span> <span class="token number">6</span>
+        A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.2386191860831969086305017</span>     <span class="token number">0.4679139345726910473898703</span>
+            <span class="token number">0.6612093864662645136613996</span>     <span class="token number">0.3607615730481386075698335</span>
+            <span class="token number">0.9324695142031520278123016</span>     <span class="token number">0.1713244923791703450402961</span>
+            <span class="token operator">-</span><span class="token number">0.2386191860831969086305017</span>     <span class="token number">0.4679139345726910473898703</span>
+            <span class="token operator">-</span><span class="token number">0.6612093864662645136613996</span>     <span class="token number">0.3607615730481386075698335</span>
+            <span class="token operator">-</span><span class="token number">0.9324695142031520278123016</span>     <span class="token number">0.1713244923791703450402961</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">case</span> <span class="token number">7</span>
+        A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span>                                 <span class="token number">0.4179591836734693877551020</span>
+            <span class="token number">0.4058451513773971669066064</span>     <span class="token number">0.3818300505051189449503698</span>
+            <span class="token number">0.7415311855993944398638648</span>     <span class="token number">0.2797053914892766679014678</span>
+            <span class="token number">0.9491079123427585245261897</span>     <span class="token number">0.1294849661688696932706114</span>
+            <span class="token operator">-</span><span class="token number">0.4058451513773971669066064</span>     <span class="token number">0.3818300505051189449503698</span>
+            <span class="token operator">-</span><span class="token number">0.7415311855993944398638648</span>     <span class="token number">0.2797053914892766679014678</span>
+            <span class="token operator">-</span><span class="token number">0.9491079123427585245261897</span>     <span class="token number">0.1294849661688696932706114</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">case</span> <span class="token number">8</span>
+        A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.1834346424956498049394761</span>     <span class="token number">0.3626837833783619829651504</span>
+            <span class="token number">0.5255324099163289858177390</span>     <span class="token number">0.3137066458778872873379622</span>
+            <span class="token number">0.7966664774136267395915539</span>     <span class="token number">0.2223810344533744705443560</span>
+            <span class="token number">0.9602898564975362316835609</span>     <span class="token number">0.1012285362903762591525314</span>
+            <span class="token operator">-</span><span class="token number">0.1834346424956498049394761</span>     <span class="token number">0.3626837833783619829651504</span>
+            <span class="token operator">-</span><span class="token number">0.5255324099163289858177390</span>     <span class="token number">0.3137066458778872873379622</span>
+            <span class="token operator">-</span><span class="token number">0.7966664774136267395915539</span>     <span class="token number">0.2223810344533744705443560</span>
+            <span class="token operator">-</span><span class="token number">0.9602898564975362316835609</span>     <span class="token number">0.1012285362903762591525314</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">case</span> <span class="token number">9</span>
+        A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span>                                 <span class="token number">0.3302393550012597631645251</span>
+            <span class="token number">0.3242534234038089290385380</span>     <span class="token number">0.3123470770400028400686304</span>
+            <span class="token number">0.6133714327005903973087020</span>     <span class="token number">0.2606106964029354623187429</span>
+            <span class="token number">0.8360311073266357942994298</span>     <span class="token number">0.1806481606948574040584720</span>
+            <span class="token number">0.9681602395076260898355762</span>     <span class="token number">0.0812743883615744119718922</span>
+            <span class="token operator">-</span><span class="token number">0.3242534234038089290385380</span>     <span class="token number">0.3123470770400028400686304</span>
+            <span class="token operator">-</span><span class="token number">0.6133714327005903973087020</span>     <span class="token number">0.2606106964029354623187429</span>
+            <span class="token operator">-</span><span class="token number">0.8360311073266357942994298</span>     <span class="token number">0.1806481606948574040584720</span>
+            <span class="token operator">-</span><span class="token number">0.9681602395076260898355762</span>     <span class="token number">0.0812743883615744119718922</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">case</span> <span class="token number">10</span>
+        A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.1488743389816312108848260</span>     <span class="token number">0.2955242247147528701738930</span>
+            <span class="token number">0.4333953941292471907992659</span>     <span class="token number">0.2692667193099963550912269</span>
+            <span class="token number">0.6794095682990244062343274</span>     <span class="token number">0.2190863625159820439955349</span>
+            <span class="token number">0.8650633666889845107320967</span>     <span class="token number">0.1494513491505805931457763</span>
+            <span class="token number">0.9739065285171717200779640</span>     <span class="token number">0.0666713443086881375935688</span>
+            <span class="token operator">-</span><span class="token number">0.1488743389816312108848260</span>     <span class="token number">0.2955242247147528701738930</span>
+            <span class="token operator">-</span><span class="token number">0.4333953941292471907992659</span>     <span class="token number">0.2692667193099963550912269</span>
+            <span class="token operator">-</span><span class="token number">0.6794095682990244062343274</span>     <span class="token number">0.2190863625159820439955349</span>
+            <span class="token operator">-</span><span class="token number">0.8650633666889845107320967</span>     <span class="token number">0.1494513491505805931457763</span>
+            <span class="token operator">-</span><span class="token number">0.9739065285171717200779640</span>     <span class="token number">0.0666713443086881375935688</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">end</span>
+lambda <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function">A</span><span class="token punctuation">(</span><span class="token operator">:</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
+weight <span class="token operator">=</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token operator">:</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="&#x6D4B;&#x8BD5;&#x811A;&#x672C;">&#x6D4B;&#x8BD5;&#x811A;&#x672C;</h3>
+<pre class="language-"><code class="lang-matlab">
+<span class="token keyword">function</span> Galerkin_test
+<span class="token comment">%% &#x51C6;&#x5907;&#x521D;&#x59CB;&#x6570;&#x636E;</span>
+
+<span class="token comment">% &#x5FAE;&#x5206;&#x65B9;&#x7A0B;&#x6A21;&#x578B;&#x6570;&#x636E;&#x3002;&#x51FD;&#x6570; modeldata &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53; pde</span>
+<span class="token comment">% pde.f : &#x53F3;&#x7AEF;&#x9879;&#x51FD;&#x6570;</span>
+<span class="token comment">% pde.exactu : &#x771F;&#x89E3;&#x51FD;&#x6570;</span>
+<span class="token comment">% pde.Du &#xFF1A;&#x771F;&#x89E3;&#x5BFC;&#x6570;</span>
+pde <span class="token operator">=</span> <span class="token function">model_data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">% &#x533A;&#x95F4;</span>
+I <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">% &#x7A7A;&#x95F4;&#x7EF4;&#x6570;&#xFF08;&#x57FA;&#x51FD;&#x6570;&#x4E2A;&#x6570;&#xFF09;</span>
+n <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+<span class="token comment">% &#x79EF;&#x5206;&#x7CBE;&#x5EA6;</span>
+option<span class="token punctuation">.</span>quadOrder <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+
+<span class="token comment">%% Galerkin &#x65B9;&#x6CD5;&#x6C42;&#x89E3;</span>
+uh <span class="token operator">=</span> <span class="token function">Galerkin</span><span class="token punctuation">(</span>pde<span class="token punctuation">,</span>I<span class="token punctuation">,</span>n<span class="token punctuation">,</span>option<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">%% &#x663E;&#x793A;&#x6570;&#x503C;&#x89E3;&#x56FE;&#x50CF;</span>
+<span class="token function">showsolution</span><span class="token punctuation">(</span>uh<span class="token punctuation">,</span><span class="token string">&apos;-k&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">%% &#x8BA1;&#x7B97;&#x4EE3;&#x8868;&#x70B9;&#x5904;&#x771F;&#x89E3;&#x548C;&#x6570;&#x503C;&#x89E3;</span>
+x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token operator">/</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>v<span class="token punctuation">,</span><span class="token operator">~</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">basis</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+format shorte
+u <span class="token operator">=</span> pde<span class="token punctuation">.</span><span class="token function">solution</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> 
+ux <span class="token operator">=</span> v<span class="token operator">&apos;</span><span class="token operator">*</span>uh
+</code></pre>
+<h2 id="&#x6709;&#x9650;&#x7EF4;&#x7A7A;&#x95F4;">&#x6709;&#x9650;&#x7EF4;&#x7A7A;&#x95F4;</h2>
+<pre class="language-"><code class="lang-matlab"><span class="token keyword">function</span> <span class="token punctuation">[</span>phi<span class="token punctuation">,</span>gradPhi<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">basis</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+<span class="token comment">%% BASIS &#x8BA1;&#x7B97; n &#x7EF4;&#x7A7A;&#x95F4;&#x7684; n &#x4E2A;&#x57FA;&#x51FD;&#x6570;&#x5728; [x_1, x_2, ..., x_m] &#x70B9;&#x5904;&#x7684;&#x51FD;&#x6570;&#x503C;&#x4E0E;&#x68AF;&#x5EA6;&#x503C;</span>
+%
+<span class="token comment">%  H_0^1([0,1]) &#x7684; n &#x7EF4;&#x8FD1;&#x4F3C;&#x5B50;&#x7A7A;&#x95F4; w(x) = x*(1-x)&#xFF0C;n &#x4E2A;&#x57FA;&#x51FD;&#x6570;&#x5206;&#x522B;&#x4E3A;&#xFF1A; </span>
+<span class="token comment">%          phi_i = w(x)*x^{i-1}, i = 1, 2,..., n</span>
+%
+<span class="token comment">%  &#x8F93;&#x5165;&#xFF1A; </span>
+<span class="token comment">%   x: &#x7A7A;&#x95F4;&#x79BB;&#x6563;&#x70B9;</span>
+<span class="token comment">%   n: &#x7A7A;&#x95F4;&#x7EF4;&#x6570; </span>
+%
+<span class="token comment">%  &#x8F93;&#x51FA;&#xFF1A; </span>
+<span class="token comment">%   phi(1:n, 1:m): phi(i, j) &#x4E3A;&#x7B2C; i &#x4E2A;&#x57FA;&#x51FD;&#x6570;&#x5728;&#x7B2C; x_j &#x70B9;&#x5904;&#x7684;&#x51FD;&#x6570;&#x503C;&#x3002; </span>
+<span class="token comment">%   gradPhi(1:n, 1:m): gradPhi(i, j) &#x4E3A;&#x7B2C; i &#x4E2A;&#x57FA;&#x51FD;&#x6570;&#x5728; x_j &#x70B9;&#x5904;&#x7684;&#x5BFC;&#x6570;&#x503C;&#x3002; </span>
+
+m <span class="token operator">=</span> <span class="token function">length</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+X <span class="token operator">=</span> <span class="token function">ones</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span>x<span class="token punctuation">;</span>
+X <span class="token operator">=</span> <span class="token function">cumprod</span><span class="token punctuation">(</span>X<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+phi <span class="token operator">=</span> <span class="token function">X</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">:</span>n<span class="token punctuation">,</span><span class="token operator">:</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token function">X</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">:</span><span class="token keyword">end</span><span class="token punctuation">,</span> <span class="token operator">:</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+T <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token function">ones</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">X</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">:</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">:</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+gradPhi <span class="token operator">=</span> <span class="token function">diag</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">:</span>n<span class="token punctuation">)</span><span class="token operator">*</span>T <span class="token operator">-</span> <span class="token function">diag</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">:</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token function">X</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">:</span>n<span class="token punctuation">,</span> <span class="token operator">:</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="galerkin-&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;">Galerkin &#x7B97;&#x6CD5;&#x5B9E;&#x73B0;</h3>
+<pre class="language-"><code class="lang-matlab"><span class="token keyword">function</span> uh <span class="token operator">=</span> <span class="token function">Galerkin</span><span class="token punctuation">(</span>pde<span class="token punctuation">,</span> I<span class="token punctuation">,</span> n<span class="token punctuation">,</span> option<span class="token punctuation">)</span>
+<span class="token comment">%% GALERKIN &#x7EC4;&#x88C5;&#x77E9;&#x9635;  A &#x548C;&#x53F3;&#x7AEF;&#x5411;&#x91CF; b&#xFF0C; &#x5E76;&#x6C42;&#x89E3; </span>
+%
+<span class="token comment">%   pde: &#x6570;&#x636E;&#x6A21;&#x578B; </span>
+<span class="token comment">%   I : &#x6A21;&#x578B;&#x533A;&#x95F4; </span>
+<span class="token comment">%   n &#xFF1A;&#x7A7A;&#x95F4;&#x7EF4;&#x6570; </span>
+
+<span class="token comment">% &#x533A;&#x95F4;&#x957F;&#x5EA6; </span>
+h <span class="token operator">=</span> <span class="token function">I</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token function">I</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">% &#x533A;&#x95F4; [0,1] &#x4E0A;&#x7684; Gauss &#x79EF;&#x5206;&#x70B9;&#x53CA;&#x6743;&#x91CD; </span>
+<span class="token punctuation">[</span>lambda<span class="token punctuation">,</span> weight<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">gquadpts1d</span><span class="token punctuation">(</span>option<span class="token punctuation">.</span>quadOrder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">% &#x79EF;&#x5206;&#x70B9;&#x7684;&#x4E2A;&#x6570;</span>
+nQuad <span class="token operator">=</span> <span class="token function">length</span><span class="token punctuation">(</span>weight<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+<span class="token comment">%% &#x6784;&#x9020;&#x77E9;&#x9635; A &#x548C; b</span>
+A <span class="token operator">=</span> <span class="token function">zeros</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+b <span class="token operator">=</span> <span class="token function">zeros</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> q <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">:</span>nQuad
+  gx <span class="token operator">=</span> <span class="token function">lambda</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  w <span class="token operator">=</span> <span class="token function">weight</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">[</span>phi<span class="token punctuation">,</span> gradPhi<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">basis</span><span class="token punctuation">(</span>gx<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  A <span class="token operator">=</span> A <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token operator">-</span>gradPhi<span class="token operator">*</span>gradPhi<span class="token operator">&apos;</span> <span class="token operator">+</span> phi<span class="token operator">*</span>phi<span class="token operator">&apos;</span><span class="token punctuation">)</span><span class="token operator">*</span>w<span class="token punctuation">;</span>
+  b <span class="token operator">=</span> b <span class="token operator">+</span> pde<span class="token punctuation">.</span><span class="token function">source</span><span class="token punctuation">(</span>gx<span class="token punctuation">)</span><span class="token operator">*</span>phi<span class="token operator">*</span>w<span class="token punctuation">;</span>
+<span class="token keyword">end</span>
+A <span class="token operator">=</span> h<span class="token operator">*</span>A<span class="token punctuation">;</span>
+b <span class="token operator">=</span> h<span class="token operator">*</span>b<span class="token punctuation">;</span>
+
+<span class="token comment">%% &#x6C42;&#x89E3;</span>
+uh <span class="token operator">=</span> A<span class="token operator">\</span>b<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="&#x5B9E;&#x9A8C;&#x62A5;&#x544A;">&#x5B9E;&#x9A8C;&#x62A5;&#x544A;</h2>
+<p>&#x7528; Ritz-Galerkin &#x65B9;&#x6CD5;&#x6C42;&#x8FB9;&#x503C;&#x95EE;&#x9898;</p>
+<p><script type="math/tex; mode=display">
+\begin{cases}
+ u''+u=x^2, & 0 < x < 1,\\
+ u(0) = 0, u(1) = 1
+ \end{cases}
+</script></p>
+<p>&#x7684;&#x7B2C; <script type="math/tex; ">n</script> &#x6B21;&#x8FD1;&#x4F3C; <script type="math/tex; ">u_n(x)</script>, &#x57FA;&#x51FD;&#x6570;&#x4E3A; <script type="math/tex; ">\phi_i(x)=sin(i\pi x), i=1, 2,..., n$。
+并用表格列出 </script>\frac{1}{4}, \frac{1}{2}, \frac{3}{4}$$
+&#x4E09;&#x70B9;&#x5904;&#x7684;&#x771F;&#x89E3;&#x548C; $n=1, 2, 3, 4$ &#x65F6;&#x7684;&#x6570;&#x503C;&#x89E3;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="fdm-4.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 一维管激波问题的有限差分求解算法实现">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Galerkin 方法","level":"1.9","depth":1,"previous":{"title":"一维管激波问题的有限差分求解算法实现","level":"1.8","depth":1,"path":"fdm-4.md","ref":"fdm-4.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"matlab.html#fig1.2.1","level":"1.2","list_caption":"Figure: Jacobi 迭代过程","alt":"Jacobi 迭代过程","nro":1,"url":"./figures/jacobi.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Jacobi 迭代过程","attributes":{},"skip":false,"key":"1.2.1"}]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"fem-5.md","mtime":"2019-05-22T08:26:04.924Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-22T08:27:17.453Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+
