@@ -518,6 +518,57 @@ b <span class="token operator">=</span> b <span class="token operator">-</span> 
 <span class="token comment">%% solve </span>
 <span class="token function">uh</span><span class="token punctuation">(</span>isFree<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">A</span><span class="token punctuation">(</span>isFree<span class="token punctuation">,</span>isFree<span class="token punctuation">)</span><span class="token operator">\</span><span class="token function">b</span><span class="token punctuation">(</span>isFree<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+<h2 id="&#x8BEF;&#x5DEE;&#x8BA1;&#x7B97;">&#x8BEF;&#x5DEE;&#x8BA1;&#x7B97;</h2>
+<pre class="language-"><code class="lang-Matlab">function err = getL2error1d(node, elem, solution, uh, quadOrder)
+%% GETL2ERROR1D L2 norm of approximation of linear fintie
+%% element
+%
+% compute L2 error element-wise using quadrature rule with order
+% quadOrder
+
+NT = size(elem,1);
+err = zeros(NT,1);
+[lambda,weight] = quadpts1d(quadOrder);
+
+% basis function at quadrature points
+phi = lambda;
+
+nQuad = length(weight);
+for i = 1:nQuad
+    uhp = uh(elem(:,1))*phi(i,1) + uh(elem(:,2))*phi(i,2);
+    px = node(elem(:,1))*phi(i,1) + node(elem(:,2))*phi(i,2);
+    err = err + weight(i)*(solution(px) - uhp).^2;
+end
+
+lens = node(elem(:,2)) - node(elem(:,1));
+err = err.*lens;
+err = sqrt(sum(err));
+</code></pre>
+<pre class="language-"><code class="lang-Matlab">
+function err = getH1error1d(node, elem, grad_solution, uh, quadOrder)
+%% GETH1ERROR1D H1 norm of approximation error of linear finite
+%% element
+% 
+% compute H1 error element-wise using quadrature rule 
+% with order quadOrder
+
+NT = size(elem,1);
+err = zeros(NT,1);
+[lambda,weight] = quadpts1d(quadOrder);
+phi = lambda;
+lens = node(elem(:,2))-node(elem(:,1));
+Dphi = [-1./lens,1./lens];
+
+nQuad = length(weight);
+Duh = uh(elem(:,1)).*Dphi(:,1) + uh(elem(:,2)).*Dphi(:,2);
+
+for i = 1:nQuad
+    px = node(elem(:,1))*phi(i,1) + node(elem(:,2))*phi(i,2);
+    err = err + weight(i)*(grad_solution(px)-Duh).^2;
+end
+err = err.*lens;
+err = sqrt(sum(err));
+</code></pre>
 <h2 id="&#x5B9E;&#x9A8C;&#x62A5;&#x544A;">&#x5B9E;&#x9A8C;&#x62A5;&#x544A;</h2>
 <p>&#x7528;&#x7EBF;&#x6027;&#x6709;&#x9650;&#x5143;&#x65B9;&#x6CD5;&#x6C42;&#x8FB9;&#x503C;&#x95EE;&#x9898;&#xFF1A;</p>
 <p><script type="math/tex; mode=display">
@@ -530,7 +581,7 @@ b <span class="token operator">=</span> b <span class="token operator">-</span> 
 <script type="math/tex; mode=display">
 u = e^x\sin(2\pi x)
 </script> </p>
-<p>&#x7F51;&#x683C;&#x5355;&#x5143;&#x957F;&#x5EA6;&#x5206;&#x522B;&#x53D6;&#x4E3A; <script type="math/tex; ">[0.4, 0.2, 0.1, 0.05, 0.025, 0.0125]</script>&#xFF0C;&#x7528;&#x7EBF;&#x6027;&#x6709;&#x9650;&#x5143;&#x6C42;&#x89E3;
+<p>&#x7F51;&#x683C;&#x5355;&#x5143;&#x957F;&#x5EA6;&#x5206;&#x522B;&#x53D6;&#x4E3A; <script type="math/tex; ">[0.2, 0.1, 0.05, 0.025, 0.0125]</script>&#xFF0C;&#x7528;&#x7EBF;&#x6027;&#x6709;&#x9650;&#x5143;&#x6C42;&#x89E3;
 &#xFF0C;&#x8BA1;&#x7B97;&#x6709;&#x9650;&#x5143;&#x89E3;&#x4E0E;&#x771F;&#x89E3;&#x7684; <script type="math/tex; ">L^2</script> &#x8BEF;&#x5DEE;</p>
 <p><script type="math/tex; mode=display">
 \|u - u_h\|_{0} := \sqrt{\int_0^1 (u - u_h)^2\mathrm d x}
@@ -578,7 +629,7 @@ u = e^x\sin(2\pi x)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"线性有限有元方法","level":"1.10","depth":1,"previous":{"title":"Galerkin 方法","level":"1.9","depth":1,"path":"fem-5.md","ref":"fem-5.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"matlab.html#fig1.2.1","level":"1.2","list_caption":"Figure: Jacobi 迭代过程","alt":"Jacobi 迭代过程","nro":1,"url":"./figures/jacobi.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Jacobi 迭代过程","attributes":{},"skip":false,"key":"1.2.1"}]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"fem-6.md","mtime":"2019-05-29T02:42:50.199Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-29T02:43:39.884Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"线性有限有元方法","level":"1.10","depth":1,"previous":{"title":"Galerkin 方法","level":"1.9","depth":1,"path":"fem-5.md","ref":"fem-5.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"matlab.html#fig1.2.1","level":"1.2","list_caption":"Figure: Jacobi 迭代过程","alt":"Jacobi 迭代过程","nro":1,"url":"./figures/jacobi.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Jacobi 迭代过程","attributes":{},"skip":false,"key":"1.2.1"}]},"title":"数值代数课件","language":"zh-hans","gitbook":"3.2.3","description":"这是魏华祎的数值代数课程的课件"},"file":{"path":"fem-6.md","mtime":"2019-05-29T12:04:22.726Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-29T12:04:41.676Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
