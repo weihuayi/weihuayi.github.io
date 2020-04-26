@@ -3,7 +3,7 @@
 if [[ `git status --porcelain` ]]; then
     cd ../weihuayi.github.io/
     git pull
-    cd ../whysite/
+    cd ../site/
     git add .
     git commit -m "update" 
     git pull
