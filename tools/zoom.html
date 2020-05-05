@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>VIM · 魏华祎的个人网站</title>
+        <title>Zoom · 魏华祎的个人网站</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="unix.html" />
+    <link rel="next" href="../scsoft/" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="windows.html" />
     
 
     </head>
@@ -788,7 +788,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.11.1" data-path="vim.html">
+        <li class="chapter " data-level="1.11.1" data-path="vim.html">
             
                 <a href="vim.html">
             
@@ -996,7 +996,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.17" data-path="zoom.html">
+        <li class="chapter active" data-level="1.11.17" data-path="zoom.html">
             
                 <a href="zoom.html">
             
@@ -1205,7 +1205,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >VIM</a>
+        <a href=".." >Zoom</a>
     </h1>
 </div>
 
@@ -1220,119 +1220,15 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="vim">VIM</h1>
-<blockquote>
-<p>Better, Stronger, Faster.</p>
-</blockquote>
-<ul>
-<li>vim &#x7684;&#x7CBE;&#x9AD3;&#x5C31;&#x5728;&#x4E8E;&#x547D;&#x4EE4;&#x952E;&#x7684;&#x7EC4;&#x5408;&#xFF0C;&#x5168;&#x952E;&#x76D8;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x4F60;&#x6536;&#x4E0D;&#x79BB;&#x5F00;&#x952E;&#x76D8;&#x8F93;&#x5165;&#x533A;&#x57DF;&#x5373;&#x53EF;&#x5B8C;&#x6210;
-&#x6240;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x3002;</li>
-<li>&#x5176;&#x5B83;&#x7F16;&#x8F91;&#x5668;&#x4E00;&#x822C;&#x662F;&#x901A;&#x8FC7;&#x952E;&#x76D8;&#x548C;&#x9F20;&#x6807;&#x7684;&#x7EC4;&#x5408;&#x6765;&#x5B8C;&#x6210;&#x6307;&#x5B9A;&#x529F;&#x80FD;&#x3002;</li>
-</ul>
+                                <h1 id="zoom-&#x7684;&#x4F7F;&#x7528;&#x4E2D;&#x7684;&#x95EE;&#x9898;&#x4E0E;&#x89E3;&#x51B3;&#x65B9;&#x6848;">Zoom &#x7684;&#x4F7F;&#x7528;&#x4E2D;&#x7684;&#x95EE;&#x9898;&#x4E0E;&#x89E3;&#x51B3;&#x65B9;&#x6848;</h1>
 <h2 id="ubuntu-&#x4E0B;&#x7684;&#x5B89;&#x88C5;">Ubuntu &#x4E0B;&#x7684;&#x5B89;&#x88C5;</h2>
-<pre class="language-"><code>sudo apt install vim 
-sudo apt install vim-gtk # &#x5B89;&#x88C5;&#x8FD9;&#x4E2A; vim &#x624D;&#x652F;&#x6301;&#x548C;&#x7CFB;&#x7EDF;&#x526A;&#x5207;&#x677F;&#x7684;&#x76F8;&#x4E92;&#x62F7;&#x8D1D;
-</code></pre><h2 id="&#x5B66;&#x4E60;&#x8D44;&#x6E90;">&#x5B66;&#x4E60;&#x8D44;&#x6E90;</h2>
-<ol>
-<li><a href="https://coolshell.cn/articles/5426.html" target="_blank">&#x7B80;&#x660E; VIM &#x7EC3;&#x7EA7;&#x653B;&#x7565;</a></li>
-<li><code>vimtutor</code></li>
-</ol>
-<h2 id="&#x57FA;&#x672C;&#x6982;&#x5FF5;">&#x57FA;&#x672C;&#x6982;&#x5FF5;</h2>
-<h3 id="&#x6A21;&#x5F0F;">&#x6A21;&#x5F0F;</h3>
-<p>&#x6700;&#x5E38;&#x7528;&#x7684;&#x56DB;&#x4E2A;&#x6A21;&#x5F0F;&#xFF1A;</p>
-<ol>
-<li>&#x666E;&#x901A;&#x6A21;&#x5F0F;(Normal mode)</li>
-<li>&#x63D2;&#x5165;&#x6A21;&#x5F0F;(Insert mode)</li>
-<li>&#x53EF;&#x89C6;&#x6A21;&#x5F0F;(Visual mode)</li>
-<li>&#x547D;&#x4EE4;&#x884C;&#x6A21;&#x5F0F;(Command mode)</li>
-</ol>
-<h2 id="vim-&#x5185;&#x7F6E;&#x5E38;&#x7528;&#x529F;&#x80FD;">VIM &#x5185;&#x7F6E;&#x5E38;&#x7528;&#x529F;&#x80FD;</h2>
-<h3 id="surrounding">Surrounding</h3>
-<pre class="language-"><code>ci[ &#x5220;&#x9664;&#x4E00;&#x5BF9; [] &#x4E2D;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;&#xFF0C;&#x5E76;&#x8FDB;&#x5165;&#x63D2;&#x5165;&#x6A21;&#x5F0F;
-ci( &#x5220;&#x9664;&#x4E00;&#x5BF9; () &#x4E2D;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;&#xFF0C;&#x5E76;&#x8FDB;&#x5165;&#x63D2;&#x5165;&#x6A21;&#x5F0F;
-ci&lt; &#x5220;&#x9664;&#x4E00;&#x5BF9; &lt;&gt; &#x4E2D;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;&#xFF0C;&#x5E76;&#x8FDB;&#x5165;&#x63D2;&#x5165;&#x6A21;&#x5F0F;
-ci{ &#x5220;&#x9664;&#x4E00;&#x5BF9; {} &#x4E2D;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;, &#x5E76;&#x8FDB;&#x5165;&#x63D2;&#x5165;&#x6A21;&#x5F0F;
-ci&quot; &#x5220;&#x9664;&#x4E00;&#x5BF9; &quot;&quot;  &#x4E2D;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;&#xFF0C;&#x5E76;&#x8FDB;&#x5165;&#x63D2;&#x5165;&#x6A21;&#x5F0F;
-ci&apos; &#x5220;&#x9664;&#x4E00;&#x5BF9; &apos;&apos; &#x4E2D;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;&#xFF0C;&#x5E76;&#x8FDB;&#x5165;&#x63D2;&#x5165;&#x6A21;&#x5F0F;
-ci` &#x5220;&#x9664;&#x4E00;&#x5BF9; `` &#x4E2D;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;&#xFF0C;&#x5E76;&#x8FDB;&#x5165;&#x63D2;&#x5165;&#x6A21;&#x5F0F;
-cit &#x5220;&#x9664;&#x4E00;&#x5BF9; HTML/XML &#x6807;&#x7B7E;&#x5185;&#x90E8;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;, &#x5E76;&#x8FDB;&#x5165;&#x63D2;&#x5165;&#x6A21;&#x5F0F;
-</code></pre><pre class="language-"><code>ci: &#x4F8B;&#x5982;&#xFF0C;ci(&#xFF0C;&#x6216;&#x8005;ci)&#xFF0C;&#x5C06;&#x4F1A;&#x4FEE;&#x6539;()&#x4E4B;&#x95F4;&#x7684;&#x6587;&#x672C;
-di: &#x526A;&#x5207;&#x914D;&#x5BF9;&#x7B26;&#x53F7;&#x4E4B;&#x95F4;&#x6587;&#x672C;
-yi: &#x590D;&#x5236;
-ca: &#x540C;ci&#xFF0C;&#x4F46;&#x4FEE;&#x6539;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#x914D;&#x5BF9;&#x7B26;&#x53F7;&#x672C;&#x8EAB;
-da: &#x540C;di&#xFF0C;&#x4F46;&#x526A;&#x5207;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#x914D;&#x5BF9;&#x7B26;&#x53F7;&#x672C;&#x8EAB;
-ya: &#x540C;yi&#xFF0C;&#x4F46;&#x590D;&#x5236;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#x914D;&#x5BF9;&#x7B26;&#x53F7;&#x672C;&#x8EAB;
-dib: &#x540C; di(
-diB: &#x540C; di{
-</code></pre><h2 id="vim-&#x63D2;&#x4EF6;">VIM &#x63D2;&#x4EF6;</h2>
-<h3 id="ultisnips-httpsgithubcomsirverultisnips">UltiSnips: <a href="https://github.com/SirVer/ultisnips" target="_blank">https://github.com/SirVer/ultisnips</a></h3>
-<p>&#x7247;&#x6BB5; (snippet) &#x662F;&#x4E00;&#x6BB5;&#x5E38;&#x7528;&#x7684;&#x6587;&#x672C;&#x7247;&#x6BB5;&#xFF0C;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x5F88;&#x591A;&#x5197;&#x4F59;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x5982;&#x679C;&#x6BCF;&#x6B21;&#x90FD;&#x5B8C;&#x6574;&#x8F93;&#x5165;
-&#xFF0C;&#x6548;&#x7387;&#x5F88;&#x4F4E;&#x3002;UltiSnips &#x53EF;&#x4EE5;&#x6781;&#x5927;&#x51CF;&#x5C11;&#x8FD9;&#x79CD;&#x6587;&#x672C;&#x8F93;&#x5165;&#x7684;&#x51FB;&#x952E;&#x6B21;&#x6570;&#xFF0C;&#x63D0;&#x9AD8;&#x8FD9;&#x7C7B;&#x6587;&#x672C;&#x7684;&#x8F93;&#x5165;&#x6548;&#x7387;&#x3002;</p>
-<h4 id="snippet-&#x57FA;&#x672C;&#x65B9;&#x6CD5;">Snippet &#x57FA;&#x672C;&#x65B9;&#x6CD5;</h4>
-<p>&#x5B9A;&#x4E49; Snippet &#x7684;&#x8BED;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre class="language-"><code class="lang-bash">snippet trigger_word <span class="token punctuation">[</span><span class="token string">&quot;description&quot;</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">]</span> 
-endsnippet
-</code></pre>
-<p>options </p>
-<ol>
-<li>i: &#x4EFB;&#x4F55;&#x4F4D;&#x7F6E;</li>
-<li>r: &#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;</li>
-<li>w:</li>
-<li>A: &#x81EA;&#x52A8;&#x5C55;&#x5F00;</li>
-<li>b: &#x4EC5;&#x4EC5;&#x5728;&#x4E00;&#x884C;&#x7684;&#x5F00;&#x5934;&#x5C55;&#x5F00;</li>
-<li>!: &#x8986;&#x76D6;&#x524D;&#x9762;&#x5B9A;&#x4E49;&#x7684;&#x540C;&#x540D;&#x7247;&#x6BB5; </li>
-</ol>
-<ul>
-<li>&#x63D2;&#x5165;&#x5F53;&#x524D;&#x7684;&#x65E5;&#x671F;<pre class="language-"><code>snippet date
-`!v strftime(&quot;%Y-%m-%d&quot;)`
-endsnippet
-</code></pre></li>
-</ul>
-<p><strong>&#x4F18;&#x5148;&#x7EA7;</strong></p>
-<h3 id="vim-surrounding">vim-surrounding:</h3>
-<p>&#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x4E0D;&#x540C;&#x6A21;&#x5F0F;&#x4E0B;&#x7684;&#x64CD;&#x4F5C;&#x547D;&#x4EE4;&#xFF1A;</p>
-<pre class="language-"><code>Normal mode
------------
-ds  - delete a surrounding
-cs  - change a surrounding
-ys  - add a surrounding
-yS  - add a surrounding and place the surrounded text on a new line + indent it
-yss - add a surrounding to the whole line
-ySs - add a surrounding to the whole line, place it on a new line + indent it
-ySS - same as ySs
+<p><a href="https://us04web.zoom.us/" target="_blank">https://us04web.zoom.us/</a></p>
+<h2 id="run-zoom-successfullyexit-code-is-0"><code>run zoom successfully,exit code is 0</code></h2>
+<pre class="language-"><code>$ killall zoom
+</code></pre><h2 id="&#x9519;&#x8BEF;&#x4EE3;&#x7801;-200">&#x9519;&#x8BEF;&#x4EE3;&#x7801; 200</h2>
+<p>&#x4E2D;&#x56FD;&#x533A;&#x57DF;&#x6CE8;&#x518C;&#x7684;&#x5E10;&#x53F7; 5 &#x6708; 1 &#x53F7;&#x4EE5;&#x540E;&#x65E0;&#x6CD5;&#x5F00;&#x542F;&#x65B0;&#x7684;&#x4F1A;&#x8BAE;</p>
+<p>&#x5229;&#x7528; google &#x5E10;&#x6237;&#x6CE8;&#x518C;&#x4E00;&#x4E2A; zoom.us &#x7684;&#x8D26;&#x53F7;&#x5373;&#x53EF;.</p>
 
-Visual mode
------------
-s   - in visual mode, add a surrounding
-S   - in visual mode, add a surrounding but place text on new line + indent it
-
-Insert mode
------------
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>CTRL-s</span><span class="token punctuation">&gt;</span></span> - in insert mode, add a surrounding
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>CTRL-s</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>CTRL-s</span><span class="token punctuation">&gt;</span></span> - in insert mode, add a new line + surrounding + indent
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>CTRL-g</span><span class="token punctuation">&gt;</span></span>s - same as <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>CTRL-s</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>CTRL-g</span><span class="token punctuation">&gt;</span></span>S - same as <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>CTRL-s</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>CTRL-s</span><span class="token punctuation">&gt;</span></span>
-</code></pre><p>&#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x4E00;&#x4E9B;&#x793A;&#x4F8B;&#xFF0C;&#x5176;&#x4E2D;&#x539F;&#x59CB;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684; <code>*</code> &#x8868;&#x793A;&#x5149;&#x6807;&#x6240;&#x5728;&#x4F4D;&#x7F6E; </p>
-<pre class="language-"><code> Old text                  Command     New text ~
- &quot;Hello *world!&quot;           ds&quot;         Hello world!
- [123+4*56]/2              cs])        (123+456)/2
- &quot;Look ma, I&apos;m *HTML!&quot;     cs&quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q</span><span class="token punctuation">&gt;</span></span>Look ma, I&apos;m HTML!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q</span><span class="token punctuation">&gt;</span></span>
- if *x&gt;3 {                 ysW(        if ( x&gt;3 ) {
- my $str = *whee!;         vlllls&apos;     my $str = &apos;whee!&apos;;
- <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>Yo!*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>           dst         Yo!
- <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>Yo!*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>           cst<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Yo!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
-</code></pre><h2 id="vim-&#x6280;&#x5DE7;">VIM &#x6280;&#x5DE7;</h2>
-<p>press <code>q</code> exit the record mode.</p>
-<pre class="language-"><code>&lt;&gt;norm 4dw
-</code></pre><pre class="language-"><code>%s/.*\n/\0\\\\\\hline\r/g
-</code></pre><h3 id="&#x8BFB;&#x5165;&#x6587;&#x4EF6;">&#x8BFB;&#x5165;&#x6587;&#x4EF6;</h3>
-<p>&#x8BFB;&#x5165; <code>test.md</code>  &#x8FDB;&#x5165;&#x5F53;&#x524D;&#x7684;&#x6587;&#x4EF6;</p>
-<pre class="language-"><code>read ~/test.md
-</code></pre><h3 id="&#x91CD;&#x590D;&#x4E0A;&#x4E00;&#x6B21;&#x7684;&#x9009;&#x62E9;&#x64CD;&#x4F5C;">&#x91CD;&#x590D;&#x4E0A;&#x4E00;&#x6B21;&#x7684;&#x9009;&#x62E9;&#x64CD;&#x4F5C;</h3>
-<pre class="language-"><code>gv
-</code></pre><h2 id="&#x5BF9;&#x9F50;">&#x5BF9;&#x9F50;</h2>
-<pre class="language-"><code>gq
-</code></pre>
                                 
                                 </section>
                             
@@ -1359,12 +1255,12 @@ Insert mode
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 效率工具">
+                <a href="windows.html" class="navigation navigation-prev " aria-label="Previous page: Windows">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="unix.html" class="navigation navigation-next " aria-label="Next page: Unix">
+                <a href="../scsoft/" class="navigation navigation-next " aria-label="Next page: 专业软件工具">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1375,7 +1271,7 @@ Insert mode
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"VIM","level":"1.11.1","depth":2,"next":{"title":"Unix","level":"1.11.2","depth":2,"path":"tools/unix.md","ref":"./tools/unix.md","articles":[]},"previous":{"title":"效率工具","level":"1.11","depth":1,"path":"tools/README.md","ref":"./tools/README.md","articles":[{"title":"VIM","level":"1.11.1","depth":2,"path":"tools/vim.md","ref":"tools/vim.md","articles":[]},{"title":"Unix","level":"1.11.2","depth":2,"path":"tools/unix.md","ref":"./tools/unix.md","articles":[]},{"title":"Linux","level":"1.11.3","depth":2,"path":"tools/linux.md","ref":"./tools/linux.md","articles":[]},{"title":"Linux 命令行","level":"1.11.4","depth":2,"path":"tools/linux_cli.md","ref":"./tools/linux_cli.md","articles":[]},{"title":"Ubuntu","level":"1.11.5","depth":2,"path":"tools/ubuntu.md","ref":"./tools/ubuntu.md","articles":[]},{"title":"gdb","level":"1.11.6","depth":2,"path":"tools/gdb.md","ref":"./tools/gdb.md","articles":[]},{"title":"fctix 和五笔输入法","level":"1.11.7","depth":2,"path":"tools/wubi.md","ref":"./tools/wubi.md","articles":[]},{"title":"Git 版本控制","level":"1.11.8","depth":2,"path":"tools/git.md","ref":"./tools/git.md","articles":[]},{"title":"Gitbook","level":"1.11.9","depth":2,"path":"tools/gitbook.md","ref":"./tools/gitbook.md","articles":[]},{"title":"Make","level":"1.11.10","depth":2,"path":"tools/make.md","ref":"./tools/make.md","articles":[]},{"title":"CMake","level":"1.11.11","depth":2,"path":"tools/cmake.md","ref":"./tools/cmake.md","articles":[]},{"title":"latex","level":"1.11.12","depth":2,"path":"tools/latex.md","ref":"./tools/latex.md","articles":[]},{"title":"Markdown","level":"1.11.13","depth":2,"path":"tools/markdown.md","ref":"./tools/markdown.md","articles":[]},{"title":"代码托管","level":"1.11.14","depth":2,"path":"tools/github.md","ref":"./tools/github.md","articles":[]},{"title":"知识管理工具 Zotero","level":"1.11.15","depth":2,"path":"tools/zotero.md","ref":"./tools/zotero.md","articles":[]},{"title":"Windows","level":"1.11.16","depth":2,"path":"tools/windows.md","ref":"./tools/windows.md","articles":[]},{"title":"Zoom","level":"1.11.17","depth":2,"path":"tools/zoom.md","ref":"./tools/zoom.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"./fealpy/git.html#fig1.9.2.1","level":"1.9.2","list_caption":"Figure: 计算数学算法、数值软件与工业生产力","alt":"计算数学算法、数值软件与工业生产力","nro":2,"url":"./figures/comath.png","index":1,"caption_template":"Figure: _CAPTION_","label":"计算数学算法、数值软件与工业生产力","attributes":{},"skip":false,"key":"1.9.2.1"},{"backlink":"./tools/linux.html#fig1.11.3.1","level":"1.11.3","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":3,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.11.3.1"},{"backlink":"./tools/linux.html#fig1.11.3.2","level":"1.11.3","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":4,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.11.3.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"tools/vim.md","mtime":"2020-05-05T01:43:53.030Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-05T01:48:52.403Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Zoom","level":"1.11.17","depth":2,"next":{"title":"专业软件工具","level":"1.12","depth":1,"path":"scsoft/README.md","ref":"./scsoft/README.md","articles":[{"title":"VTK","level":"1.12.1","depth":2,"path":"scsoft/vtk.md","ref":"./scsoft/vtk.md","articles":[]},{"title":"Paraview","level":"1.12.2","depth":2,"path":"scsoft/paraview.md","ref":"./scsoft/paraview.md","articles":[]},{"title":"CGAL","level":"1.12.3","depth":2,"path":"scsoft/cgal.md","ref":"./scsoft/cgal.md","articles":[]},{"title":"MOAB","level":"1.12.4","depth":2,"path":"scsoft/moab.md","ref":"./scsoft/moab.md","articles":[]},{"title":"CGM","level":"1.12.5","depth":2,"path":"scsoft/cgm.md","ref":"./scsoft/cgm.md","articles":[]},{"title":"OCE","level":"1.12.6","depth":2,"path":"scsoft/oce.md","ref":"./scsoft/oce.md","articles":[]}]},"previous":{"title":"Windows","level":"1.11.16","depth":2,"path":"tools/windows.md","ref":"./tools/windows.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"./fealpy/git.html#fig1.9.2.1","level":"1.9.2","list_caption":"Figure: 计算数学算法、数值软件与工业生产力","alt":"计算数学算法、数值软件与工业生产力","nro":2,"url":"./figures/comath.png","index":1,"caption_template":"Figure: _CAPTION_","label":"计算数学算法、数值软件与工业生产力","attributes":{},"skip":false,"key":"1.9.2.1"},{"backlink":"./tools/linux.html#fig1.11.3.1","level":"1.11.3","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":3,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.11.3.1"},{"backlink":"./tools/linux.html#fig1.11.3.2","level":"1.11.3","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":4,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.11.3.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"tools/zoom.md","mtime":"2020-05-05T01:48:36.587Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-05T01:48:52.403Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
