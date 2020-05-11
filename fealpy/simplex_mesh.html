@@ -1220,7 +1220,64 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="&#x5355;&#x7EAF;&#x5F62;&#x7F51;&#x683C;-simplex-mesh">&#x5355;&#x7EAF;&#x5F62;&#x7F51;&#x683C; (Simplex Mesh)</h1>
+<h2 id="&#x91CD;&#x5FC3;&#x5750;&#x6807;">&#x91CD;&#x5FC3;&#x5750;&#x6807;</h2>
+<p><strong>&#x91CD;&#x5FC3;&#x5750;&#x6807;</strong>&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x6982;&#x5FF5;&#xFF0C; &#x5B83;&#x662F;&#x5B9A;&#x4E49;&#x5355;&#x7EAF;&#x5F62;&#x7F51;&#x683C;&#x7684;&#x57FA;&#x7840;, &#x4E5F;&#x662F;&#x6784;&#x9020;&#x5355;&#x7EAF;&#x5F62;&#x7F51;&#x683C;
+&#x4E0A;&#x6709;&#x9650;&#x5143;&#x57FA;&#x51FD;&#x6570;&#x7684; &#x57FA;&#x7840;, &#x4E0B;&#x9762;&#x4ECB;&#x7ECD;&#x91CD;&#x5FC3;&#x5750;&#x6807;&#x7684;&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#x3002;</p>
+<p>&#x8BBE; <script type="math/tex; ">\{\mathbf x_i = (x_{i,0}, x_{i, 1}, \cdots, x_{i, d-1})^T\}_{i=0}^{d}</script> &#x662F;
+<script type="math/tex; ">\mathbb R^d</script> &#x7A7A;&#x95F4;&#x4E2D;&#x7684; <script type="math/tex; ">d+1</script> &#x4E2A;&#x70B9;&#xFF0C;&#x5982;&#x679C;&#x5B83;&#x4EEC;&#x4E0D;&#x5728;&#x4E00;&#x4E2A;&#x8D85;&#x5E73;&#x9762;&#x4E0A;&#xFF0C; &#x5373; <script type="math/tex; ">d</script> &#x7EF4;&#x5411;&#x91CF;&#x96C6;&#x5408;
+<script type="math/tex; ">\{\mathbf x_0\mathbf x_i\}_{i=1}^d</script> &#x662F;&#x7EBF;&#x6027;&#x72EC;&#x7ACB;&#x7684;&#xFF0C;&#x4E5F;&#x7B49;&#x4EF7;&#x4E8E;&#x4E0B;&#x9762;&#x7684;&#x77E9;&#x9635;&#x975E;&#x5947;&#x5F02;
+<script type="math/tex; mode=display">
+\begin{equation}
+    \mathbf A =\begin{pmatrix}
+        x_{0, 0} & x_{1, 0} & \cdots & x_{d, 0} \\
+        x_{0, 1} & x_{1, 1} & \cdots & x_{d, 1} \\
+        \vdots   & \vdots   & \ddots & \vdots \\
+        x_{0, d-1} & x_{1, d-1} & \cdots & x_{d, d-1}\\
+        1 & 1 & \cdots & 1
+    \end{pmatrix}
+\end{equation}
+</script></p>
+<p>&#x7ED9;&#x5B9A;&#x4EFB;&#x610F;&#x70B9; <script type="math/tex; ">\mathbf x=(x_0, x_1, \cdots, x_{d-1})^T\in \mathbb R^d</script>, &#x53EF;&#x4EE5;&#x5F97;&#x5230;
+&#x4E00;&#x7EC4;&#x5B9E;&#x6570; &#x503C; <script type="math/tex; ">\mathbf \lambda := (\lambda_0(\mathbf x), \lambda_1(\mathbf x),
+\cdots, \lambda_d(\mathbf x))^T</script>, &#x6EE1;&#x8DB3;&#x5982;&#x4E0B;&#x7684;&#x65B9;&#x7A0B;
+<script type="math/tex; mode=display">
+\mathbf A \mathbf \lambda=
+\begin{pmatrix}
+    \mathbf x \\ 1
+\end{pmatrix}
+</script>
+&#x5373;
+<script type="math/tex; mode=display">
+\mathbf x = \sum\limits_{i=0}^{d}\lambda_i(\mathbf x) \mathbf x_i,
+\text{ with} \sum\limits_{i=0}^{d}\lambda_i(\mathbf x) = 1.
+</script></p>
+<p>&#x70B9;&#x96C6; <script type="math/tex; ">\{\mathbf x_i\}_{i=0}^d</script> &#x7684;&#x51F8;&#x58F3;
+<script type="math/tex; mode=display">
+\tau = \{\mathbf x = \sum_{i=0}^{d}\lambda_i\mathbf x_i | 0\leq \lambda_i \leq
+1, \sum_{i=0}^d\lambda_i = 1\}
+</script>
+&#x5C31;&#x79F0;&#x4E3A;&#x7531;&#x70B9;&#x96C6; <script type="math/tex; ">\{\mathbf x_i\}_{i=0}^d</script> &#x751F;&#x6210;&#x7684;&#x51E0;&#x4F55; <script type="math/tex; ">d</script>-&#x5355;&#x7EAF;&#x5F62;&#x3002; &#x4F8B;&#x5982;&#xFF0C; &#x533A;&#x95F4;&#x662F;
+1-&#x5355;&#x7EAF;&#x5F62;&#xFF0C;&#x4E09;&#x89D2;&#x5F62;&#x662F;&#x4E00;&#x4E2A; 2-&#x5355;&#x7EAF;&#x5F62;&#xFF0C; &#x56DB;&#x9762;&#x4F53;&#x662F;&#x4E00;&#x4E2A; 3-&#x5355;&#x7EAF;&#x5F62;&#x3002;</p>
+<p>&#x800C; <script type="math/tex; ">\lambda_0(\mathbf x)</script>, <script type="math/tex; ">\lambda_1(\mathbf x)</script>, <script type="math/tex; ">\cdots</script>,
+<script type="math/tex; ">\lambda_{d}(\mathbf x)</script> &#x5C31;&#x79F0;&#x4E3A; $\mathbf x<script type="math/tex; "> 关于点集 </script>{\mathbf
+x<em>i}</em>{i=0}^d<script type="math/tex; "> 重心坐标 。  易知 </script>\lambda<em>0(\mathbf x)<script type="math/tex; ">, </script>\lambda_1(\mathbf x)<script type="math/tex; ">,
+</script>\cdots<script type="math/tex; ">, </script>\lambda</em>{d}(\mathbf x)<script type="math/tex; "> 是 关于 </script>\mathbf x<script type="math/tex; "> 的线性函数并且，
+</script>
+\lambda_i(\mathbf x_j) = 
+\begin{cases}
+    1, &amp; i = j\
+    0, &amp; i\not= j
+\end{cases}, 
+i, j = 0, \cdots, d</p>
+<p>$$</p>
+<h2 id="fealpy-&#x4E2D;&#x7684;&#x5355;&#x7EAF;&#x5F62;&#x7F51;&#x683C;">FEALPy &#x4E2D;&#x7684;&#x5355;&#x7EAF;&#x5F62;&#x7F51;&#x683C;</h2>
+<h3 id="&#x4E00;&#x7EF4;&#x533A;&#x95F4;&#x7F51;&#x683C;-intervalmesh">&#x4E00;&#x7EF4;&#x533A;&#x95F4;&#x7F51;&#x683C; <code>IntervalMesh</code></h3>
+<h3 id="&#x4E8C;&#x7EF4;&#x4E09;&#x89D2;&#x5F62;&#x7F51;&#x683C;-trianglemesh">&#x4E8C;&#x7EF4;&#x4E09;&#x89D2;&#x5F62;&#x7F51;&#x683C; <code>TriangleMesh</code></h3>
+<h3 id="&#x4E09;&#x7EF4;&#x56DB;&#x9762;&#x4F53;&#x7F51;&#x683C;-tetrahedronmesh">&#x4E09;&#x7EF4;&#x56DB;&#x9762;&#x4F53;&#x7F51;&#x683C; <code>TetrahedronMesh</code></h3>
+<h3 id="&#x5355;&#x7EAF;&#x5F62;&#x7F51;&#x683C;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x7A0B;&#x5E8F;&#x547D;&#x540D;&#x7EA6;&#x5B9A;">&#x5355;&#x7EAF;&#x5F62;&#x7F51;&#x683C;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x7A0B;&#x5E8F;&#x547D;&#x540D;&#x7EA6;&#x5B9A;</h3>
+<h3 id="&#x5355;&#x7EAF;&#x5F62;&#x7F51;&#x683C;&#x5BF9;&#x8C61;&#x7684;&#x63A5;&#x53E3;">&#x5355;&#x7EAF;&#x5F62;&#x7F51;&#x683C;&#x5BF9;&#x8C61;&#x7684;&#x63A5;&#x53E3;</h3>
+
                                 
                                 </section>
                             
@@ -1263,7 +1320,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"单纯形网格","level":"1.9.5.1","depth":3,"next":{"title":"结构网格","level":"1.9.5.2","depth":3,"path":"fealpy/struct_mesh.md","ref":"./fealpy/struct_mesh.md","articles":[]},"previous":{"title":"网格","level":"1.9.5","depth":2,"path":"fealpy/mesh.md","ref":"./fealpy/mesh.md","articles":[{"title":"单纯形网格","level":"1.9.5.1","depth":3,"path":"fealpy/simplex_mesh.md","ref":"./fealpy/simplex_mesh.md","articles":[]},{"title":"结构网格","level":"1.9.5.2","depth":3,"path":"fealpy/struct_mesh.md","ref":"./fealpy/struct_mesh.md","articles":[]},{"title":"四边形与六面体网格","level":"1.9.5.3","depth":3,"path":"fealpy/quad_hex_mesh.md","ref":"./fealpy/quad_hex_mesh.md","articles":[]},{"title":"多边形网格","level":"1.9.5.4","depth":3,"path":"fealpy/polygon_mesh.md","ref":"./fealpy/polygon_mesh.md","articles":[]},{"title":"多面体网格","level":"1.9.5.5","depth":3,"path":"fealpy/polyhedral_mesh.md","ref":"./fealpy/polyhedral_mesh.md","articles":[]},{"title":"基于半边数据结构的二维网格","level":"1.9.5.6","depth":3,"path":"fealpy/halfedge_mesh.md","ref":"./fealpy/halfedge_mesh.md","articles":[]},{"title":"基于半面数据结构的三维网格","level":"1.9.5.7","depth":3,"path":"fealpy/halfface_mesh.md","ref":"./fealpy/halfface_mesh.md","articles":[]}]},"dir":"neutral"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"./fealpy/git.html#fig1.9.2.1","level":"1.9.2","list_caption":"Figure: 计算数学算法、数值软件与工业生产力","alt":"计算数学算法、数值软件与工业生产力","nro":2,"url":"./figures/comath.png","index":1,"caption_template":"Figure: _CAPTION_","label":"计算数学算法、数值软件与工业生产力","attributes":{},"skip":false,"key":"1.9.2.1"},{"backlink":"./tools/linux.html#fig1.11.3.1","level":"1.11.3","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":3,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.11.3.1"},{"backlink":"./tools/linux.html#fig1.11.3.2","level":"1.11.3","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":4,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.11.3.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"fealpy/simplex_mesh.md","mtime":"2020-04-29T01:49:27.754Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-05T01:48:52.403Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"单纯形网格","level":"1.9.5.1","depth":3,"next":{"title":"结构网格","level":"1.9.5.2","depth":3,"path":"fealpy/struct_mesh.md","ref":"./fealpy/struct_mesh.md","articles":[]},"previous":{"title":"网格","level":"1.9.5","depth":2,"path":"fealpy/mesh.md","ref":"./fealpy/mesh.md","articles":[{"title":"单纯形网格","level":"1.9.5.1","depth":3,"path":"fealpy/simplex_mesh.md","ref":"./fealpy/simplex_mesh.md","articles":[]},{"title":"结构网格","level":"1.9.5.2","depth":3,"path":"fealpy/struct_mesh.md","ref":"./fealpy/struct_mesh.md","articles":[]},{"title":"四边形与六面体网格","level":"1.9.5.3","depth":3,"path":"fealpy/quad_hex_mesh.md","ref":"./fealpy/quad_hex_mesh.md","articles":[]},{"title":"多边形网格","level":"1.9.5.4","depth":3,"path":"fealpy/polygon_mesh.md","ref":"./fealpy/polygon_mesh.md","articles":[]},{"title":"多面体网格","level":"1.9.5.5","depth":3,"path":"fealpy/polyhedral_mesh.md","ref":"./fealpy/polyhedral_mesh.md","articles":[]},{"title":"基于半边数据结构的二维网格","level":"1.9.5.6","depth":3,"path":"fealpy/halfedge_mesh.md","ref":"./fealpy/halfedge_mesh.md","articles":[]},{"title":"基于半面数据结构的三维网格","level":"1.9.5.7","depth":3,"path":"fealpy/halfface_mesh.md","ref":"./fealpy/halfface_mesh.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"./tools/linux.html#fig1.11.3.1","level":"1.11.3","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":2,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.11.3.1"},{"backlink":"./tools/linux.html#fig1.11.3.2","level":"1.11.3","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":3,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.11.3.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"fealpy/simplex_mesh.md","mtime":"2020-05-10T05:52:45.229Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-11T13:49:33.093Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
