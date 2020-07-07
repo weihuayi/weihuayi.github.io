@@ -1407,6 +1407,74 @@ $ sudo -H pip3 install boost
 </code></pre><p>&#x5728; Anaconda (Windows) &#x4E0B;,</p>
 <pre class="language-"><code>$ pip search boost
 $ pip install boost
+</code></pre><h2 id="&#x4E00;&#x4E2A;&#x68C0;&#x9A8C;&#x5B89;&#x88C5;&#x7684;&#x4F8B;&#x5B50;">&#x4E00;&#x4E2A;&#x68C0;&#x9A8C;&#x5B89;&#x88C5;&#x7684;&#x4F8B;&#x5B50;</h2>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4EFB;&#x610F;&#x6B21;&#x6709;&#x9650;&#x5143;&#x6C42;&#x89E3;&#x4E8C;&#x7EF4; Poisson &#x65B9;&#x7A0B;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x53EA;&#x8981;&#x4FEE;&#x6539; p &#x5C31;&#x53EF;&#x68C0;&#x9A8C;&#x4E0D;&#x540C;&#x6B21;&#x6570;&#x7684;
+&#x6709;&#x9650;&#x5143;&#x3002;</p>
+<pre class="language-"><code>import numpy as np
+from scipy.sparse.linalg import spsolve
+import pyamg
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+from fealpy.pde.poisson_2d import CosCosData as PDE
+from fealpy.functionspace import LagrangeFiniteElementSpace
+from fealpy.boundarycondition import DirichletBC 
+
+from fealpy.tools.show import showmultirate, show_error_table
+
+p = 1 # &#x6709;&#x9650;&#x5143;&#x7A7A;&#x95F4;&#x6B21;&#x6570;, &#x53EF;&#x4EE5;&#x589E;&#x5927; p&#xFF0C; &#x770B;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x7684;&#x53D8;&#x5316; 
+n = 4 # &#x521D;&#x59CB;&#x7F51;&#x683C;&#x52A0;&#x5BC6;&#x6B21;&#x6570; 
+maxit = 4 # &#x6700;&#x5927;&#x8FED;&#x4EE3;&#x6B21;&#x6570;  
+
+
+pde = PDE()
+mesh = pde.init_mesh(n=n)
+
+errorType = [&apos;$|| u - u_h||_{\Omega,0}$&apos;, # L2 &#x8BEF;&#x5DEE;
+             &apos;$||\\nabla u - \\nabla u_h||_{\Omega, 0}$&apos; # H1 &#x8BEF;&#x5DEE;
+             ]
+errorMatrix = np.zeros((2, maxit), dtype=np.float)
+NDof = np.zeros(maxit, dtype=np.float)
+
+# &#x521D;&#x59CB;&#x7F51;&#x683C;
+fig = plt.figure()
+axes = fig.gca()
+mesh.add_plot(axes)
+
+for i in range(maxit):
+    space = LagrangeFiniteElementSpace(mesh, p=p) # &#x5EFA;&#x7ACB;&#x6709;&#x9650;&#x5143;&#x7A7A;&#x95F4;
+
+    NDof[i] = space.number_of_global_dofs() # &#x6709;&#x9650;&#x5143;&#x7A7A;&#x95F4;&#x81EA;&#x7531;&#x5EA6;&#x7684;&#x4E2A;&#x6570;
+    bc = DirichletBC(space, pde.dirichlet)  # DirichletBC &#x6761;&#x4EF6;
+
+    uh = space.function() # &#x6709;&#x9650;&#x5143;&#x51FD;&#x6570;
+    A = space.stiff_matrix() # &#x521A;&#x5EA6;&#x77E9;&#x9635;
+    F = space.source_vector(pde.source) # &#x8F7D;&#x8377;&#x5411;&#x91CF;
+
+    A, F = bc.apply(A, F, uh) # &#x5904;&#x7406;&#x8FB9;&#x754C;&#x6761;&#x4EF6; 
+
+    uh[:] = spsolve(A, F).reshape(-1) # &#x7A00;&#x758F;&#x77E9;&#x9635;&#x76F4;&#x63A5;&#x89E3;&#x6CD5;&#x5668;
+
+    #ml = pyamg.ruge_stuben_solver(A)  # &#x4EE3;&#x6570;&#x591A;&#x91CD;&#x7F51;&#x683C;&#x89E3;&#x6CD5;&#x5668;
+    #uh[:] = ml.solve(F, tol=1e-12, accel=&apos;cg&apos;).reshape(-1)
+
+    errorMatrix[0, i] = space.integralalg.L2_error(pde.solution, uh) # &#x8BA1;&#x7B97; L2 &#x8BEF;&#x5DEE;
+    errorMatrix[1, i] = space.integralalg.L2_error(pde.gradient, uh.grad_value) # &#x8BA1;&#x7B97; H1 &#x8BEF;&#x5DEE;
+
+    if i &lt; maxit-1:
+        mesh.uniform_refine() # &#x4E00;&#x81F4;&#x52A0;&#x5BC6;&#x7F51;&#x683C;
+
+# &#x753B;&#x51FD;&#x6570;&#x56FE;&#x50CF;
+fig = plt.figure()
+axes = fig.gca(projection=&apos;3d&apos;)
+uh.add_plot(axes, cmap=&apos;rainbow&apos;)
+
+# &#x753B;&#x6536;&#x655B;&#x9636;&#x56FE;&#x50CF;
+showmultirate(plt, 0, NDof, errorMatrix,  errorType, propsize=20)
+
+# &#x8F93;&#x51FA; latex &#x8BEF;&#x5DEE;&#x8868;&#x683C;
+show_error_table(NDof, errorType, errorMatrix)
+plt.show()
 </code></pre>
                                 
                                 </section>
@@ -1450,7 +1518,7 @@ $ pip install boost
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"FEALPy 帮助与安装","level":"1.9.1","depth":2,"next":{"title":"基于 Git 的 FEALPy 开发协作","level":"1.9.2","depth":2,"path":"fealpy/git.md","ref":"./fealpy/git.md","articles":[]},"previous":{"title":"Fealpy","level":"1.9","depth":1,"path":"fealpy/README.md","ref":"./fealpy/README.md","articles":[{"title":"FEALPy 帮助与安装","level":"1.9.1","depth":2,"path":"fealpy/fealpy.md","ref":"./fealpy/fealpy.md","articles":[]},{"title":"基于 Git 的 FEALPy 开发协作","level":"1.9.2","depth":2,"path":"fealpy/git.md","ref":"./fealpy/git.md","articles":[]},{"title":"FEALPy 的命名约定与开发规范","level":"1.9.3","depth":2,"path":"fealpy/rule.md","ref":"./fealpy/rule.md","articles":[]},{"title":"FEALPy 中常用的 Numpy 技巧","level":"1.9.4","depth":2,"path":"fealpy/numpy.md","ref":"./fealpy/numpy.md","articles":[]},{"title":"网格","level":"1.9.5","depth":2,"path":"fealpy/mesh.md","ref":"./fealpy/mesh.md","articles":[{"title":"单纯形网格","level":"1.9.5.1","depth":3,"path":"fealpy/simplex_mesh.md","ref":"./fealpy/simplex_mesh.md","articles":[]},{"title":"结构网格","level":"1.9.5.2","depth":3,"path":"fealpy/struct_mesh.md","ref":"./fealpy/struct_mesh.md","articles":[]},{"title":"四边形与六面体网格","level":"1.9.5.3","depth":3,"path":"fealpy/quad_hex_mesh.md","ref":"./fealpy/quad_hex_mesh.md","articles":[]},{"title":"多边形网格","level":"1.9.5.4","depth":3,"path":"fealpy/polygon_mesh.md","ref":"./fealpy/polygon_mesh.md","articles":[]},{"title":"多面体网格","level":"1.9.5.5","depth":3,"path":"fealpy/polyhedral_mesh.md","ref":"./fealpy/polyhedral_mesh.md","articles":[]},{"title":"基于半边数据结构的二维网格","level":"1.9.5.6","depth":3,"path":"fealpy/halfedge_mesh.md","ref":"./fealpy/halfedge_mesh.md","articles":[]},{"title":"基于半面数据结构的三维网格","level":"1.9.5.7","depth":3,"path":"fealpy/halfface_mesh.md","ref":"./fealpy/halfface_mesh.md","articles":[]}]},{"title":"函数空间","level":"1.9.6","depth":2,"path":"fealpy/space.md","ref":"./fealpy/space.md","articles":[{"title":" Lagrange 有限元空间","level":"1.9.6.1","depth":3,"path":"fealpy/lagrange_space.md","ref":"./fealpy/lagrange_space.md","articles":[]},{"title":" 二维缩放单项式空间","level":"1.9.6.2","depth":3,"path":"fealpy/scaled_space2d.md","ref":"./fealpy/scaled_space2d.md","articles":[]},{"title":" 三维缩放单项式空间","level":"1.9.6.3","depth":3,"path":"fealpy/scaled_space3d.md","ref":"./fealpy/scaled_space3d.md","articles":[]}]},{"title":"算例","level":"1.9.7","depth":2,"path":"fealpy/example.md","ref":"./fealpy/example.md","articles":[{"title":" Poisson 方程有限元算例","level":"1.9.7.1","depth":3,"path":"fealpy/poisson_fem.md","ref":"./fealpy/poisson_fem.md","articles":[]}]},{"title":"开发日志","level":"1.9.8","depth":2,"path":"fealpy/develop_note.md","ref":"./fealpy/develop_note.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"./tools/linux.html#fig1.11.5.1","level":"1.11.5","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":2,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.11.5.1"},{"backlink":"./tools/linux.html#fig1.11.5.2","level":"1.11.5","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":3,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.11.5.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"fealpy/fealpy.md","mtime":"2020-07-06T12:54:40.781Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-06T12:54:53.074Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"FEALPy 帮助与安装","level":"1.9.1","depth":2,"next":{"title":"基于 Git 的 FEALPy 开发协作","level":"1.9.2","depth":2,"path":"fealpy/git.md","ref":"./fealpy/git.md","articles":[]},"previous":{"title":"Fealpy","level":"1.9","depth":1,"path":"fealpy/README.md","ref":"./fealpy/README.md","articles":[{"title":"FEALPy 帮助与安装","level":"1.9.1","depth":2,"path":"fealpy/fealpy.md","ref":"./fealpy/fealpy.md","articles":[]},{"title":"基于 Git 的 FEALPy 开发协作","level":"1.9.2","depth":2,"path":"fealpy/git.md","ref":"./fealpy/git.md","articles":[]},{"title":"FEALPy 的命名约定与开发规范","level":"1.9.3","depth":2,"path":"fealpy/rule.md","ref":"./fealpy/rule.md","articles":[]},{"title":"FEALPy 中常用的 Numpy 技巧","level":"1.9.4","depth":2,"path":"fealpy/numpy.md","ref":"./fealpy/numpy.md","articles":[]},{"title":"网格","level":"1.9.5","depth":2,"path":"fealpy/mesh.md","ref":"./fealpy/mesh.md","articles":[{"title":"单纯形网格","level":"1.9.5.1","depth":3,"path":"fealpy/simplex_mesh.md","ref":"./fealpy/simplex_mesh.md","articles":[]},{"title":"结构网格","level":"1.9.5.2","depth":3,"path":"fealpy/struct_mesh.md","ref":"./fealpy/struct_mesh.md","articles":[]},{"title":"四边形与六面体网格","level":"1.9.5.3","depth":3,"path":"fealpy/quad_hex_mesh.md","ref":"./fealpy/quad_hex_mesh.md","articles":[]},{"title":"多边形网格","level":"1.9.5.4","depth":3,"path":"fealpy/polygon_mesh.md","ref":"./fealpy/polygon_mesh.md","articles":[]},{"title":"多面体网格","level":"1.9.5.5","depth":3,"path":"fealpy/polyhedral_mesh.md","ref":"./fealpy/polyhedral_mesh.md","articles":[]},{"title":"基于半边数据结构的二维网格","level":"1.9.5.6","depth":3,"path":"fealpy/halfedge_mesh.md","ref":"./fealpy/halfedge_mesh.md","articles":[]},{"title":"基于半面数据结构的三维网格","level":"1.9.5.7","depth":3,"path":"fealpy/halfface_mesh.md","ref":"./fealpy/halfface_mesh.md","articles":[]}]},{"title":"函数空间","level":"1.9.6","depth":2,"path":"fealpy/space.md","ref":"./fealpy/space.md","articles":[{"title":" Lagrange 有限元空间","level":"1.9.6.1","depth":3,"path":"fealpy/lagrange_space.md","ref":"./fealpy/lagrange_space.md","articles":[]},{"title":" 二维缩放单项式空间","level":"1.9.6.2","depth":3,"path":"fealpy/scaled_space2d.md","ref":"./fealpy/scaled_space2d.md","articles":[]},{"title":" 三维缩放单项式空间","level":"1.9.6.3","depth":3,"path":"fealpy/scaled_space3d.md","ref":"./fealpy/scaled_space3d.md","articles":[]}]},{"title":"算例","level":"1.9.7","depth":2,"path":"fealpy/example.md","ref":"./fealpy/example.md","articles":[{"title":" Poisson 方程有限元算例","level":"1.9.7.1","depth":3,"path":"fealpy/poisson_fem.md","ref":"./fealpy/poisson_fem.md","articles":[]}]},{"title":"开发日志","level":"1.9.8","depth":2,"path":"fealpy/develop_note.md","ref":"./fealpy/develop_note.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"./tools/linux.html#fig1.11.5.1","level":"1.11.5","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":2,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.11.5.1"},{"backlink":"./tools/linux.html#fig1.11.5.2","level":"1.11.5","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":3,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.11.5.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"fealpy/fealpy.md","mtime":"2020-07-07T12:26:10.672Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-07T12:26:25.350Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
