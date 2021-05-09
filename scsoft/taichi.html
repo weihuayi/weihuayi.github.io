@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>TetGen · 魏华祎的个人网站</title>
+        <title>Taichi · 魏华祎的个人网站</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="vtk.html" />
+    <link rel="next" href="tetgen.html" />
     
     
-    <link rel="prev" href="taichi.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -1125,7 +1125,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.12.1" data-path="taichi.html">
+        <li class="chapter active" data-level="1.12.1" data-path="taichi.html">
             
                 <a href="taichi.html">
             
@@ -1138,7 +1138,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.12.2" data-path="tetgen.html">
+        <li class="chapter " data-level="1.12.2" data-path="tetgen.html">
             
                 <a href="tetgen.html">
             
@@ -1354,7 +1354,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TetGen</a>
+        <a href=".." >Taichi</a>
     </h1>
 </div>
 
@@ -1369,9 +1369,74 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tetgen">TetGen</h1>
-<h2 id="&#x53EF;&#x89C6;&#x5316;&#x5DE5;&#x5177;">&#x53EF;&#x89C6;&#x5316;&#x5DE5;&#x5177;</h2>
-<h3 id="medit">medit</h3>
+                                <h1 id="taichi">Taichi</h1>
+<h1 id="ubuntu-2004">Ubuntu 20.04</h1>
+<pre class="language-"><code>$ ubuntu-drivers devices
+$ sudo ubuntu-drivers autoinstall # &#x5B89;&#x88C5; CUDA
+$ sudo apt install libtinfo-dev
+</code></pre><h1 id="&#x57FA;&#x672C;&#x6982;&#x5FF5;">&#x57FA;&#x672C;&#x6982;&#x5FF5;</h1>
+<ul>
+<li>backend</li>
+</ul>
+<p>func &#x53EF;&#x4EE5;&#x8C03;&#x7528; func </p>
+<p>func &#x4E0D;&#x80FD;&#x8C03;&#x7528; kernel</p>
+<p>kernel &#x53EF;&#x4EE5;&#x8C03;&#x7528; func </p>
+<p>kernel &#x4E0D;&#x80FD;&#x8C03; kernel </p>
+<p>ti.func &#x5F3A;&#x884C; inline</p>
+<p>&#x6700;&#x5916;&#x5C42;&#x7684; for loop &#x5E76;&#x884C;</p>
+<p>struct-for loops: pixels &#x4F8B;&#x5B50;&#xFF0C; &#x7A00;&#x758F;&#x7684;&#x5143;&#x7D20;</p>
+<p>for loops &#x524D;&#x540E;&#x5FAA;&#x73AF;&#x4F9D;&#x8D56;&#x600E;&#x4E48;&#x529E;&#xFF1F;</p>
+<p>&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x4E0D;&#x80FD;&#x88AB;&#x4E2D;&#x65AD;&#xFF0C;&#x5E76;&#x884C;&#x65F6;&#x5019;&#x6709;&#x7528;</p>
+<p>Taichi-scope: &#x7F16;&#x8BD1;&#x5E76;&#x8FD0;&#x884C;
+Python-scope&#xFF1A;Python &#x89E3;&#x91CA;&#x5668;&#x8FD0;&#x884C;</p>
+<p>ti.init(arch=ti.gpu)
+ti.field
+ti.Vector
+ti.Matrix</p>
+<p>ti.init(degug=True, arch=ti.cpu), &#x53EA;&#x80FD;&#x7528; CPU</p>
+<p>megakernel: &#x8BA1;&#x7B97;&#x591A;&#xFF0C;&#x8BBF;&#x5B58;&#x5C11;</p>
+<p>Lagrangian View: &#x5C0F;&#x8239; &#x63A2;&#x6D4B;&#x5668; what are my position and velocity?
+Eulerian View: &#x6728;&#x6869;</p>
+<p>&#x5F39;&#x7C27;&#x8D28;&#x70B9;&#x7CFB;&#x7EDF;&#xFF1A; Mass-Spring Systems</p>
+<p>ti.imwrite(img, filename)</p>
+<p>ti video -f 24</p>
+<p>ti gif -i imput.mp4</p>
+<p>SPH implemented with C++ and CUDA</p>
+<p>Smoothed Particle Hydrodynamics </p>
+<p>&#x5C48;&#x670D;&#xFF1A;yield </p>
+<p>SOA: &#x6392;&#x5E8F;&#x540E;&#x6548;&#x7387;&#x5F88;&#x9AD8;&#xFF0C;&#x968F;&#x673A;&#x8BBF;&#x95EE; low cacheline utilization
+AOS: &#x4E0D;&#x6392;&#x5E8F;&#x6548;&#x7387;&#x8FD8;&#x53EF;&#x4EE5; </p>
+<p>&#x7A7A;&#x95F4;&#x7A00;&#x758F;&#x6027;&#xFF1A;&#x5C40;&#x90E8;&#x8FD8;&#x53EF;&#x4EE5;&#x662F;&#x7A20;&#x5BC6;&#x7684;</p>
+<p>&#x4E00;&#x822C;&#x7684;&#x7A00;&#x758F;&#x6027;&#xFF1A;</p>
+<p>&#x5FEB;&#x901F;&#x5931;&#x8D25;&#x7684;&#x539F;&#x5219;&#xFF0C;&#x8FD9;&#x6837;&#x624D;&#x80FD;&#x6709;&#x6548;&#x627E;&#x5230;&#x66F4;&#x597D;&#x7684;&#x529E;&#x6CD5;</p>
+<p>Error-prone &#x5BB9;&#x6613;&#x51FA;&#x9519; 
+hard to analyze &#x96BE;&#x4EE5;&#x5206;&#x6790;</p>
+<p>&#x5904;&#x7406;&#x7684;&#x590D;&#x6742;&#x6027;&#x662F;&#x6709;&#x9650;&#x7684;</p>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x8FD8;&#x4F1A;&#x628A;&#x95EE;&#x9898;&#x641E;&#x590D;&#x6742;&#xFF1F;</p>
+<p>&#x641E;&#x51FA;&#x590D;&#x6742;&#x7684;&#x65B9;&#x6CD5;&#x6BD4;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x66F4;&#x5BB9;&#x6613;&#x4E00;&#x4E9B;</p>
+<ul>
+<li>&#x7528;&#x590D;&#x6742;&#x6765;&#x8BC1;&#x660E;&#x81EA;&#x5DF1;&#x5F88;&#x806A;&#x660E;</li>
+<li>&#x8BC1;&#x660E;&#x81EA;&#x5DF1;&#x505A;&#x4E86;&#x5F88;&#x591A;&#x5DE5;&#x4F5C;</li>
+<li>&#x53BB;&#x9690;&#x85CF;&#x9519;&#x8BEF;&#xFF1A;&#x6CA1;&#x4EBA;&#x7406;&#x89E3;&#x6211;&#x505A;&#x7684;&#x4E8B;&#xFF0C;&#x6CA1;&#x4EBA;&#x80FD;&#x8BC1;&#x660E;&#x6211;&#x9519;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x5C31;&#x662F;&#x5BF9;&#x7684;<ul>
+<li>&#x79D1;&#x5B66;&#x7684;&#x8868;&#x8FF0;&#x5728;&#x4E8E;&#x5176;&#x53EF;&#x8BC1;&#x4F2A; </li>
+</ul>
+</li>
+<li>&#x4E0E;&#x524D;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x533A;&#x5206;&#x5F00;&#x6765;&#xFF08;&#x53D1;&#x8868;&#x8BBA;&#x6587;&#xFF09;</li>
+<li>&#x61D2;</li>
+<li>Audience being too nice to tolerate
+*</li>
+</ul>
+<p>Learning-for-Simulation</p>
+<p>Simulation-for-Learning</p>
+<p>&#x6709;&#x667A;&#x6167;&#x7684;&#x4EBA;&#x53EF;&#x4EE5;&#x628A;&#x667A;&#x6167;&#x4F20;&#x9012;&#x7ED9;&#x522B;&#x4EBA;</p>
+<p>&#x52A0;&#x901F;&#x4E86;&#x77E5;&#x8BC6;&#x7684;&#x4F20;&#x64AD;</p>
+<p>MGPCG</p>
+<h1 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h1>
+<ul>
+<li><a href="https://forum.taichi.graphics/" target="_blank">https://forum.taichi.graphics/</a></li>
+<li><a href="https://www.bilibili.com/video/BV1ZK411H7Hc/" target="_blank">https://www.bilibili.com/video/BV1ZK411H7Hc/</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/146520831" target="_blank">https://zhuanlan.zhihu.com/p/146520831</a></li>
+</ul>
 
                                 
                                 </section>
@@ -1399,12 +1464,12 @@
 
             
                 
-                <a href="taichi.html" class="navigation navigation-prev " aria-label="Previous page: Taichi">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 专业软件工具">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="vtk.html" class="navigation navigation-next " aria-label="Next page: VTK">
+                <a href="tetgen.html" class="navigation navigation-next " aria-label="Next page: TetGen">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1415,7 +1480,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TetGen","level":"1.12.2","depth":2,"next":{"title":"VTK","level":"1.12.3","depth":2,"path":"scsoft/vtk.md","ref":"./scsoft/vtk.md","articles":[]},"previous":{"title":"Taichi","level":"1.12.1","depth":2,"path":"scsoft/taichi.md","ref":"./scsoft/taichi.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"./tools/linux.html#fig1.11.5.1","level":"1.11.5","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":2,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.11.5.1"},{"backlink":"./tools/linux.html#fig1.11.5.2","level":"1.11.5","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":3,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.11.5.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"scsoft/tetgen.md","mtime":"2021-01-12T01:47:49.332Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-09T00:44:30.308Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Taichi","level":"1.12.1","depth":2,"next":{"title":"TetGen","level":"1.12.2","depth":2,"path":"scsoft/tetgen.md","ref":"./scsoft/tetgen.md","articles":[]},"previous":{"title":"专业软件工具","level":"1.12","depth":1,"path":"scsoft/README.md","ref":"./scsoft/README.md","articles":[{"title":"Taichi","level":"1.12.1","depth":2,"path":"scsoft/taichi.md","ref":"./scsoft/taichi.md","articles":[]},{"title":"TetGen","level":"1.12.2","depth":2,"path":"scsoft/tetgen.md","ref":"./scsoft/tetgen.md","articles":[]},{"title":"VTK","level":"1.12.3","depth":2,"path":"scsoft/vtk.md","ref":"./scsoft/vtk.md","articles":[]},{"title":"Paraview","level":"1.12.4","depth":2,"path":"scsoft/paraview.md","ref":"./scsoft/paraview.md","articles":[]},{"title":"CGAL","level":"1.12.5","depth":2,"path":"scsoft/cgal.md","ref":"./scsoft/cgal.md","articles":[]},{"title":"MOAB","level":"1.12.6","depth":2,"path":"scsoft/moab.md","ref":"./scsoft/moab.md","articles":[]},{"title":"CGM","level":"1.12.7","depth":2,"path":"scsoft/cgm.md","ref":"./scsoft/cgm.md","articles":[]},{"title":"OCE","level":"1.12.8","depth":2,"path":"scsoft/oce.md","ref":"./scsoft/oce.md","articles":[]},{"title":"PyQT5","level":"1.12.9","depth":2,"path":"scsoft/pyqt5.md","ref":"./scsoft/pyqt5.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"./tools/linux.html#fig1.11.5.1","level":"1.11.5","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":2,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.11.5.1"},{"backlink":"./tools/linux.html#fig1.11.5.2","level":"1.11.5","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":3,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.11.5.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"scsoft/taichi.md","mtime":"2021-04-27T02:33:37.648Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-09T00:44:30.308Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
