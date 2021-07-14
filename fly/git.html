@@ -1,0 +1,1553 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>基于 Git 的 fly 开发协作 · 魏华祎的个人网站</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Wei, Huayi">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="rule.html" />
+    
+    
+    <link rel="prev" href="fealpy.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    首页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../me.html">
+            
+                <a href="../me.html">
+            
+                    
+                    个人简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../life/">
+            
+                <a href="../life/">
+            
+                    
+                    工作与家庭
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../life/key_work.html">
+            
+                <a href="../life/key_work.html">
+            
+                    
+                    什么是我的核心工作？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../life/run.html">
+            
+                <a href="../life/run.html">
+            
+                    
+                    跑出健康
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../math/">
+            
+                <a href="../math/">
+            
+                    
+                    数学
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../math/numal.html">
+            
+                <a href="../math/numal.html">
+            
+                    
+                    数值代数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../math/numopde.html">
+            
+                <a href="../math/numopde.html">
+            
+                    
+                    微分方程数值解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../math/comgeo.html">
+            
+                <a href="../math/comgeo.html">
+            
+                    
+                    计算几何
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../math/numan.html">
+            
+                <a href="../math/numan.html">
+            
+                    
+                    数值分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../math/mathnote.html">
+            
+                <a href="../math/mathnote.html">
+            
+                    
+                    数学笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../code/">
+            
+                <a href="../code/">
+            
+                    
+                    编程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../code/cpp/">
+            
+                <a href="../code/cpp/">
+            
+                    
+                    cpp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../code/python/">
+            
+                <a href="../code/python/">
+            
+                    
+                    python
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../code/python/python_env.html">
+            
+                <a href="../code/python/python_env.html">
+            
+                    
+                    Python 环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../code/python/python_basic.html">
+            
+                <a href="../code/python/python_basic.html">
+            
+                    
+                    Python 基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../code/matlab/">
+            
+                <a href="../code/matlab/">
+            
+                    
+                    matlab
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../code/matlab/matlab_engine.html">
+            
+                <a href="../code/matlab/matlab_engine.html">
+            
+                    
+                    Matlab engine for Python
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../code/shell/">
+            
+                <a href="../code/shell/">
+            
+                    
+                    Shell 脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../code/note/">
+            
+                <a href="../code/note/">
+            
+                    
+                    编程笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.5.1" data-path="../code/note/todo.html">
+            
+                <a href="../code/note/todo.html">
+            
+                    
+                    编程任务列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.2" data-path="../code/note/code_effect.html">
+            
+                <a href="../code/note/code_effect.html">
+            
+                    
+                    如何高效地写代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../writting/">
+            
+                <a href="../writting/">
+            
+                    
+                    写作计划
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../writting/wx.html">
+            
+                <a href="../writting/wx.html">
+            
+                    
+                    微信公众号文章
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../postgrad/">
+            
+                <a href="../postgrad/">
+            
+                    
+                    研究生招生与培养
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../undergrad/">
+            
+                <a href="../undergrad/">
+            
+                    
+                    本科生管理与培养
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Fealpy
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="class2020.html">
+            
+                <a href="class2020.html">
+            
+                    
+                    fly 2020 暑期课程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="fealpy.html">
+            
+                <a href="fealpy.html">
+            
+                    
+                    fly 帮助与安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9.3" data-path="git.html">
+            
+                <a href="git.html">
+            
+                    
+                    基于 Git 的 fly 开发协作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="rule.html">
+            
+                <a href="rule.html">
+            
+                    
+                    fly 的命名约定与开发规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="numpy.html">
+            
+                <a href="numpy.html">
+            
+                    
+                    fly 中常用的 Numpy 技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="mesh.html">
+            
+                <a href="mesh.html">
+            
+                    
+                    网格
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.6.1" data-path="simplex_mesh.html">
+            
+                <a href="simplex_mesh.html">
+            
+                    
+                    单纯形网格
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6.2" data-path="struct_mesh.html">
+            
+                <a href="struct_mesh.html">
+            
+                    
+                    结构网格
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6.3" data-path="quad_hex_mesh.html">
+            
+                <a href="quad_hex_mesh.html">
+            
+                    
+                    四边形与六面体网格
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6.4" data-path="polygon_mesh.html">
+            
+                <a href="polygon_mesh.html">
+            
+                    
+                    多边形网格
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6.5" data-path="polyhedral_mesh.html">
+            
+                <a href="polyhedral_mesh.html">
+            
+                    
+                    多面体网格
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6.6" data-path="halfedge_mesh.html">
+            
+                <a href="halfedge_mesh.html">
+            
+                    
+                    基于半边数据结构的二维网格
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6.7" data-path="halfface_mesh.html">
+            
+                <a href="halfface_mesh.html">
+            
+                    
+                    基于半面数据结构的三维网格
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="space.html">
+            
+                <a href="space.html">
+            
+                    
+                    函数空间
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.7.1" data-path="lagrange_space.html">
+            
+                <a href="lagrange_space.html">
+            
+                    
+                     Lagrange 有限元空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7.2" data-path="scaled_space2d.html">
+            
+                <a href="scaled_space2d.html">
+            
+                    
+                     二维缩放单项式空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7.3" data-path="scaled_space3d.html">
+            
+                <a href="scaled_space3d.html">
+            
+                    
+                     三维缩放单项式空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="example.html">
+            
+                <a href="example.html">
+            
+                    
+                    算例
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.8.1" data-path="poisson_fem.html">
+            
+                <a href="poisson_fem.html">
+            
+                    
+                     Poisson 方程有限元算例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="develop_note.html">
+            
+                <a href="develop_note.html">
+            
+                    
+                    开发日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.10" data-path="release.html">
+            
+                <a href="release.html">
+            
+                    
+                    发布日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../whysc/">
+            
+                <a href="../whysc/">
+            
+                    
+                    WhySC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../whysc/whysc.html">
+            
+                <a href="../whysc/whysc.html">
+            
+                    
+                    开发动机与基本原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../whysc/develop_note.html">
+            
+                <a href="../whysc/develop_note.html">
+            
+                    
+                    开发日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../tools/">
+            
+                <a href="../tools/">
+            
+                    
+                    效率工具
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../tools/operator_system.html">
+            
+                <a href="../tools/operator_system.html">
+            
+                    
+                    操作系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../tools/hardware.html">
+            
+                <a href="../tools/hardware.html">
+            
+                    
+                    硬件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../tools/vim.html">
+            
+                <a href="../tools/vim.html">
+            
+                    
+                    VIM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../tools/vscode.html">
+            
+                <a href="../tools/vscode.html">
+            
+                    
+                    VSCode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../tools/unix.html">
+            
+                <a href="../tools/unix.html">
+            
+                    
+                    Unix
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../tools/linux.html">
+            
+                <a href="../tools/linux.html">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.7" data-path="../tools/grep.html">
+            
+                <a href="../tools/grep.html">
+            
+                    
+                    grep
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.8" data-path="../tools/linux_cli.html">
+            
+                <a href="../tools/linux_cli.html">
+            
+                    
+                    Linux 命令行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.9" data-path="../tools/ubuntu.html">
+            
+                <a href="../tools/ubuntu.html">
+            
+                    
+                    Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.10" data-path="../tools/gdb.html">
+            
+                <a href="../tools/gdb.html">
+            
+                    
+                    gdb
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.11" data-path="../tools/wubi.html">
+            
+                <a href="../tools/wubi.html">
+            
+                    
+                    fctix 和五笔输入法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.12" data-path="../tools/git.html">
+            
+                <a href="../tools/git.html">
+            
+                    
+                    Git 版本控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.13" data-path="../tools/gitbook.html">
+            
+                <a href="../tools/gitbook.html">
+            
+                    
+                    Gitbook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.14" data-path="../tools/make.html">
+            
+                <a href="../tools/make.html">
+            
+                    
+                    Make
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.15" data-path="../tools/cmake.html">
+            
+                <a href="../tools/cmake.html">
+            
+                    
+                    CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.16" data-path="../tools/latex.html">
+            
+                <a href="../tools/latex.html">
+            
+                    
+                    latex
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.17" data-path="../tools/markdown.html">
+            
+                <a href="../tools/markdown.html">
+            
+                    
+                    Markdown
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.18" data-path="../tools/github.html">
+            
+                <a href="../tools/github.html">
+            
+                    
+                    代码托管
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.19" data-path="../tools/zotero.html">
+            
+                <a href="../tools/zotero.html">
+            
+                    
+                    知识管理工具 Zotero
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.20" data-path="../tools/windows.html">
+            
+                <a href="../tools/windows.html">
+            
+                    
+                    Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.21" data-path="../tools/zoom.html">
+            
+                <a href="../tools/zoom.html">
+            
+                    
+                    Zoom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.22" data-path="../tools/howdoi.html">
+            
+                <a href="../tools/howdoi.html">
+            
+                    
+                    howdoi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.23" data-path="../tools/docker.html">
+            
+                <a href="../tools/docker.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../scsoft/">
+            
+                <a href="../scsoft/">
+            
+                    
+                    专业软件工具
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../scsoft/taichi.html">
+            
+                <a href="../scsoft/taichi.html">
+            
+                    
+                    Taichi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../scsoft/tetgen.html">
+            
+                <a href="../scsoft/tetgen.html">
+            
+                    
+                    TetGen
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../scsoft/vtk.html">
+            
+                <a href="../scsoft/vtk.html">
+            
+                    
+                    VTK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../scsoft/paraview.html">
+            
+                <a href="../scsoft/paraview.html">
+            
+                    
+                    Paraview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../scsoft/cgal.html">
+            
+                <a href="../scsoft/cgal.html">
+            
+                    
+                    CGAL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../scsoft/moab.html">
+            
+                <a href="../scsoft/moab.html">
+            
+                    
+                    MOAB
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../scsoft/cgm.html">
+            
+                <a href="../scsoft/cgm.html">
+            
+                    
+                    CGM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../scsoft/oce.html">
+            
+                <a href="../scsoft/oce.html">
+            
+                    
+                    OCE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../scsoft/pyqt5.html">
+            
+                <a href="../scsoft/pyqt5.html">
+            
+                    
+                    PyQT5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="../scsoft/gmsh.html">
+            
+                <a href="../scsoft/gmsh.html">
+            
+                    
+                    Gmsh
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../app/">
+            
+                <a href="../app/">
+            
+                    
+                    应用探索
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../app/judicial-intelligence.html">
+            
+                <a href="../app/judicial-intelligence.html">
+            
+                    
+                    智慧司法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../app/blockchain.html">
+            
+                <a href="../app/blockchain.html">
+            
+                    
+                    区块链
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../questions/">
+            
+                <a href="../questions/">
+            
+                    
+                    提问与回答
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../questions/stackoverflow.html">
+            
+                <a href="../questions/stackoverflow.html">
+            
+                    
+                    Stackoverflow
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >基于 Git 的 fly 开发协作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x57FA;&#x4E8E;-git-&#x7684;-fealpy-&#x5F00;&#x53D1;&#x534F;&#x4F5C;">&#x57FA;&#x4E8E; Git &#x7684; FEALPy &#x5F00;&#x53D1;&#x534F;&#x4F5C;</h1>
+<blockquote>
+<p>&#x4E00;&#x4E2A;&#x4EBA;&#x529B;&#x91CF;&#x6C38;&#x8FDC;&#x662F;&#x6709;&#x9650;&#x7684;, &#x53EA;&#x6709;&#x534F;&#x4F5C;&#x624D;&#x80FD;&#x4E00;&#x8D77;&#x5F3A;&#x5927;&#x8D77;&#x6765;!</p>
+</blockquote>
+<h2 id="merge-request-&#x534F;&#x4F5C;&#x6D41;&#x7A0B;">Merge Request &#x534F;&#x4F5C;&#x6D41;&#x7A0B;</h2>
+<p>&#x4E0B;&#x9762;&#x4EE5; Gitlab &#x4E3A;&#x4F8B;&#x4ECB;&#x7ECD; Pull Request &#x7684;&#x534F;&#x4F5C;&#x6D41;&#x7A0B;:</p>
+<ol>
+<li>&#x5728; Gitlab &#x4E0A;&#x6CE8;&#x518C;&#x5E10;&#x6237;&#x5E76;&#x767B;&#x5F55;.</li>
+<li>&#x6253;&#x5F00; <a href="https://gitlab.com/weihuayi/fealpy" target="_blank">FEALPy</a> &#x7684; Gitlab &#x9875;&#x9762;, &#x70B9;&#x51FB;&#x53F3;&#x4E0A;&#x89D2;
+&#x7684; <code>fork</code> &#x6309;&#x94AE;, Gitlab &#x4F1A;&#x5728;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x5E10;&#x6237;&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A; fealpy &#x540C;&#x540D;&#x5206;&#x652F;&#x4ED3;&#x5E93;, &#x5176;&#x5730;&#x5740;
+&#x4E00;&#x822C;&#x4E3A;&#x683C;&#x5F0F;&#x4E3A; <code>https://gitlab.com/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>username</span><span class="token punctuation">&gt;</span></span>/fealpy</code>, &#x6CE8;&#x610F;&#x5B9E;&#x9645;&#x4E2D;&#x8981;&#x628A;&#x5176;&#x4E2D;&#x7684;
+<code>username</code> &#x66FF;&#x6362;&#x4E3A;&#x4F60;&#x81EA; &#x5DF1;&#x7684;&#x5E10;&#x6237;&#x540D;&#x5B57;.
+<img src="figures/fork.jpg" alt="Fork &#x4E00;&#x4E2A; FEALPy &#x7684;&#x5206;&#x652F;"></li>
+<li>&#x5229;&#x7528; <code>git clone https://gitlab.com/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>username</span><span class="token punctuation">&gt;</span></span>/fealpy</code> &#x547D;&#x4EE4;&#x628A;&#x514B;&#x9686;&#x5230;&#x672C;&#x5730;, &#x4F60;&#x5C31;&#x53EF;
+&#x4EE5;&#x8FDB;&#x884C;&#x81EA;&#x5DF1;&#x7684;&#x5F00;&#x53D1;&#x5DE5;&#x4F5C;, &#x5E76;&#x901A;&#x8FC7; add, pull, merge, push &#x7B49;&#x64CD;&#x4F5C;&#x4E0E;&#x81EA;&#x5DF2; Gitlab &#x5E10;&#x6237;
+&#x4E0B;&#x7684; FEALPy &#x4ED3;&#x5E93;&#x4EA4;&#x4E92;.</li>
+<li>&#x5982;&#x679C;&#x5B8C;&#x6210;&#x4E86;&#x529F;&#x80FD;&#x6A21;&#x5757;&#x7684;&#x5F00;&#x53D1;, &#x5E76;&#x6D4B;&#x8BD5;&#x4E86;&#x7A0B;&#x5E8F;&#x7684;&#x6B63;&#x786E;&#x6027;, &#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x51C6;&#x5907;&#x53D1;&#x8D77;&#x4E00;&#x4E2A; Merge 
+Request &#x7684;&#x64CD;&#x4F5C;. &#x5728;&#x4F60;&#x672C;&#x5730;&#x7684; <code>fealpy</code> &#x76EE;&#x5F55;&#x4E0B;, &#x6267;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;<pre class="language-"><code>$ git remote add upstream https://gitlab.com/weihuayi/fealpy.git
+$ git fetch --all # &#x62C9;&#x53D6;&#x81EA;&#x5DF1;&#x548C;&#x7BA1;&#x7406;&#x5458;&#x4ED3;&#x5E93;&#x4E2D;&#x7684;&#x6700;&#x65B0;&#x53D8;&#x66F4;
+$ git merge upstream/master origin/master # &#x5408;&#x5E76;, &#x5982;&#x679C;&#x4E0D;&#x6210;&#x529F;, &#x8981;&#x91CD;&#x65B0;&#x4FEE;&#x6539;&#x6D4B;&#x8BD5;&#x81EA;&#x5DF1;&#x7684;&#x4EE3;&#x7801;
+$ git push # &#x63A8;&#x5230;&#x81EA;&#x5DF1;&#x7F51;&#x4E0A;&#x4ED3;&#x5E93;&#x4E2D;
+</code></pre>&#x5176;&#x4E2D; <code>git remote add</code> &#x7684;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x540E;&#xFF0C; &#x5728;&#x4EE5;&#x540E;&#x7684; merge request &#x91CC;&#x5C31;&#x4E0D;&#x9700;&#x8981;.</li>
+<li>&#x5728; Gitlab &#x81EA;&#x5DF1;&#x7684; FEALPy &#x4ED3;&#x5E93;&#x9875;&#x9762;&#x7684;&#x5DE6;&#x8FB9;, &#x70B9;&#x51FB;&#x6253;&#x5F00; Merge Requests &#x9875;&#x9762;, 
+<img src="figures/merge_request.jpg" alt="">
+&#x518D;&#x70B9;&#x51FB; &#x53F3;&#x4E0A;&#x89D2;&#x7684; New merge request, &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5408;&#x5E76;&#x8BF7;&#x6C42;, &#x9ED8;&#x8BA4; Source branch
+&#x5C31;&#x662F;&#x4F60;&#x7684; master &#x5206;&#x652F;, Target branch &#x5C31;&#x662F; weihuayi/fealpy &#x7684; master &#x5206;&#x652F;. &#x5728;&#x9875;
+&#x9762;&#x4E0B;&#x9762;&#x7684; Title &#x548C; Description &#x8F93;&#x5165;&#x6846;&#x4E2D;&#x586B;&#x5199;&#x6BD4;&#x8F83;&#x8BE6;&#x7EC6;&#x4FEE;&#x6539;&#x4FE1;&#x606F;. &#x6700;&#x540E;&#x518D;&#x70B9;&#x51FB;
+<code>Submit merge request</code> &#x6309;&#x94AE;&#x63D0;&#x4EA4;&#x5373;&#x53EF;. 
+<img src="figures/new_merge_request.jpg" alt=""></li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="fealpy.html" class="navigation navigation-prev " aria-label="Previous page: fly 帮助与安装">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="rule.html" class="navigation navigation-next " aria-label="Next page: fly 的命名约定与开发规范">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"基于 Git 的 fly 开发协作","level":"1.9.3","depth":2,"next":{"title":"fly 的命名约定与开发规范","level":"1.9.4","depth":2,"path":"fly/rule.md","ref":"./fly/rule.md","articles":[]},"previous":{"title":"fly 帮助与安装","level":"1.9.2","depth":2,"path":"fly/fealpy.md","ref":"./fly/fealpy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"./tools/linux.html#fig1.11.6.1","level":"1.11.6","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":2,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.11.6.1"},{"backlink":"./tools/linux.html#fig1.11.6.2","level":"1.11.6","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":3,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.11.6.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"fly/git.md","mtime":"2020-05-11T09:25:48.998Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-14T22:49:38.931Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+
