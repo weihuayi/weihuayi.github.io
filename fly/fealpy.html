@@ -751,6 +751,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.9.8.2" data-path="nlpoisson.html">
+            
+                <a href="nlpoisson.html">
+            
+                    
+                     非线性 Poisson 方程求解
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1469,7 +1482,8 @@ GitLab</a>, &#x7CFB;&#x7EDF;&#x4F1A;&#x81EA;&#x52A8;&#x7ED9;&#x53D1;&#x90AE;&#x4
 <h1 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h1>
 <h2 id="ubuntu">Ubuntu</h2>
 <ol>
-<li>&#x5B89;&#x88C5; git&#x3001;Python3 &#x53CA; ipython: <pre class="language-"><code>$ sudo apt install git            # &#x7248;&#x672C;&#x63A7;&#x5236; 
+<li>&#x5B89;&#x88C5; git&#x3001;Python3 &#x53CA; ipython: <pre class="language-"><code>$ sudo apt install texlive-full   # tex
+$ sudo apt install git            # &#x7248;&#x672C;&#x63A7;&#x5236; 
 $ sudo apt install python3        # Python3 &#x89E3;&#x91CA;&#x5668; 
 $ sudo apt install python3-pip    # Python3 &#x8F6F;&#x4EF6;&#x5305;&#x7BA1;&#x7406;&#x5668;
 $ pip3 install ipython # &#x9AD8;&#x7EA7;&#x4EA4;&#x4E92;&#x5F0F;&#x89E3;&#x91CA;&#x5668;
@@ -1477,14 +1491,21 @@ $ pip3 install ipython # &#x9AD8;&#x7EA7;&#x4EA4;&#x4E92;&#x5F0F;&#x89E3;&#x91CA
 <li>&#x914D;&#x7F6E;&#x4F60;&#x7684; git &#x4FE1;&#x606F;:<pre class="language-"><code>$ git config --global user.name &quot;Your Name&quot;
 $ git config --global user.email &quot;Your Email&quot;
 </code></pre></li>
-<li>&#x4ECE; gitlab&#x3001; github &#x6216;&#x8005; gitee &#x4E0A; clone &#x6700;&#x65B0;&#x7684; FEALPy:<pre class="language-"><code>&gt; git clone https://github.com/weihuayi/fealpy.git
-</code></pre>&#x6216;&#x8005;<pre class="language-"><code>&gt; git clone https://gitlab.com/weihuayi/fealpy.git
+<li><p>&#x4ECE; gitlab&#x3001; github &#x6216;&#x8005; gitee &#x4E0A; clone &#x6700;&#x65B0;&#x7684; FEALPy:</p>
+<pre class="language-"><code>$ git clone https://gitlab.com/weihuayi/fealpy.git # &#x8FD9;&#x4E2A;&#x56FD;&#x5185;&#x5E94;&#x8BE5;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x8BBF;&#x95EE;
+</code></pre><p>&#x6216;&#x8005;</p>
+<pre class="language-"><code>$ git clone https://github.com/weihuayi/fealpy.git
+</code></pre><p>&#x6216;&#x8005;</p>
+<pre class="language-"><code>$ git clone https://gitee.com/whymath/fealpy.git # &#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x56FD;&#x5185;&#x7684;&#x7F51;&#x7AD9;
 </code></pre></li>
-<li>&#x8FDB;&#x5165; <code>fealpy/</code>, &#x8FD0;&#x884C;&#x4E0B;&#x9762;&#x547D;&#x4EE4;&#x5B89;&#x88C5;: <pre class="language-"><code>$ pip3 install -e . #&#x7B26;&#x53F7;&#x8054;&#x63A5;&#x65B9;&#x5F0F;&#x5B89;&#x88C5;
-</code></pre>&#x8FD9;&#x6837;&#x4F1A;&#x628A; FEALPy &#x4EE5;&#x7B26;&#x53F7;&#x94FE;&#x63A5;&#x7684;&#x65B9;&#x5F0F;&#x5B89;&#x88C5;&#x5230;&#x76EE;&#x5F55;
+<li><p>&#x8FDB;&#x5165; <code>fealpy/</code>, &#x8FD0;&#x884C;&#x4E0B;&#x9762;&#x547D;&#x4EE4;&#x5B89;&#x88C5;: </p>
+<pre class="language-"><code>$ pip3 install -e . #&#x7B26;&#x53F7;&#x8054;&#x63A5;&#x65B9;&#x5F0F;&#x5B89;&#x88C5;
+</code></pre><p>&#x8FD9;&#x6837;&#x4F1A;&#x628A; FEALPy &#x4EE5;&#x7B26;&#x53F7;&#x94FE;&#x63A5;&#x7684;&#x65B9;&#x5F0F;&#x5B89;&#x88C5;&#x5230;&#x76EE;&#x5F55;
 <code>$HOME/.local/lib/python3.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>x</span><span class="token punctuation">&gt;</span></span>/site-packages/</code>&#xFF0C;&#x6CE8;&#x610F;&#x5176;&#x4E2D; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>x</span><span class="token punctuation">&gt;</span></span></code> &#x5728;&#x4E0D;&#x540C;&#x7684;&#x7CFB;&#x7EDF;&#x4E0B;&#x53EF;&#x80FD;&#x4E0D;
-&#x540C;&#x3002; &#x8FD9;&#x6837;&#x5B89;&#x88C5;&#x7684;&#x597D;&#x5904;&#x662F;, &#x6BCF;&#x6B21;&#x5728; <code>fealpy/</code> &#x76EE;&#x5F55;&#x4E0B;&#x8FD0;&#x884C;<pre class="language-"><code>$ git pull # &#x66F4;&#x65B0; FEALPy &#x7684;&#x5230;&#x6700;&#x65B0;&#x7248;&#x672C;
-</code></pre>&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x5176;&#x5B83;&#x7684;&#x4EFB;&#x4F55;&#x76EE;&#x5F55;&#x4E0B;&#x8C03;&#x7528; FEALPy &#x4E86;.</li>
+&#x540C;&#x3002; &#x8FD9;&#x6837;&#x5B89;&#x88C5;&#x7684;&#x597D;&#x5904;&#x662F;, &#x6BCF;&#x6B21;&#x5728; <code>fealpy/</code> &#x76EE;&#x5F55;&#x4E0B;&#x8FD0;&#x884C;</p>
+<pre class="language-"><code>$ git pull # &#x66F4;&#x65B0; FEALPy &#x7684;&#x5230;&#x6700;&#x65B0;&#x7248;&#x672C;
+</code></pre><p>&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x5176;&#x5B83;&#x7684;&#x4EFB;&#x4F55;&#x76EE;&#x5F55;&#x4E0B;&#x8C03;&#x7528; FEALPy &#x4E86;.</p>
+</li>
 <li>&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x542F;&#x52A8; ipython, &#x5BFC;&#x5165;&#x4E09;&#x89D2;&#x5F62;&#x7F51;&#x683C;&#x6D4B;&#x8BD5;&#x4E00;&#x4E0B;&#xFF0C; &#x5982;&#x679C;&#x6CA1;&#x6709;&#x62A5;&#x9519;&#x5C31;&#x8BF4;&#x660E;&#x5B89;&#x88C5;&#x6210;&#x529F;&#x4E86;<pre class="language-"><code>$ ipython
 In [1]: from fealpy.mesh import TriangleMesh
 In [2]:
@@ -1496,10 +1517,20 @@ $ pip3 install PyMUMPS # MUMPS &#x76F4;&#x63A5;&#x89E3;&#x6CD5;&#x5668;
 </code></pre></li>
 </ol>
 <h2 id="windows">Windows</h2>
+<p>Windows &#x4E0B; matplotlib &#x753B;&#x56FE;&#x5982;&#x679C;&#x8981;&#x652F;&#x6301; tex &#x516C;&#x5F0F;&#x7684;&#x663E;&#x793A;&#xFF0C;&#x9700;&#x8981;&#x7CFB;&#x7EDF;&#x63D0;&#x524D;&#x5B89;&#x88C5;&#x597D; LaTex
+&#x8F6F;&#x4EF6;&#xFF0C;&#x5E76;&#x786E;&#x4FDD; LaTex&#xFF0C; dvipng &#x548C; ghostscript
+&#x4E09;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x5728;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x8DEF;&#x5F84;&#x4E0B;&#xFF0C;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7684;&#x9ED8;&#x8BA4;&#x641C;&#x7D22;&#x8DEF;&#x5F84;&#x7531;&#x73AF;&#x5883;&#x53D8;&#x91CF; PATH
+&#x51B3;&#x5B9A;&#xFF0C;&#x5982;&#x679C;&#x4E0A;&#x9762;&#x4E09;&#x4E2A;&#x7A0B;&#x5E8F;&#x6240;&#x5728;&#x7684;&#x8DEF;&#x5F84;&#x6CA1;&#x6709;&#x52A0;&#x5165; PATH&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x589E;&#x52A0;&#xFF0C; &#x5177;&#x4F53;&#x89C1;&#xFF1A;</p>
+<ul>
+<li><a href="https://matplotlib.org/devdocs/faq/environment_variables_faq.html#setting-environment-variables-in-windows" target="_blank">Setting environment variables in Windows</a></li>
+<li><a href="https://matplotlib.org/devdocs/tutorials/text/usetex.html#possible-hangups" target="_blank">Possible hangups</a></li>
+<li><a href="https://matplotlib.org/devdocs/tutorials/text/usetex.html#troubleshooting" target="_blank">Troubleshooting</a></li>
+</ul>
+<h3 id="&#x57FA;&#x4E8E;-anaconda-&#x7684;&#x5B89;&#x88C5;">&#x57FA;&#x4E8E; Anaconda &#x7684;&#x5B89;&#x88C5;</h3>
 <ol>
 <li>&#x4E0B;&#x8F7D;&#x6700;&#x65B0;&#x7684; <a href="https://www.anaconda.com/distribution/" target="_blank">Anaconda for Windows</a>.</li>
 <li>&#x4E0B;&#x8F7D;&#x6700;&#x65B0;&#x7684; <a href="https://gitforwindows.org/" target="_blank">Git for Windows</a>.</li>
-<li>&#x5F00;&#x59CB;&#x83DC;&#x5355;&#x4E2D;&#x5728; Anaconda &#x83DC;&#x5355;&#x76EE;&#x5F55;&#x4E0B;&#x6253;&#x5F00; Anaconda Prompt (Python) &#x547D;&#x4EE4;&#x884C;&#x7EC8;&#x7AEF;, &#x6CE8;
+<li>&#x5F00;&#x59CB;&#x83DC;&#x5355;&#x4E2D;&#x5728; Anaconda &#x83DC;&#x5355;&#x76EE;&#x5F55;&#x4E0B;&#x6253;&#x5F00; Anaconda PowerShell Prompt &#x547D;&#x4EE4;&#x884C;&#x7EC8;&#x7AEF;, &#x6CE8;
 &#x610F;&#x5B83;&#x4F1A;&#x9ED8;&#x8BA4;&#x8FDB;&#x5165;&#x4F60;&#x7684; Desktop &#x7684;&#x4E0A;&#x4E00;&#x7EA7;&#x76EE;&#x5F55;.  &#x7136;&#x540E;&#x914D;&#x7F6E;&#x4F60;&#x81EA;&#x5DF1;&#x7684; Git &#x4FE1;&#x606F;.<pre class="language-"><code>&gt; git config --global user.name &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Your</span> <span class="token attr-name">Name</span><span class="token punctuation">&gt;</span></span>&quot;
 &gt; git config --global user.email &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Your</span> <span class="token attr-name">Email</span><span class="token punctuation">&gt;</span></span>&quot;
 </code></pre>&#x5728;&#x6709;&#x4E9B; Windows &#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x53EF;&#x80FD;&#x9ED8;&#x8BA4;&#x8FDB;&#x5165;&#x7684;&#x662F;&#x7BA1;&#x7406;&#x5458;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x5C31;&#x6CA1;&#x6709; Desktop &#x76EE;&#x5F55;&#x3002;&#x8FD9;&#x6837;&#x7684;
@@ -1508,6 +1539,7 @@ fealpy &#x6700;&#x7EC8; clone &#x5230;&#x7CFB;&#x7EDF;&#x7684;&#x4EFB;&#x4F55;&#
 <li>&#x8FDB;&#x5165; Desktop &#x76EE;&#x5F55;, &#x7136;&#x540E;&#x4ECE; gitlab&#x3001; github &#x6216;&#x8005; gitee &#x4E0A;&#x514B;&#x9686;&#x6700;&#x65B0;&#x7684; FEALPy <pre class="language-"><code>&gt; cd Desktop # &#x8FDB;&#x5165;&#x4E3B;&#x76EE;&#x5F55;
 </code></pre><pre class="language-"><code>&gt; git clone https://gitlab.com/weihuayi/fealpy.git
 </code></pre>&#x6216;&#x8005;<pre class="language-"><code>&gt; git clone https://github.com/weihuayi/fealpy.git
+</code></pre>&#x6216;&#x8005;<pre class="language-"><code>$ git clone https://gitee.com/whymath/fealpy.git # &#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x56FD;&#x5185;&#x7684;&#x7F51;&#x7AD9;
 </code></pre></li>
 <li>&#x8FDB;&#x5165; FEALPy, &#x8FD0;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x5B89;&#x88C5;:<pre class="language-"><code>&gt; cd fealpy
 &gt; pip install -e .
@@ -1530,7 +1562,13 @@ In [2]:
 <p>&#x5982;&#x679C;&#x51FA;&#x73B0;&#x7F16;&#x8BD1;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x76F4;&#x63A5;&#x4ECE;<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank">&#x8FD9;&#x91CC;</a> &#x4E0B;&#x8F7D;&#x9002;&#x5408;&#x4F60;&#x7CFB;&#x7EDF;&#x7684;
 &#x8F6F;&#x4EF6;&#x5305;&#x7684; wheel &#x6587;&#x4EF6;, &#x7136;&#x540E;&#x7528; pip &#x5B89;&#x88C5;</p>
 <pre class="language-"><code>&gt; pip install <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>flie-name</span><span class="token punctuation">&gt;</span></span>.whl # &#x591A;&#x91CD;&#x7F51;&#x683C;&#x89E3;&#x6CD5;&#x5668;
-</code></pre><h2 id="macos">MacOS</h2>
+</code></pre><h3 id="&#x57FA;&#x4E8E;-visual-studio-comuunity--&#x7684;&#x5B89;&#x88C5;">&#x57FA;&#x4E8E; Visual Studio Comuunity  &#x7684;&#x5B89;&#x88C5;</h3>
+<p>&#x5FAE;&#x8F6F;&#x63D0;&#x4F9B;&#x7684;&#x96C6;&#x6210;&#x5F00;&#x53D1;&#x73AF;&#x5883; <a href="https://visualstudio.microsoft.com/zh-hans/downloads" target="_blank">Visual Studio Community</a>&#xFF0C; &#x5373;&#x53EF;
+&#x4EE5;&#x5B89;&#x88C5; C++ &#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x4E5F;&#x53EF;&#x5B89;&#x88C5; Python &#x7684;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x3002;</p>
+<ol>
+<li>&#x5B89;&#x88C5; Visual Studio Community &#x65F6;&#xFF0C; &#x9009;&#x62E9; C++ &#x548C; Python &#x7684;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x6A21;&#x5757;</li>
+</ol>
+<h2 id="macos">MacOS</h2>
 <pre class="language-"><code>&#x53C2;&#x7167; Ubuntu &#x7CFB;&#x7EDF;&#x7684;&#x5B89;&#x88C5;&#x65B9;&#x5F0F;
 </code></pre><h1 id="&#x95EE;&#x9898;&#x89E3;&#x51B3;&#x529E;&#x6CD5;">&#x95EE;&#x9898;&#x89E3;&#x51B3;&#x529E;&#x6CD5;</h1>
 <h2 id="conda-&#x5B89;&#x88C5;-fealpy-&#x7684;&#x4F9D;&#x8D56;&#x8F6F;&#x4EF6;&#x65F6;&#xFF0C;&#x4E0B;&#x8F7D;&#x8FC7;&#x6162;&#x6216;&#x65E0;&#x6CD5;&#x4E0B;&#x8F7D;&#x7684;&#x95EE;&#x9898;&#x89E3;&#x51B3;&#x529E;&#x6CD5;">Conda &#x5B89;&#x88C5; FEALPy &#x7684;&#x4F9D;&#x8D56;&#x8F6F;&#x4EF6;&#x65F6;&#xFF0C;&#x4E0B;&#x8F7D;&#x8FC7;&#x6162;&#x6216;&#x65E0;&#x6CD5;&#x4E0B;&#x8F7D;&#x7684;&#x95EE;&#x9898;&#x89E3;&#x51B3;&#x529E;&#x6CD5;</h2>
@@ -1603,74 +1641,6 @@ lapack_opt_info:
 $ cd OpenBLAS
 $ make BINARY=64 FC=gfortran USE_THREAD=8
 $ sudo make PREFIX=/usr/local/ install
-</code></pre><h1 id="&#x4E00;&#x4E2A;&#x68C0;&#x9A8C;&#x5B89;&#x88C5;&#x7684;&#x4F8B;&#x5B50;">&#x4E00;&#x4E2A;&#x68C0;&#x9A8C;&#x5B89;&#x88C5;&#x7684;&#x4F8B;&#x5B50;</h1>
-<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4EFB;&#x610F;&#x6B21;&#x6709;&#x9650;&#x5143;&#x6C42;&#x89E3;&#x4E8C;&#x7EF4; Poisson &#x65B9;&#x7A0B;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x53EA;&#x8981;&#x4FEE;&#x6539; p &#x5C31;&#x53EF;&#x68C0;&#x9A8C;&#x4E0D;&#x540C;&#x6B21;&#x6570;&#x7684;
-&#x6709;&#x9650;&#x5143;&#x3002;</p>
-<pre class="language-"><code>import numpy as np
-from scipy.sparse.linalg import spsolve
-import pyamg
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-
-from fealpy.pde.poisson_2d import CosCosData as PDE
-from fealpy.functionspace import LagrangeFiniteElementSpace
-from fealpy.boundarycondition import DirichletBC 
-
-from fealpy.tools.show import showmultirate, show_error_table
-
-p = 1 # &#x6709;&#x9650;&#x5143;&#x7A7A;&#x95F4;&#x6B21;&#x6570;, &#x53EF;&#x4EE5;&#x589E;&#x5927; p&#xFF0C; &#x770B;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x7684;&#x53D8;&#x5316; 
-n = 4 # &#x521D;&#x59CB;&#x7F51;&#x683C;&#x52A0;&#x5BC6;&#x6B21;&#x6570; 
-maxit = 4 # &#x6700;&#x5927;&#x8FED;&#x4EE3;&#x6B21;&#x6570;  
-
-
-pde = PDE()
-mesh = pde.init_mesh(n=n)
-
-errorType = [&apos;$|| u - u_h||_{\Omega,0}$&apos;, # L2 &#x8BEF;&#x5DEE;
-             &apos;$||\\nabla u - \\nabla u_h||_{\Omega, 0}$&apos; # H1 &#x8BEF;&#x5DEE;
-             ]
-errorMatrix = np.zeros((2, maxit), dtype=np.float)
-NDof = np.zeros(maxit, dtype=np.float)
-
-# &#x521D;&#x59CB;&#x7F51;&#x683C;
-fig = plt.figure()
-axes = fig.gca()
-mesh.add_plot(axes)
-
-for i in range(maxit):
-    space = LagrangeFiniteElementSpace(mesh, p=p) # &#x5EFA;&#x7ACB;&#x6709;&#x9650;&#x5143;&#x7A7A;&#x95F4;
-
-    NDof[i] = space.number_of_global_dofs() # &#x6709;&#x9650;&#x5143;&#x7A7A;&#x95F4;&#x81EA;&#x7531;&#x5EA6;&#x7684;&#x4E2A;&#x6570;
-    bc = DirichletBC(space, pde.dirichlet)  # DirichletBC &#x6761;&#x4EF6;
-
-    uh = space.function() # &#x6709;&#x9650;&#x5143;&#x51FD;&#x6570;
-    A = space.stiff_matrix() # &#x521A;&#x5EA6;&#x77E9;&#x9635;
-    F = space.source_vector(pde.source) # &#x8F7D;&#x8377;&#x5411;&#x91CF;
-
-    A, F = bc.apply(A, F, uh) # &#x5904;&#x7406;&#x8FB9;&#x754C;&#x6761;&#x4EF6; 
-
-    uh[:] = spsolve(A, F).reshape(-1) # &#x7A00;&#x758F;&#x77E9;&#x9635;&#x76F4;&#x63A5;&#x89E3;&#x6CD5;&#x5668;
-
-    #ml = pyamg.ruge_stuben_solver(A)  # &#x4EE3;&#x6570;&#x591A;&#x91CD;&#x7F51;&#x683C;&#x89E3;&#x6CD5;&#x5668;
-    #uh[:] = ml.solve(F, tol=1e-12, accel=&apos;cg&apos;).reshape(-1)
-
-    errorMatrix[0, i] = space.integralalg.L2_error(pde.solution, uh) # &#x8BA1;&#x7B97; L2 &#x8BEF;&#x5DEE;
-    errorMatrix[1, i] = space.integralalg.L2_error(pde.gradient, uh.grad_value) # &#x8BA1;&#x7B97; H1 &#x8BEF;&#x5DEE;
-
-    if i &lt; maxit-1:
-        mesh.uniform_refine() # &#x4E00;&#x81F4;&#x52A0;&#x5BC6;&#x7F51;&#x683C;
-
-# &#x753B;&#x51FD;&#x6570;&#x56FE;&#x50CF;
-fig = plt.figure()
-axes = fig.gca(projection=&apos;3d&apos;)
-uh.add_plot(axes, cmap=&apos;rainbow&apos;)
-
-# &#x753B;&#x6536;&#x655B;&#x9636;&#x56FE;&#x50CF;
-showmultirate(plt, 0, NDof, errorMatrix,  errorType, propsize=20)
-
-# &#x8F93;&#x51FA; latex &#x8BEF;&#x5DEE;&#x8868;&#x683C;
-show_error_table(NDof, errorType, errorMatrix)
-plt.show()
 </code></pre><h2 id="window-linux-&#x5B50;&#x7CFB;&#x7EDF;&#x4E0B;&#x7684;-fealpy-&#x5B89;&#x88C5;">Window linux &#x5B50;&#x7CFB;&#x7EDF;&#x4E0B;&#x7684; fealpy &#x5B89;&#x88C5;</h2>
 <p><a href="https://docs.microsoft.com/zh-cn/windows/wsl/install-win10" target="_blank">https://docs.microsoft.com/zh-cn/windows/wsl/install-win10</a></p>
 <ol>
@@ -1756,7 +1726,7 @@ $ sudo -H pip3 install pyqtconsole
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Fealpy 帮助与安装","level":"1.9.2","depth":2,"next":{"title":"基于 Git 的 Fealpy 开发协作","level":"1.9.3","depth":2,"path":"fly/git.md","ref":"./fly/git.md","articles":[]},"previous":{"title":"Fealpy 2020 暑期课程","level":"1.9.1","depth":2,"path":"fly/class2020.md","ref":"./fly/class2020.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"./tools/linux.html#fig1.11.6.1","level":"1.11.6","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":2,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.11.6.1"},{"backlink":"./tools/linux.html#fig1.11.6.2","level":"1.11.6","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":3,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.11.6.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"fly/fealpy.md","mtime":"2021-07-14T22:57:57.279Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-14T23:02:10.364Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Fealpy 帮助与安装","level":"1.9.2","depth":2,"next":{"title":"基于 Git 的 Fealpy 开发协作","level":"1.9.3","depth":2,"path":"fly/git.md","ref":"./fly/git.md","articles":[]},"previous":{"title":"Fealpy 2020 暑期课程","level":"1.9.1","depth":2,"path":"fly/class2020.md","ref":"./fly/class2020.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","prism-themes","mathjax","image-captions","fontsettings","expandable-chapters-small","simple-page-toc","copy-code-button","ga"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"size":1},"prism-themes":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-45014540-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Wei, Huayi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"./code/python/python_env.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: 命令行终端","alt":"命令行终端","nro":1,"url":"./figures/shell.png","index":1,"caption_template":"Figure: _CAPTION_","label":"命令行终端","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"./tools/linux.html#fig1.11.6.1","level":"1.11.6","list_caption":"Figure: 各种操作系统","alt":"各种操作系统","nro":2,"url":"./figures/topsys.png","index":1,"caption_template":"Figure: _CAPTION_","label":"各种操作系统","attributes":{},"skip":false,"key":"1.11.6.1"},{"backlink":"./tools/linux.html#fig1.11.6.2","level":"1.11.6","list_caption":"Figure: 操作系统的历史","alt":"操作系统的历史","nro":3,"url":"./figures/Unix_history.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"操作系统的历史","attributes":{},"skip":false,"key":"1.11.6.2"}]},"title":"魏华祎的个人网站","language":"zh-hans","gitbook":"3.2.3","description":"生活工作科研中的点滴记录"},"file":{"path":"fly/fealpy.md","mtime":"2021-08-09T00:13:38.121Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-14T13:02:05.013Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
